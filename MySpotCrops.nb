@@ -1,0 +1,757 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30689,        749]
+NotebookOptionsPosition[     28587,        690]
+NotebookOutlinePosition[     28940,        706]
+CellTagsIndexPosition[     28897,        703]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Making a fxn for generating crops", "Subsubsection",
+ CellChangeTimes->{{3.7458391089766283`*^9, 
+  3.745839114715554*^9}},ExpressionUUID->"abb676cf-9110-4616-ab85-\
+77daca4ed714"],
+
+Cell["\<\
+variables: 
+the color movie (max projection, 3 channels)
+The spots file (greenspots in this case) 
+the transformation function for that file
+The analysis folder name (can get this from the movie) 
+The size of the pad you\[CloseCurlyQuote]ll generate wtih your crops (NOTE: \
+right now I have it fixed at 7, but can be an input as well)
+
+Results: a .m file containing all the spot trims (3 colors) for all \
+greenspots in a cell
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.745839121341835*^9, 3.745839145377307*^9}, {
+  3.745839539300611*^9, 
+  3.745839690105453*^9}},ExpressionUUID->"036e0be4-3cb2-4a71-9c51-\
+8bebdc505fca"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Files you\[CloseCurlyQuote]ll need:", "Subsubsection",
+ CellChangeTimes->{{3.7458391089766283`*^9, 3.745839114715554*^9}, {
+  3.7458392413870773`*^9, 
+  3.745839246562523*^9}},ExpressionUUID->"578a020f-471f-4e6b-82af-\
+e9fb38ecbde7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"FileNameSetter", "[", 
+    RowBox[{"Dynamic", "[", "mymovie", "]"}], "]"}], ",", 
+   RowBox[{"Dynamic", "[", "mymovie", "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.651503548625061*^9, 3.651503549729124*^9}, {
+  3.6515036971455555`*^9, 3.6515037273852854`*^9}, {3.6515038052497387`*^9, 
+  3.651503807864888*^9}, {3.6515048066830177`*^9, 3.6515048169146028`*^9}, {
+  3.6515052946509275`*^9, 3.651505295114954*^9}, {3.6515053260127215`*^9, 
+  3.651505326890772*^9}, {3.651521020023368*^9, 
+  3.651521093823589*^9}},ExpressionUUID->"6cd41e7f-69bf-46c3-873d-\
+0d1090efab5d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{Dynamic[$CellContext`mymovie],"Open",All},
+    "FileNameSetterBoxes"], ",", 
+   DynamicBox[ToBoxes[$CellContext`mymovie, StandardForm],
+    ImageSizeCache->{678., {3., 10.}}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7168401340378675`*^9, 3.728670410064242*^9, 3.733157829682938*^9, 
+   3.7332447675616136`*^9, 3.7332448161653633`*^9, {3.7332448822839527`*^9, 
+   3.7332449058804235`*^9}, 3.7332450548785143`*^9, 3.745261464736001*^9, 
+   3.7452633905442743`*^9, 3.745280425176317*^9, 3.745508178253203*^9, {
+   3.745831199828411*^9, 3.745831207357861*^9}, 3.7458374096021347`*^9, 
+   3.745839311098887*^9},ExpressionUUID->"e66f68af-cab2-4a86-b97e-\
+10e6db402d34"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mymovie", "=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringTake", "[", 
+       RowBox[{
+        RowBox[{"FileBaseName", "[", "mymovie", "]"}], ",", "4"}], "]"}], 
+      "\[Equal]", "\"\<AVG_\>\""}], ",", 
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"mymovie", ",", 
+       RowBox[{"\"\<AVG_\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], ",", 
+     "mymovie"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"myColMovie", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Import", "[", "mymovie", "]"}], "//", 
+     RowBox[{
+      RowBox[{"Partition", "[", 
+       RowBox[{"#", ",", "3"}], "]"}], "&"}]}], "//", "Transpose"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"analysisFolder", "=", 
+   RowBox[{
+    RowBox[{"DirectoryName", "[", "mymovie", "]"}], "<>", "\"\<Analysis/\>\"",
+     "<>", 
+    RowBox[{"StringDrop", "[", 
+     RowBox[{
+      RowBox[{"StringDelete", "[", 
+       RowBox[{"mymovie", ",", 
+        RowBox[{"DirectoryName", "[", "mymovie", "]"}]}], "]"}], ",", 
+      RowBox[{"-", "4"}]}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"redRunAvp", "=", 
+   RowBox[{"<<", 
+    RowBox[{"(", 
+     RowBox[{"analysisFolder", "<>", "\"\<_redspots.dat\>\""}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"greenRunAvp", "=", 
+   RowBox[{"<<", 
+    RowBox[{"(", 
+     RowBox[{"analysisFolder", "<>", "\"\<_greenspots.dat\>\""}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"blueRunAvp", "=", 
+   RowBox[{"<<", 
+    RowBox[{"(", 
+     RowBox[{"analysisFolder", "<>", "\"\<_bluespots.dat\>\""}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myTfFunc", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"DirectoryName", "[", "mymovie", "]"}], "<>", 
+     "\"\<TransformationFunction.m\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myTfFuncInv", "=", 
+   RowBox[{"InverseFunction", "@", "myTfFunc"}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.716830924066163*^9, 3.7168411629195714`*^9, 3.716841294606011*^9, {
+   3.717163920975565*^9, 3.71716392958878*^9}, {3.717171170308474*^9, 
+   3.7171711858517036`*^9}, {3.7210688397530875`*^9, 3.721068840938155*^9}, {
+   3.7452614944522743`*^9, 
+   3.745261538023471*^9}},ExpressionUUID->"0365cf23-dd9a-4287-9f49-\
+9734e4d75b0b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FXN1: ", "Subsubsection",
+ CellChangeTimes->{{3.7458391089766283`*^9, 3.745839114715554*^9}, {
+  3.745839238881065*^9, 3.7458392512675*^9}, {3.7458398698837976`*^9, 
+  3.745839871621298*^9}},ExpressionUUID->"ec5a39e0-6120-49ad-9c68-\
+829805c9c0ae"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCrops", "[", 
+   RowBox[{
+   "mySpots_", ",", "myColMovie_", ",", "myTfFunc_", ",", "analysisFolder_"}],
+    "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "mySpotTrims", ",", " ", "tempRed", ",", " ", "tempBlue", ",", " ", 
+      "tempGreen", ",", " ", "tempCenter", ",", "pad2"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pad2", "=", "7"}], ";", "\n", 
+     RowBox[{"mySpotTrims", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", 
+               RowBox[{"frame", ",", "track"}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "pad2"}], ",", 
+                  RowBox[{"tempCenter", "+", "pad2", "-", "0.1"}]}], "}"}]}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", "frame", "]"}], "]"}], "]"}], ",", "1"}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Length", "/@", "mySpots"}], "]"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ",", 
+       "mySpotTrims"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 
+  3.745839193400769*^9}},ExpressionUUID->"3b137149-c85f-4c4d-acb9-\
+3fbb363fc0f6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+FXN2: myPad is a variable and user determined in the function\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.745839814881456*^9, 
+  3.7458398312984333`*^9}},ExpressionUUID->"b74182b2-5640-4e93-889d-\
+5517e0fdcdc5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCrops2", "[", 
+   RowBox[{
+   "mySpots_", ",", "myColMovie_", ",", "myTfFunc_", ",", "analysisFolder_", 
+    ",", " ", "myPad_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "mySpotTrims", ",", " ", "tempRed", ",", " ", "tempBlue", ",", " ", 
+      "tempGreen", ",", " ", "tempCenter"}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"mySpotTrims", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", 
+               RowBox[{"frame", ",", "track"}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "myPad"}], ",", 
+                  RowBox[{"tempCenter", "+", "myPad", "-", "0.1"}]}], "}"}]}],
+                "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "myPad"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "myPad"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "myPad"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "myPad"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", "frame", "]"}], "]"}], "]"}], ",", "1"}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Length", "/@", "mySpots"}], "]"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ",", 
+       "mySpotTrims"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 3.745839193400769*^9}, {
+  3.745839727479514*^9, 
+  3.745839766142755*^9}},ExpressionUUID->"e1ad945d-2565-46ad-86b8-\
+a07f6cc758e7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FXN3: Output is RGB ColorCombine ", "Subsubsection",
+ CellChangeTimes->{{3.745839814881456*^9, 3.745839863741898*^9}, {
+  3.745840023765987*^9, 3.745840027218051*^9}, {3.745840190964395*^9, 
+  3.74584019127743*^9}},ExpressionUUID->"fb53bbda-6fdf-4c1e-8012-\
+fb07b650af21"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCrops", "[", 
+   RowBox[{
+   "mySpots_", ",", "myColMovie_", ",", "myTfFunc_", ",", "analysisFolder_"}],
+    "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "mySpotTrims", ",", " ", "tempRed", ",", " ", "tempBlue", ",", " ", 
+      "tempGreen", ",", " ", "tempCenter", ",", "pad2", ",", "myRGBTrims"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pad2", "=", "7"}], ";", "\n", 
+     RowBox[{"mySpotTrims", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", 
+               RowBox[{"frame", ",", "track"}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "pad2"}], ",", 
+                  RowBox[{"tempCenter", "+", "pad2", "-", "0.1"}]}], "}"}]}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", "frame", "]"}], "]"}], "]"}], ",", "1"}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Length", "/@", "mySpots"}], "]"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"myRGBTrims", "=", 
+      RowBox[{"Table", "[", " ", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"ColorCombine", "[", 
+           RowBox[{"mySpotTrims", "[", 
+            RowBox[{"[", 
+             RowBox[{"frame", ",", "track"}], "]"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "@", 
+             RowBox[{
+             "mySpotTrims", "\[LeftDoubleBracket]", "frame", 
+              "\[RightDoubleBracket]"}]}], ",", "1"}], "}"}]}], "]"}], 
+        "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "@", "mySpotTrims"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ",", 
+       "myRGBTrims"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 3.745839193400769*^9}, {
+  3.745840081522534*^9, 
+  3.745840150931361*^9}},ExpressionUUID->"ccda41fe-8f51-45e9-b286-\
+8e876d577a22"],
+
+Cell[BoxData[
+ RowBox[{"MySpotCrops", "[", 
+  RowBox[{
+  "greenRunAvp", ",", "myColMovie", ",", "myTfFunc", ",", "analysisFolder"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.745839031900208*^9, 3.7458390423623533`*^9}, {
+  3.7458393376419897`*^9, 3.7458393417149982`*^9}, {3.745839774853601*^9, 
+  3.745839803912271*^9}, {3.745839896364575*^9, 
+  3.745839899845796*^9}},ExpressionUUID->"62d835d6-7a64-4fe0-9b56-\
+5cc4117b3d38"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mySpotTrims", "=", 
+   RowBox[{"<<", 
+    RowBox[{"(", 
+     RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ")"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.745839460146516*^9, 
+  3.745839470934327*^9}},ExpressionUUID->"b681184e-e011-411a-b036-\
+b5d5a5740fb1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ImageAdjust", "/@", 
+  RowBox[{"mySpotTrims", "[", 
+   RowBox[{"[", "100", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.745839050443946*^9, 3.7458390892741127`*^9}, {
+  3.745839357144849*^9, 3.745839358205028*^9}, {3.745839481535096*^9, 
+  3.745839522336204*^9}, {3.745840165180757*^9, 
+  3.745840199757704*^9}},ExpressionUUID->"5e622e7c-e441-45a7-9834-\
+43360f85e4fd"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJwBgwV8+iFib1JmAgAAAHMIAAAAUmF3QXJyYXlTEQAAAFVuc2lnbmVkSW50
+ZWdlcjE2aAMAAAAPAAAADwAAAAMAAABqIolci4sxnyE44luVdxZTtyzuUxiO
+BY1mPV1FtEmxUulH/zguOvQ4OSz0N+0o+avnPA5z4lvvOVI251rpIhAl+nKV
+KnYsxkV5T+RyT7X0auhT5Hf7NGEsm2sicsxbykQDZalZ+nKWXYJe10F/M9go
+4D8Ydg0aQJx3UAmYKUwReQtuijaiWIlohjceWhArtmU/TTAoc61TeI4xhjcp
+PD4wiBqDGHYy1Jerbp8+p0wcKKM3O0iWXRZT+nLNesZL8XTpVXhPumRkPtmH
+kVFOepqBUUPXqalTSEVqiI49LhL3afgZok1YKehlDlJ7G1I82AhAM6lZ8sl4
+Ng0UyChMYb9BaVrfJgoDnxUOFAAAwUaTK6SWXkB+TYuRSmH9Tb5lL2dqVXhh
+/3GcdFlM+FbbQflmSQw2Nyg2T7XDMX53/ziZQqlT0nvrVDJFq0t7G449ZJS6
+aGBKTQteWqsp2V3JYr9Bhje3aVocT7UaD25GPStwOeabVLT5aH9lpTB7TnFd
+zGAeJ+R4BDg8gdKDdx4OR+FhSEWiWIh6B6mxUvpCUUMOR/Znwg3FSs0xdDtp
+PFJCjm7YD6sjeHOzHrU40nslJMMich93A/Lf/VUMSORgK2j5NbiiQA4iP+51
+UHxyUrmQaVrUdzCHJzBNR6iJe1Z3UEmAB3BTq8t/uEixUgFBO0iznh6ev/Fk
+Pmc8K2h5HHYmp0xaQv+IWkH6TnkxLhKiWI26YbEOFJNxyGElJISZjzWuU3HC
+jFKIfF6MS7bQXy3nLYTnvGGXlVBpb7DIOSxT3tZwMkrOk6Ay2rIOek5PZnf1
+HUZ7fTlgWWgqnMCrO2wXeHNLFQxQUUMnPRCWPoCkJEKOSyjHFv//UUNFZOB5
+tmWnI9mHMLxaQrLrOoF5gh6w+nJ8gUaBEG5aqIV76gQ/5vQ4qS9NR39N4D/3
+aTxgIE5UXtstV14AMzZKJU0NYQticDw0HpS+2ZbATE+c0F9lJPZnp0zVKimV
+7XV4NmJ5DotncDzjLYSkpFKn5yGOYHR071j///pOLC/wn6hx51rgchF4XwfA
+fyBi9jrcJx1dVpd2HaCLbq4GZAhFXF15T/Ju4yKZD516FW0BGTnSVpeTK1lS
+oDH0aopWrrz6TqF/up3lPdGPgByFSte33ECXdl2kHjIkPq9v//9Vd6+BTESN
+FOlBYSPQLOVIWXqVKrZtLUtLFeFnnk5ES691UUPvOcCUeo/eQMCOzGCZQstz
+L6DCGLWpZ8xfQCaKuysES5KJmYjlPY+Kg419Z7ybMtitOt5cJIZbKPlsnxVA
+MxJUnk4zOFlMzSckC/iEdDvuIARSn6OJL/+OOoF0HkmAch8KLzt+TH0KL1Fm
+PSuhP8h6AqqQLL+4i4vIL+lNsEqURARwdx77NOqOCxprO1R3dDsuh5qHr4MJ
+FmZycDwoIymDJmnVKv+Cw2JSEq1MMYOAGat823mEMfx39joSX1OPm2sBGUyX
+JmlxHzuKEopLFYiSaiGcQStHSmEAAJZ81V5FMWJnq0tUK6ZCfscxOQRwtEk9
+NBM8bVkWdydgxX7TEUyLAABmPZKnDlKSRchcBDjYD4lubVk8G5RfmU+oCahx
+m6RnI5aIB6l0HqJnnk6uIO9pkVHBMhh2F1BcQchuHaT2NipxGjNIFrpyObq0
+BNmHeHMSLEddbVkvIE1noxQ3HRlYXkDii39lLC8fQC2O51o0HkSxZrBiJVtp
+ok2sVG1qijb3HLNu0SZ0Hv1f2V0TEmQrxLeNFK1YREayOMK9up3HFm1kSmGx
+H3JFHmtvILKMsvSoPOOQjRm0BIJYz9H9hlCp
+      "], {{0, 15}, {15, 0}}, {0, 65535},
+      
+      ColorFunction->RGBColor],
+     BoxForm`ImageTag["Bit16", ColorSpace -> Automatic, Interleaving -> False],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{15, 15},
+    PlotRange->{{0, 15}, {0, 15}}], ",", 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJwBgwV8+iFib1JmAgAAAHMIAAAAUmF3QXJyYXlTEQAAAFVuc2lnbmVkSW50
+ZWdlcjE2aAMAAAAPAAAADwAAAAMAAAAAUBcXhGDDSiAcnDQAUAAA70MAYDY3
+gHF+I8VbUyyeIsZXsoj2Xa1KA4x0MbZJUyzoQnNMiTIOG21oZEusXUiPrxn2
+Pfh36SvRJXZpMjTfEAydMVFrDzVmw0SesochNiMpgVNf0jpTklpB7De/QYRY
+IXjRVR9JAUa/UaVDBG8EKeZK9ltdRGZf0jolKKFVKVYAcFlul0XII7V4PoFP
+KbBl7DdrD7COjoQuOjB6QQ0qYe+fIz4AYHVEQKroYi4wAikXHeA5FSszI2U6
+zy6ia4xfh2ysDUhkaDpYGwBSoy+/ESK6VxuVQKRw5Dw4HE2icd50IcO7YT8l
+WJNqUOYSVAp8dWo8NRmOJy1KUEOlSzHWXixhf477ViFBKVYcJptEh4lKoHNO
+mCjWTkBfhGDNTCJkM3raR/pvK38XDUJ+thRPSXJ9EDwXLTeFmYuHBTl7vEl5
+OhKDZ1czMyd7fIKQR5vDXpaLTmKYGmAgTzlSzkvMjE5KZEthXeuGg30AcFtk
+DTBmNld09XgzEyd3BG/tO9t4iE9KIJRiFQ6nJDeF70NmRuCL053WHmyV4TBw
+GCKRa8ajWxGyKjmQN757BxhmFjvJJy0lKFZPVVUOSz1Cx1BYKyhMpVinRI94
+ZEtwKI6A96EpcZyUaDqZSZ6M/Vb7RpeBlmI4TE6eHzIgT8aAFnEXPVqTTj2M
+DqSbZZEEKQTqu2YuGl2HXNA3XKKjMVGnFAtLylxKIAJz+WfRJRaYDbB5CtCB
+kS08NTdcHzIgPxHZ9lvWLjSRR6VdZMf7NF0JMsHq5R/WTi6GNUAJYi+rdk0E
+aVZ6KVYAMHGsDTAcNoG27RpKAACmXFC6KM+FtpSVMBuGsF+LXsFva0YFGUWb
+Uyx0IaOftE7NPJGbfWVUIkvTOZKndCXXZEtmJp6K23uxJuuIVVVPaZh7p55Y
+S1G7cDVPeSK6+y3yNJ7giTLkKYC6SzElGG5iFEjbJzSTUWb3LV6qfWWQZ3qt
+70MlSL38nl2HJc6y//8ESd+8oy8OKwzxDE2ekvrBnXo3XOG04hPIU+Kszkux
+Nv6vJAQSJKTGcXuVQLTQmYtYK4CTBVISRBGyUIOeMlluKVYzYyCZ61QAYHmG
+Bxh0QRbDfkj7ZmGezCJTYpWH23voQsep9lu/QZ2OfIIgTx18UWaQR/u77Rq+
+YSrBpx5ddDClzCK6OGyXPDsuGqLM2xg8JfFssF/tK+aedWr7RgJ3q41GJ6t7
+YoW1DxaY3F4zExacsF/aV///KjmQJyyOvEl5KibRR0IJUqCreBN0YS6tZ1f7
+xi6vyJaLjh2jFY7//+m3tTGnNO6jNF0AAFGQFY7yFBR7FEhUMvtnKjkESdvM
+zCI8NUSh6EjkaYC+GmCHFUjh7mAJElvjJkpBTgF78k+ZObGzRDZddHJ9xm3I
+c++fEoLIkyG+HCZrT4bNF1RmJpesMVFGJ4V7AAD2PXOk7DdGNwdhWUT2TVWA
+K3/3LQSWZ1fpMpWLwDhGB1nCgVR0ISCXTBSLXjCl2piQR5aumYtddLeZVjgl
+aK2cVHLDSoC6zy6jW67BK3+eQmqh7DcgL4/ORl9hXe1+AUb7NlSEMjR0IQSY
+vnJrLzWPgjdiDSzgBjUuWv6vM3pTYgB/cJixBhfBwDjkKaWV+cprH7PUvnLW
+XgvMPoGLXnmx/VZ5erPWdIeQVyGVGRqMHqmwiE+nNNSa5R+VIGevpx55WqDY
+gbcOC4WkHWyeQvK661QXPUOlQEf7hnCusohBLhypGmC/Qa1zbYyVIDS83odd
+VFKKv1VKkMK9mYsbptuhD1kqQR2j61RkM0cH
+      "], {{0, 15}, {15, 0}}, {0, 65535},
+      
+      ColorFunction->RGBColor],
+     BoxForm`ImageTag["Bit16", ColorSpace -> Automatic, Interleaving -> False],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{15, 15},
+    PlotRange->{{0, 15}, {0, 15}}], ",", 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJwBgwV8+iFib1JmAgAAAHMIAAAAUmF3QXJyYXlTEQAAAFVuc2lnbmVkSW50
+ZWdlcjE2aAMAAAAPAAAADwAAAAMAAADIQXen0iWlkqCDqBJrS1KmSRlff2ho
+mCESZ66MRRFMY+uO6x86sQKEOR0iRbOjXBlEqcqAcw8/eFaxLRB/OxqmCian
+hSigpxkxbtmn9hrtmEiipRXoZ27ByieeQnuLKRoXmAZ9TSE1gKVwYhMwT5KJ
+0hPyX/Cfjg00ywaADhy4YyOkzxaXpwuRuRnKf1aZpRVTaAyanCncm6GnSCBn
+ozGkrxcJjiO2sCJcjFfMlh1Wpt7WWyDZPpJouCAGUI14yw4NVe+QyRzUd0OI
+Ow93gcF8yQoIb8BzqBLOkQeDkhX2cdSfli/XagKowhf///DMvSG1cIXOFhpW
+pkTBqSijc27KLE2viv7M7RFcQd7KFzfMU15P3QOamut82B9fNISJhBaAWnFj
+XBlqlqqK4SiEbFuYMRgZbFafJh30nQyycBJ3gQKoERnDehWqfSNZmUD4kyAS
+Z1LN8jaLcWCyLCnphi26OCS4Y7nedykNoKBihhqJM9iJew1pLCdkUhe8dcBw
+ux0JQ7iNjxhPVkS76CLdUPmmnyajc92g0x4PdLTBdBoGm2C1KDNgnhWkpzam
+Zv//szEsPT+brEkue/DPOCSHX2mkvyX7OHt8shS8Kvhe6hT8V2hZGhfUd+Z0
+vhpHnJyiuRmTK02PxCZ2YiOSkifvbOudLi0SZ3KZciieQr2zfDwriB6Npj1C
+a9S9yz2Ift2vqlejcwKcI09Dii3e4SgzQpE46hTgQ61EHRQNVYhbrRMsPf6u
+6BBTaO+TDBiJM1qJfRFONxCf6CJyUGSWCRvDet2s1j+OZPDA1j+sTMWKCVwa
+i5yfYZE9pFqDs7MvmhHnDZr3kIWhWkQGUJYuOBJmObs7pxnnSDVbVwakKLdv
+dxcg28qDACR8SOLJ2hG1cBWG7ydtiXKKoEOlR1aWNivLnnuRlXfBps9/U3W+
+SaCVyvzcmzam///GbYCTt7unhbTQH2v1UvcZlRJicno0BBrnSApDuhKeQupP
+byTPRoNEtREVWlpryyDMUwaAMxzAh02YnSL2cV9wNiBicja7VFwCPsGatI9N
+guKrJcpQwHaJssyqeIWtS6ZIUZjE5k0AAA8npRWTK1k7VAmfYUs+3Ao9Og9R
+khVVPPxFZRBicu5IABKTKwtz9hp8SK6GezFzb++EvCjnSI6fYkm6oVKsLHyM
+Jge/25P1UoCH3ZfXari3YHSZe8LHB0ZEPy8vrwVON1QhYA/RGl4x5xckgxMm
+YA/OJ/hDghL7ONNRiSlpLI1IyyBlZSZJPSUZbH9p6CLLnv2HJST5ZMqh+jTQ
+Zb2n+EK+ScVvOz4AaryhCjjeb+uvUEJGfcQGtwMFMRgfxBuTK5Ea8A7kVSYi
+GBPRGn4qWBFLRO9Opg49OuAq+Slxm1k4XRKlR85JFhoGmxlhQS3XagKWgx1Y
+erNzTyWRV5KYyieeQitv3ivFTuaJsS3bEr8EAAA7ZroIEA51Q0YnVxg2NRMR
+MRjmKX4qgwtzJJEs0A+2RAE57gpoWM5MBgx4NoRc7yekKLxryBEYt+FXdUIc
+yVBYNRUaiyd5PBr8V19kzBn2cfmL5h6ggO0GeQk7ZhgcEgeFIeAMBRNtiQAS
+Fhp4NhcHtwPCEAASixBQdQ4hsBDmKWM8aQ1DIEsy9Q+rLVBAmx6iVFU5oRii
+VLtTfSMvMFVFDBj8VzBQKhONRWxPQBA8Gy8OMgZ4Nr8H6w1BTAEk/RT7OAAA
+6w0uEa0mnBefYaQrgQc/eHoo7Bi+SckprRNuqOAqvwjSo3VELRA5KD04GQxZ
+TpokhCjkVTRVShKzUQZQ2hEsPV5VChQv30VI
+      "], {{0, 15}, {15, 0}}, {0, 65535},
+      
+      ColorFunction->RGBColor],
+     BoxForm`ImageTag["Bit16", ColorSpace -> Automatic, Interleaving -> False],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{15, 15},
+    PlotRange->{{0, 15}, {0, 15}}], ",", 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJwBgwV8+iFib1JmAgAAAHMIAAAAUmF3QXJyYXlTEQAAAFVuc2lnbmVkSW50
+ZWdlcjE2aAMAAAAPAAAADwAAAAMAAAAhQsGkbSRqVMX3hiFbNi7KzTeePJCt
+FipkSdi1JyVaNKncYCpoUE2+sh4nTkyvLhkiRP2g0x3oUDWLfBqevaif9BN5
+cxePXxz//0ukGxlWrm+qXg4DiBqlExdqVb+wBzRrV2KegjcbNv//kzJPHf+U
+c0phQvbMJyXZMbuerSahQjC+pikhQ4O0vyaqVF7J5yK/fv2ksyO+fMypahqR
+onXahBxLllyYTRN/fnyyigv4b96ozxyQIAKvUD0lSv6Fej7cOLq5nz5iROWq
+YVjfPc+V5E9lSxTczCkhQpmfTiF+fF2jRxbxYpGO7DFjRia1BxRDhnCPjRW0
+aempGC+6dGOayhspU2mgcSVsWETMZhDaNAe9p0CTJoGDvFzmS6KZ2ZHtWqB7
+BrTqVIblfJpnT6mbJ0XhQZuqNjJtWkWtQBmBg3e3iCZZM0uN2AxyZcmLRBqB
+g7XoQBmZMoCaAxOwYVPIpSR6dXLA6gyrV6GKKXhuXNx36XXSJAiPzvzrVaSg
+//9dOsaMArykSMXNwWvdOQGgADdrV57E2RprV42mBS9dO9eT0RgzZs6Z9BMz
+Zyx+chxhQiyoNBYyZA6sYRg4cdiLohEePfK2Bl3PHXqULpCjRqumYMq1ax2C
+6szgQGiorKZVKenAqE48eNqWXClXLzOqvyYfP12jhiGzZ1ahWR/yZGODth8a
+NAWy/yiaNJSV7yRqVe+zbhshQ+XBNBZSJJOZKEpsWSGnvHzIDwC7UZRVKgeA
+TpicOD2z+HShQkXE0kbWLN6sWxtkSV15zxwfPqifHDArV0B16hU5c6aUTy/w
+YCqhSRLgPyyorR3Jk0eOXRelSp6DgBurV4yAFCUaNfOb1zWbNUSixkPSJNRm
+Dj8cOOSb4zieO/SqH0NrVu+gFip0aSa5KhhkSVKP6R7LlpuE8yVRo8x7bBai
+RJKd3xe+fcaf9BOmTDCUTxjWLGWO0CFqVT5XJi6cOHCPeh7hQQBrPSYWLSmS
+tSiQIDFmxSzUJ5OCli7fPtWI8SChQa6WOSXRInKW0xTFi8y8ziWNm6R6TRz4
+cMZ1HBCoUNCkchMtW/xrtBofPwx7+B0IEYpiyxIzZnRNREP4cOtNNBbmS8tw
+NhtWLbhaxhrePMeE2x8rVphTABfXLfFqXSAjRr1/9BxTphp7jgx7d66SQyyC
+hUfLXBKaM2KHURQ3bgqaRh+qVS52BRgKFG00kB9VKwMtnRlVKw1JbSSLFcI5
+CRlWLUlFLBRRInlERRFkSelZbht0aAhSSimcN1tfzQ4zZlxq+QvYMPp3Jxz+
+ezyNHgzeO2KLERvsV1qNzCDbNmNwyCitWtU4MhHIENsrIg2UJwAXbykWLJ1K
+TROVKR1F3hJPHcpKCxV2bVI7AiWjRR1BVRWTJZ1OfhbkR05mcwoJlJZI5hTS
+JCRtmRjfPQdWQRBFi697Rw0YMZZyOxOUKGkPziUSJQ0flRcaNIY5BgaiRC0T
+rwtuXRMpWg1OHEIsERLtWlAwRRFUKJwodQ+XLrRIlReDhvBEthbSI85cVBCa
+NCBIWRaWLBdOtQhUKI9dthbxYSU/+hlgQdQSIxsZMikn+wcAAIQIzQ7OHA4u
+JBLoUAEiRBpLFSdKRRFiReIW+B2YMAQp9w8SJbwckxLVKXQ2ewzhQuUsGR0T
+JgA9KhhXL180sQcPH8g/ZhAwYTg6PwvZMpoh8BJRIfIOrhQTJlIV4wHKFBIW
+6gzbNgAADRECBEwigQnkSLtKAwrbNkIsaAwJEsETmg8WLD0iRw1gQeggDxbZ
+Mj01Rw1VK2U6AACUKMxRmx0WLUpUkxtN7CoN
+      "], {{0, 15}, {15, 0}}, {0, 65535},
+      
+      ColorFunction->RGBColor],
+     BoxForm`ImageTag["Bit16", ColorSpace -> Automatic, Interleaving -> False],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{15, 15},
+    PlotRange->{{0, 15}, {0, 15}}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.745840167801326*^9, 
+  3.745840199997333*^9}},ExpressionUUID->"05f38471-2008-40f6-93d2-\
+e1bb82d93421"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 595},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"11.1 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 18, \
+2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 186, 3, 35, "Subsubsection", "ExpressionUUID" -> \
+"abb676cf-9110-4616-ab85-77daca4ed714"],
+Cell[769, 27, 628, 17, 220, "Text", "ExpressionUUID" -> \
+"036e0be4-3cb2-4a71-9c51-8bebdc505fca"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1434, 49, 239, 4, 35, "Subsubsection", "ExpressionUUID" -> \
+"578a020f-471f-4e6b-82af-e9fb38ecbde7"],
+Cell[CellGroupData[{
+Cell[1698, 57, 625, 12, 32, "Input", "ExpressionUUID" -> \
+"6cd41e7f-69bf-46c3-873d-0d1090efab5d"],
+Cell[2326, 71, 723, 14, 72, "Output", "ExpressionUUID" -> \
+"e66f68af-cab2-4a86-b97e-10e6db402d34"]
+}, Open  ]],
+Cell[3064, 88, 2347, 68, 222, "Input", "ExpressionUUID" -> \
+"0365cf23-dd9a-4287-9f49-9734e4d75b0b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5448, 161, 254, 4, 35, "Subsubsection", "ExpressionUUID" -> \
+"ec5a39e0-6120-49ad-9c68-829805c9c0ae"],
+Cell[5705, 167, 3653, 89, 306, "Input", "ExpressionUUID" -> \
+"3b137149-c85f-4c4d-acb9-3fbb363fc0f6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9395, 261, 222, 5, 35, "Subsubsection", "ExpressionUUID" -> \
+"b74182b2-5640-4e93-889d-5517e0fdcdc5"],
+Cell[9620, 268, 3650, 88, 285, "Input", "ExpressionUUID" -> \
+"e1ad945d-2565-46ad-86b8-a07f6cc758e7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13307, 361, 278, 4, 35, "Subsubsection", "ExpressionUUID" -> \
+"fb53bbda-6fdf-4c1e-8012-fb07b650af21"],
+Cell[13588, 367, 4510, 110, 369, "Input", "ExpressionUUID" -> \
+"ccda41fe-8f51-45e9-b286-8e876d577a22"],
+Cell[18101, 479, 428, 9, 32, "Input", "ExpressionUUID" -> \
+"62d835d6-7a64-4fe0-9b56-5cc4117b3d38"],
+Cell[18532, 490, 308, 9, 32, "Input", "ExpressionUUID" -> \
+"b681184e-e011-411a-b036-b5d5a5740fb1"],
+Cell[CellGroupData[{
+Cell[18865, 503, 396, 8, 32, "Input", "ExpressionUUID" -> \
+"5e622e7c-e441-45a7-9834-43360f85e4fd"],
+Cell[19264, 513, 9295, 173, 47, "Output", "ExpressionUUID" -> \
+"05f38471-2008-40f6-93d2-e1bb82d93421"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
