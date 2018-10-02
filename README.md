@@ -14,8 +14,8 @@ images before they can be analyzed.
 
 This folder contains microscopy imaging codes I've developed and used in my research.
 
-### -Cropping spots from a set of image coordinates
-# -Correcting mixed up image channels based on total intensity
-# -Graphing number of particles over time
-# -Shifting mask over time
-# -Image post-processing 
+#### -Cropping spots from a set of image coordinates
+#### -Correcting mixed up image channels based on total intensity
+#### -Graphing number of particles over time
+#### -Shifting mask over time
+#### -Image post-processing 
