@@ -26,6 +26,5 @@ macro "Stasevich Post-Processing" {
 	//run("Stack to Hyperstack...", "order=xyczt(default) channels=3 slices=13 frames=36 display=Composite");
 	newimgID = getImageID();
 
-	//print("Congratulations")
 	}
 	
