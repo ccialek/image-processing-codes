@@ -19,3 +19,4 @@ This folder contains microscopy imaging codes I've developed and used in my rese
 #### -Graphing number of particles over time
 #### -Shifting mask over time
 #### -Image post-processing 
+#### -Binning data from long timeframe dataframe
