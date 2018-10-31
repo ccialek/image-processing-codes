@@ -1,0 +1,2039 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     94076,       2029]
+NotebookOptionsPosition[     91529,       1982]
+NotebookOutlinePosition[     91912,       1999]
+CellTagsIndexPosition[     91869,       1996]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["MyROI[{img, img, ...},outfile]", "Subsection",
+ InitializationCell->True,
+ CellChangeTimes->{{3.543902343799969*^9, 3.543902349540779*^9}, {
+  3.5441344624597664`*^9, 3.544134464923476*^9}, {3.544135561931566*^9, 
+  3.5441355686678905`*^9}, {3.5441356420237923`*^9, 3.5441356426679974`*^9}, {
+  3.544138757241422*^9, 3.5441387583958244`*^9}, {3.544142277820612*^9, 
+  3.544142280828374*^9}, {3.5441527424248085`*^9, 3.5441527475452394`*^9}, {
+  3.5441534274971266`*^9, 3.544153483384877*^9}, {3.54422492803025*^9, 
+  3.544224930838561*^9}, {3.544225044639053*^9, 3.544225048621418*^9}, {
+  3.5445704181968117`*^9, 3.544570425685158*^9}, {3.716316843832747*^9, 
+  3.716316845140623*^9}, {3.7474073422395887`*^9, 
+  3.7474073432563953`*^9}},ExpressionUUID->"56b5a6bb-44ee-482c-bdc5-\
+6c042e5f7983"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyROI", "[", 
+   RowBox[{
+    RowBox[{"allimage", ":", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"_", "?", "ImageQ"}], ".."}], "}"}]}], ",", 
+    RowBox[{"outfile_", "?", "StringQ"}]}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"allimg", "=", "allimage"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"DynamicModule", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Nimg", "=", 
+         RowBox[{"Length", "[", "allimg", "]"}]}], ",", "thold", ",", 
+        RowBox[{"myt", "=", "1"}], ",", 
+        RowBox[{"y", "=", "1"}], ",", 
+        RowBox[{"myflag", "=", "\"\<  Ready.\>\""}], ",", 
+        RowBox[{"Colors", "=", 
+         RowBox[{"{", 
+          RowBox[{
+          "Black", ",", "Red", ",", "Green", ",", "Blue", ",", "Purple", ",", 
+           "Orange", ",", "Brown", ",", "Gray", ",", "Pink", ",", "Cyan"}], 
+          "}"}]}], ",", "w", ",", "h", ",", "mymask", ",", "mymaska", ",", 
+        "mymaskb", ",", "mynewmask", ",", "zoom", ",", "mymaskc", ",", 
+        "mytable", ",", "mytemptable", ",", "myCentroid", ",", "myroi", ",", 
+        "chN", ",", "mycurpoints", ",", "mysavepoints", ",", "mytemppoints", 
+        ",", 
+        RowBox[{"r", "=", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}], ",", "cury", ",", "numy", ",", 
+        RowBox[{"roin", "=", "30"}], ",", "roit", ",", "myshape", ",", "p1", 
+        ",", "p2", ",", "Size", ",", "Ns", ",", "roic", ",", "mydata", ",", 
+        "bd", ",", " ", "tholdch", ",", "tholdsize", ",", 
+        RowBox[{"myflag2", "=", "\"\< \>\""}], ",", 
+        RowBox[{"sizemean", "=", "1"}], ",", "mycc"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"mynewmask", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"thold", "=", "0.8"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"tholdsize", "=", "9"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"tholdch", "=", "1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"w", ",", "h"}], "}"}], "=", 
+        RowBox[{
+         RowBox[{
+         "allimg", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "//",
+          "ImageDimensions"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"mytable", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0.", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "h", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", "1", ",", "w", ",", "1"}], "}"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"bd", "=", 
+        RowBox[{
+         RowBox[{
+         "allimg", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "//",
+          "ImageType"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"chN", "=", 
+        RowBox[{
+         RowBox[{
+         "allimg", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "//",
+          "ImageChannels"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"mysavepoints", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"1.", ",", "1."}], "}"}], "}"}], ",", "1.", ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"chN", ">", "1"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{"1.", ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "1", ",", "chN", ",", "1"}], "}"}]}], 
+               "]"}], ",", "1"}], "]"}], ",", "1."}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "30", ",", "1"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", "1", ",", "Nimg", ",", "1"}], "}"}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"mycurpoints", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"1.", ",", "1."}], "}"}], "}"}], ",", "1.", ",", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"chN", ">", "1"}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{"1.", ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "1", ",", "chN", ",", "1"}], "}"}]}], 
+               "]"}], ",", "1"}], "]"}], ",", "1."}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "30", ",", "1"}], "}"}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "CHECK", " ", "FOR", " ", "PREVIOUS", " ", "ROI", " ", "FILES"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"FileNames", "[", "outfile", "]"}], "\[NotEqual]", 
+          RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"mytemppoints", "=", 
+           RowBox[{"(", 
+            RowBox[{"<<", 
+             RowBox[{"(", "outfile", ")"}]}], ")"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Ns", "=", 
+           RowBox[{"Length", "[", 
+            RowBox[{
+            "mytemppoints", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"Ns", "\[LessEqual]", "Nimg"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+               RowBox[{
+                RowBox[{"1", ";;", "All"}], ",", 
+                RowBox[{"1", ";;", "Ns"}]}], "\[RightDoubleBracket]"}], "=", 
+              RowBox[{"mytemppoints", "\[LeftDoubleBracket]", 
+               RowBox[{
+                RowBox[{"1", ";;", "All"}], ",", 
+                RowBox[{"1", ";;", "Ns"}]}], "\[RightDoubleBracket]"}]}], 
+             ";"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+               RowBox[{
+                RowBox[{"1", ";;", "All"}], ",", 
+                RowBox[{"1", ";;", "Nimg"}]}], "\[RightDoubleBracket]"}], "=", 
+              RowBox[{"mytemppoints", "\[LeftDoubleBracket]", 
+               RowBox[{
+                RowBox[{"1", ";;", "All"}], ",", 
+                RowBox[{"1", ";;", "Nimg"}]}], "\[RightDoubleBracket]"}]}], 
+             ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Clear", "[", "mytemppoints", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"CONTROLS", "..."}], "..."}], "..."}], "..."}], 
+              "..."}], "..."}], "..."}], "..."}], "..."}], "."}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Column", "[", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<ROI:\>\"", " ", 
+               RowBox[{"PopupMenu", "[", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", "y", "]"}], ",", 
+                 RowBox[{"Join", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"1", "\[Rule]", "\"\<Background\>\""}], ",", 
+                    RowBox[{"2", "\[Rule]", "\"\<Cytoplasm\>\""}], ",", 
+                    RowBox[{"3", "\[Rule]", "\"\<Nucleus\>\""}], ",", 
+                    RowBox[{"4", "\[Rule]", "\"\<Nucleoli\>\""}], ",", 
+                    RowBox[{"5", "\[Rule]", "\"\<Array\>\""}], ",", 
+                    RowBox[{"6", "\[Rule]", "\"\<ROI6\>\""}]}], "}"}], ",", 
+                   RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"i", "\[Rule]", 
+                    RowBox[{"\"\<ROI\>\"", "<>", 
+                    RowBox[{"ToString", "[", "i", "]"}]}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"i", ",", "7", ",", "roin", ",", "1"}], "}"}]}], 
+                    "]"}]}], "]"}]}], "]"}]}], ",", "\[IndentingNewLine]", 
+              RowBox[{"\"\<  Type:\>\"", " ", 
+               RowBox[{"PopupMenu", "[", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", "roit", "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"1", "\[Rule]", "\"\<Polygon\>\""}], ",", 
+                   RowBox[{"2", "\[Rule]", "\"\<Rectangle\>\""}], ",", 
+                   RowBox[{"3", "\[Rule]", "\"\<Circle\>\""}]}], "}"}]}], 
+                "]"}]}], ",", 
+              RowBox[{"Spacer", "[", "10", "]"}], ",", "\[IndentingNewLine]", 
+              
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<EXPORT ROI CALC FILE\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileNames", "[", "outfile", "]"}], "\[Equal]", 
+                   RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"mysavepoints", ">>", 
+                    RowBox[{"(", "outfile", ")"}]}], ";", " ", 
+                   RowBox[{"myflag", "=", 
+                    RowBox[{"outfile", "<>", "\"\<  File saved.\>\""}]}]}], 
+                  ",", 
+                  RowBox[{
+                  "myflag", "=", "\"\<   ROIs file already exists.\>\""}]}], 
+                 "\[IndentingNewLine]", "]"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<DELETE ROI CALC FILE\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileNames", "[", "outfile", "]"}], "\[NotEqual]", 
+                   
+                   RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"DeleteFile", "[", "outfile", "]"}], ";", 
+                   RowBox[{"myflag", "=", "\"\<  File deleted.\>\""}]}], ",", 
+                  
+                  RowBox[{
+                   RowBox[{"myflag", "=", "\"\<   No ROIs file found.\>\""}], 
+                   ";"}]}], "\[IndentingNewLine]", "]"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<CALCULATE AUTO ROI\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"mymaska", "=", 
+                  RowBox[{"Binarize", "@", 
+                   RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", "myshape"}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"mynewmask", "=", "mymaska"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"mymaskb", "=", 
+                  RowBox[{"Binarize", "[", 
+                   RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymaska", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ColorSeparate", "[", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "myt", 
+                    "\[RightDoubleBracket]"}], "]"}], "\[LeftDoubleBracket]", 
+                    "tholdch", "\[RightDoubleBracket]"}], "//", 
+                    "ImageAdjust"}]}], "]"}], ",", "thold"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"myCentroid", "=", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Round", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}], "/@", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{"mymaskb", "//", "ImageData"}], ",", "1"}], "]"}],
+                     "//", "Mean"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"roit", "=", "3"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"mymaskc", "=", 
+                  RowBox[{"Binarize", "@", 
+                   RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", 
+                    RowBox[{"Disk", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"h", "-", 
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "1"}]}], "}"}], ",", 
+                    "tholdsize"}], "]"}]}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"mymask", "=", 
+                  RowBox[{"ImageSubtract", "[", 
+                   RowBox[{"mymaskc", ",", "mymaskb"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"h", "-", 
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "1"}]}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"h", "-", 
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "1"}]}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"tholdsize", ",", "0"}], "}"}]}]}], "}"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{
+                   RowBox[{"Count", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mymaskc", "//", "ImageData"}], "//", "Chop"}], "//",
+                     "Flatten"}], ",", 
+                    RowBox[{"x_", "/;", 
+                    RowBox[{"x", "\[NotEqual]", " ", "0."}]}]}], "]"}], "//", 
+                   "N"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "myt", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}], 
+                  "=", 
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}]}], 
+                 ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "myt", ",", "3"}], 
+                   "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{
+                   RowBox[{"Plus", "@@", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ImageData", "[", 
+                    RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymaskc", ",", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "myt", 
+                    "\[RightDoubleBracket]"}]}], "]"}], ",", "bd"}], "]"}], "//", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}]}], ")"}]}], "/", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], 
+                    "\[Equal]", "0"}], ",", "100000000.", ",", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "myt", ",", "4"}], 
+                   "\[RightDoubleBracket]"}], "=", "3"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+              "\"\< Threshhold: \>\"", ",", 
+              RowBox[{"InputField", "[", 
+               RowBox[{
+                RowBox[{"Dynamic", "[", "thold", "]"}], ",", 
+                RowBox[{"FieldSize", "\[Rule]", "3"}]}], "]"}], ",", 
+              RowBox[{"\"\<  Channel:\>\"", " ", 
+               RowBox[{"PopupMenu", "[", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", "tholdch", "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"1", "\[Rule]", "\"\<1, red\>\""}], ",", 
+                   RowBox[{"2", "\[Rule]", "\"\<2, green\>\""}], ",", 
+                   RowBox[{"3", "\[Rule]", "\"\<3, blue\>\""}]}], "}"}]}], 
+                "]"}]}], ",", "\"\<  ROI Size: \>\"", ",", 
+              RowBox[{"InputField", "[", 
+               RowBox[{
+                RowBox[{"Dynamic", "[", "tholdsize", "]"}], ",", 
+                RowBox[{"FieldSize", "\[Rule]", "3"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<CACULATE AUTO ROI FORWARD\>\"", ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"mymaska", "=", 
+                  RowBox[{"Binarize", "@", 
+                   RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", "myshape"}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Table", "[", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"mymaskb", "=", 
+                    RowBox[{"Binarize", "[", 
+                    RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymaska", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ColorSeparate", "[", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "tt", 
+                    "\[RightDoubleBracket]"}], "]"}], "\[LeftDoubleBracket]", 
+                    "tholdch", "\[RightDoubleBracket]"}], "//", 
+                    "ImageAdjust"}]}], "]"}], ",", "thold"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"myCentroid", "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Round", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}], "/@", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"Position", "[", 
+                    RowBox[{
+                    RowBox[{"mymaskb", "//", "ImageData"}], ",", "1"}], "]"}],
+                     "//", "Mean"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"roit", "=", "3"}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"mymaskc", "=", 
+                    RowBox[{"Binarize", "@", 
+                    RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", 
+                    RowBox[{"Disk", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"h", "-", 
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "1"}]}], "}"}], ",", 
+                    "tholdsize"}], "]"}]}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"mymask", "=", 
+                    RowBox[{"ImageSubtract", "[", 
+                    RowBox[{"mymaskc", ",", "mymaskb"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"h", "-", 
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "1"}]}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "2", 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"h", "-", 
+                    RowBox[{
+                    "myCentroid", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "1"}]}], "}"}], "+", 
+                    RowBox[{"{", 
+                    RowBox[{"tholdsize", ",", "0"}], "}"}]}]}], "}"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{"Count", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mymaskc", "//", "ImageData"}], "//", "Chop"}], "//",
+                     "Flatten"}], ",", 
+                    RowBox[{"x_", "/;", 
+                    RowBox[{"x", "\[NotEqual]", " ", "0."}]}]}], "]"}], "//", 
+                    "N"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}], 
+                    "=", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", "3"}], 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{"Plus", "@@", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ImageData", "[", 
+                    RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymaskc", ",", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "tt", 
+                    "\[RightDoubleBracket]"}]}], "]"}], ",", "bd"}], "]"}], "//", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}]}], ")"}]}], "/", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], 
+                    "\[Equal]", "0"}], ",", "100000000.", ",", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", "4"}], 
+                    "\[RightDoubleBracket]"}], "=", "roit"}], ";"}], 
+                   "\[IndentingNewLine]", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"tt", ",", "myt", ",", "Nimg", ",", "1"}], 
+                    "}"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"Dynamic", "[", "myflag", "]"}], ",", 
+              RowBox[{"Dynamic", "[", "myflag2", "]"}], ","}], 
+             "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           
+           RowBox[{"Row", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<CALCULATE ROI BACK\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"mymask", "=", 
+                  RowBox[{"Binarize", "@", 
+                   RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", "myshape"}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{
+                   RowBox[{"Count", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mymask", "//", "ImageData"}], "//", "Flatten"}], 
+                    ",", 
+                    RowBox[{"x_", "/;", 
+                    RowBox[{"x", "\[NotEqual]", "0"}]}]}], "]"}], "//", 
+                   "N"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Table", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}], 
+                    "=", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", "3"}], 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{"Plus", "@@", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ImageData", "[", 
+                    RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymask", ",", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "tt", 
+                    "\[RightDoubleBracket]"}]}], "]"}], ",", "bd"}], "]"}], "//", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}]}], ")"}]}], "/", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], 
+                    "\[Equal]", "0"}], ",", "100000000.", ",", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", "4"}], 
+                    "\[RightDoubleBracket]"}], "=", "roit"}], ";"}], 
+                   "\[IndentingNewLine]", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"tt", ",", "myt", ",", "1", ",", 
+                    RowBox[{"-", "1"}]}], "}"}]}], "]"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<CALCULATE ROI\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"mymask", "=", 
+                  RowBox[{"Binarize", "@", 
+                   RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", "myshape"}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{
+                   RowBox[{"Count", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mymask", "//", "ImageData"}], "//", "Flatten"}], 
+                    ",", 
+                    RowBox[{"x_", "/;", 
+                    RowBox[{"x", "\[NotEqual]", "0"}]}]}], "]"}], "//", 
+                   "N"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "myt", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}], 
+                  "=", 
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}]}], 
+                 ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "myt", ",", "3"}], 
+                   "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{
+                   RowBox[{"Plus", "@@", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ImageData", "[", 
+                    RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymask", ",", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "myt", 
+                    "\[RightDoubleBracket]"}]}], "]"}], ",", "bd"}], "]"}], "//", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}]}], ")"}]}], "/", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], 
+                    "\[Equal]", "0"}], ",", "100000000.", ",", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "myt", ",", "4"}], 
+                   "\[RightDoubleBracket]"}], "=", "roit"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{
+               "\"\<CALCULATE ROI FORWARD\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"mymask", "=", 
+                  RowBox[{"Binarize", "@", 
+                   RowBox[{"Image", "[", 
+                    RowBox[{
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"White", ",", "myshape"}], "}"}], ",", 
+                    RowBox[{"Background", "\[Rule]", "Black"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"w", ",", "h"}], "}"}]}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "w"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "h"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+                    RowBox[{"ColorSpace", "\[Rule]", "\"\<Grayscale\>\""}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                   RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{
+                   RowBox[{"Count", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mymask", "//", "ImageData"}], "//", "Flatten"}], 
+                    ",", 
+                    RowBox[{"x_", "/;", 
+                    RowBox[{"x", "\[NotEqual]", "0"}]}]}], "]"}], "//", 
+                   "N"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Table", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}], 
+                    "=", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "2"}]}], "\[RightDoubleBracket]"}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", "3"}], 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{"Plus", "@@", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ImageData", "[", 
+                    RowBox[{
+                    RowBox[{"ImageMultiply", "[", 
+                    RowBox[{"mymask", ",", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "tt", 
+                    "\[RightDoubleBracket]"}]}], "]"}], ",", "bd"}], "]"}], "//", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"#", ",", "1"}], "]"}], "&"}]}], ")"}]}], "/", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}], 
+                    "\[Equal]", "0"}], ",", "100000000.", ",", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "2"}], "\[RightDoubleBracket]"}]}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "tt", ",", "4"}], 
+                    "\[RightDoubleBracket]"}], "=", "roit"}], ";"}], 
+                   "\[IndentingNewLine]", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"tt", ",", "myt", ",", "Nimg", ",", "1"}], 
+                    "}"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<CLEAR ROI\>\"", ",", 
+                RowBox[{"Dynamic", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "mycurpoints", "\[LeftDoubleBracket]", "y", 
+                   "\[RightDoubleBracket]"}], "=", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "1"}], "}"}], "}"}], ",", "1", ",", 
+                    "0"}], "}"}]}], "]"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<SHOW ROI\>\"", ",", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileNames", "[", "outfile", "]"}], "\[NotEqual]", 
+                   
+                   RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"mytemppoints", "=", 
+                    RowBox[{"(", 
+                    RowBox[{"<<", 
+                    RowBox[{"(", "outfile", ")"}]}], ")"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Ns", "=", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{
+                    "mytemppoints", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "]"}]}], ";", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"myt", "\[LessEqual]", "Ns"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    "mycurpoints", "\[LeftDoubleBracket]", "y", 
+                    "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{"mytemppoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "myt"}], "\[RightDoubleBracket]"}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"roit", "=", 
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "myt", ",", "4"}], 
+                    "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"myflag", "=", "\"\<  Imported ROI.\>\""}]}], ",",
+                     "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"myflag", "=", "\"\<  No ROI saved.\>\""}], 
+                    ";"}]}], "\[IndentingNewLine]", "]"}], ";"}], ",", 
+                  RowBox[{"myflag", "=", "\"\<  No ROI file found.\>\""}]}], 
+                 "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}],
+               ",", "\[IndentingNewLine]", 
+              RowBox[{"Spacer", "[", "10", "]"}], ",", "\[IndentingNewLine]", 
+              
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<<\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "-", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                   ",", 
+                   RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}], ",", 
+                   RowBox[{"BaselinePosition", "\[Rule]", "Center"}]}], "]"}],
+                  ",", "\[IndentingNewLine]", 
+                 RowBox[{"Column", "[", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<^\>\"", ",", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                    ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}]}], "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<\[Vee]\>\"", ",", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "-", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "1"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                    ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}]}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+                   
+                   RowBox[{"BaselinePosition", "\[Rule]", "Center"}]}], "]"}],
+                  ",", "\[IndentingNewLine]", 
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<>\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "+", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "0"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                   ",", 
+                   RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}], ",", 
+                   RowBox[{"BaselinePosition", "\[Rule]", "Center"}]}], 
+                  "]"}]}], "}"}], "//", 
+               RowBox[{
+                RowBox[{"Row", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"BaselinePosition", "\[Rule]", "Bottom"}]}], "]"}], 
+                "&"}]}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Spacer", "[", "10", "]"}], ",", "\[IndentingNewLine]", 
+              
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<\[DoubleLeftArrow]\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "-", 
+                    RowBox[{"{", 
+                    RowBox[{"30", ",", "0"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                   ",", 
+                   RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}], ",", 
+                   RowBox[{"BaselinePosition", "\[Rule]", "Center"}]}], "]"}],
+                  ",", "\[IndentingNewLine]", 
+                 RowBox[{"Column", "[", "\[IndentingNewLine]", 
+                  RowBox[{
+                   RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<\[DoubleUpArrow]\>\"", ",", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "+", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "30"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                    ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}]}], "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Button", "[", 
+                    RowBox[{"\"\<\[DoubleDownArrow]\>\"", ",", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "-", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "30"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                    ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}]}], "]"}]}], 
+                    "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+                   
+                   RowBox[{"BaselinePosition", "\[Rule]", "Center"}]}], "]"}],
+                  ",", "\[IndentingNewLine]", 
+                 RowBox[{"Button", "[", 
+                  RowBox[{"\"\<\[DoubleRightArrow]\>\"", ",", 
+                   RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"#", "+", 
+                    RowBox[{"{", 
+                    RowBox[{"30", ",", "0"}], "}"}]}], ")"}], "&"}], "/@", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}]}]}], 
+                   ",", 
+                   RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"17", ",", "17"}], "}"}]}], ",", 
+                   RowBox[{"BaselinePosition", "\[Rule]", "Center"}]}], 
+                  "]"}]}], "}"}], "//", 
+               RowBox[{
+                RowBox[{"Row", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"BaselinePosition", "\[Rule]", "Bottom"}]}], "]"}], 
+                "&"}]}]}], "\[IndentingNewLine]", "}"}], "]"}], ",", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Dynamically", " ", "updated", " ", "content"}], 
+                    "..."}], "..."}], "..."}], "..."}], "..."}], "..."}], 
+              "..."}], "..."}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Slider", "[", 
+               RowBox[{
+                RowBox[{"Dynamic", "[", "myt", "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"1", ",", "Nimg", ",", "1"}], "}"}], ",", 
+                RowBox[{"ImageSize", "\[Rule]", 
+                 RowBox[{"{", 
+                  RowBox[{"600", ",", "20"}], "}"}]}]}], "]"}], " ", ",", 
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<-\>\"", ",", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"myt", ">", "1"}], ",", 
+                  RowBox[{"myt", "=", 
+                   RowBox[{"myt", "-", "1"}]}]}], "]"}]}], "]"}], ",", 
+              RowBox[{"Button", "[", 
+               RowBox[{"\"\<+\>\"", ",", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"myt", "<", "Nimg"}], ",", 
+                  RowBox[{"myt", "=", 
+                   RowBox[{"myt", "+", "1"}]}]}], "]"}]}], "]"}], ",", 
+              RowBox[{"Spacer", "[", "10", "]"}], ",", 
+              RowBox[{"Dynamic", "[", "myt", "]"}]}], "}"}], "]"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{"Slider", "[", 
+              RowBox[{
+               RowBox[{"Dynamic", "[", "zoom", "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"300", ",", "1500", ",", "10"}], "}"}], ",", 
+               RowBox[{"ImageSize", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{"600", ",", "20"}], "}"}]}]}], "]"}], " ", "}"}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{"\"\<Choose Channel: \>\"", 
+              RowBox[{"PopupMenu", "[", 
+               RowBox[{
+                RowBox[{"Dynamic", "[", "mycc", "]"}], ",", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"i", "\[Rule]", 
+                   RowBox[{"\"\<Channel \>\"", "<>", 
+                    RowBox[{"ToString", "[", "i", "]"}]}]}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "0", ",", "chN", ",", "1"}], "}"}]}], 
+                 "]"}]}], "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Manipulate", "[", 
+               RowBox[{
+                RowBox[{"LocatorPane", "[", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", 
+                   RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "]"}],
+                   ",", "\[IndentingNewLine]", 
+                  RowBox[{"Show", "[", 
+                   RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"mycc", ">", "0"}], ",", 
+                    RowBox[{"ImageAdjust", "[", 
+                    RowBox[{
+                    RowBox[{"ColorSeparate", "[", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "myt", 
+                    "\[RightDoubleBracket]"}], "]"}], "\[LeftDoubleBracket]", 
+                    "mycc", "\[RightDoubleBracket]"}], "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"ImageAdjust", "[", 
+                    RowBox[{
+                    "allimg", "\[LeftDoubleBracket]", "myt", 
+                    "\[RightDoubleBracket]"}], "]"}]}], "]"}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", 
+                    RowBox[{"{", "zoom", "}"}]}]}], "]"}], ",", 
+                  RowBox[{"LocatorAutoCreate", "\[Rule]", "True"}], ",", 
+                  RowBox[{
+                  "Appearance", "\[Rule]", 
+                   "\"\<\!\(\*StyleBox[\"+\",FontColor->RGBColor[1, 1, \
+0]]\)\>\""}]}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"br", ",", "30"}], "}"}], ",", "0.1", ",", "100", 
+                  ",", "0.01"}], "}"}], ",", 
+                RowBox[{"ControlType", "\[Rule]", 
+                 RowBox[{"{", "VerticalSlider", "}"}]}], ",", 
+                RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], "]"}], ",",
+               "\[IndentingNewLine]", 
+              RowBox[{"Spacer", "[", "10", "]"}], ",", 
+              RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+               RowBox[{"GraphicsColumn", "[", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"#", "//", "ImageAdjust"}], "//", 
+                    RowBox[{
+                    RowBox[{"Show", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"EdgeForm", "[", 
+                    RowBox[{"Directive", "[", "Yellow", "]"}], "]"}], ",", 
+                    RowBox[{"Opacity", "[", "0.", "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"myshape", "=", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"roit", "==", "1"}], ",", 
+                    RowBox[{"Polygon", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1"}], "\[RightDoubleBracket]"}], "]"}],
+                     ",", "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"roit", "\[Equal]", "2"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"p1", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Min", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"Min", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "2"}], 
+                    "\[RightDoubleBracket]"}], "]"}]}], "}"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"p2", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Max", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"Max", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "2"}], 
+                    "\[RightDoubleBracket]"}], "]"}]}], "}"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"myflag", "=", 
+                    RowBox[{"\"\<  dim=\>\"", "<>", 
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"Round", "[", 
+                    RowBox[{
+                    RowBox[{"Abs", "[", 
+                    RowBox[{"p1", "-", "p2"}], "]"}], ",", "1"}], "]"}], 
+                    "]"}]}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"Rectangle", "[", 
+                    RowBox[{"p1", ",", "p2"}], "]"}]}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"roit", "\[Equal]", "3"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"p1", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Max", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"Max", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "2"}], 
+                    "\[RightDoubleBracket]"}], "]"}]}], "}"}]}], ";", 
+                    RowBox[{"p2", "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Min", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "1"}], 
+                    "\[RightDoubleBracket]"}], "]"}], ",", 
+                    RowBox[{"Min", "[", 
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "2"}], 
+                    "\[RightDoubleBracket]"}], "]"}]}], "}"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Size", "=", 
+                    SqrtBox[
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"p1", "-", "p2"}], ")"}], ".", 
+                    RowBox[{"(", 
+                    RowBox[{"p1", "-", "p2"}], ")"}]}]]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"myflag", "=", 
+                    RowBox[{"\"\<  radius=\>\"", "<>", 
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"Round", "[", 
+                    RowBox[{"Size", ",", "1"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"Disk", "[", 
+                    RowBox[{
+                    RowBox[{"mycurpoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", "1", ",", "1"}], 
+                    "\[RightDoubleBracket]"}], ",", "Size"}], "]"}]}]}], 
+                    "]"}]}], "]"}]}], "]"}]}]}], "}"}], "]"}]}], "}"}], "]"}],
+                     "&"}]}], ")"}], "&"}], "/@", 
+                  RowBox[{"ColorSeparate", "[", 
+                   RowBox[{
+                   "allimg", "\[LeftDoubleBracket]", "myt", 
+                    "\[RightDoubleBracket]"}], "]"}]}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Background", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{
+                   "Red", ",", "Green", ",", "Blue", ",", "Orange", ",", 
+                    "Purple", ",", "Pink", ",", "Black", ",", "Gray", ",", 
+                    "Brown"}], "}"}]}], ",", 
+                 RowBox[{"ImageSize", "\[Rule]", 
+                  RowBox[{"{", "500", "}"}]}]}], "]"}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"mydata", "=", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"sizemean", "\[Equal]", "1"}], ",", 
+                   RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"chN", "\[Equal]", "1"}], ",", 
+                    FractionBox[
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "3"}], 
+                    "\[RightDoubleBracket]"}], 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"cury", "\[Equal]", "0"}], ",", "1", ",", 
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"cury", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "3"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]], ",", 
+                    RowBox[{
+                    FractionBox[
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "3"}], 
+                    "\[RightDoubleBracket]"}], 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"cury", "\[Equal]", "0"}], ",", "1", ",", 
+                    RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"cury", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "3"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]], "//", 
+                    "Transpose"}]}], "]"}], ",", 
+                   RowBox[{"mysavepoints", "\[LeftDoubleBracket]", 
+                    RowBox[{"y", ",", 
+                    RowBox[{"1", ";;", "All"}], ",", "2"}], 
+                    "\[RightDoubleBracket]"}]}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"Column", "[", 
+                 RowBox[{
+                  RowBox[{"{", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Spacer", "[", "130", "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"\"\<ROI /\>\"", 
+                    RowBox[{"PopupMenu", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "cury", "]"}], ",", 
+                    RowBox[{"Join", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"0", "\[Rule]", "\"\<Choose Divider\>\""}], ",", 
+                    RowBox[{"1", "\[Rule]", "\"\<Background\>\""}], ",", 
+                    RowBox[{"2", "\[Rule]", "\"\<Cytoplasm\>\""}], ",", 
+                    RowBox[{"3", "\[Rule]", "\"\<Nucleus\>\""}], ",", 
+                    RowBox[{"4", "\[Rule]", "\"\<Nucleoli\>\""}], ",", 
+                    RowBox[{"5", "\[Rule]", "\"\<Array\>\""}], ",", 
+                    RowBox[{"6", "\[Rule]", "\"\<ROI6\>\""}]}], "}"}], ",", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{
+                    RowBox[{"i", "\[Rule]", 
+                    RowBox[{"\"\<ROI\>\"", "<>", 
+                    RowBox[{"ToString", "[", "i", "]"}]}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"i", ",", "7", ",", "30", ",", "1"}], "}"}]}], 
+                    "]"}]}], "]"}]}], "]"}]}]}], "\[IndentingNewLine]", "}"}],
+                     "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Row", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Spacer", "[", "130", "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"\"\<Measure:\>\"", 
+                    RowBox[{"PopupMenu", "[", 
+                    RowBox[{
+                    RowBox[{"Dynamic", "[", "sizemean", "]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"0", "\[Rule]", "\"\<ROI Size\>\""}], ",", 
+                    RowBox[{"1", "\[Rule]", "\"\<ROI Mean Int.\>\""}]}], 
+                    "}"}]}], "]"}]}]}], "\[IndentingNewLine]", "}"}], "]"}], 
+                    ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"ListPlot", "[", 
+                    RowBox[{"mydata", ",", 
+                    RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+                    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+                    RowBox[{"FrameTicks", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"All", ",", "All"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"All", ",", "All"}], "}"}]}], "}"}]}], ",", 
+                    RowBox[{"FrameLabel", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"\"\<Image #\>\"", ",", " ", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"sizemean", "\[Equal]", "1"}], ",", 
+                    "\"\<Mean Int.\>\"", ",", "\"\<ROI Size (pixels)\>\""}], 
+                    "]"}]}], "}"}]}], ",", 
+                    RowBox[{"PlotMarkers", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"Automatic", ",", "8"}], "}"}]}], " ", ",", 
+                    RowBox[{"PlotStyle", "\[Rule]", 
+                    RowBox[{"Colors", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ";;", "All"}], "\[RightDoubleBracket]"}]}], 
+                    ",", 
+                    RowBox[{"AxesOrigin", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "Automatic"}], "}"}]}], ",", 
+                    RowBox[{"ImageSize", "\[Rule]", "300"}], ",", 
+                    RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+                    RowBox[{"PlotRange", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", 
+                    RowBox[{"Nimg", "+", "1"}]}], "}"}], ",", "All"}], 
+                    "}"}]}]}], "]"}], "//", 
+                    RowBox[{
+                    RowBox[{"Show", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"Graphics", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"Purple", ",", "Dashed", ",", 
+                    RowBox[{"Line", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"myt", ",", 
+                    RowBox[{"-", "1000"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"myt", ",", "1000"}], "}"}]}], "}"}], "]"}]}], 
+                    "}"}], "]"}]}], "}"}], "]"}], "&"}]}]}], 
+                   "\[IndentingNewLine]", "\[IndentingNewLine]", "}"}], ",", 
+                  RowBox[{"Dynamic", "[", "mymask", "]"}]}], "]"}]}], "]"}]}],
+              "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]", 
+          "}"}], "]"}], "//", "Panel"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5637923595188*^9, 3.5637923676288114`*^9}, {
+   3.563792446528922*^9, 3.563792448408924*^9}, {3.5637925393490515`*^9, 
+   3.5637925410590544`*^9}, {3.5637926264191737`*^9, 
+   3.5637926436091976`*^9}, {3.5637927468493423`*^9, 
+   3.5637927790793877`*^9}, {3.563792827219455*^9, 3.5637928360594673`*^9}, {
+   3.5637929157595787`*^9, 3.5637929178795815`*^9}, {3.563793064319787*^9, 
+   3.563793069709794*^9}, {3.5637931146798573`*^9, 3.5637931207998657`*^9}, {
+   3.563793194479969*^9, 3.5637932106199913`*^9}, {3.563793317990142*^9, 
+   3.5637933634402056`*^9}, {3.563793428170296*^9, 3.5637934539995403`*^9}, {
+   3.5637935033560176`*^9, 3.563793507046023*^9}, 3.5637936045261593`*^9, {
+   3.563793704576299*^9, 3.5637937668463864`*^9}, {3.563794008187078*^9, 
+   3.563794009127079*^9}, {3.5637940773471746`*^9, 3.5637941027172103`*^9}, {
+   3.56379417405731*^9, 3.5637941749473114`*^9}, {3.5637942471174126`*^9, 
+   3.5637942520974197`*^9}, {3.5637943801475987`*^9, 
+   3.5637943938276176`*^9}, {3.5637944269176645`*^9, 3.56379450947778*^9}, {
+   3.5637945731678686`*^9, 3.563794608107918*^9}, {3.5637946424079657`*^9, 
+   3.5637946770580144`*^9}, {3.5637948414982443`*^9, 
+   3.5637948971983223`*^9}, {3.563794932018371*^9, 3.56379495967841*^9}, {
+   3.563795022998499*^9, 3.5637950335985136`*^9}, {3.563795066078559*^9, 
+   3.5637951542286825`*^9}, {3.5637952055887547`*^9, 
+   3.5637952213687763`*^9}, {3.563795262648834*^9, 3.563795263908836*^9}, {
+   3.563795325258922*^9, 3.5637953264589233`*^9}, 3.5637953963390217`*^9, {
+   3.5637954557091045`*^9, 3.5637955080191774`*^9}, {3.5637956158693285`*^9, 
+   3.563795629129347*^9}, {3.5637956810194197`*^9, 3.5637957408495035`*^9}, {
+   3.5637957715695467`*^9, 3.5637957868195677`*^9}, {3.5637958913997145`*^9, 
+   3.563795931789771*^9}, {3.5637959978898635`*^9, 3.5637959994198656`*^9}, {
+   3.563796122500038*^9, 3.5637961365200577`*^9}, {3.563796198260144*^9, 
+   3.563796215600168*^9}, {3.5637962461702113`*^9, 3.563796390130413*^9}, {
+   3.5637964486114945`*^9, 3.5637964758015327`*^9}, {3.5637969942722583`*^9, 
+   3.5637969986322646`*^9}, {3.563797154662483*^9, 3.5637971563424854`*^9}, {
+   3.563797192012535*^9, 3.563797234792595*^9}, {3.5637972650226374`*^9, 
+   3.5637973028026905`*^9}, {3.5637973344727345`*^9, 3.563797350882758*^9}, {
+   3.56379746665292*^9, 3.563797468032922*^9}, {3.5637975947930994`*^9, 
+   3.563797605393114*^9}, 3.563797771363346*^9, {3.563797811643403*^9, 
+   3.56379786680348*^9}, {3.5637979949036593`*^9, 3.563798012483684*^9}, {
+   3.563798221563977*^9, 3.563798222093978*^9}, {3.5638352389144773`*^9, 
+   3.5638352736045256`*^9}, {3.5638355726429453`*^9, 3.563835583752961*^9}, {
+   3.5638358633933525`*^9, 3.5638359394434595`*^9}, {3.5638360131535625`*^9, 
+   3.5638360160935664`*^9}, {3.563836096613679*^9, 3.563836186083804*^9}, {
+   3.5638362205738525`*^9, 3.563836223903857*^9}, {3.5638362935339546`*^9, 
+   3.563836388114087*^9}, {3.563836438804158*^9, 3.563836469274201*^9}, {
+   3.5638366011843853`*^9, 3.5638366019243865`*^9}, 3.5638366326144295`*^9, {
+   3.563836813194682*^9, 3.5638368253746996`*^9}, {3.563836895624798*^9, 
+   3.5638369033748083`*^9}, {3.5638370069149537`*^9, 3.563837012864962*^9}, {
+   3.5638370649250345`*^9, 3.563837072265045*^9}, {3.5638371339251313`*^9, 
+   3.563837136595135*^9}, {3.5638372772253323`*^9, 3.5638372859253445`*^9}, {
+   3.5638373216853943`*^9, 3.5638373474754305`*^9}, {3.5638373789954743`*^9, 
+   3.5638374082655153`*^9}, {3.563837527795683*^9, 3.563837527915683*^9}, {
+   3.5638376095267973`*^9, 3.5638376465068493`*^9}, {3.563837698596922*^9, 
+   3.5638377245769587`*^9}, {3.563837757807005*^9, 3.5638378186770897`*^9}, 
+   3.5638379508372755`*^9, {3.5638379932873344`*^9, 3.5638380011273456`*^9}, {
+   3.5638380385773983`*^9, 3.5638380461974087`*^9}, {3.56383809713748*^9, 
+   3.5638381203275127`*^9}, {3.5638383164117875`*^9, 
+   3.5638383397118206`*^9}, {3.5638383790718756`*^9, 
+   3.5638383968319006`*^9}, {3.5638384561719837`*^9, 
+   3.5638384564519835`*^9}, {3.5638387564824038`*^9, 3.563838831652509*^9}, {
+   3.563838873022567*^9, 3.563838873682568*^9}, {3.5638389550426817`*^9, 
+   3.5638389919727335`*^9}, {3.563839038172798*^9, 3.563839095292878*^9}, {
+   3.563839194323017*^9, 3.563839256453104*^9}, {3.563839433873352*^9, 
+   3.5638394616433907`*^9}, {3.563839582953561*^9, 3.5638396306636276`*^9}, {
+   3.563839736513776*^9, 3.563839757363805*^9}, {3.563839855363942*^9, 
+   3.563839915304026*^9}, {3.563840055844223*^9, 3.5638400592342277`*^9}, {
+   3.584423420208854*^9, 3.584423455870517*^9}, 3.5844238506614103`*^9, {
+   3.584423900721898*^9, 3.584423916524726*^9}, {3.5844241605091543`*^9, 
+   3.5844242509581137`*^9}, {3.592220451368591*^9, 3.5922204516186*^9}, {
+   3.593193755143792*^9, 3.5931940137973585`*^9}, {3.5931940550025425`*^9, 
+   3.5931940918481383`*^9}, {3.593194129084377*^9, 3.5931941306625786`*^9}, {
+   3.5932598135612946`*^9, 3.5932598206085196`*^9}, {3.5933427348988204`*^9, 
+   3.5933427369301734`*^9}, {3.5935457629774027`*^9, 
+   3.5935458381844454`*^9}, {3.5935459096019974`*^9, 3.593545941951522*^9}, {
+   3.593545974093524*^9, 3.5935459752292814`*^9}, {3.593546148937395*^9, 
+   3.593546154183885*^9}, {3.5935462234429693`*^9, 3.5935462390723686`*^9}, {
+   3.5937830442450027`*^9, 3.593783053701302*^9}, {3.593783096527791*^9, 
+   3.593783101480093*^9}, {3.5937831390401144`*^9, 3.59378318332362*^9}, {
+   3.5937832583538513`*^9, 3.5937835760320272`*^9}, {3.5937836746762333`*^9, 
+   3.5937836818620205`*^9}, {3.5937837190387893`*^9, 
+   3.5937837584527483`*^9}, {3.593783789921714*^9, 3.5937838142339115`*^9}, {
+   3.5937838617145567`*^9, 3.593783888919922*^9}, {3.5937839411637287`*^9, 
+   3.593783980274786*^9}, {3.5937840719531136`*^9, 3.5937840754324293`*^9}, {
+   3.5937841707427607`*^9, 3.5937841744582357`*^9}, 3.5937842602193737`*^9, {
+   3.593785680155939*^9, 3.593785681111577*^9}, 3.5937861483707056`*^9, {
+   3.5941472644592333`*^9, 
+   3.5941473091917057`*^9}},ExpressionUUID->"72f9ea95-86f6-48f4-a9f0-\
+940d3b7f0be9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Make Masks", "Subsection",
+ CellChangeTimes->{{3.678650616049817*^9, 3.6786506203690643`*^9}, {
+  3.678650695665371*^9, 3.678650698023505*^9}, {3.7029286067245507`*^9, 
+  3.702928608107577*^9}, {3.747407275130247*^9, 3.7474072764352016`*^9}, {
+  3.7480220556838083`*^9, 
+  3.7480220565543823`*^9}},ExpressionUUID->"32b05e95-12d0-422f-9edc-\
+c57f509d2ac9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mymovie", " ", "=", " ", 
+   RowBox[{"Import", "[", "mymoviefile", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.747407692882972*^9, 3.7474076951945333`*^9}, {
+  3.747407933326687*^9, 
+  3.7474079485727377`*^9}},ExpressionUUID->"3eccd964-efbe-493f-b2fd-\
+0dc2b05919fa"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ch1", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ImageSubtract", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"500", "/", 
+        SuperscriptBox["2", "16"]}]}], "]"}], "&"}], "/@", 
+    RowBox[{"mymovie", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ";;", "All", ";;", "3"}], "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ch2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ImageSubtract", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"500", "/", 
+        SuperscriptBox["2", "16"]}]}], "]"}], "&"}], "/@", 
+    RowBox[{"mymovie", "[", 
+     RowBox[{"[", 
+      RowBox[{"2", ";;", "All", ";;", "3"}], "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ch3", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ImageSubtract", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"500", "/", 
+        SuperscriptBox["2", "16"]}]}], "]"}], "&"}], "/@", 
+    RowBox[{"mymovie", "[", 
+     RowBox[{"[", 
+      RowBox[{"3", ";;", "All", ";;", "3"}], "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myColCombMov", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"ColorCombine", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"ch1", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", 
+        RowBox[{"ch2", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", 
+        RowBox[{"ch3", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], "}"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "ch1", "]"}], ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.747407634903091*^9, 3.747407657541966*^9}, {
+  3.747407974217367*^9, 3.747407980880207*^9}, {3.747408011686853*^9, 
+  3.747408012081394*^9}},ExpressionUUID->"d677dcb0-a039-49e9-ad9c-\
+ada7d2b90845"],
+
+Cell["\<\
+***If you have trouble with the myROI, a possible solution is that you \
+already have a data file with the same name... 
+***Try deleting the file manually in file explorer and shift+enter the myROI \
+code again\
+\>", "Text",
+ CellChangeTimes->{{3.747360815884214*^9, 
+  3.747360867229609*^9}},ExpressionUUID->"0c6c85e1-7b85-46b4-a807-\
+2696369c724e"],
+
+Cell[BoxData[
+ RowBox[{"MyROI", "[", 
+  RowBox[{"myColCombMov", ",", 
+   RowBox[{"analysisFolder", "<>", "\"\<_myROI.dat\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.74736058649921*^9, 3.7473606006752777`*^9}, {
+  3.747360723083191*^9, 3.7473607237776814`*^9}, {3.747417323246407*^9, 
+  3.747417323696965*^9}},ExpressionUUID->"620d70cc-596f-4714-8b23-\
+a6b0a349767f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Export masks", "Subsection",
+ CellChangeTimes->{{3.678650616049817*^9, 3.6786506203690643`*^9}, {
+  3.678650695665371*^9, 3.678650698023505*^9}, {3.7029286067245507`*^9, 
+  3.702928608107577*^9}, {3.747407275130247*^9, 3.7474072764352016`*^9}, {
+  3.7480220556838083`*^9, 3.7480220565543823`*^9}, {3.7499846769938374`*^9, 
+  3.7499846794562893`*^9}},ExpressionUUID->"e410f6c3-6ee0-4422-8e6a-\
+479430ca2a49"],
+
+Cell["***Import mask file:", "Text",
+ CellChangeTimes->{{3.747358807604846*^9, 3.747358854932384*^9}, {
+   3.747359061987955*^9, 3.7473590653964043`*^9}, 
+   3.749984710702854*^9},ExpressionUUID->"a24be4d9-c209-4109-985a-\
+55b7bf024c8c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mymaskfile", " ", "=", " ", 
+   RowBox[{"<<", 
+    RowBox[{"(", 
+     RowBox[{"analysisFolder", "<>", "\"\<_myROI.dat\>\""}], ")"}]}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.747360761309847*^9, 
+  3.747360787071369*^9}},ExpressionUUID->"2506ee25-169f-43e4-96c8-\
+e1d2008e30db"],
+
+Cell["\<\
+
+***Specify bkgrd and length of movie:\
+\>", "Text",
+ CellChangeTimes->{{3.747358807604846*^9, 3.747358854932384*^9}, 
+   3.747359067239634*^9},ExpressionUUID->"26c74301-c569-4edc-bad1-\
+5cd74b7c16f8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"lenMov", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"mymaskfile", "[", 
+     RowBox[{"[", 
+      RowBox[{"1", ",", "All", ",", "1", ",", "All"}], "]"}], "]"}], "//", 
+    "Length"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mybkgdcoords", " ", "=", " ", 
+   RowBox[{"mymaskfile", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "All", ",", "1", ",", "All"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myCytoCoords", " ", "=", " ", 
+   RowBox[{"mymaskfile", "[", 
+    RowBox[{"[", 
+     RowBox[{"2", ",", "All", ",", "1", ",", "All"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myNucCoords", " ", "=", " ", 
+   RowBox[{"mymaskfile", "[", 
+    RowBox[{"[", 
+     RowBox[{"3", ",", "All", ",", "1", ",", "All"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dummyMov", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Image", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"512", "^", "2"}], ",", "1"}], "]"}], "//", 
+       RowBox[{
+        RowBox[{"Partition", "[", 
+         RowBox[{"#", ",", "512"}], "]"}], "&"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "lenMov", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{
+  3.747358861005352*^9, {3.747404111375451*^9, 
+   3.7474041116310167`*^9}},ExpressionUUID->"f3860cb3-de83-49aa-a474-\
+4b81d36c2b98"],
+
+Cell["\<\
+
+***Make masks for cyto and nuc and bkgrd:\
+\>", "Text",
+ CellChangeTimes->{{3.747358736356312*^9, 3.747358771146813*^9}, 
+   3.747358856684424*^9},ExpressionUUID->"40277136-b10f-4ef0-b6d3-\
+6171f7f1f79e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bkgmask", " ", "=", " ", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Show", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"dummyMov", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", 
+         RowBox[{"White", ",", 
+          RowBox[{"Polygon", "[", 
+           RowBox[{"mybkgdcoords", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", 
+              RowBox[{"1", ";;", "All"}]}], "]"}], "]"}], "]"}]}], "}"}], 
+        "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "lenMov", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cytomask", " ", "=", " ", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Show", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"dummyMov", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", 
+         RowBox[{"White", ",", 
+          RowBox[{"Polygon", "[", 
+           RowBox[{"myCytoCoords", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", 
+              RowBox[{"1", ";;", "All"}]}], "]"}], "]"}], "]"}]}], "}"}], 
+        "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "lenMov", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nucmask", " ", "=", " ", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Show", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"dummyMov", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", 
+         RowBox[{"White", ",", 
+          RowBox[{"Polygon", "[", 
+           RowBox[{"myNucCoords", "[", 
+            RowBox[{"[", 
+             RowBox[{"i", ",", 
+              RowBox[{"1", ";;", "All"}]}], "]"}], "]"}], "]"}]}], "}"}], 
+        "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "lenMov", ",", "1"}], "}"}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.747358456349454*^9, 3.747358496143631*^9}, {
+  3.747358705246092*^9, 3.747358723781767*^9}, {3.747404121429924*^9, 
+  3.747404122698658*^9}},ExpressionUUID->"739a362c-17c4-43b7-ae2b-\
+b36bc52955e9"],
+
+Cell["\<\
+
+***Export as data files:\
+\>", "Text",
+ CellChangeTimes->{{3.747358736356312*^9, 3.747358771146813*^9}, 
+   3.747358856684424*^9, {3.747360182943964*^9, 
+   3.747360187370117*^9}},ExpressionUUID->"84212406-5805-4f02-817f-\
+6add69ec1bd8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"analysisFolder", "<>", "\"\<_mybkgmask.dat\>\""}]], "Input",
+ CellChangeTimes->{{3.747419732584427*^9, 
+  3.747419732942257*^9}},ExpressionUUID->"fe0850ab-d65e-4750-8e46-\
+6b4758fc230f"],
+
+Cell[BoxData["\<\"/Users/ccialek/Desktop/beautiful_cell/Analysis/beautiful \
+vid MAX_TA10b_BG_mybkgmask.dat\"\>"], "Output",
+ CellChangeTimes->{3.747419733324094*^9, 
+  3.747419895214192*^9},ExpressionUUID->"5c71a703-fdf0-4d7c-b286-\
+d9717ea99217"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"(", 
+  RowBox[{"analysisFolder", "<>", "\"\<_mybkgmask.dat\>\""}], ")"}]], "Input",\
+ExpressionUUID->"4e17248a-4947-4b73-8f81-7fa8fe81df24"],
+
+Cell[BoxData["\<\"/Users/ccialek/Desktop/beautiful_cell/Analysis/beautiful \
+vid MAX_TA10b_BG_mybkgmask.dat\"\>"], "Output",
+ CellChangeTimes->{3.74741980345467*^9, 
+  3.747419897990546*^9},ExpressionUUID->"f181b446-f663-4fe4-9b15-\
+1d73535d7047"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"bkgmask", ">>", 
+  RowBox[{"(", 
+   RowBox[{"analysisFolder", "<>", "\"\<_myBkgMask.dat\>\""}], 
+   ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"cytomask", ">>", 
+  RowBox[{"(", 
+   RowBox[{"analysisFolder", "<>", "\"\<_myCytMask.dat\>\""}], 
+   ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"nucmask", ">>", 
+  RowBox[{"(", 
+   RowBox[{"analysisFolder", "<>", "\"\<_myNucMask.dat\>\""}], 
+   ")"}]}]}], "Input",
+ CellChangeTimes->{{3.747360102547575*^9, 3.747360132118778*^9}, 
+   3.747418365017263*^9, {3.747419738018465*^9, 3.747419752232037*^9}, {
+   3.74741987354506*^9, 3.7474198784456778`*^9}, {3.747420074337784*^9, 
+   3.747420077179681*^9}},ExpressionUUID->"12f3b21e-fd15-4018-a8a0-\
+37529199275e"],
+
+Cell["\<\
+
+***Adding these variable calls so that the analysis stuff at the end of the \
+code work... you DONT need these to do particle tracking:\
+\>", "Text",
+ CellChangeTimes->{{3.747358736356312*^9, 3.747358771146813*^9}, 
+   3.747358856684424*^9, {3.747360182943964*^9, 3.747360187370117*^9}, {
+   3.747419514421349*^9, 
+   3.747419537330864*^9}},ExpressionUUID->"30ea732a-490e-4fab-87f3-\
+4552797a015f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mymask", "=", 
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJztyjEKg0AABMDTKqVf8Be2KW0VH6B4EZsLnILk91HsfMMM7MLC1tO3+5Qh
+hO11Vjce75zHX1+dY0jbuqQ4t2mPS8zNdN1CeacAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAHj4A3EuDJs=
+      "], {{0, 512}, {512, 0}}, {0, 1},
+      ColorFunction->GrayLevel],
+     BoxForm`ImageTag["Bit", ColorSpace -> Automatic, Interleaving -> None],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{512, 512},
+    PlotRange->{{0, 512}, {0, 512}}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myNucMask", " ", "=", " ", 
+   RowBox[{"nucmask", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7474194835146637`*^9, 3.747419501246851*^9}, {
+  3.747419542610176*^9, 3.7474195437944508`*^9}, {3.747420083678162*^9, 
+  3.747420092091263*^9}},ExpressionUUID->"86055ae4-4474-4814-8e78-\
+e3c36b2d2e8b"]
+}, Open  ]]
+},
+WindowSize->{808, 594},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+Magnification:>0.75 Inherited,
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 802, 12, 41, "Subsection",ExpressionUUID->"56b5a6bb-44ee-482c-bdc5-6c042e5f7983",
+ InitializationCell->True],
+Cell[1385, 36, 77854, 1592, 3311, "Input",ExpressionUUID->"72f9ea95-86f6-48f4-a9f0-940d3b7f0be9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[79276, 1633, 361, 6, 41, "Subsection",ExpressionUUID->"32b05e95-12d0-422f-9edc-c57f509d2ac9"],
+Cell[79640, 1641, 306, 7, 24, "Input",ExpressionUUID->"3eccd964-efbe-493f-b2fd-0dc2b05919fa"],
+Cell[79949, 1650, 1836, 57, 78, "Input",ExpressionUUID->"d677dcb0-a039-49e9-ad9c-ada7d2b90845"],
+Cell[81788, 1709, 360, 8, 46, "Text",ExpressionUUID->"0c6c85e1-7b85-46b4-a807-2696369c724e"],
+Cell[82151, 1719, 371, 7, 25, "Input",ExpressionUUID->"620d70cc-596f-4714-8b23-a6b0a349767f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[82559, 1731, 413, 6, 41, "Subsection",ExpressionUUID->"e410f6c3-6ee0-4422-8e6a-479430ca2a49"],
+Cell[82975, 1739, 237, 4, 27, "Text",ExpressionUUID->"a24be4d9-c209-4109-985a-55b7bf024c8c"],
+Cell[83215, 1745, 317, 9, 25, "Input",ExpressionUUID->"2506ee25-169f-43e4-96c8-e1d2008e30db"],
+Cell[83535, 1756, 211, 6, 46, "Text",ExpressionUUID->"26c74301-c569-4edc-bad1-5cd74b7c16f8"],
+Cell[83749, 1764, 1485, 44, 89, "Input",ExpressionUUID->"f3860cb3-de83-49aa-a474-4b81d36c2b98"],
+Cell[85237, 1810, 215, 6, 46, "Text",ExpressionUUID->"40277136-b10f-4ef0-b6d3-6171f7f1f79e"],
+Cell[85455, 1818, 2478, 64, 249, "Input",ExpressionUUID->"739a362c-17c4-43b7-ae2b-b36bc52955e9"],
+Cell[87936, 1884, 248, 7, 46, "Text",ExpressionUUID->"84212406-5805-4f02-817f-6add69ec1bd8"],
+Cell[CellGroupData[{
+Cell[88209, 1895, 210, 4, 25, "Input",ExpressionUUID->"fe0850ab-d65e-4750-8e46-6b4758fc230f"],
+Cell[88422, 1901, 248, 4, 28, "Output",ExpressionUUID->"5c71a703-fdf0-4d7c-b286-d9717ea99217"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[88707, 1910, 164, 3, 25, "Input",ExpressionUUID->"4e17248a-4947-4b73-8f81-7fa8fe81df24"],
+Cell[88874, 1915, 247, 4, 28, "Output",ExpressionUUID->"f181b446-f663-4fe4-9b15-1d73535d7047"]
+}, Open  ]],
+Cell[89136, 1922, 727, 17, 57, "Input",ExpressionUUID->"12f3b21e-fd15-4018-a8a0-37529199275e"],
+Cell[89866, 1941, 409, 9, 46, "Text",ExpressionUUID->"30ea732a-490e-4fab-87f3-4552797a015f"],
+Cell[90278, 1952, 1235, 27, 103, "Input",ExpressionUUID->"86055ae4-4474-4814-8e78-e3c36b2d2e8b"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
