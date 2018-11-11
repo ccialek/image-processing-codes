@@ -1,0 +1,400 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14195,        390]
+NotebookOptionsPosition[     13385,        370]
+NotebookOutlinePosition[     13768,        387]
+CellTagsIndexPosition[     13725,        384]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "=", 
+    RowBox[{"-", "3"}]}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ImagePad", "[", 
+  RowBox[{
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZRsHgAB/s
+sdPUNo9S84eauYTMHwWEAAAJmCDx
+      "], {{0, 12}, {11, 0}}, {0., 1.},
+      ColorFunction->GrayLevel],
+     BoxForm`ImageTag["Real", ColorSpace -> Automatic, Interleaving -> None],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{11, 12},
+    PlotRange->{{0, 11}, {0, 12}}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{
+        RowBox[{"-", "2"}], "g"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"2", "h"}]}], "}"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ImagePad", "[", 
+  RowBox[{
+   GraphicsBox[
+    TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZhhv4YE8c
+Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
+      "], {{0, 12}, {11, 0}}, {0., 
+      1.},
+      ColorFunction->GrayLevel],
+     BoxForm`ImageTag["Real", ColorSpace -> Automatic, Interleaving -> None],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{11, 12},
+    PlotRange->{{0, 11}, {0, 12}}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{
+        RowBox[{"-", "2"}], "g"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", 
+       RowBox[{"2", "h"}]}], "}"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ImagePad", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{
+          RowBox[{"-", "2"}], "g"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"2", "h"}]}], "}"}]}], "}"}]}], "]"}], "&"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{
+    GraphicsBox[
+     TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZRsHgAB/s
+sdPUNo9S84eauYTMHwWEAAAJmCDx
+       "], {{0, 12}, {11, 0}}, {0., 1.},
+       ColorFunction->GrayLevel],
+      BoxForm`ImageTag["Real", ColorSpace -> Automatic, Interleaving -> None],
+      
+      Selectable->False],
+     DefaultBaseStyle->"ImageGraphics",
+     ImageSizeRaw->{11, 12},
+     PlotRange->{{0, 11}, {0, 12}}], ",", 
+    GraphicsBox[
+     TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZhhv4YE8c
+Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
+       "], {{0, 12}, {11, 0}}, {0., 
+       1.},
+       ColorFunction->GrayLevel],
+      BoxForm`ImageTag["Real", ColorSpace -> Automatic, Interleaving -> None],
+      
+      Selectable->False],
+     DefaultBaseStyle->"ImageGraphics",
+     ImageSizeRaw->{11, 12},
+     PlotRange->{{0, 11}, {0, 12}}]}], 
+   "}"}]}], "\[IndentingNewLine]"}], "Input",ExpressionUUID->"b03487c8-ea57-\
+4736-bd1f-a081b6fab752"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7509476053531847`*^9},ExpressionUUID->"acd1d11f-f89d-4aa2-a933-\
+317fc914fffc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       StyleBox["left", "TI"], ",", 
+       StyleBox["right", "TI"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       StyleBox["bottom", "TI"], ",", 
+       StyleBox["top", "TI"]}], "}"}]}], "}"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"e", " ", "=", " ", 
+    RowBox[{"Which", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"g", "\[LessEqual]", " ", "0"}], " ", "&&", " ", 
+       RowBox[{"h", "\[GreaterEqual]", " ", "0"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ImagePad", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{
+               RowBox[{"-", "2"}], "g"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"2", "h"}]}], "}"}]}], "}"}]}], "]"}], "&"}], "/@", 
+       RowBox[{"{", 
+        RowBox[{
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZRsHgAB/s
+sdPUNo9S84eauYTMHwWEAAAJmCDx
+            "], {{0, 12}, {11, 0}}, {0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}], ",", 
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZhhv4YE8c
+Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
+            "], {{0, 12}, {11, 0}}, {
+            0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"g", "\[LessEqual]", "0"}], " ", "&&", " ", 
+       RowBox[{"h", "\[LessEqual]", "0"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ImagePad", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{
+               RowBox[{"-", "2"}], "g"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "2"}], "h"}], ",", "0"}], "}"}]}], "}"}]}], "]"}],
+         "&"}], "/@", 
+       RowBox[{"{", 
+        RowBox[{
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZRsHgAB/s
+sdPUNo9S84eauYTMHwWEAAAJmCDx
+            "], {{0, 12}, {11, 0}}, {0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}], ",", 
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZhhv4YE8c
+Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
+            "], {{0, 12}, {11, 0}}, {
+            0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"g", "\[GreaterEqual]", "0"}], " ", "&&", " ", 
+       RowBox[{"h", "\[GreaterEqual]", "0"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ImagePad", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"2", "g"}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", 
+              RowBox[{"2", "h"}]}], "}"}]}], "}"}]}], "]"}], "&"}], "/@", 
+       RowBox[{"{", 
+        RowBox[{
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZRsHgAB/s
+sdPUNo9S84eauYTMHwWEAAAJmCDx
+            "], {{0, 12}, {11, 0}}, {0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}], ",", 
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZhhv4YE8c
+Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
+            "], {{0, 12}, {11, 0}}, {
+            0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"g", "\[GreaterEqual]", "0"}], " ", "&&", " ", 
+       RowBox[{"h", "\[LessEqual]", "0"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ImagePad", "[", 
+         RowBox[{"#", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"2", "g"}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "2"}], "h"}], ",", "0"}], "}"}]}], "}"}]}], "]"}],
+         "&"}], "/@", 
+       RowBox[{"{", 
+        RowBox[{
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZRsHgAB/s
+sdPUNo9S84eauYTMHwWEAAAJmCDx
+            "], {{0, 12}, {11, 0}}, {0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}], ",", 
+         GraphicsBox[
+          TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIHiLkZhhv4YE8c
+Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
+            "], {{0, 12}, {11, 0}}, {
+            0., 1.},
+            ColorFunction->GrayLevel],
+           BoxForm`ImageTag[
+           "Real", ColorSpace -> Automatic, Interleaving -> None],
+           Selectable->False],
+          DefaultBaseStyle->"ImageGraphics",
+          ImageSizeRaw->{11, 12},
+          PlotRange->{{0, 11}, {0, 12}}]}], "}"}]}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"ImageDimensions", "/@", "e"}], "\[IndentingNewLine]"}]}]], "Input",\
+ExpressionUUID->"bafb9835-0c9f-42ac-99b9-68a82b687e81"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.750947608186721*^9},ExpressionUUID->"9c244272-35e1-4b27-a47a-\
+f123aa3eb7c8"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"test", "..."}], "."}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7509475757615623`*^9, 
+  3.7509475780572987`*^9}},ExpressionUUID->"9e96cdef-99bf-4c0e-a6d1-\
+a7c94112468c"],
+
+Cell[BoxData[
+ RowBox[{"ImageMultiply", "[", 
+  RowBox[{
+   GraphicsBox[
+    TagBox[
+     RasterBox[
+      RawArray["UnsignedInteger16",{{5760, 10737, 2839, 16415, 3168, 18760, 
+       11889, 6418, 6953, 14851, 9503}, {3991, 11725, 9215, 18348, 453, 3332, 
+       3044, 4032, 6582, 987, 9544}, {3209, 12054, 5184, 8475, 8968, 14604, 
+       2057, 11437, 10532, 0, 4155}, {9709, 12753, 13041, 26864, 12835, 11972,
+        9133, 9421, 6788, 9915, 1810}, {16579, 11601, 15839, 4813, 15016, 
+       13123, 7734, 6706, 4813, 4937, 8022}, {15592, 8763, 23161, 9133, 31430,
+        26905, 16785, 2921, 23861, 17896, 13576}, {15880, 15921, 34804, 46076,
+        22709, 23079, 14275, 11149, 10943, 10820, 6418}, {15345, 23367, 59282,
+        58377, 49573, 13288, 26741, 9503, 22380, 8063, 3044}, {38383, 17279, 
+       61709, 65535, 60927, 38918, 14604, 18636, 9174, 21434, 9668}, {10573, 
+       35339, 42744, 39288, 54715, 22092, 20076, 23161, 14070, 13946, 8392}, {
+       14481, 12013, 7076, 22256, 13987, 25218, 9380, 14070, 23285, 13987, 
+       11313}}], {{0, 11}, {11, 0}}, {0, 65535},
+      ColorFunction->GrayLevel],
+     BoxForm`ImageTag[
+     "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+      MetaInformation -> 
+      Association[
+       "Exif" -> Association[
+         "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+          "ImageLength" -> 512, "BitsPerSample" -> 16, 
+          "PhotometricInterpretation" -> "Black Is Zero", "ImageDescription" -> 
+          "ImageJ=1.52d\nimages=195\nchannels=3\nframes=65\nhyperstack=true\n\
+mode=composite\nloop=false\nmin=693.0\nmax=2401.0", "StripOffsets" -> 2659, 
+          "SamplesPerPixel" -> 1, "RowsPerStrip" -> 512, "StripByteCounts" -> 
+          524288]]],
+     Selectable->False],
+    DefaultBaseStyle->"ImageGraphics",
+    ImageSizeRaw->{11, 11},
+    PlotRange->{{0, 11}, {0, 11}}], ",", "e"}], "]"}]], "Input",ExpressionUUID\
+->"cee7f6b2-4356-47b2-9323-c1309ed69624"]
+},
+WindowSize->{408, 604},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+Magnification:>0.75 Inherited,
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3055, 93, 126, "Input",ExpressionUUID->"b03487c8-ea57-4736-bd1f-a081b6fab752"],
+Cell[3616, 115, 149, 3, 41, "Input",ExpressionUUID->"acd1d11f-f89d-4aa2-a933-317fc914fffc"],
+Cell[3768, 120, 7280, 197, 255, "Input",ExpressionUUID->"bafb9835-0c9f-42ac-99b9-68a82b687e81"],
+Cell[11051, 319, 147, 3, 41, "Input",ExpressionUUID->"9c244272-35e1-4b27-a47a-f123aa3eb7c8"],
+Cell[11201, 324, 223, 6, 24, "Input",ExpressionUUID->"9e96cdef-99bf-4c0e-a6d1-a7c94112468c"],
+Cell[11427, 332, 1954, 36, 30, "Input",ExpressionUUID->"cee7f6b2-4356-47b2-9323-c1309ed69624"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
