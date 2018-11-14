@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14863,        343]
-NotebookOptionsPosition[     14242,        324]
-NotebookOutlinePosition[     14595,        340]
-CellTagsIndexPosition[     14552,        337]
+NotebookDataLength[     13923,        320]
+NotebookOptionsPosition[     13303,        301]
+NotebookOutlinePosition[     13656,        317]
+CellTagsIndexPosition[     13613,        314]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -147,26 +147,26 @@ hyperstack=true\nmode=composite\nloop=false\nmin=511.0\nmax=3962.0",
        RowBox[{"{", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"6.082169743948343", ",", "5.253704640471337"}], "}"}], ",",
-          "0.02095692351045142", ",", "0.27083237964446477", ",", 
-         "8.204837109941254"}], "}"}], ",", 
+          RowBox[{"6.08", ",", "5.25"}], "}"}], ",", "0.0209", ",", "0.270", 
+         ",", "8.20"}], "}"}], ",", 
        RowBox[{"{", 
         RowBox[{
          RowBox[{"{", 
-          RowBox[{"5.505475856550584", ",", "5.289646652275415"}], "}"}], ",",
-          "0.20943058495790512", ",", "0.4451667048142214", ",", 
-         "6.941420614938583"}], "}"}]}], "}"}]}], "}"}]}], 
+          RowBox[{"5.505", ",", "5.289"}], "}"}], ",", "0.209", ",", "0.445", 
+         ",", "6.94"}], "}"}]}], "}"}]}], "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{"myPadSize", " ", "=", " ", "5"}]}], "Input",
  CellChangeTimes->{{3.750888056607327*^9, 3.75088811083666*^9}, {
-  3.750888158100787*^9, 3.750888160826757*^9}},
+  3.750888158100787*^9, 3.750888160826757*^9}, {3.750950227347454*^9, 
+  3.750950265762184*^9}},
  CellLabel->
-  "In[577]:=",ExpressionUUID->"a0dbe67c-ddc4-4116-b86a-c37d47dbd619"],
+  "In[958]:=",ExpressionUUID->"a0dbe67c-ddc4-4116-b86a-c37d47dbd619"],
 
 Cell[BoxData["5"], "Output",
- CellChangeTimes->{3.750888161141012*^9},
+ CellChangeTimes->{3.750888161141012*^9, 3.7509502237432137`*^9, 
+  3.750950267652972*^9},
  CellLabel->
-  "Out[578]=",ExpressionUUID->"4eb564f3-b96c-444f-bf99-8ec98b2776f1"]
+  "Out[959]=",ExpressionUUID->"69ddf7c0-263d-4b3a-bd3c-ff9ddd33fab9"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -187,6 +187,7 @@ Cell[BoxData[
         "mydonutsize", ",", "mycentcrop", ",", " ", "mydonutcrop", ",", 
         "mycentMeanIntensity", " ", ",", "mydonutMeanIntensity", ",", 
         "mycentMeanIntensityBG"}], "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"mycent", "=", 
         RowBox[{"Image", "[", 
@@ -220,30 +221,19 @@ Cell[BoxData[
               RowBox[{
                RowBox[{"2", "*", "myPadSize"}], "+", "1"}]}], "}"}]}], 
            "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
        RowBox[{"mycentsize", " ", "=", " ", 
-        RowBox[{"Total", "[", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"Count", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"ImageData", "[", "mycent", "]"}], "[", 
-              RowBox[{"[", "i", "]"}], "]"}], ",", "1."}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "1", ",", "11", ",", "1"}], "}"}]}], "]"}], 
-         "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "@", 
+           RowBox[{"ImageData", "[", "mycent", "]"}]}], ",", "1."}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
        RowBox[{"mydonutsize", " ", "=", " ", 
-        RowBox[{"Total", "[", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"Count", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"ImageData", "[", "mydonut", "]"}], "[", 
-              RowBox[{"[", "i", "]"}], "]"}], ",", "1."}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "1", ",", "11", ",", "1"}], "}"}]}], "]"}], 
-         "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "@", 
+           RowBox[{"ImageData", "[", "mydonut", "]"}]}], ",", "1."}], "]"}]}],
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"mycentcrop", " ", "=", " ", 
         RowBox[{"Table", "[", 
          RowBox[{
@@ -273,39 +263,26 @@ Cell[BoxData[
             RowBox[{"Length", "@", 
              RowBox[{"myCrops", "[", 
               RowBox[{"[", "1", "]"}], "]"}]}], ",", "1"}], "}"}]}], "]"}]}], 
-       ";", "\[IndentingNewLine]", 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"mycentMeanIntensity", " ", "=", " ", 
         RowBox[{
-         RowBox[{"Table", "[", 
+         RowBox[{"Count", "[", 
           RowBox[{
-           RowBox[{"Total", "[", 
-            RowBox[{"Total", "[", 
-             RowBox[{"ImageData", "[", 
-              RowBox[{
-              "mycentcrop", " ", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "]"}], "]"}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "1", ",", 
-             RowBox[{"Length", "@", "mycentcrop"}], ",", "1"}], "}"}]}], 
+           RowBox[{"Flatten", "@", 
+            RowBox[{"ImageData", "[", "mycentcrop", "]"}]}], ",", "1."}], 
           "]"}], "/", "mycentsize"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"mydonutMeanIntensity", "=", " ", 
         RowBox[{
-         RowBox[{"Table", "[", 
+         RowBox[{"Count", "[", 
           RowBox[{
-           RowBox[{"Total", "[", 
-            RowBox[{"Total", "[", 
-             RowBox[{"ImageData", "[", 
-              RowBox[{
-              "mydonutcrop", " ", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "]"}], "]"}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "1", ",", 
-             RowBox[{"Length", "@", "mydonutcrop"}], ",", "1"}], "}"}]}], 
+           RowBox[{"Flatten", "@", 
+            RowBox[{"ImageData", "[", "mydonutcrop", "]"}]}], ",", "1."}], 
           "]"}], "/", "mydonutsize"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
        RowBox[{"mycentMeanIntensityBG", " ", "=", " ", 
         RowBox[{
         "mycentMeanIntensity", " ", "-", " ", "mydonutMeanIntensity"}]}], ";",
-        "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"{", 
         RowBox[{
         "mycentcrop", ",", "mydonutcrop", ",", " ", "mycentMeanIntensity", 
@@ -318,9 +295,9 @@ Cell[BoxData[
    3.750604686505363*^9}, {3.7506047786855087`*^9, 3.750604816479485*^9}, {
    3.750605293929284*^9, 3.7506053870412683`*^9}, {3.750605692466968*^9, 
    3.750605745570663*^9}, 3.750608022230707*^9, 3.750608052240803*^9, {
-   3.750608229634791*^9, 3.7506082365789003`*^9}},
- CellLabel->
-  "In[1674]:=",ExpressionUUID->"23c526ce-aa72-4aad-aaa6-7f477c696fdb"]
+   3.750608229634791*^9, 3.7506082365789003`*^9}, {3.750950336396654*^9, 
+   3.750950420750794*^9}},ExpressionUUID->"23c526ce-aa72-4aad-aaa6-\
+7f477c696fdb"]
 },
 WindowSize->{808, 607},
 WindowMargins->{{Automatic, 64}, {Automatic, 1}},
@@ -341,13 +318,11 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 338, 7, 58, "Text",ExpressionUUID->"1bbc880c-77fe-4277-8b5c-41f148110f9a"],
 Cell[CellGroupData[{
-Cell[921, 31, 6959, 132, 130, "Input",ExpressionUUID->"a0dbe67c-ddc4-4116-b86a-c37d47dbd619"],
-Cell[7883, 165, 153, 3, 34, "Output",ExpressionUUID->"4eb564f3-b96c-444f-bf99-8ec98b2776f1"]
+Cell[921, 31, 6858, 131, 88, "Input",ExpressionUUID->"a0dbe67c-ddc4-4116-b86a-c37d47dbd619"],
+Cell[7782, 164, 202, 4, 34, "Output",ExpressionUUID->"69ddf7c0-263d-4b3a-bd3c-ff9ddd33fab9"]
 }, Open  ]],
-Cell[8051, 171, 6187, 151, 514, "Input",ExpressionUUID->"23c526ce-aa72-4aad-aaa6-7f477c696fdb"]
+Cell[7999, 171, 5300, 128, 556, "Input",ExpressionUUID->"23c526ce-aa72-4aad-aaa6-7f477c696fdb"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
