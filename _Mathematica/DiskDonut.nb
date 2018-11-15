@@ -502,7 +502,7 @@ output these spot and bkgd intensity
   3.7500863450973587`*^9, {3.750086382965234*^9, 
    3.750086452725463*^9}},ExpressionUUID->"6a0d3e6e-e83d-4e6e-87f1-\
 fecbe08b976a"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]]
 },
 WindowSize->{808, 592},
@@ -553,7 +553,7 @@ Cell[17159, 429, 2255, 52, 45, "Input",ExpressionUUID->"832c0c51-f03e-4866-8ad4-
 Cell[19417, 483, 219, 3, 34, "Output",ExpressionUUID->"4c25445c-ecf3-40db-bb36-cb9b16a6154f"]
 }, Open  ]],
 Cell[19651, 489, 368, 14, 219, "Text",ExpressionUUID->"6a0d3e6e-e83d-4e6e-87f1-fecbe08b976a"]
-}, Open  ]]
+}, Closed]]
 }, Open  ]]
 }
 ]
