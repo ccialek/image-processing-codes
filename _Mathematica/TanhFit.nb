@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22056,        452]
-NotebookOptionsPosition[     20706,        422]
-NotebookOutlinePosition[     21060,        438]
-CellTagsIndexPosition[     21017,        435]
+NotebookDataLength[     22159,        455]
+NotebookOptionsPosition[     20806,        425]
+NotebookOutlinePosition[     21160,        441]
+CellTagsIndexPosition[     21117,        438]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,10 +30,13 @@ Use this to find the sigmoidal CURVE, such as Tatsuya found when stress \
 granules were being formed after As stress. 
 THEN, you can use this to shift other data and align your cells on the \
 instance of a cell process... 
-Such as, when stress granules are at 10% (myBlue10per)\
+Such as, when stress granules are at 10% (myBlue10per)
+
+MAYBE! Use this for my cy3 accumulation data?? \
 \>", "Text",
- CellChangeTimes->{{3.751305356174137*^9, 
-  3.751305431647161*^9}},ExpressionUUID->"480aeb7e-db9a-4176-8efc-\
+ CellChangeTimes->{{3.751305356174137*^9, 3.751305431647161*^9}, {
+  3.7513055120182037`*^9, 
+  3.751305521938427*^9}},ExpressionUUID->"480aeb7e-db9a-4176-8efc-\
 e2668066d3d4"],
 
 Cell[BoxData[
@@ -439,20 +442,20 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 158, 3, 54, "Subsection",ExpressionUUID->"609e2a58-e08f-4972-b706-e08f3c1dc441"],
-Cell[741, 27, 427, 9, 81, "Text",ExpressionUUID->"480aeb7e-db9a-4176-8efc-e2668066d3d4"],
-Cell[1171, 38, 325, 7, 30, "Input",ExpressionUUID->"4ba8425d-b7f1-41f2-94ee-af6f00076cd2"],
-Cell[1499, 47, 483, 9, 30, "Input",ExpressionUUID->"dcc48754-e608-4c6c-868a-400122de5ef6"],
-Cell[1985, 58, 1008, 24, 30, "Input",ExpressionUUID->"42d0475a-af28-407d-88f9-a207ffb7a274"],
+Cell[741, 27, 527, 12, 127, "Text",ExpressionUUID->"480aeb7e-db9a-4176-8efc-e2668066d3d4"],
+Cell[1271, 41, 325, 7, 30, "Input",ExpressionUUID->"4ba8425d-b7f1-41f2-94ee-af6f00076cd2"],
+Cell[1599, 50, 483, 9, 30, "Input",ExpressionUUID->"dcc48754-e608-4c6c-868a-400122de5ef6"],
+Cell[2085, 61, 1008, 24, 30, "Input",ExpressionUUID->"42d0475a-af28-407d-88f9-a207ffb7a274"],
 Cell[CellGroupData[{
-Cell[3018, 86, 399, 11, 30, "Input",ExpressionUUID->"4ad88e30-1cf0-45a6-b76a-4c12c157b7f4"],
-Cell[3420, 99, 14188, 248, 250, "Output",ExpressionUUID->"ecfe1c33-399e-4176-ae40-473d7031ca24"]
+Cell[3118, 89, 399, 11, 30, "Input",ExpressionUUID->"4ad88e30-1cf0-45a6-b76a-4c12c157b7f4"],
+Cell[3520, 102, 14188, 248, 250, "Output",ExpressionUUID->"ecfe1c33-399e-4176-ae40-473d7031ca24"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17645, 352, 861, 19, 30, "Input",ExpressionUUID->"579a8590-6fe6-49e6-a8d2-eb9bca1fb10f"],
-Cell[18509, 373, 1060, 18, 24, "Message",ExpressionUUID->"5823835c-106b-4424-9c10-735b834d551d"],
-Cell[19572, 393, 555, 9, 34, "Output",ExpressionUUID->"930cddb3-3539-4789-aa52-75019beb35e4"]
+Cell[17745, 355, 861, 19, 30, "Input",ExpressionUUID->"579a8590-6fe6-49e6-a8d2-eb9bca1fb10f"],
+Cell[18609, 376, 1060, 18, 24, "Message",ExpressionUUID->"5823835c-106b-4424-9c10-735b834d551d"],
+Cell[19672, 396, 555, 9, 34, "Output",ExpressionUUID->"930cddb3-3539-4789-aa52-75019beb35e4"]
 }, Open  ]],
-Cell[20142, 405, 548, 14, 52, "Input",ExpressionUUID->"b98ec994-07c5-44d2-95e8-1da722b2316c"]
+Cell[20242, 408, 548, 14, 52, "Input",ExpressionUUID->"b98ec994-07c5-44d2-95e8-1da722b2316c"]
 }, Open  ]]
 }
 ]
