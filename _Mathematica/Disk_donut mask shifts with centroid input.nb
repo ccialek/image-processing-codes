@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     38982,        898]
-NotebookOptionsPosition[     36514,        851]
-NotebookOutlinePosition[     36897,        868]
-CellTagsIndexPosition[     36854,        865]
+NotebookDataLength[     62860,       1432]
+NotebookOptionsPosition[     59646,       1374]
+NotebookOutlinePosition[     60029,       1391]
+CellTagsIndexPosition[     59986,       1388]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -544,7 +544,7 @@ None],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",ImageSizeRaw->{\
   3.751244825867087*^9, 
   3.7512448342795677`*^9}},ExpressionUUID->"94b9bc56-dd73-4ab5-9347-\
 d419a2eb19ed"]
-}, Open  ]],
+}, Closed]],
 
 Cell["\<\
 pre-14. \t\tDo we want to make a function to get rid of any crops with \
@@ -802,7 +802,7 @@ FA==
   "],
  CellLabel->
   "In[452]:=",ExpressionUUID->"e5cb3d74-c03b-4b11-8bd7-890c216cdaf5"]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -841,6 +841,529 @@ Cell[BoxData[{
   3.750956116194169*^9, 
   3.750956128275517*^9}},ExpressionUUID->"b3495704-3a68-4144-8c1f-\
 8c1360250d0f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["UPDATED ... .. ", "Chapter",
+ CellChangeTimes->{{3.751286580715811*^9, 
+  3.7512865875822067`*^9}},ExpressionUUID->"56f2198d-8507-4cab-9fd0-\
+89fac9fe1451"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MyDiskDonutCentered", "[", 
+    RowBox[{"pad_", ",", "centroid_", ",", "myDiskDonut_"}], "]"}], " ", ":=",
+    " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"g", ",", "h"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumberQ", "[", 
+         RowBox[{"centroid", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[Equal]", "True"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"g", ",", "h"}], "}"}], " ", "=", " ", 
+         RowBox[{
+          RowBox[{"centroid", "  ", "-", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"pad", "+", ".5"}], ",", 
+             RowBox[{"pad", "+", ".5"}]}], "}"}]}], "//", 
+          RowBox[{
+           RowBox[{"Ceiling", "@", "#"}], "&"}]}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Which", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"g", "\[GreaterEqual]", "0"}], " ", "&&", " ", 
+           RowBox[{"h", "\[GreaterEqual]", "0"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ImagePad", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"g", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"h", ",", "0"}], "}"}]}], "}"}]}], "]"}], "&"}], "/@",
+            "myDiskDonut"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"g", "\[LessEqual]", "0"}], " ", "&&", " ", 
+           RowBox[{"h", "\[LessEqual]", "0"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ImagePad", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "g"}], ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "h"}], ",", "0"}], "}"}]}], "}"}]}], "]"}], 
+            "&"}], "/@", "myDiskDonut"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"g", "<", " ", "0"}], " ", "&&", " ", 
+           RowBox[{"h", ">", "0"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ImagePad", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "g"}], ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"h", ",", "0"}], "}"}]}], "}"}]}], "]"}], "&"}], "/@",
+            "myDiskDonut"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"g", "\[GreaterEqual]", "0"}], " ", "&&", " ", 
+           RowBox[{"h", "\[LessEqual]", "0"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ImagePad", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"g", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"-", "h"}], ",", "0"}], "}"}]}], "}"}]}], "]"}], 
+            "&"}], "/@", "myDiskDonut"}]}], "]"}]}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], " ", "\[IndentingNewLine]"}]], "Input",Exp\
+ressionUUID->"54181800-6135-487e-a38f-f7c6409e420a"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+14. My PUT IT TOGETHER... take a line of output, make masks, center masks via \
+padding, then calculate mask area, multiply mask x crop, then calculate mean \
+intensity, THEN... ahh fuckin finally, export the mean intensity, like just \
+{number}\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.7464496243784494`*^9, 3.7464496290851107`*^9}, {
+   3.746451235258383*^9, 3.74645123548956*^9}, {3.750949132243795*^9, 
+   3.7509491388134403`*^9}, {3.750950017616474*^9, 3.750950018408107*^9}, {
+   3.750950049325511*^9, 3.750950052579129*^9}, 3.750951542405332*^9, {
+   3.750951607120916*^9, 3.750951698469619*^9}, {3.750951739435706*^9, 
+   3.750951769329777*^9}, {3.750951806956396*^9, 
+   3.7509518489449253`*^9}},ExpressionUUID->"779efd4b-8f2b-49f9-83b9-\
+8ec127523541"],
+
+Cell["Module Unit Test input : ", "Text",
+ CellChangeTimes->{{3.750954857477921*^9, 
+  3.750954876337336*^9}},ExpressionUUID->"ca5d0c3e-3494-4f6f-ae55-\
+03405bb4b594"],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"MyPutItTogether", "[", 
+   RowBox[{"5", ",", "2", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+    GraphicsBox[
+     TagBox[
+      RasterBox[
+       RawArray["UnsignedInteger16",{{5760, 10737, 2839, 16415, 3168, 18760, 
+        11889, 6418, 6953, 14851, 9503}, {3991, 11725, 9215, 18348, 453, 3332,
+         3044, 4032, 6582, 987, 9544}, {3209, 12054, 5184, 8475, 8968, 14604, 
+        2057, 11437, 10532, 0, 4155}, {9709, 12753, 13041, 26864, 12835, 
+        11972, 9133, 9421, 6788, 9915, 1810}, {16579, 11601, 15839, 4813, 
+        15016, 13123, 7734, 6706, 4813, 4937, 8022}, {15592, 8763, 23161, 
+        9133, 31430, 26905, 16785, 2921, 23861, 17896, 13576}, {15880, 15921, 
+        34804, 46076, 22709, 23079, 14275, 11149, 10943, 10820, 6418}, {15345,
+         23367, 59282, 58377, 49573, 13288, 26741, 9503, 22380, 8063, 3044}, {
+        38383, 17279, 61709, 65535, 60927, 38918, 14604, 18636, 9174, 21434, 
+        9668}, {10573, 35339, 42744, 39288, 54715, 22092, 20076, 23161, 14070,
+         13946, 8392}, {14481, 12013, 7076, 22256, 13987, 25218, 9380, 14070, 
+        23285, 13987, 11313}}], {{0, 11}, {11, 0}}, {0, 65535},
+       ColorFunction->GrayLevel],
+      BoxForm`ImageTag[
+      "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+       MetaInformation -> 
+       Association[
+        "Exif" -> Association[
+          "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+           "ImageLength" -> 512, "BitsPerSample" -> 16, 
+           "PhotometricInterpretation" -> "Black Is Zero", "ImageDescription" -> 
+           "ImageJ=1.52d\nimages=195\nchannels=3\nframes=65\nhyperstack=true\n\
+mode=composite\nloop=false\nmin=693.0\nmax=2401.0", "StripOffsets" -> 2659, 
+           "SamplesPerPixel" -> 1, "RowsPerStrip" -> 512, "StripByteCounts" -> 
+           524288]]],
+      Selectable->False],
+     DefaultBaseStyle->"ImageGraphics",
+     ImageSizeRaw->{11, 11},
+     PlotRange->{{0, 11}, {0, 11}}]}], "]"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.750954824245982*^9, 3.750954888919532*^9}, {
+  3.7512478092836514`*^9, 3.7512478358589277`*^9}},
+ CellLabel->
+  "In[895]:=",ExpressionUUID->"8d287f3a-ad89-4185-a1ff-3420ca81e605"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MyPutItTogether", "::", "usage"}], "=", "\[IndentingNewLine]", 
+    "\"\<Determines the Mean Intensity of a spot in a crop.\n\nInputs\n1. \
+myPadSize: how big you want the crop to be. Should match the size of your \
+crops.\n2. myDonutRadius: Diff Lim Spot, use 2 or 3\n3. myCentroid_: should \
+be a list of coordinates for centroid, can be found in output of the \
+FindParticlesInCrop function ex.: {-2,3}\n4. myCrop: a crop of a spot \
+ex.:\!\(\*GraphicsBox[TagBox[RasterBox[RawArray[\"UnsignedInteger16\",{{5760, \
+10737, 2839, 16415, 3168, 18760, 11889, 6418, 6953, 14851, 9503}, {3991, \
+11725, 9215, 18348, 453, 3332, 3044, 4032, 6582, 987, 9544}, {3209, 12054, \
+5184, 8475, 8968, 14604, 2057, 11437, 10532, 0, 4155}, {9709, 12753, 13041, \
+26864, 12835, 11972, 9133, 9421, 6788, 9915, 1810}, {16579, 11601, 15839, \
+4813, 15016, 13123, 7734, 6706, 4813, 4937, 8022}, {15592, 8763, 23161, 9133, \
+31430, 26905, 16785, 2921, 23861, 17896, 13576}, {15880, 15921, 34804, 46076, \
+22709, 23079, 14275, 11149, 10943, 10820, 6418}, {15345, 23367, 59282, 58377, \
+49573, 13288, 26741, 9503, 22380, 8063, 3044}, {38383, 17279, 61709, 65535, \
+60927, 38918, 14604, 18636, 9174, 21434, 9668}, {10573, 35339, 42744, 39288, \
+54715, 22092, 20076, 23161, 14070, 13946, 8392}, {14481, 12013, 7076, 22256, \
+13987, 25218, 9380, 14070, 23285, 13987, 11313}}], {{0, 11}, {11, 0}}, {0, \
+65535},ColorFunction->GrayLevel],BoxForm`ImageTag[\"Bit16\", ColorSpace -> \
+\"Grayscale\", Interleaving -> None, MetaInformation -> Association[\"Exif\" \
+-> Association[\"NewSubfileType\" -> \"Primary image\", \"ImageWidth\" -> \
+512, \"ImageLength\" -> 512, \"BitsPerSample\" -> 16, \
+\"PhotometricInterpretation\" -> \"Black Is Zero\", \"ImageDescription\" -> \
+\"ImageJ=1.52dimages=195channels=3frames=65hyperstack=truemode=compositeloop=\
+falsemin=693.0max=2401.0\", \"StripOffsets\" -> 2659, \"SamplesPerPixel\" -> \
+1, \"RowsPerStrip\" -> 512, \"StripByteCounts\" -> \
+524288]]],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",ImageSizeRaw-\
+>{11, 11},PlotRange->{{0, 11}, {0, 11}}]\)\n\>\""}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "     ", 
+   RowBox[{
+    RowBox[{"version", " ", "1", "\[IndentingNewLine]", 
+     RowBox[{"MyPutItTogether", "[", 
+      RowBox[{
+      "myPadSize_", ",", "myDonutRadius_", ",", " ", "myCentroid_", ",", 
+       "myCrop_"}], "]"}]}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "masks", ",", "blank", ",", " ", "centeredMasks", ",", "masksizes", 
+        ",", "mymaskedcrops", ",", "meanIntensities", ",", 
+        "meanBGintensity"}], "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"masks", " ", "=", " ", 
+        RowBox[{"MyDiskDonutMask", "[", 
+         RowBox[{"myPadSize", ",", "myDonutRadius"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"blank", "=", " ", 
+        RowBox[{"Image", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{"1", ",", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
+           ",", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
+         "]"}]}], ";", " ", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "creates", " ", "a", " ", "maks", " ", "image", " ", "the", " ", 
+          "size", " ", "of", " ", "myCrop", " ", 
+          RowBox[{"that", "'"}], "s", " ", "just", " ", "1.", "s"}], ",", " ", 
+         RowBox[{
+         "to", " ", "adjust", " ", "the", " ", "size", " ", "of", " ", "the", 
+          " ", "masks", " ", "so", " ", "we", " ", "can", " ", "get", " ", 
+          "an", " ", "accurate", " ", "white", " ", "pixel", " ", "count"}]}],
+         " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"NumberQ", "[", 
+           RowBox[{"myCentroid", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[Equal]", "True"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"centeredMasks", " ", "=", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ImageMultiply", "[", 
+              RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
+            RowBox[{"MyDiskDonutCentered", "[", 
+             RowBox[{"myPadSize", ",", "myCentroid", ",", "masks"}], 
+             "]"}]}]}], ";", " ", 
+          RowBox[{"(*", 
+           RowBox[{
+           "these", " ", "centered", " ", "masks", " ", "now", " ", "look", 
+            " ", "like", " ", 
+            RowBox[{"this", ":", " ", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                GraphicsBox[
+                 TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIbikfBSAIf7LHT
+1DaPUvOHmrmEzKc9AACYriDw
+                   "], {{0, 11}, {11, 0}}, {0., 1.},
+                   ColorFunction->GrayLevel],
+                  BoxForm`ImageTag[
+                  "Real", ColorSpace -> Automatic, Interleaving -> None],
+                  Selectable->False],
+                 DefaultBaseStyle->"ImageGraphics",
+                 ImageSizeRaw->{11, 11},
+                 PlotRange->{{0, 11}, {0, 11}}], ",", 
+                GraphicsBox[
+                 TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIbioc3+GBPHE1t
+84g1n1L1lJqHSz+p9pILhrq51Apfcs1HqAMAOlMysQ==
+                   "], {{0, 
+                   11}, {11, 0}}, {0., 1.},
+                   ColorFunction->GrayLevel],
+                  BoxForm`ImageTag[
+                  "Real", ColorSpace -> Automatic, Interleaving -> None],
+                  Selectable->False],
+                 DefaultBaseStyle->"ImageGraphics",
+                 ImageSizeRaw->{11, 11},
+                 PlotRange->{{0, 11}, {0, 11}}]}], "}"}], " ", "with", " ", 
+              "image", " ", "dimensions", " ", "of", " ", "myCrop"}]}]}], 
+           "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"masksizes", " ", "=", "  ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Count", "[", 
+              RowBox[{
+               RowBox[{"Flatten", "@", 
+                RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], 
+             "&"}], "/@", "centeredMasks"}]}], " ", ";", " ", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{
+            "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", 
+             "masks"}], ",", " ", 
+            RowBox[{
+            "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", 
+             " ", "of", " ", "masks"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{"mymaskedcrops", " ", "=", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ImageMultiply", "[", 
+              RowBox[{"myCrop", ",", "#"}], "]"}], "&"}], "/@", 
+            "centeredMasks"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"meanIntensities", " ", "=", " ", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Total", "[", 
+               RowBox[{"Flatten", "@", 
+                RowBox[{"ImageData", "[", 
+                 RowBox[{"mymaskedcrops", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "]"}], "/", 
+              RowBox[{"masksizes", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", 
+               RowBox[{"Length", "@", "mymaskedcrops"}], ",", "1"}], "}"}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"meanBGintensity", " ", "=", "  ", 
+           RowBox[{
+            RowBox[{
+            "meanIntensities", "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}], "-", 
+            RowBox[{
+            "meanIntensities", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}]}]}]}], "\[IndentingNewLine]", 
+        "]"}]}]}], "]"}]}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.5750965858018923`*^9, 3.5750966952420454`*^9}, {
+   3.5751516881187415`*^9, 3.5751517415788164`*^9}, {3.5787952659665294`*^9, 
+   3.578795266902531*^9}, {3.746450618041257*^9, 3.7464506325390673`*^9}, {
+   3.746451229341381*^9, 3.746451233024241*^9}, {3.7464512851329184`*^9, 
+   3.746451476184409*^9}, {3.7494086106269345`*^9, 3.749408612465603*^9}, {
+   3.7494786662825217`*^9, 3.7494786831055794`*^9}, {3.750949144621682*^9, 
+   3.750949171539495*^9}, {3.750949202634305*^9, 3.7509492065697823`*^9}, {
+   3.750949249498136*^9, 3.75094935832798*^9}, {3.7509495261099157`*^9, 
+   3.7509497203736343`*^9}, {3.750949984139188*^9, 3.75095000820501*^9}, {
+   3.7509518854226313`*^9, 3.750952052766404*^9}, {3.7509520892903633`*^9, 
+   3.7509521128754253`*^9}, {3.7509522137544603`*^9, 
+   3.7509522447914953`*^9}, {3.750953090910695*^9, 3.750953140538918*^9}, {
+   3.75095324371974*^9, 3.750953388358055*^9}, {3.750953428027998*^9, 
+   3.750953493913622*^9}, {3.750953573142337*^9, 3.750953608839839*^9}, {
+   3.7509536637712517`*^9, 3.750953699764051*^9}, {3.750953783479846*^9, 
+   3.750953856635071*^9}, {3.7509539639782867`*^9, 3.750954075343678*^9}, {
+   3.750954189822278*^9, 3.750954191087611*^9}, {3.750954334505596*^9, 
+   3.750954583483062*^9}, {3.750954625225554*^9, 3.750954818591061*^9}, {
+   3.75095517403085*^9, 3.750955296091714*^9}, {3.7509561423445272`*^9, 
+   3.750956148938752*^9}, {3.751247755366507*^9, 3.751247824317606*^9}, {
+   3.75124915673415*^9, 3.751249186967305*^9}, {3.751250809816556*^9, 
+   3.751250819994603*^9}, 3.751282093286333*^9, {3.75128549231279*^9, 
+   3.7512854957255173`*^9}, {3.751285591399068*^9, 
+   3.751285600022389*^9}},ExpressionUUID->"165d3a48-e087-45b4-b7fc-\
+905c9b74dfb0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyPutItTogether", "[", 
+   RowBox[{
+   "myPadSize_", ",", "myDonutRadius_", ",", "myCrop_", ",", " ", 
+    "myCentroid_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "masks", ",", "blank", ",", " ", "centeredMasks", ",", "masksizes", ",", 
+      "mymaskedcrops", ",", "meanIntensities", ",", "meanBGintensity"}], 
+     "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"masks", " ", "=", " ", 
+      RowBox[{"MyDiskDonutMask", "[", 
+       RowBox[{"myPadSize", ",", "myDonutRadius"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"blank", "=", " ", 
+      RowBox[{"Image", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{"1", ",", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], ",", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
+       "]"}]}], ";", " ", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "creates", " ", "a", " ", "maks", " ", "image", " ", "the", " ", 
+        "size", " ", "of", " ", "myCrop", " ", 
+        RowBox[{"that", "'"}], "s", " ", "just", " ", "1.", "s"}], ",", " ", 
+       RowBox[{
+       "to", " ", "adjust", " ", "the", " ", "size", " ", "of", " ", "the", 
+        " ", "masks", " ", "so", " ", "we", " ", "can", " ", "get", " ", "an",
+         " ", "accurate", " ", "white", " ", "pixel", " ", "count"}]}], " ", 
+      "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumberQ", "[", 
+         RowBox[{"myCentroid", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[Equal]", "True"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"centeredMasks", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ImageMultiply", "[", 
+            RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
+          RowBox[{"MyDiskDonutCentered", "[", 
+           RowBox[{"myPadSize", ",", "myCentroid", ",", "masks"}], "]"}]}]}], 
+        ";", " ", 
+        RowBox[{"(*", 
+         RowBox[{
+         "these", " ", "centered", " ", "masks", " ", "now", " ", "look", " ",
+           "like", " ", 
+          RowBox[{"this", ":", " ", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              GraphicsBox[
+               TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIbikfBSAIf7LHT
+1DaPUvOHmrmEzKc9AACYriDw
+                 "], {{0, 11}, {11, 0}}, {0., 1.},
+                 ColorFunction->GrayLevel],
+                BoxForm`ImageTag[
+                "Real", ColorSpace -> Automatic, Interleaving -> None],
+                Selectable->False],
+               DefaultBaseStyle->"ImageGraphics",
+               ImageSizeRaw->{11, 11},
+               PlotRange->{{0, 11}, {0, 11}}], ",", 
+              GraphicsBox[
+               TagBox[RasterBox[CompressedData["
+1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIbioc3+GBPHE1t
+84g1n1L1lJqHSz+p9pILhrq51Apfcs1HqAMAOlMysQ==
+                 "], {{0, 11}, {
+                 11, 0}}, {0., 1.},
+                 ColorFunction->GrayLevel],
+                BoxForm`ImageTag[
+                "Real", ColorSpace -> Automatic, Interleaving -> None],
+                Selectable->False],
+               DefaultBaseStyle->"ImageGraphics",
+               ImageSizeRaw->{11, 11},
+               PlotRange->{{0, 11}, {0, 11}}]}], "}"}], " ", "with", " ", 
+            "image", " ", "dimensions", " ", "of", " ", "myCrop"}]}]}], 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"masksizes", " ", "=", "  ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{
+             RowBox[{"Flatten", "@", 
+              RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], 
+           "&"}], "/@", "centeredMasks"}]}], " ", ";", " ", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{
+          "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", "masks"}], 
+          ",", " ", 
+          RowBox[{
+          "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", 
+           " ", "of", " ", "masks"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"mymaskedcrops", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ImageMultiply", "[", 
+            RowBox[{"myCrop", ",", "#"}], "]"}], "&"}], "/@", 
+          "centeredMasks"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"meanIntensities", " ", "=", " ", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Total", "[", 
+             RowBox[{"Flatten", "@", 
+              RowBox[{"ImageData", "[", 
+               RowBox[{"mymaskedcrops", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "]"}], "/", 
+            RowBox[{"masksizes", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "@", "mymaskedcrops"}], ",", "1"}], "}"}]}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"meanBGintensity", " ", "=", "  ", 
+         RowBox[{
+          RowBox[{
+          "meanIntensities", "\[LeftDoubleBracket]", "1", 
+           "\[RightDoubleBracket]"}], "-", 
+          RowBox[{
+          "meanIntensities", "\[LeftDoubleBracket]", "2", 
+           "\[RightDoubleBracket]"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+         "meanBGintensity", ",", "centeredMasks", ",", "mymaskedcrops", ",", 
+          "masksizes"}], "}"}]}]}], " ", "\[IndentingNewLine]", "]"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.751285609742506*^9, 3.75128562696028*^9}},
+ CellLabel->
+  "In[962]:=",ExpressionUUID->"c84ab2b8-1389-4654-985e-bc8960712bba"]
 }, Closed]]
 }, Open  ]],
 
@@ -871,35 +1394,46 @@ Cell[CellGroupData[{
 Cell[580, 22, 169, 3, 52, "Chapter",ExpressionUUID->"56823997-d80c-4ef0-aa1a-e3d5e632253d"],
 Cell[CellGroupData[{
 Cell[774, 29, 508, 9, 34, "Subsubsection",ExpressionUUID->"c4ca0d97-3ecd-43f8-9978-3622a2775ed6"],
-Cell[1285, 40, 167, 3, 14, "Text",ExpressionUUID->"97ed580c-6650-4ca7-a75d-2d80cb5a0b6c"],
-Cell[1455, 45, 322, 7, 12, "Input",ExpressionUUID->"57125f8f-2d01-4b35-adb8-b1678d9316c9"],
-Cell[1780, 54, 3821, 82, 167, "Input",ExpressionUUID->"2c73ae9a-83fb-4154-80d6-ec601fbce1e8"]
+Cell[1285, 40, 167, 3, 7, "Text",ExpressionUUID->"97ed580c-6650-4ca7-a75d-2d80cb5a0b6c"],
+Cell[1455, 45, 322, 7, 6, "Input",ExpressionUUID->"57125f8f-2d01-4b35-adb8-b1678d9316c9"],
+Cell[1780, 54, 3821, 82, 93, "Input",ExpressionUUID->"2c73ae9a-83fb-4154-80d6-ec601fbce1e8"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[5638, 141, 523, 9, 29, "Subsubsection",ExpressionUUID->"e17ea100-f1e6-4a04-872b-816ec2e0c99e"],
-Cell[6164, 152, 167, 3, 14, "Text",ExpressionUUID->"ab3c44ca-a9e0-464d-ad47-451e91ca9b2b"],
-Cell[6334, 157, 286, 6, 12, "Input",ExpressionUUID->"cc56b660-a411-4c8e-90ab-b58bb3ce9627"],
-Cell[6623, 165, 4356, 93, 167, "Input",ExpressionUUID->"acb7364b-e8a6-4bd9-ac24-b9d2b9052a37"]
+Cell[6164, 152, 167, 3, 7, "Text",ExpressionUUID->"ab3c44ca-a9e0-464d-ad47-451e91ca9b2b"],
+Cell[6334, 157, 286, 6, 6, "Input",ExpressionUUID->"cc56b660-a411-4c8e-90ab-b58bb3ce9627"],
+Cell[6623, 165, 4356, 93, 93, "Input",ExpressionUUID->"acb7364b-e8a6-4bd9-ac24-b9d2b9052a37"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[11016, 263, 371, 6, 29, "Subsubsection",ExpressionUUID->"582737df-7eeb-49c3-a878-448b5755e435"],
 Cell[11390, 271, 167, 3, 27, "Text",ExpressionUUID->"67d154dd-6a2c-432c-9e32-2f3543c6d5df"],
 Cell[11560, 276, 1347, 37, 30, "Input",ExpressionUUID->"5acf05c7-ead8-4c37-bc70-9c327c6ff172"],
 Cell[12910, 315, 9732, 230, 605, "Input",ExpressionUUID->"94b9bc56-dd73-4ab5-9347-d419a2eb19ed"]
-}, Open  ]],
-Cell[22657, 548, 741, 12, 34, "Subsubsection",ExpressionUUID->"74c1f778-8c2a-4910-bee8-988c5af62b87"],
+}, Closed]],
+Cell[22657, 548, 741, 12, 29, "Subsubsection",ExpressionUUID->"74c1f778-8c2a-4910-bee8-988c5af62b87"],
 Cell[CellGroupData[{
 Cell[23423, 564, 776, 13, 49, "Subsubsection",ExpressionUUID->"7e415811-0192-4877-8a52-8e1e3ee3d1d9"],
 Cell[24202, 579, 167, 3, 27, "Text",ExpressionUUID->"d016a72e-47ac-49ba-afcc-2628581146f4"],
 Cell[24372, 584, 2210, 42, 30, "Input",ExpressionUUID->"5bbbefea-6c48-4c21-ac61-e82b07573c21"],
 Cell[26585, 628, 7968, 175, 494, "Input",ExpressionUUID->"e5cb3d74-c03b-4b11-8bd7-890c216cdaf5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[34590, 808, 535, 8, 29, "Subsubsection",ExpressionUUID->"6a5b5b1f-2ba8-4e01-b7c1-76d16406d89b"],
+Cell[35128, 818, 1181, 24, 153, "Input",ExpressionUUID->"b3495704-3a68-4144-8c1f-8c1360250d0f"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34590, 808, 535, 8, 34, "Subsubsection",ExpressionUUID->"6a5b5b1f-2ba8-4e01-b7c1-76d16406d89b"],
-Cell[35128, 818, 1181, 24, 83, "Input",ExpressionUUID->"b3495704-3a68-4144-8c1f-8c1360250d0f"]
+Cell[36358, 848, 162, 3, 52, "Chapter",ExpressionUUID->"56f2198d-8507-4cab-9fd0-89fac9fe1451"],
+Cell[36523, 853, 3620, 94, 249, "Input",ExpressionUUID->"54181800-6135-487e-a38f-f7c6409e420a"],
+Cell[CellGroupData[{
+Cell[40168, 951, 776, 13, 54, "Subsubsection",ExpressionUUID->"779efd4b-8f2b-49f9-83b9-8ec127523541"],
+Cell[40947, 966, 167, 3, 27, "Text",ExpressionUUID->"ca5d0c3e-3494-4f6f-ae55-03405bb4b594"],
+Cell[41117, 971, 2267, 43, 30, "Input",ExpressionUUID->"8d287f3a-ad89-4185-a1ff-3420ca81e605"],
+Cell[43387, 1016, 10044, 201, 531, "Input",ExpressionUUID->"165d3a48-e087-45b4-b7fc-905c9b74dfb0"],
+Cell[53434, 1219, 6007, 146, 333, "Input",ExpressionUUID->"c84ab2b8-1389-4654-985e-bc8960712bba"]
 }, Closed]]
 }, Open  ]],
-Cell[36336, 846, 174, 3, 52, "Chapter",ExpressionUUID->"e471316b-1a3c-4463-bba8-0ffc6c889496"]
+Cell[59468, 1369, 174, 3, 52, "Chapter",ExpressionUUID->"e471316b-1a3c-4463-bba8-0ffc6c889496"]
 }
 ]
 *)
