@@ -1,0 +1,5 @@
+>>> Instructions on running ImageJ / FIJI codes 
+
+1. create_substack.ijm 
+
+Purpose: Post-processing images from FIXIE microscope in a click. 
