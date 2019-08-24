@@ -10,16 +10,23 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4445,        140]
-NotebookOptionsPosition[      3587,        112]
-NotebookOutlinePosition[      3939,        128]
-CellTagsIndexPosition[      3896,        125]
+NotebookDataLength[      4762,        148]
+NotebookOptionsPosition[      3813,        119]
+NotebookOutlinePosition[      4165,        135]
+CellTagsIndexPosition[      4122,        132]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+Cell["\<\
+This code shows how to use a place holder to plot gaps in a ListLinePlot \
+\>", "Text",
+ CellChangeTimes->{{3.775648998134389*^9, 
+  3.775649016446027*^9}},ExpressionUUID->"69b20ced-ab40-4f59-9c7a-\
+db949fff9d5c"],
 
 Cell[CellGroupData[{
+
 Cell["Using the Placeholder[] function: ", "Subsection",
  CellChangeTimes->{{3.750083665453724*^9, 
   3.7500836790532627`*^9}},ExpressionUUID->"9b793793-2cdc-47b9-9fdd-\
@@ -127,24 +134,23 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[558, 20, 223, 5, 35, "Text",ExpressionUUID->"69b20ced-ab40-4f59-9c7a-db949fff9d5c"],
 Cell[CellGroupData[{
-Cell[580, 22, 184, 3, 54, "Subsection",ExpressionUUID->"9b793793-2cdc-47b9-9fdd-a509526e36b3"],
+Cell[806, 29, 184, 3, 54, "Subsection",ExpressionUUID->"9b793793-2cdc-47b9-9fdd-a509526e36b3"],
 Cell[CellGroupData[{
-Cell[789, 29, 479, 14, 30, "Input",ExpressionUUID->"8aebb58f-e38d-49af-b376-eddc3167570d",
+Cell[1015, 36, 479, 14, 30, "Input",ExpressionUUID->"8aebb58f-e38d-49af-b376-eddc3167570d",
  CellID->370679693],
-Cell[1271, 45, 357, 8, 34, "Output",ExpressionUUID->"1a1bc58f-caff-4f69-970e-4f9427411b49",
+Cell[1497, 52, 357, 8, 34, "Output",ExpressionUUID->"1a1bc58f-caff-4f69-970e-4f9427411b49",
  CellID->643974889]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1665, 58, 283, 6, 30, "Input",ExpressionUUID->"7d2d50d9-cd18-4884-bf20-a02e98248604",
+Cell[1891, 65, 283, 6, 30, "Input",ExpressionUUID->"7d2d50d9-cd18-4884-bf20-a02e98248604",
  CellID->35352186],
-Cell[1951, 66, 1608, 42, 247, "Output",ExpressionUUID->"013e6a9b-117a-4574-9314-4e93e1971180",
+Cell[2177, 73, 1608, 42, 247, "Output",ExpressionUUID->"013e6a9b-117a-4574-9314-4e93e1971180",
  CellID->445214605]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
