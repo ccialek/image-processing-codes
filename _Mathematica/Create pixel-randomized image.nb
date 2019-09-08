@@ -1,0 +1,124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4279,        116]
+NotebookOptionsPosition[      3624,         95]
+NotebookOutlinePosition[      3978,        111]
+CellTagsIndexPosition[      3935,        108]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Create a pixel-randomized image", "Subsubsection",
+ CellChangeTimes->{{3.776892502698687*^9, 
+  3.776892516405363*^9}},ExpressionUUID->"d3fe1e5c-86c4-4551-a4d4-\
+ca6affede872"],
+
+Cell["Create a n x n image with random intensities between 0 and 1", "Text",
+ CellChangeTimes->{{3.7768925206469717`*^9, 
+  3.7768925401849318`*^9}},ExpressionUUID->"fb7db3c0-7028-47cb-a6af-\
+f70e3f13b618"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"n", "=", "11"}], ";", "  ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "set", " ", "n", " ", "to", " ", "the", " ", "size", " ", "of", " ", "the",
+     " ", "box", " ", "you", " ", "want", " ", "to", " ", "make"}], " ", 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Table", "[", " ", 
+    RowBox[{
+     RowBox[{"Table", "[", " ", 
+      RowBox[{
+       RowBox[{"RandomReal", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}], "]"}], ",", " ", "n"}], "]"}], ",", 
+     " ", "n"}], "]"}], "//", "Image"}]}]], "Input",
+ CellChangeTimes->{{3.77689254882955*^9, 3.776892580638467*^9}},
+ CellLabel->
+  "In[1634]:=",ExpressionUUID->"544e3935-0704-4e98-b355-f5aeea656f9e"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1:eJwtkn0w1Akcxg1mL9Idcd0g4pTzsl4ub9V19+xK3kN6OScj1N55aXFeVvY4
+knLI5VxmvFRUhtVQCuVYZ3NLRmq8rZclrOVn87O7GIotc7fN3B/Pd+aZ5zvf
+P77PxzQiLvBHVRUVlcRtyhEYnkJPSAhPPUH5aBjhF5wdGR/D7f/L1yjn3OdJ
+I5hJtOJp2deh0tDxemiXBFeTKxIE2vPQPhupaXj5BW6G+vkm2c3BNfhk4J4C
+MdLUM/y4thKYaKr9S4APrl5s5fe/SLAcVTxk0jSOw/vbjrAspsBljEx5H5wF
+qzRr5G3fIgLM9wRrPniFL8vd4yLsZlDprN9UIK4CzyXnnNndQTgzkja1Rgnc
+P2TIkp1fANXpMf8RawC2/VttBnTlfupmuhZFDl5IeXbsCxJL0ZqKVBcpLIQn
+EzeD+HDMi3Y5qi1FyYITW6xGQLLl71Hmw4db/wiz9YkM8dYrNQ4trXBdjRHR
+aWLQiv4ReJz4E5npnHopYxENbau7bfzHMHx2Xf7BfQRZAdy4tXECfobcZJ12
+Eai8TLJWYwKFHOr29dhmuKc8kvxtsoDh15bVN75T/uV27kP1MhE4gd/eCWdP
+on+AUv3VWjOW43gvQzV6UEIxp8S6vkRDPSvCMlZ5j53fn91OgqbSWsAMkUOF
++pTm+EkHLkZknDGnCxGYYt7IbBEjku1ePF9MgFbIt+hyuIWSg6RnSt8YFPQH
+zrxv3qApyluv3WsSVqKitqpnBJr0bTo3tgSw1+zkJ1IHocj6g2jePQ+LFNUP
+TU6zqHLrSWvMEqKyRD8MqlPgZMuM+7ykOHxGnxLxbAK9fr9NGClIxJu9UbOe
+G0KkgyL519pphNlDYHpdBld5/CnRsRm07NKNVq3vxvLgzdLJpE4UVVXwBQVL
+YE1Fvb1MkWDVqr/3dY8I6lc8SgPM5lFXP6rxBUPZo+eckSS1Hhdzo39aYC0g
+aOdV380BHmhC3YzNS53Ye61GbmM9jNbcmfOmMSQOrRyo7QxegPHWu5ieAwSu
+TexlpK+PI6i7L3/fw+dIG877WmAggzOz/Zhd1yIWqR1Hh2pIhN2bf/9XqRC/
+VxqPeim53UjNzg6dmUDnxrTu4m0Sp6crenL2zUHodqt8ixSj20Ov4fF+Ajyd
+uguytF7Ytwk8T3m+Aud4Ppeu5EHFIqRI06wZY7R3TJp8FJmn5Z+RDrNgT6a+
+J9ZEaMm9u2T7XIz4XZwfOsJkyp5X6vqth5C2ttP7+I4BVIXf0wm4RGK4cenn
+IO0x1OmtFzmzZVDc9zEI9ZmDVrK/C7FDBgnljoFiqht+lL6sOeYsbnzqmC9+
+KgWHXqhtLiXwxLK63LeMROY2w6kjeRX4Dzk/8rA=
+    "], {{0, 11}, {11, 0}}, {0., 1.},
+    
+    ColorFunction->GrayLevel],
+   BoxForm`ImageTag["Real", ColorSpace -> Automatic, Interleaving -> None],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSizeRaw->{11, 11},
+  PlotRange->{{0, 11}, {0, 11}}]], "Output",
+ CellChangeTimes->{3.77689258089371*^9},
+ CellLabel->
+  "Out[1634]=",ExpressionUUID->"66b2dc4d-8824-48d2-948c-3552307e6246"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 612},
+WindowMargins->{{Automatic, 95}, {Automatic, 43}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 182, 3, 45, "Subsubsection",ExpressionUUID->"d3fe1e5c-86c4-4551-a4d4-ca6affede872"],
+Cell[765, 27, 206, 3, 35, "Text",ExpressionUUID->"fb7db3c0-7028-47cb-a6af-f70e3f13b618"],
+Cell[CellGroupData[{
+Cell[996, 34, 743, 19, 73, "Input",ExpressionUUID->"544e3935-0704-4e98-b355-f5aeea656f9e"],
+Cell[1742, 55, 1854, 36, 50, "Output",ExpressionUUID->"66b2dc4d-8824-48d2-948c-3552307e6246"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
