@@ -1,0 +1,660 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26433,        652]
+NotebookOptionsPosition[     22487,        581]
+NotebookOutlinePosition[     22823,        596]
+CellTagsIndexPosition[     22780,        593]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Compiling confocal images into one .tif stack ", "Subsection",
+ CellChangeTimes->{{3.7921453782055197`*^9, 
+  3.792145391303665*^9}},ExpressionUUID->"21d36d94-b570-47d6-b58b-\
+cff4746375ef"],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "Subsubsection",
+ CellChangeTimes->{{3.7921467735183697`*^9, 
+  3.7921467749114027`*^9}},ExpressionUUID->"b711486f-6e0a-4f6c-84cd-\
+714f2cec909d"],
+
+Cell["Note: The FILE needs to be a myFileNames[[file]] format !!! ", "Text",
+ CellChangeTimes->{{3.79214797930655*^9, 
+  3.792147992811541*^9}},ExpressionUUID->"6d99413f-5010-42de-95e6-\
+87ef70bbfce9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyImportMean", "[", 
+   RowBox[{"ext_", ",", " ", "folder_", ",", "  ", "file_"}], "]"}], " ", ":=",
+   " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"imgs", ",", " ", "means"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"imgs", " ", "=", " ", 
+      RowBox[{"Import", "/@", 
+       RowBox[{"FileNames", "[", " ", 
+        RowBox[{
+         RowBox[{"\"\<*\>\"", "<>", "file", "<>", " ", "ext"}], ",", " ", 
+         "folder"}], "]"}]}]}], ";", "\n", 
+     RowBox[{"means", " ", "=", " ", 
+      RowBox[{"Table", "[", "  ", 
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{"imgs", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "z"}], "]"}], "]"}], "]"}], " ", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"z", ",", "1", ",", 
+          RowBox[{"Length", "@", 
+           RowBox[{"imgs", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.792146511149824*^9, 3.7921466870690527`*^9}, {
+  3.7921479372870083`*^9, 3.7921479637451067`*^9}, {3.7921480001388187`*^9, 
+  3.792148007189063*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"123ca3ac-e170-43ce-8af1-911880e66476"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Set parameters: ", "Subsubsection",
+ CellChangeTimes->{{3.7921453985782127`*^9, 
+  3.792145411384623*^9}},ExpressionUUID->"452dc843-d8c7-43dd-96e2-\
+79bbb59b80f4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "myFolder", " ", "=", " ", 
+   "\"\</Volumes/BITTY/Confocal \
+images/20200225_TL_NT_dy405-aRCK_N-GFP-LacZ_Cy3-smF-smiFISH_Cy5-MS5-smFISH/\>\
+\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.792145422948365*^9, 3.792145436429628*^9}, {
+  3.792147306385491*^9, 3.7921473067460737`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"7dfe137e-df8c-42d2-8b8b-660f0e4ee463"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"myExportFolder", " ", "=", " ", 
+  RowBox[{"CreateDirectory", "[", 
+   RowBox[{
+    RowBox[{"StringTake", "[", " ", 
+     RowBox[{"myFolder", ",", 
+      RowBox[{";;", 
+       RowBox[{"-", "2"}]}]}], "]"}], " ", "<>", " ", "\"\<_Reorder/\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.792147150485874*^9, 3.7921471703888693`*^9}, {
+   3.792147200393344*^9, 3.7921472383083076`*^9}, 3.792147284474378*^9, {
+   3.792147369283175*^9, 3.792147378605332*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"bbc767cd-e772-4556-807a-880a1bde893d"],
+
+Cell[BoxData["\<\"/Volumes/BITTY/Confocal \
+images/20200225_TL_NT_dy405-aRCK_N-GFP-LacZ_Cy3-smF-smiFISH_Cy5-MS5-smFISH_\
+Reorder/\"\>"], "Output",
+ CellChangeTimes->{
+  3.79214722416576*^9, {3.792147254920024*^9, 3.7921473087648087`*^9}, 
+   3.792147379557231*^9, 3.79214801582614*^9, 3.792148103177102*^9, 
+   3.792148585350479*^9, 3.792148652658843*^9, 3.792148715920163*^9, 
+   3.7921489031719637`*^9, 3.792149212410192*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"c4c350bc-b4e2-4536-ac75-687ec2bc0f35"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"myFiles", " ", "=", "  ", 
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<*T0_C0.tif\>\"", ",", "myFolder"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"myFileNames", " ", "=", " ", 
+  RowBox[{"Table", "[", " ", 
+   RowBox[{
+    RowBox[{"StringTake", "[", " ", 
+     RowBox[{
+      RowBox[{"myFiles", " ", "[", 
+       RowBox[{"[", "file", "]"}], "]"}], " ", ",", 
+      RowBox[{
+       RowBox[{"-", "31"}], ";;", 
+       RowBox[{"-", "28"}]}]}], "]"}], " ", ",", 
+    RowBox[{"{", 
+     RowBox[{"file", ",", "1", ",", 
+      RowBox[{"Length", "@", "myFiles"}], ",", " ", "1"}], "}"}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.792145543795389*^9, 3.792145693325996*^9}, {
+  3.792146127028944*^9, 3.792146129219103*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"711036bd-543f-4be6-9434-b6a4a869f415"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"TA01\"\>", ",", "\<\"TA02\"\>", ",", "\<\"TA03\"\>", 
+   ",", "\<\"TA06\"\>", ",", "\<\"TA07\"\>", ",", "\<\"TA08\"\>", 
+   ",", "\<\"TA09\"\>", ",", "\<\"TA10\"\>", ",", "\<\"TA14\"\>", 
+   ",", "\<\"TA16\"\>", ",", "\<\"TA20\"\>", ",", "\<\"TA21\"\>", 
+   ",", "\<\"TA22\"\>", ",", "\<\"TA23\"\>", ",", "\<\"TA24\"\>", 
+   ",", "\<\"TA25\"\>", ",", "\<\"TA26\"\>", ",", "\<\"TA27\"\>", 
+   ",", "\<\"TL01\"\>", ",", "\<\"TL02\"\>", ",", "\<\"TL05\"\>", 
+   ",", "\<\"TL06\"\>", ",", "\<\"TL07\"\>", ",", "\<\"TL08\"\>", 
+   ",", "\<\"TL09\"\>", ",", "\<\"TL10\"\>", ",", "\<\"TL10\"\>", 
+   ",", "\<\"TL11\"\>", ",", "\<\"TL13\"\>", ",", "\<\"TL13\"\>", 
+   ",", "\<\"TL14\"\>", ",", "\<\"TL15\"\>", ",", "\<\"TL16\"\>", 
+   ",", "\<\"TL17\"\>", ",", "\<\"TL21\"\>", ",", "\<\"TL22\"\>", 
+   ",", "\<\"TL23\"\>", ",", "\<\"TL24\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.792145545797387*^9, 3.792145639430929*^9}, {
+   3.792145684911563*^9, 3.792145693665474*^9}, 3.792146090710927*^9, 
+   3.792146130011524*^9, {3.792147271628708*^9, 3.7921472760044203`*^9}, 
+   3.792147310750778*^9, 3.792148024486931*^9, {3.792148585401495*^9, 
+   3.792148597876129*^9}, 3.792148652719508*^9, 3.792148715972609*^9, 
+   3.792148903226255*^9, 3.7921492137922697`*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"fa36574f-ae9b-425f-b1c3-76fb20d53fa8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Avg ch0 ", "Subsubsection",
+ CellChangeTimes->{{3.792145773429447*^9, 
+  3.79214577664439*^9}},ExpressionUUID->"1213a38a-75a1-43ea-8c98-\
+93d2443552f1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"n", "=", "1"}], ";"}]], "Input",
+ CellChangeTimes->{{3.792148046765649*^9, 3.792148048871336*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"cecc41fc-aa4d-43e8-abe8-22556d26ab7f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ext", " ", "=", " ", "\"\<*C0.tif\>\""}], ";"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"folder", " ", "=", "  ", "myFolder"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"file", " ", "=", "  ", 
+    RowBox[{"myFileNames", "[", 
+     RowBox[{"[", "n", "]"}], "]"}]}], ";"}], " "}]}], "Input",
+ CellLabel->"In[8]:=",ExpressionUUID->"9f742ec3-9a24-4b2c-8df3-626cf3d1d961"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"imgs", " ", "=", " ", 
+   RowBox[{"Import", "/@", 
+    RowBox[{"FileNames", "[", " ", 
+     RowBox[{
+      RowBox[{"\"\<*\>\"", "<>", "file", "<>", " ", "ext"}], ",", " ", 
+      "folder"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"means", " ", "=", " ", 
+   RowBox[{"Table", "[", "  ", 
+    RowBox[{
+     RowBox[{"Mean", "[", 
+      RowBox[{"imgs", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "z"}], "]"}], "]"}], "]"}], " ", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", "1", ",", 
+       RowBox[{"Length", "@", 
+        RowBox[{"imgs", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], "  ", 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.79214923794484*^9, 3.792149356043334*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"8f96da9b-6e33-4570-b2c7-5b1b298359f7"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"imgsc0", " ", "=", " ", 
+    RowBox[{"Import", "/@", 
+     RowBox[{"FileNames", "[", " ", 
+      RowBox[{
+       RowBox[{"\"\<*\>\"", "<>", 
+        RowBox[{"myFileNames", "[", 
+         RowBox[{"[", "file", "]"}], "]"}], " ", "<>", " ", 
+        "\"\<*C0.tif\>\""}], ",", " ", "myFolder"}], "]"}]}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.792145933007186*^9, 3.792145940529682*^9}, {
+  3.792146170598888*^9, 3.7921461911353893`*^9}, {3.792146265352612*^9, 
+  3.792146299431686*^9}, {3.792146745141543*^9, 3.792146745179233*^9}},
+ EmphasizeSyntaxErrors->True,
+ CellLabel->"In[7]:=",ExpressionUUID->"78e0ec4f-f59f-44f9-837e-0cf78d30ad3e"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"meansc0", " ", "=", " ", 
+    RowBox[{"Table", "[", "  ", 
+     RowBox[{
+      RowBox[{"Mean", "[", 
+       RowBox[{"imgsc0", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "z"}], "]"}], "]"}], "]"}], " ", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"z", ",", "1", ",", 
+        RowBox[{"Length", "@", 
+         RowBox[{"imgsc0", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}]}], "]"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.792146330950173*^9, 3.792146438298711*^9}, {
+  3.792146743181411*^9, 3.7921467432334623`*^9}},
+ EmphasizeSyntaxErrors->True,
+ CellLabel->"In[7]:=",ExpressionUUID->"a11fbb1e-7a1f-4f74-8dfc-4cce60354c91"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"meansc0", " ", "=", " ", 
+   RowBox[{"MyImportMean", "[", 
+    RowBox[{"\"\<*C0.tif\>\"", ",", " ", "myFolder", ",", " ", 
+     RowBox[{"myFileNames", "[", 
+      RowBox[{"[", "n", "]"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.792148033690164*^9, 3.792148062483403*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"365ccc4e-de5c-438e-8554-0e2080e76c6a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Avg ch1", "Subsubsection",
+ CellChangeTimes->{{3.792145773429447*^9, 
+  3.7921457844429493`*^9}},ExpressionUUID->"30c8e0f9-475b-4fdf-a723-\
+fdf4e61452ed"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"meansc1", " ", "=", " ", 
+   RowBox[{"MyImportMean", "[", 
+    RowBox[{"\"\<*C1.tif\>\"", ",", " ", "myFolder", ",", 
+     RowBox[{"myFileNames", "[", 
+      RowBox[{"[", "n", "]"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7921467478736067`*^9, 3.792146749555215*^9}, 
+   3.7921480531112137`*^9},
+ CellLabel->"In[19]:=",ExpressionUUID->"e8b1fec4-21d4-462b-b7d1-00aee2a8e5cf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Avg ch2 ", "Subsubsection",
+ CellChangeTimes->{{3.792145773429447*^9, 
+  3.79214578582677*^9}},ExpressionUUID->"3bf18518-83b0-4cb6-b6e5-\
+98c5301a2662"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"meansc2", " ", "=", " ", 
+   RowBox[{"MyImportMean", "[", 
+    RowBox[{"\"\<*C2.tif\>\"", ",", " ", "myFolder", ",", 
+     RowBox[{"myFileNames", "[", 
+      RowBox[{"[", "n", "]"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7921467538991203`*^9, 3.7921467553647346`*^9}, {
+   3.792147449722905*^9, 3.792147455507173*^9}, 3.7921480546037292`*^9},
+ CellLabel->"In[20]:=",ExpressionUUID->"456664fa-27a2-4e8f-b129-8ee65abf7eba"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Avg ch3", "Subsubsection",
+ CellChangeTimes->{{3.792145773429447*^9, 
+  3.792145787636476*^9}},ExpressionUUID->"684f3759-0fba-46c8-b08d-\
+4a71241fb662"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"meansc3", " ", "=", " ", 
+   RowBox[{"MyImportMean", "[", 
+    RowBox[{"\"\<*C3.tif\>\"", ",", " ", "myFolder", ",", 
+     RowBox[{"myFileNames", "[", 
+      RowBox[{"[", "n", "]"}], "]"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7921467595163383`*^9, 3.792146761355569*^9}, 
+   3.792148055706061*^9},
+ CellLabel->"In[21]:=",ExpressionUUID->"90fd7a08-404c-4a07-a7c0-dfe4e8d398c0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Merge, rearrange, and export as .tif ", "Subsubsection",
+ CellChangeTimes->{{3.792145792098485*^9, 
+  3.7921458024749203`*^9}},ExpressionUUID->"e9237160-ab94-4bce-badd-\
+bb379f5aafe5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"myTif", " ", "=", " ", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"{", 
+      RowBox[{"meansc3", ",", "meansc2", ",", "meansc1", ",", "meansc0"}], 
+      "}"}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7921467903745728`*^9, 3.7921468314206877`*^9}, {
+  3.792146923296103*^9, 3.792146924371907*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"241ee23c-1561-4d45-bf96-2267c4a85be5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"myExportFolder", " ", "<>", " ", "\"\<A_TESTIMG.tif\>\""}], ",", 
+   " ", "myTif"}], "]"}]], "Input",
+ CellChangeTimes->{{3.79214681476898*^9, 3.792146862962069*^9}, {
+   3.7921469098771553`*^9, 3.7921469133980827`*^9}, 3.792147384895296*^9},
+ CellLabel->"In[23]:=",ExpressionUUID->"6db5475c-a0ee-484f-bc86-f2d1910e1608"],
+
+Cell[BoxData["\<\"/Volumes/BITTY/Confocal \
+images/20200225_TL_NT_dy405-aRCK_N-GFP-LacZ_Cy3-smF-smiFISH_Cy5-MS5-smFISH_\
+Reorder/A_TESTIMG.tif\"\>"], "Output",
+ CellChangeTimes->{3.79214686885039*^9, 3.792146927950869*^9, 
+  3.7921473378057413`*^9, 3.792147386431835*^9, 3.792148076220292*^9, 
+  3.792148107461591*^9, 3.792149413751128*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"cae74797-1247-42c0-8fef-b1eb15ae650e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Function to do all this... ", "Subsubsection",
+ CellChangeTimes->{{3.792146482661991*^9, 3.792146503509158*^9}, {
+  3.792147406391588*^9, 
+  3.792147409504972*^9}},ExpressionUUID->"af4cf0fe-ffa1-4dc9-bac4-\
+ebd9c43b1e7b"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"MyImportMean", "[", 
+    RowBox[{"folder_", ",", "myExportFolder_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "file", ",", " ", "meansc0", ",", " ", "meansc1", ",", "meansc2", ",", 
+       "meansc3", ",", "myTif"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"file", " ", "=", " ", 
+       RowBox[{"myFileNames", "[", 
+        RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc0", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C0.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc1", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C1.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc2", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C2.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc3", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C3.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"myTif", " ", "=", " ", 
+       RowBox[{"Flatten", "@", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"meansc3", ",", "meansc2", ",", "meansc1", ",", "meansc0"}],
+           "}"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{
+        RowBox[{"myExportFolder", " ", "<>", " ", "\"\<A_TESTIMG.tif\>\""}], 
+        ",", " ", "myTif"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.792147446224197*^9, 3.79214748420494*^9}, {
+   3.792147668423534*^9, 3.7921477176906643`*^9}, {3.7921477484141006`*^9, 
+   3.7921477774728537`*^9}, {3.792147815130508*^9, 3.7921478157301273`*^9}, {
+   3.792148144969841*^9, 3.792148157341771*^9}, {3.7921482327066813`*^9, 
+   3.792148253791313*^9}, {3.7921486109964848`*^9, 3.792148611067493*^9}, 
+   3.792148734657246*^9},ExpressionUUID->"27368a00-6b53-46eb-84f2-\
+e2e04f447dee"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"MyImportMean", "[", 
+    RowBox[{"\"\<*C0.tif\>\"", ",", " ", "myFolder", ",", " ", 
+     RowBox[{"myFileNames", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], " ", "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{
+  3.792148199463908*^9, {3.7921482569317627`*^9, 3.792148282527248*^9}, {
+   3.792148333980019*^9, 3.7921483452947617`*^9}, 3.7921487302814217`*^9, {
+   3.7921487690455437`*^9, 3.7921487921393623`*^9}, {3.792148913069407*^9, 
+   3.792148920030925*^9}, {3.7921494509519672`*^9, 3.792149465161293*^9}, {
+   3.792149551372365*^9, 
+   3.792149551391127*^9}},ExpressionUUID->"4e3b9003-42e0-4cb1-9c11-\
+f48a48457586"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"works", "!"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"MyReorderConfocalFiles", "[", 
+     RowBox[{"file_", ",", " ", "folder_", ",", "myExportFolder_"}], "]"}], 
+    " ", ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", " ", 
+       RowBox[{
+       "meansc0", ",", " ", "meansc1", ",", "meansc2", ",", "meansc3", ",", 
+        "myTif"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"meansc0", " ", "=", " ", 
+        RowBox[{"MyImportMean", "[", 
+         RowBox[{"\"\<*C0.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"meansc1", " ", "=", " ", 
+        RowBox[{"MyImportMean", "[", 
+         RowBox[{"\"\<*C1.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"meansc2", " ", "=", " ", 
+        RowBox[{"MyImportMean", "[", 
+         RowBox[{"\"\<*C2.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"meansc3", " ", "=", " ", 
+        RowBox[{"MyImportMean", "[", 
+         RowBox[{"\"\<*C3.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"myTif", " ", "=", " ", 
+        RowBox[{"Flatten", "@", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"{", 
+           RowBox[{
+           "meansc3", ",", "meansc2", ",", "meansc1", ",", "meansc0"}], "}"}],
+           "]"}]}]}], "    ", ";", "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{
+         RowBox[{"myExportFolder", " ", "<>", " ", "\"\<A1_TESTIMG.tif\>\""}],
+          ",", " ", "myTif"}], "]"}], ";"}]}], " ", "\[IndentingNewLine]", 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.792147784770564*^9, 3.792147793214135*^9}, {
+   3.792147834429023*^9, 3.792147863590146*^9}, 3.7921481694773006`*^9, {
+   3.792148370504368*^9, 3.792148380068544*^9}, {3.792148426036965*^9, 
+   3.7921484488636503`*^9}, {3.792148485767619*^9, 3.792148522383491*^9}, {
+   3.792148618330414*^9, 3.792148618596455*^9}, {3.792148814425561*^9, 
+   3.7921488164597073`*^9}, {3.792148972001583*^9, 3.792148978235076*^9}, {
+   3.7921490560827637`*^9, 3.792149070917646*^9}, 3.7921491144563828`*^9, {
+   3.792149480954533*^9, 3.792149491691657*^9}, {3.7921495260363083`*^9, 
+   3.7921495605046167`*^9}, {3.7921497118165407`*^9, 
+   3.7921497118728657`*^9}},ExpressionUUID->"326aa5e2-56e5-4c00-b786-\
+ed587eeb532e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"works", "!"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"MyReorderConfocalFiles", "[", 
+    RowBox[{"file_", ",", " ", "folder_", ",", "myExportFolder_"}], "]"}], 
+   " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+      "meansc0", ",", " ", "meansc1", ",", "meansc2", ",", "meansc3", ",", 
+       "myTif"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"meansc0", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C0.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc1", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C1.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc2", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C2.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"meansc3", " ", "=", " ", 
+       RowBox[{"MyImportMean", "[", 
+        RowBox[{"\"\<*C3.tif\>\"", ",", " ", "folder", ",", " ", "file"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"myTif", " ", "=", " ", 
+       RowBox[{"Flatten", "@", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"meansc3", ",", "meansc2", ",", "meansc1", ",", "meansc0"}],
+           "}"}], "]"}]}]}], "    ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{
+        RowBox[{
+        "myExportFolder", " ", "<>", "file", "<>", " ", 
+         "\"\<_confocal.tif\>\""}], ",", " ", "myTif"}], "]"}], ";"}]}], " ", 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7921495696676197`*^9, 3.792149570281645*^9}, {
+  3.792149609635666*^9, 3.7921496527074747`*^9}, {3.792149715468213*^9, 
+  3.792149716899433*^9}},
+ CellLabel->"In[41]:=",ExpressionUUID->"3415bb3a-6e7c-4577-9ebf-c0dbc587f861"],
+
+Cell[BoxData[
+ RowBox[{"MyReorderConfocalFiles", "[", " ", 
+  RowBox[{
+   RowBox[{"myFileNames", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], ",", " ", "myFolder", ",", 
+   "myExportFolder"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7921483939092073`*^9, 3.792148398776909*^9}, {
+   3.792148494862485*^9, 3.792148495086439*^9}, {3.7921490844512663`*^9, 
+   3.792149090358409*^9}, 3.792149499671755*^9},
+ CellLabel->"In[40]:=",ExpressionUUID->"59b33562-4093-4b75-974d-4bad1b046e07"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.792149722792406*^9, 3.792149731825542*^9}, {
+  3.7921497648797607`*^9, 
+  3.792149791341226*^9}},ExpressionUUID->"8f79f868-aa2b-4575-af7b-\
+ca08fbc462a9"],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"MyReorderConfocalFiles", "[", " ", 
+    RowBox[{
+     RowBox[{"myFileNames", "[", 
+      RowBox[{"[", "i", "]"}], "]"}], ",", " ", "myFolder", ",", 
+     "myExportFolder"}], "]"}], " ", ",", " ", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", 
+     RowBox[{"Length", "@", "myFileNames"}], ",", "1"}], "}"}]}], " ", 
+  "]"}]], "Input",
+ CellLabel->"In[42]:=",ExpressionUUID->"9c3d6bab-534b-4ecc-94f4-6599c32970fe"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1040, 703},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 196, 3, 54, "Subsection",ExpressionUUID->"21d36d94-b570-47d6-b58b-cff4746375ef"],
+Cell[CellGroupData[{
+Cell[801, 29, 164, 3, 45, "Subsubsection",ExpressionUUID->"b711486f-6e0a-4f6c-84cd-714f2cec909d"],
+Cell[968, 34, 201, 3, 35, "Text",ExpressionUUID->"6d99413f-5010-42de-95e6-87ef70bbfce9"],
+Cell[1172, 39, 1276, 32, 94, "Input",ExpressionUUID->"123ca3ac-e170-43ce-8af1-911880e66476"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2485, 76, 169, 3, 45, "Subsubsection",ExpressionUUID->"452dc843-d8c7-43dd-96e2-79bbb59b80f4"],
+Cell[2657, 81, 396, 9, 30, "Input",ExpressionUUID->"7dfe137e-df8c-42d2-8b8b-660f0e4ee463"],
+Cell[CellGroupData[{
+Cell[3078, 94, 562, 12, 30, "Input",ExpressionUUID->"bbc767cd-e772-4556-807a-880a1bde893d"],
+Cell[3643, 108, 505, 8, 34, "Output",ExpressionUUID->"c4c350bc-b4e2-4536-ac75-687ec2bc0f35"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4185, 121, 850, 22, 52, "Input",ExpressionUUID->"711036bd-543f-4be6-9434-b6a4a869f415"],
+Cell[5038, 145, 1381, 21, 56, "Output",ExpressionUUID->"fa36574f-ae9b-425f-b1c3-76fb20d53fa8"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6468, 172, 158, 3, 45, "Subsubsection",ExpressionUUID->"1213a38a-75a1-43ea-8c98-93d2443552f1"],
+Cell[6629, 177, 211, 4, 30, "Input",ExpressionUUID->"cecc41fc-aa4d-43e8-abe8-22556d26ab7f"],
+Cell[6843, 183, 456, 13, 73, "Input",ExpressionUUID->"9f742ec3-9a24-4b2c-8df3-626cf3d1d961"],
+Cell[7302, 198, 838, 23, 52, "Input",ExpressionUUID->"8f96da9b-6e33-4570-b2c7-5b1b298359f7"],
+Cell[8143, 223, 698, 16, 30, "Input",ExpressionUUID->"78e0ec4f-f59f-44f9-837e-0cf78d30ad3e"],
+Cell[8844, 241, 712, 19, 30, "Input",ExpressionUUID->"a11fbb1e-7a1f-4f74-8dfc-4cce60354c91"],
+Cell[9559, 262, 402, 8, 30, "Input",ExpressionUUID->"365ccc4e-de5c-438e-8554-0e2080e76c6a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9998, 275, 160, 3, 45, "Subsubsection",ExpressionUUID->"30c8e0f9-475b-4fdf-a723-fdf4e61452ed"],
+Cell[10161, 280, 427, 9, 30, "Input",ExpressionUUID->"e8b1fec4-21d4-462b-b7d1-00aee2a8e5cf"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10625, 294, 158, 3, 45, "Subsubsection",ExpressionUUID->"3bf18518-83b0-4cb6-b6e5-98c5301a2662"],
+Cell[10786, 299, 475, 9, 30, "Input",ExpressionUUID->"456664fa-27a2-4e8f-b129-8ee65abf7eba"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11298, 313, 158, 3, 45, "Subsubsection",ExpressionUUID->"684f3759-0fba-46c8-b08d-4a71241fb662"],
+Cell[11459, 318, 425, 9, 30, "Input",ExpressionUUID->"90fd7a08-404c-4a07-a7c0-dfe4e8d398c0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11921, 332, 190, 3, 45, "Subsubsection",ExpressionUUID->"e9237160-ab94-4bce-badd-bb379f5aafe5"],
+Cell[12114, 337, 451, 10, 30, "Input",ExpressionUUID->"241ee23c-1561-4d45-bf96-2267c4a85be5"],
+Cell[CellGroupData[{
+Cell[12590, 351, 383, 7, 30, "Input",ExpressionUUID->"6db5475c-a0ee-484f-bc86-f2d1910e1608"],
+Cell[12976, 360, 419, 6, 34, "Output",ExpressionUUID->"cae74797-1247-42c0-8fef-b1eb15ae650e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13444, 372, 227, 4, 45, "Subsubsection",ExpressionUUID->"af4cf0fe-ffa1-4dc9-bac4-ebd9c43b1e7b"],
+Cell[13674, 378, 2285, 48, 220, "Input",ExpressionUUID->"27368a00-6b53-46eb-84f2-e2e04f447dee"],
+Cell[15962, 428, 674, 14, 30, "Input",ExpressionUUID->"4e3b9003-42e0-4cb1-9c11-f48a48457586"],
+Cell[16639, 444, 2565, 54, 199, "Input",ExpressionUUID->"326aa5e2-56e5-4c00-b786-ed587eeb532e"],
+Cell[19207, 500, 2040, 46, 199, "Input",ExpressionUUID->"3415bb3a-6e7c-4577-9ebf-c0dbc587f861"],
+Cell[21250, 548, 477, 9, 30, "Input",ExpressionUUID->"59b33562-4093-4b75-974d-4bad1b046e07"],
+Cell[21730, 559, 203, 4, 30, "Input",ExpressionUUID->"8f79f868-aa2b-4575-af7b-ca08fbc462a9"],
+Cell[21936, 565, 523, 12, 73, "Input",ExpressionUUID->"9c3d6bab-534b-4ecc-94f4-6599c32970fe"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
