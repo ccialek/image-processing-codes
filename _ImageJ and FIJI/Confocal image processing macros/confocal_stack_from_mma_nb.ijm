@@ -1,4 +1,8 @@
-//Reorder a image with 13z and 4ch  
+// Processing macro code for formatting images from the Confocal scope images 
+// from SlideBook 
+//
+// Reorder a image with 13z and 4ch  
+
 macro "confocal" {
 	run("Stack to Hyperstack...", "order=xyczt(default) channels=4 slices=13 frames=1 display=Composite");
 	newImg=getTitle;
