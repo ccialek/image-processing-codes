@@ -1,0 +1,649 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29870,        641]
+NotebookOptionsPosition[     29216,        621]
+NotebookOutlinePosition[     29552,        636]
+CellTagsIndexPosition[     29509,        633]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["My color adjuster with sliding thresholds: ", "Subsection",
+ CellChangeTimes->{{3.788806064174432*^9, 
+  3.7888060695180893`*^9}},ExpressionUUID->"d9b6ad49-edea-4b8d-848b-\
+2eb4baf47ef2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "input", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"thred", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"0.01`", ",", "0.025`"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"trims", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkUtIFFAYhYe+nxChRErFleZe0o1iqBTmQsRApQdYkeX4QJ1sRlFrkSgO
+JhXpSGGTYkQPw0FDRSXxNWGijm4CZ1MQZEURSELRQukIcrmXe+9/OOf77z12
+9XpR+QGHw+GJ0FJU2njK7S5tLo7W4azLU1XhcpblueqdFU53alrlni5qf6bT
+RDtlPNPooYDT1NHFCFVMkWTL3OQ8N6jniqpBPlBLq+422cBPsc7HmaSb9+RI
+8YpsFlW7RiazlDBGI2n0ssu46n48DLLAGreZY4hE61DmL1bpJNf8+OT/UPs+
+YmySeTn1iuQF06zzR+opZa7yl0jrJwT2RepB67RvdtmGuctz3nBGuT85bNWM
+csROWJxFHvTxmixrEf8IAenWxXtPBMsMk2oTuj8nmoDy7vNExF/JsBS7aDM8
+5bN6DdHMEpe4xT8RNih/hS2xxVsN1Ti5gFudP1Ive55BwnxkhRYeUMg7Zfdo
+P8RLGsxrXtqItQF+S1dLhCVw1D6px7C8A3I5ZEui65b7HR7rZyr1HyeJtnTb
+5i3f5ZbPAHkk67V97PBDqf8B3wSNIA==
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkV9ozXEYxn/t85zTQSyp3blALoQkmRsuLLvYojR2rsT+OJsznOX328lO
+UcsFQxbFlbNdTMzfYRfsBms7K6aoIVrOqGGSC//CBfEoF++3vt/v8zzv87zv
+gobWmqaSIAiihI+a+v3rw7A+t2WuL7WZKN2cSe2syrSlmlPhyvJd/3Cl/+sa
+TVSwlNusZr5auMAeOrjEJEN+u8xhzrNM1/lDF5Vs1nFu8pw0s/WLcq4yxhJO
+gPpYpV6meMxaTdDPMKWqZQ1J640YN2LMd41b+ScP+UKgaU5Spk73mSZDUj1s
+03Ld1W86NcQ++jjFe57a1Tkd0je7GI694KCmqCOyz7eMs1AfYsRnxDqU0xnS
+5j7jCBepViNfqdLZeGW8O1HQYhUZYAft9FBi9QwJa1boQGxUDRqk1egBZ8rT
+RpEJnjj3Vs3SIm3SBhU8iZBbvDGinbwT3HfCQWfcqM8UaLSbIh+5Yk7Wv6HZ
+L41fp5k6RpZeuu25ToHGnOkHN3hgVuT875wyySiv3TPPHDu7x17uuF7Rwjz1
+exddnCbn2Ues0G4+Uc0jK2S9hRRH2c5fLmqMCQ==
+          "], {{0, 15}, {15, 0}}, {0,
+           65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkEtI1GEUxYf5nf84rUKaZQttG70oCooWRhTSg1Bn4UQLrRlNa4yxB5I0
+RaZQ9DaZHhIFEaYEUlYkgYotaiRyExVWmFmLatFE0kKiE8Tl+/jO/Q7nnnNL
+a5sqUuFQKNQc9VVRc6gsk6lpqSw2iKebd9elk7vK0/uTdcnMspX1/3hz/5/V
+7OQ8CfZylnUME6eLC7zlA7f5RhVHKeMMp9nDfDYzwRWe0s1DVy052t0/Z4UE
+nRQ4wa9wG/etlSNPGwM0uN/DSeNq9jFJXDmuc4rvHOERj7lHL7NWDKtE1frK
+J2K6yg7GuMsBu/hpRoPGg9/apCZNM+ipr2nhvRmXKFaBVUFH0WgkFrQGpbrs
+SSs06VkvrfmFes2LzCk6GE0Fa5XRK83yjGPcYsa+b1KinqAQ9EUaVa5eXpDl
+uD3mPHULjTyw7x/q1hiHNcOo83TZa5/TDpBiih51apGy6ldM4/776Dx5LrJN
+G1io9VqqxRpho5XfeAsdbLVGFVHlnXfCzEFGmOaO363c4JoS/GGIBZoyGuYJ
+/Wx3tXsLS+xryPrv+Gz9NXZXaZx3yizLec5fs/qQ+w==
+          "], {{0, 15}, {15, 
+          0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkFlI1FEUxgd/3196KfGlTHqop0CKisjAIjB7KIVBHBRabJhoHG0Zc8at
+jYhSWoyKopUIxRakoAWCCNqsh2iYFo2oKBJ9aCFKqCgq6Avici6cc+453+9+
+U1Y1VtXlhEKh9BhfVbG20lQqtjGS76Q6mW5IJOOrlySb44l4alZx/b93ef/j
+AJ1sZz7NHCJLCQOc4xeBoqznJmtIMkIfJ9x9xyliPoXsYpxaSaueq5yhhul8
+o4s8tVPKE1LsZ4ijPGYi1RRxkKin+p0/IqrPnj7JJ8qYp8Us4ie3aaFXBRrh
+IpM0Xi0sYx87uMNKEny1Tr9K9IZKFemjadBUE6ZZxzXvLg9ycucGYWUYNmUn
+x+kwRZYKLdQQl1UbbMut0G8rztEDk3Rx31RZWoUKgyvqUTh4xgdX7zqOsJPX
+LNBpvjBDk1WpH3rOK6SztFlxk33IcNj/nWmiS3znKW/ZYmducZ0eBs2dr27a
+rfDHdOfZTTd7rNvgymaa9J64htlLo7v3WMFLLnhnB1vZwCgPTXmDcg3Yr6XU
+8sJUNcxmLNMUoZdjVikz/1omEGY5dUT4C+bJiEo=
+          "], {{0, 15}, {15, 0}}, {0,
+           65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkNtLE2AYxsd+74V4YSnedCOoYBeRIKUyvNKo1SKr6fCYNnMuJ206TVsn
+l3gWB6KQqDcKhRdJZBRRoEHRMLRADMOw8g/oHyiynqCL7/v4eA7v8z7ZTRFv
+i9PhcHSm6PL6e0qjUX+sIl0fX7izNRgONJ8JdwWCgWhB0dV/vAP/z1eaaKSC
+hzRwmTx8HOMl3xnnLoX6eejhJAHiFAv5yCNy7ClJxqjjBW7meEy+8AWu2Sj7
+POceN3jGLEfoExIVb4InfGaFDEvisSqWcJHJWRal7aaLab5Isc6OHNs5Si8n
+mKRc09zMs0eDpdqEJn3jJq+Ut13HQ0LKX8SELRNRvjZGqCFildrnAqsEOWRJ
+27UBO2iv+elckKpPnDQyGCbLNjhuv+2O7XKdNa7Iu0TJa7XzFh94w5D5LNf2
+la6MZiqVtIx3nNNm23rjfOIH97lEiNNCdpzZeOU0QD2Dwg6rwYS4U1KElDaM
+00a4TTW31MUDLtKilL1KHCfGH4bEOKVWXeLmcV7z36rLGbVXLs9UK6FV/t1U
+sUkH79V4rpXSL/wv6Pp8kw==
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkE1I1FEUxQd/d8IiKnHhIqRkBjIIIZIJw7Kgwq9FjYUSGSkzjhaM+ldx
+ygiKQlERxq/JtNoImib4gR/RMEVUUAvDEESIyNoJLSIDoY1HiMd7vPfuOeee
+czMqa/1VSS6XqyFZh7+i+YzjVNwqSdHjcrihJhQOBgrCjcFQ0Dnqq97G7f2/
+cznPPa1f5FDGGktMUc5h62adAJtJDldYpI52Sqmhicc49BPjL1ncZ5UO5thk
+jz3lGAfFHeIbmfRSTQ8JbjAr/iAH7Dqj3MEn/SqL8IgoId7itT5h35Bm//Cr
+36TVSWNNDp7TxYa0XzBqaRbgib2jRT8XxS1W9RB/iLPPps3cWe4BPnOXQq7x
+W/3m+aL1XfeEedxj7jgDTPCVV4wzxjNW6KTQPjBkUbItw5o1gzw+4rEiWsVs
+YYfl2wY/2G07rZQZPOK/5BwL4h/nKkdoY1Lpo0q1y/bbID+5qdqiZjPOKU7Y
+e06yzCXNK6aEq+IsUCSPw9Lpwku3MsSEnuYTJTwgIsSsJlzPafrkN8Jt+c3h
+obx1SvECqebltTLOECadXEY4q1oxW+aRg54=
+          "], {{0, 15}, {15, 0}}, {0, 
+          65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkU1IFFAUhcf57oC2SIpARAzctKhNRfiHKKKBVot0kjQNGXUcNR11pppR
+KCXyrxKDGFKsRJQaNKKNg2hCQYbgJiVctPAHoYXgIhE3QnWEeNzHu+++c+45
+96XVtJbWOx0ORzBeW6knlB8IeDrcJ5SU+YONPr+3rth/1+vzBi6kNxy9S/wf
+boooJofLRMiihlx7wgQJTHGdOvxU8gw3bZxhUPVOCnhMFTcp4Q5PVT/PWU5R
+RiE/nG3iKCKfY0Id0k2Yv84gB8S4JFSEJfrFUYtHlXh8lBPkljIPL/jOZxb4
+ppVKHxWqPySTJqal7JPQswzrXCElvbp/zn3meMBt8qzFumyVdFr4LZXDDIkz
+zKr2MXtvla4B+0OULdrZZIMMvXnHFTptjQWrdoVtQOwf1bubD1xUx11pSLYd
+vpBiSdbFT3qYJCTeLAKawjprXGVGLHEWpVWoZqn9RTaPOKlTnGVohntS7LJx
+uZ5kVF1DQvYoxljmBqct2yLyFeUlxzkn3KKUv2XfGZPuN/LVyLx+YZ97mnGT
+OrwS9jXX5GxFXkbEuy1EjK/8A9N2fO8=
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkUtIlGEUhod5zi8hVk6MICGVC6NFUwqpRVRMQTW5MP/ppoU4Opem6Bf+
+mRpsAqUbRWAkRi2MWsRQEBPRQkGIWsQEtei2sCB000IK2rRpFtFbtDjn+853
+zvuec96veXDYTQcDgUBuiZybKER9PzESDyk46OWyGS+VjHn5VCblt3Uc/1u3
+/L9ViXCPHnJ4HGUt58iymbt0cp0aZmhjKVOKu8lziK+UmFDNScZI8pgwTxhk
+WPEF1STYSYwBfsq20EUfG9nAVs5zUe9FMV7ld/AdYTtGVb3Ws40FnhJlhRWZ
+pd4KfOEMrrAZcUSUr7Ux6uwTe61MSHmXNdbDFe6wR5O4tNg32+RUeMF7bgmV
+EqZJLLOckvedV853q7OIDfCIgiZfyWFlHqrLLrts4Zpx57lNCuvYB9bRrok/
+0yr0R1ZZvz0wz15zmmv0Wys+vaxmjknKLLMKz3j7797EEXHvo5lRfjDCfWuw
+oJXU8SU3aJSiHkNiv6morN3SzGM2qh1+BbdLl3papF0vOzjLNLulqMsbnbe1
+Z1pKJtnPAbHkGecSi8Q14ZD2z+pXTvAHQPNzYw==
+          "], {{0, 15}, {15, 0}}, {0,
+           65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkFtI1EEYxZf/bwQhJPRFJEokMKloE1EMzAuWYu5WupnmDVfcdr205e6a
+eMlYsCQ0BW+FoqCiPeiLRLDFIgRdCIzAJQgCX8IHnwRDkCDoFDHMwDdzzm/O
+96U13628bdlstmC8jkp3d1Eg4O5xJaqo8gdbvX5PS5k/5PF6Apk5vr+6o/93
+NTcoJZcwHThJ5yK/rAlqaOPAess4D5jjKs3kMIufIVJ4yR3uUUcSe5xlhQoK
+OC3lBHYuUSvVrPznSJXrvbi3OE+7qpNcARxck7eAaX6I9VjqXe1uGmmQJ4N5
+RnlCttTHSOARl4kQ44hZJk+KQfGdJsQJSuSxc8HMxEXMKJ8o57f1VdROjuOj
+lSZW+clDMxDXZ5LMa/WzIdW4KNcZU+Z6PnPIFHtmh6fK0aLbN/Tgokv52ynU
+WxMf2AQzj5eoqKe0DqwR3U9qEgPsk6+ExWaRL7yiDzcLSnif7/K7GFHnManC
+9Iq/xhmec5N445BymWS+UcSwZviMGf29zQslq9Eko2SypDz1bInTRhYfWadf
+yYO8E6lB3Uf/9VciYhZ/AO9jd3Y=
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkVtIVFEUhqf9bVFIEINMqJSw0DJKE9RAcSwqzaF01F5KdNQzY0pjzhnN
+SCQKhArNLmKFhCYiXiCLQHorsJ7Ml0C03qRnQREMjPAXZLP3OWuds/7bPlLf
+6g8aj8fjxunwB+4URyKBu5WJKqrD7s1Q2GksDUedkBPJzm3a+S9hd5dwnACp
+WgP4eMoDXnCbE0xwmCn2cY8rePnKGIaHOLh8potG0jnJOHXqFJDENx7TomeQ
+TF7pW5RlLtDJO70Vks9lTjGvzn2tCvFVs6jpLqr4a4r4SA5f6GBJDBXq1NDE
+qvFKyywzfKeHIX6xafJ5zyGO8oFuYRSrmrErrNklzovD5Z8pZMNkadrPc9bx
+2rSYzJgROydHY8QSoohebkj1afl7y6yttQu8xmd99Mv9G2mY5InU1anbTZ/9
+SRl77H6uM0iNtH8SS550X+SR6t8MK50gozwT6kt5dbimtBL4b9aEeIwzSqOT
+XFqVQr/S3csfc5V6yoUSpV2crnYZZ0nhoHyWijeRH3LTJuxbyq2ZWk1ncIk0
+pilhS0jxtkG3cIBkzml6G8lAcuY=
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkN9LU3EYxsf3M9ugadPKDRcyl4phuR+liLJCjWSJUWepuIvWpDWn60Rb
+Mn9CJKF3RTcGBSXVXfl/iGAUUlfZTUEoQtcR5SPEy/dwzvt9ns/7vKdh7K51
+2zgcjpJbDytT7ikWMzPJan0M2aV8zs7eStj3s7lsMdoxfqA78v+EsBkmzTFe
+EAAijNLMX9NHDWEy9Kr/QV3DHRql83NTKh+v+MwGD1imggZ6cJLERTdPecxv
+c4L3cs6phrjKJCdZ56tZI8qiWMN4OUWfJp/mmXzXOcogBaaoVF0gTl6TJ9T9
+wmG9zXNDqQpYfOO5UrYryx9TIMU0cafXafOPN8qyImoEN+fELVPiHu/oclpc
+4qX4s+KntEeQECO85RGf+EWnyEFiIo6xZzzyBDWhTv3vLPBE2frl3dTpFdkl
+fisd0i5xlms8VEY/l5WjXuWTtkXsGRLaopZVrug+qXkhbVSjP5dmix1TJXcn
+x6WN8tOcYQAPbZoZ5zxVXKRJ3bC2+GFeix5QNStbk5gfTbvu2zjErpll28SU
+dh++zlz/
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkEtI1GEUxcfzG80wlKEwRHuoNURGaWEh0UNF87EzLRdGKf2bSWykmaEQ
+elHYtk1FrUXEIDdBtKk2LVwUQbVRKaRFEjRhjWH2PkKL73Xvd869v1veN9hx
+SqFQKJXvraP3fH0y2Tt0OOJHVyJ1OpYITrYm0kEsSNbsji//K/q/CglTQ0Ae
+IVLEgQYOsJ4pDXCfeh6QyzY+KJc0MS5TyyFa+aY4x5lTS3gLt/ioIWeW1MU7
+Zfisfvbzkg08tLaRYu7yR9X8VDFrWdBRNlHpzLSu0UcV29nBHj7ph35ppeu2
+0e1uss41sagCethKO2esz+gsKzhGITsp4QRf9FhjZHhEKRHeW1nFZgZZx18d
+8T2PGd3hJk/caYXp9vmcUpTV5DCrZsYZ4bm9XvBaDdalzVbKFXbRyVvVMuEq
+FUxakWOiFm6Tz7x7LOMiG00w4ugbTyerpxxk0nUXFdh9lO+aYNjk17ln2kv+
+kVUdz3SBNRTYdVarTBfmBuUmLnGkzDRwlSJeeZ7nPOPlSIS9fPWrjahnNK/f
+mrZPtUkq7Vvneu38A/MMcBA=
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkEtLlHEUxsfze6fULJ2FOVpjTqGhpnkBUVRsaMQLDk0jVqiIMziOiYzy
+jrdoIUq7QvoE7bysXNQuW+gXcOm+XRGKiBdIRJ+gxf/lnPM+5zyXYGI6Nm4e
+jyeTrU8svhBy3fi7fp+agXTmbSqdHOtJzyZTSbe+aeIfLv//CzBEN0mayGGV
+IDU4NNCGj9+2pbqFRur4a5Ws4ZLLd/o5sAH6CFDFU5YYoZp8/HidXhb1t0jb
+eaQ1dwlpv5cxWrlDPZ1c2ReGiRKjmELucmizVLBCB2esM89HvLrg4zlfObUw
+CSGnpW6QE8LC/bQfTDGjvp09W+W1qpfOqLOhWxEiTjlzmlUQ1zyqapdt55xP
+fOPcitmUsjhdNAtdIMcr5Dm/xNQixoCYH0rHkWXxgPvUSndErt4ondtChMR/
+ZAVy8YJsdY+UyySjZLS3bzcp0W4fPYzzXrcu7J5w3UqmVDyv9JakyssN5VCp
+rQ6OrVpOp3jGB7mt45bU+tlR4mssK892dY+l64nwQTG2Uc5n5e+XsxrKuLRS
+/liCFNdkTVnH
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkMtL1HEUxX/cz2/RIrNUfFXOjI8ajMqhMnIUnxhmMTZqSiWozUuEEUZ7
++FoJKoKCCNJKWrRpJRJE/QHRInFRKuLGsIXVRiwIgqJO4OL75Xu/99xzzj2+
+3oFwzBzHGTyiK9zzuDaV6hluPaGiPTnYF09GI03JoWg8mgqUJ/7j0g/PUdI4
+xSpesvltZ6nmDD8tnxfs2Swtqh5Rzzp1lNDHCt8tlyD71kiUclJM8YwkQxRx
+iW07zwhblkOYY3y2GE3M4Gj+Lrnq5nNVuDIOzMsNbtIgxmYyXC+13GNaM9Nc
+YE5+HPeHFTGAj69WIXb4ZEvME8FDDm9Zlq96LtJNB0F3UVytXKNQ/C0kGOc+
+k7Tpd4Iut849x0seiiVTeoussSANDzFe6V3gntZOv2zHirX7O/G8p5Qxoft5
+ymWy5PCDeWjkmz3nFq+5TUg7NKjXyYYFhKiiCz9x8bfJ87xUDixd3o0rSrFA
+zvL4KHdlBOR3047zx0LC9XJdP0+k4FcuD5TxG02tW416Pu1WoSw7xOBROn5O
+ckfp5FHJFxtl1/r5a6vK9R/PEmcK
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkMFL02EYx+fzGSbNUFHQFISfmZlotGyjTEwLoXIZbE5wKmxzc1YwZYYa
+SoSX7BAddJcunbxkt0QvevMf8KIHQbqE0AjJIFJR/Aby8v54f8/7PJ/3+/06
+8dHgsLlcrvECfYKxyY5MJvY6VKKfcHr8eSqdTDxOv0qmkhmvf+R/X9H5nuIO
+jaTJY40F9qyFqzRQTD1NlBImZ0fWgY/LDNJGDSVc59giRKjkK5/5pBWgiyrK
+ucEDbrNrjqYDqqxwjwomdZoR9QLT9Ou+kC37yDIXNeXwgU3L0CtmszqLRajg
+0FZpJcgAj3TfxzspuiI9K2I0kuC96s8YUuUJf/G4JxijXbrqqNYLXneUOXF8
+mllmnU16GGWJLC84tTfiLZISd9ey/FGfI5cP+Wm/LKAE3jKryhi1IkbYoACv
+5gbZt2tMaCVFncNPp3xX6m5Ys1HypfqlMiqkG49e82k/pUx51XNgfp0d4vxQ
+/bvVyGeeEvltN+W7Tjp2LKxM2gnRwjeMu2Kc2D+7pW63PG7zhUsieOQxxX1p
+zFeeOQtJ5zxnhApkNA==
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}], ",", 
+       GraphicsBox[
+        TagBox[RasterBox[CompressedData["
+1:eJwtkc9L1FEUxaf7+SaioEg6ozjgj9KVYROTM2qMmigOJoE5KviDZppxdOGo
+M6ImrlyFIEjYMvwH2oU7cS8I4kokRKWFBKKoGEVinsDFe4933rnnnnteRWyi
+e8RcLlcmW1t3dLYlnY5+eFugSySVGUumEvFwajqRTKR9daP/efn3y2GBCyvE
+TxHDhLiyRnoY5MDqubRcntDCaxz2rYIufpuHXVvS2UEWNaxRRUrIMk95IIU6
+vE45jRRwIK1PnFoZR3ZmYQpVE1VFnC0OrZ11buyfXVoDK5QQpJdry+MNHbrn
+EJDSQ1wM8I4p5gk549TTipdfNkYxEemUOtm84CMbLNKPCakUO84mMXx8sVVO
+2OEPGc3zDA9R6d5agCE+a6ZSVvnJDOWMqn8ubk2bL8ZLKVVLv59a2jilTy6q
+SYI4k/ITU6VPXn/Yc0aYUNWc8qnRywDndmN9PCYszTa+qtM3e69kjq1T2Qbk
+P8hfcyvddum7lViEbeuiU5ygUK9S+m496viIZl4pDY8cNQmLC/Ho9CuNYjkI
+KesqTbWn/7gD/75jWA==
+          "], {{0, 15}, {15, 0}}, {0, 65535},
+          ColorFunction->GrayLevel],
+         BoxForm`ImageTag[
+         "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+          MetaInformation -> 
+          Association[
+           "Exif" -> Association[
+             "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+              "ImageLength" -> 512, "BitsPerSample" -> 16, 
+              "PhotometricInterpretation" -> "Black Is Zero", 
+              "ImageDescription" -> 
+              "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\n\
+hyperstack=true\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", 
+              "StripOffsets" -> 2659, "SamplesPerPixel" -> 1, "RowsPerStrip" -> 
+              512, "StripByteCounts" -> 524288]]],
+         Selectable->False],
+        DefaultBaseStyle->"ImageGraphics",
+        ImageSizeRaw->{15, 15},
+        PlotRange->{{0, 15}, {0, 15}}]}], "}"}]}], ";"}], " "}]}]], "Input",
+ CellChangeTimes->{{3.7888065160312243`*^9, 3.788806528454445*^9}, {
+  3.7888215592537537`*^9, 
+  3.788821567726637*^9}},ExpressionUUID->"60fa5c74-0259-4c16-84b4-\
+184fc9f11863"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ImageAdjust", "[", " ", 
+    RowBox[{
+     GraphicsBox[
+      TagBox[RasterBox[CompressedData["
+1:eJwtkUtIFFAYhYe+nxChRErFleZe0o1iqBTmQsRApQdYkeX4QJ1sRlFrkSgO
+JhXpSGGTYkQPw0FDRSXxNWGijm4CZ1MQZEURSELRQukIcrmXe+9/OOf77z12
+9XpR+QGHw+GJ0FJU2njK7S5tLo7W4azLU1XhcpblueqdFU53alrlni5qf6bT
+RDtlPNPooYDT1NHFCFVMkWTL3OQ8N6jniqpBPlBLq+422cBPsc7HmaSb9+RI
+8YpsFlW7RiazlDBGI2n0ssu46n48DLLAGreZY4hE61DmL1bpJNf8+OT/UPs+
+YmySeTn1iuQF06zzR+opZa7yl0jrJwT2RepB67RvdtmGuctz3nBGuT85bNWM
+csROWJxFHvTxmixrEf8IAenWxXtPBMsMk2oTuj8nmoDy7vNExF/JsBS7aDM8
+5bN6DdHMEpe4xT8RNih/hS2xxVsN1Ti5gFudP1Ive55BwnxkhRYeUMg7Zfdo
+P8RLGsxrXtqItQF+S1dLhCVw1D6px7C8A3I5ZEui65b7HR7rZyr1HyeJtnTb
+5i3f5ZbPAHkk67V97PBDqf8B3wSNIA==
+        "], {{0, 15}, {15, 0}}, {0, 65535},
+        ColorFunction->GrayLevel],
+       BoxForm`ImageTag[
+       "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
+        MetaInformation -> 
+        Association[
+         "Exif" -> Association[
+           "NewSubfileType" -> "Primary image", "ImageWidth" -> 512, 
+            "ImageLength" -> 512, "BitsPerSample" -> 16, 
+            "PhotometricInterpretation" -> "Black Is Zero", 
+            "ImageDescription" -> 
+            "ImageJ=1.48v\nimages=162\nchannels=3\nframes=54\nhyperstack=true\
+\nmode=composite\nloop=false\nmin=628.0\nmax=2314.0", "StripOffsets" -> 2659, 
+            "SamplesPerPixel" -> 1, "RowsPerStrip" -> 512, "StripByteCounts" -> 
+            524288]]],
+       Selectable->False],
+      DefaultBaseStyle->"ImageGraphics",
+      ImageSizeRaw->{15, 15},
+      PlotRange->{{0, 15}, {0, 15}}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"c", ",", " ", "b", ",", " ", "2.5"}], "}"}], ",", "thred"}], 
+    "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", ".5", ",", "\"\<c\>\""}], "}"}], ",", "0", ",", "1"}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"b", ",", " ", "2", ",", "\"\<b\>\""}], "}"}], ",", "0", ",", 
+     "5"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y", ",", " ", "2.5", ",", "\"\<y\>\""}], "}"}], ",", "0", ",", 
+     "5"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.788806121618326*^9, 3.7888062173825283`*^9}, {
+  3.788806259375327*^9, 3.7888062629090967`*^9}, {3.788806306566297*^9, 
+  3.788806430532765*^9}},
+ CellLabel->
+  "In[2268]:=",ExpressionUUID->"9d7c59d9-a44d-4f9f-bdf7-f7333e8e5031"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ImageAdjust","arg3",
+   "\"The input range specification \\!\\(\\*RowBox[{\\\"$Failed\\\"}]\\) \
+should be a pair of values or a pair of lists of values.\"",2,2414,523,
+   27916989873529543520,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.788875731873631*^9},
+ CellLabel->"",ExpressionUUID->"c0528219-2a4a-4174-ba30-2af347211722"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1029, 703},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 193, 3, 54, "Subsection",ExpressionUUID->"d9b6ad49-edea-4b8d-848b-2eb4baf47ef2"],
+Cell[776, 27, 25534, 518, 89, InheritFromParent,ExpressionUUID->"60fa5c74-0259-4c16-84b4-184fc9f11863"],
+Cell[CellGroupData[{
+Cell[26335, 549, 2462, 58, 75, "Input",ExpressionUUID->"9d7c59d9-a44d-4f9f-bdf7-f7333e8e5031"],
+Cell[28800, 609, 388, 8, 24, "Message",ExpressionUUID->"c0528219-2a4a-4174-ba30-2af347211722"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
