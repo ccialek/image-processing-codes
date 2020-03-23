@@ -3,6 +3,7 @@
 //
 // Reorder a tif image with 13z and 4ch 
 // (NOTE: Any time information needs to be averaged beforehand)  
+// (This can be done in a mathematica code, or by using a single-timepoint image) 
 
 macro "confocal" {
 	run("Stack to Hyperstack...", "order=xyczt(default) channels=4 slices=13 frames=1 display=Composite");
