@@ -1,6 +1,7 @@
 # image-processing-codes
 Collection of codes I've deveoped and used in lab for imaging processing and analysis.
-Type: Mathematica, ImageJ/FIJI (Java) 
+
+Language types: Mathematica, ImageJ/FIJI (Java) 
 
 Mathematica: https://www.wolfram.com/mathematica/
 FIJI: https://imagej.net/Fiji
