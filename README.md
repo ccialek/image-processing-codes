@@ -2,6 +2,10 @@
 Collection of codes I've deveoped and used in lab for imaging processing and analysis.
 Type: Mathematica, ImageJ/FIJI (Java) 
 
+Mathematica: https://www.wolfram.com/mathematica/
+FIJI: https://imagej.net/Fiji
+ImageJ: https://imagej.nih.gov/ij/ 
+
 The Stasevich lab uses ImageJ/FIJI freeware to run our home-built microscopes. 
 Additionally, either TrackMate (plugin for ImageJ) or Mathematica homemade particle tracking codes 
 are used for image analysis. 
