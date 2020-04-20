@@ -10,23 +10,24 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     58335,       1241]
-NotebookOptionsPosition[     56042,       1199]
-NotebookOutlinePosition[     56378,       1214]
-CellTagsIndexPosition[     56335,       1211]
+NotebookDataLength[     43586,        921]
+NotebookOptionsPosition[     42093,        889]
+NotebookOutlinePosition[     42429,        904]
+CellTagsIndexPosition[     42386,        901]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["12. MyDiskDonutMask (VERSION 1, more flexibility)", "Subsubsection",
+Cell["MyDiskDonutMask (VERSION 1, more flexibility)", "Subsubsection",
  CellChangeTimes->{{3.7464496243784494`*^9, 3.7464496290851107`*^9}, {
    3.746451235258383*^9, 3.74645123548956*^9}, {3.750949132243795*^9, 
    3.7509491388134403`*^9}, {3.750950017616474*^9, 3.750950018408107*^9}, {
    3.750950049325511*^9, 3.750950052579129*^9}, {3.750951082292624*^9, 
    3.750951098440075*^9}, 3.7509513082353897`*^9, {3.7963918374504423`*^9, 
-   3.796391848694112*^9}},ExpressionUUID->"06ef67d0-8399-4056-8186-\
+   3.796391848694112*^9}, 
+   3.796400853745133*^9},ExpressionUUID->"06ef67d0-8399-4056-8186-\
 b94c6196eb57"],
 
 Cell[BoxData[{
@@ -108,18 +109,19 @@ Lim Spot, use myPadSize unless you want a bigger/smaller disk\n\>\""}], ";"}],
   3.750949171539495*^9}, {3.750949202634305*^9, 3.7509492065697823`*^9}, {
   3.750949249498136*^9, 3.75094935832798*^9}, {3.7509495261099157`*^9, 
   3.7509497203736343`*^9}, {3.750949984139188*^9, 3.75095000820501*^9}, {
-  3.75095052843073*^9, 3.7509509891151323`*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
-}, Open  ]],
+  3.75095052843073*^9, 3.7509509891151323`*^9}, {3.796400844299876*^9, 
+  3.7964008470021133`*^9}},ExpressionUUID->"71807987-e891-4d2a-a837-\
+91498f2756df"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["13. MyDiskDonutCentered", "Subsubsection",
+Cell["MyDiskDonutCentered", "Subsubsection",
  CellChangeTimes->{{3.7464496243784494`*^9, 3.7464496290851107`*^9}, {
-  3.746451235258383*^9, 3.74645123548956*^9}, {3.750949132243795*^9, 
-  3.7509491388134403`*^9}, {3.750950512193235*^9, 3.750950512888213*^9}, {
-  3.750951457307918*^9, 
-  3.75095145745465*^9}},ExpressionUUID->"0a78fb85-1fbf-4654-9fe1-\
+   3.746451235258383*^9, 3.74645123548956*^9}, {3.750949132243795*^9, 
+   3.7509491388134403`*^9}, {3.750950512193235*^9, 3.750950512888213*^9}, {
+   3.750951457307918*^9, 3.75095145745465*^9}, 
+   3.796400855977681*^9},ExpressionUUID->"0a78fb85-1fbf-4654-9fe1-\
 104f22d6e001"],
 
 Cell["Module Unit Test input : ", "Text",
@@ -511,10 +513,9 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{
-    RowBox[{"MyDiskDonutIntensity", "::", "usage"}], "=", 
-    "\[IndentingNewLine]", 
-    "\"\<Gives the Disk&Donut calculated intensity of a set of crops (in \
+   RowBox[{"MyDiskDonutIntensity", "::", "usage"}], "=", 
+   "\[IndentingNewLine]", 
+   "\"\<Gives the Disk&Donut calculated intensity of a set of crops (in \
 different channels, presumably). Output:  {{RED Disk Ints, RED Donut Ints}, \
 RED Di-Do Ints}, ...} for each channel. \n\nInputs\n1. mycrops: list of crops \
 for 1 spot, eg  \
@@ -609,277 +610,271 @@ min=5746.0\\\nmax=20647.0\", \"StripOffsets\" -> 325, \"SamplesPerPixel\" -> \
 ImageSizeRaw->{11, 11},PlotRange->{{0, 11}, {0, 11}}]\)}\n2. myDonutRadius: \
 Diff Lim Spot, use 2 or 3\n3. myDiskRadius: use the donutRadius, unless you \
 want a pixel gap between your disk and donut\n4. myDiskWidth: Diff Lim Spot, \
-use myPadSize unless you want a bigger/smaller disk\n\>\""}], ";"}], 
-  "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.796400639660453*^9, 3.796400747018486*^9}},
- CellLabel->"In[54]:=",ExpressionUUID->"9d3e777a-6599-417e-941b-8de7c21c2f3a"],
+use myPadSize unless you want a bigger/smaller disk\n\>\""}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.796400639660453*^9, 3.796400747018486*^9}, 
+   3.7964008289183826`*^9},
+ CellLabel->"In[56]:=",ExpressionUUID->"9d3e777a-6599-417e-941b-8de7c21c2f3a"],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"MyDiskDonutIntensity", "[", 
-    RowBox[{
-    "mycrops_", ",", "  ", "myDonutRadius_", ",", "  ", "myDiskRadius_", ",", 
-     "  ", "myDiskWidth_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-      "myPadSize", ",", " ", "len", ",", " ", "centroidRaw", ",", 
-       "centroidUltimate", ",", "centroid", " ", ",", " ", "masks", ",", "  ",
-        "blank", ",", "centeredmasks", ",", " ", "centeredMasks", ",", 
-       "masksizes", ",", "mymaskedcrops", ",", "meanIntensities", ",", 
-       "meanBGintensity"}], "   ", "}"}], ",", "\[IndentingNewLine]", 
+  RowBox[{"MyDiskDonutIntensity", "[", 
+   RowBox[{
+   "mycrops_", ",", "  ", "myDonutRadius_", ",", "  ", "myDiskRadius_", ",", 
+    "  ", "myDiskWidth_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
      RowBox[{
-      RowBox[{"myPadSize", " ", "=", " ", 
-       RowBox[{
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"ImageDimensions", "[", " ", 
-            RowBox[{"mycrops", "[", 
-             RowBox[{"[", "1", "]"}], "]"}], " ", "]"}], "  ", "[", 
-           RowBox[{"[", "1", "]"}], "]"}], " ", "-", " ", "1"}], " ", ")"}], 
-        "/", "2"}]}], " ", ";", "\[IndentingNewLine]", 
-      RowBox[{"len", " ", "=", " ", 
-       RowBox[{"Length", "@", "mycrops"}]}], ";", " ", "\[IndentingNewLine]", 
-      
-      RowBox[{"centroidRaw", " ", "=", " ", 
-       RowBox[{"ImageMeasurements", "[", 
-        RowBox[{
-         RowBox[{"ImageAdjust", "[", " ", 
-          RowBox[{"mycrops", "[", 
-           RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", " ", 
-         "\"\<IntensityCentroid\>\""}], "]"}]}], " ", ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-       "This", " ", "little", " ", "trick", " ", "rounds", " ", "the", " ", 
-        "number", " ", "without", " ", "using", " ", "the", " ", "shitty", 
-        " ", "mma", " ", "round", " ", "fxn"}], " ", "*)"}], 
-      "\[IndentingNewLine]", 
-      RowBox[{"centroidUltimate", "  ", "=", " ", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"Ceiling", "[", " ", 
-          RowBox[{"(", 
-           RowBox[{"#", "-", "0.5"}], ")"}], " ", "]"}], "&"}], "/@", 
-        "centroidRaw"}]}], "  ", ";", "\[IndentingNewLine]", 
-      RowBox[{"centroid", " ", "=", " ", 
-       RowBox[{"centroidUltimate", " ", "-", " ", 
-        RowBox[{"{", 
-         RowBox[{"myPadSize", " ", ",", " ", "myPadSize"}], "}"}]}]}], "   ", 
-      ";", " ", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-        "Use", " ", "THIS", " ", "is", " ", "as", " ", "the", " ", "centroid",
-          " ", "because", " ", "you", " ", "recenter", " ", "to", " ", "0.", 
-         " ", "Not", " ", "subtracting", " ", "the", " ", "pad", " ", "size", 
-         " ", "will", " ", "leave", " ", "the", " ", "centroid", " ", "half", 
-         " ", "a", " ", "Pad", " ", "away", " ", "from", " ", "center"}], 
-        "..."}], "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-        "That", " ", "is", " ", "the", " ", "intesntiy", " ", "centroid", " ",
-          "in", " ", "X"}], ",", "Y"}], "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-        "I", " ", "will", " ", "always", " ", "find", " ", "the", " ", 
-         "cetroid", " ", "in", " ", "teh", " ", "RED", " ", "channel"}], ",", 
-        " ", 
-        RowBox[{
-         RowBox[{"since", " ", 
-          RowBox[{"I", "'"}], "m", " ", "always", " ", "looking", " ", "at", 
-          " ", "red", " ", 
-          RowBox[{"spots", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", 
-         " ", 
-         RowBox[{"I", " ", "will", " ", "assume", " ", 
-          RowBox[{"I", "'"}], "m", " ", "lookig", " ", "at", " ", "a", " ", 
-          "row", " ", "of", " ", "crops"}]}], ",", " ", 
+     "myPadSize", ",", " ", "len", ",", " ", "centroidRaw", ",", 
+      "centroidUltimate", ",", "centroid", " ", ",", " ", "masks", ",", "  ", 
+      "blank", ",", "centeredmasks", ",", " ", "centeredMasks", ",", 
+      "masksizes", ",", "mymaskedcrops", ",", "meanIntensities", ",", 
+      "meanBGintensity"}], "   ", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"myPadSize", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"(", 
         RowBox[{
          RowBox[{
-         "with", " ", "the", " ", "first", " ", "one", " ", "being", " ", 
-          RowBox[{"red", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", " ", 
-         
-         RowBox[{
-         "This", " ", "can", " ", "be", " ", "changed", " ", "in", " ", "the",
-           " ", "future", " ", "if", " ", "the", " ", "input", " ", "will", 
-          " ", "be", " ", "just", " ", "ONE", " ", "crop", " ", "or", " ", 
-          "if", " ", "I", " ", "want", " ", "to", " ", "have", " ", "the", 
-          " ", "intensity", " ", "centroid", " ", "change", " ", "PER", " ", 
-          "crop", " ", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"i", ".", "e", ".", " ", "a"}], " ", "new", " ", 
-             "intensity", " ", "centroid", " ", "centered", " ", "around", 
-             " ", "blue", " ", "or", " ", "purple", " ", "or", " ", 
-             "whatever"}], ")"}], "."}]}]}]}], " ", "*)"}], 
-      "\[IndentingNewLine]", 
-      RowBox[{"masks", " ", "=", " ", 
-       RowBox[{"MyDiskDonutMask", "[", 
+          RowBox[{"ImageDimensions", "[", " ", 
+           RowBox[{"mycrops", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], " ", "]"}], "  ", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], " ", "-", " ", "1"}], " ", ")"}], 
+       "/", "2"}]}], " ", ";", "\[IndentingNewLine]", 
+     RowBox[{"len", " ", "=", " ", 
+      RowBox[{"Length", "@", "mycrops"}]}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"centroidRaw", " ", "=", " ", 
+      RowBox[{"ImageMeasurements", "[", 
+       RowBox[{
+        RowBox[{"ImageAdjust", "[", " ", 
+         RowBox[{"mycrops", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", " ", 
+        "\"\<IntensityCentroid\>\""}], "]"}]}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+      "This", " ", "little", " ", "trick", " ", "rounds", " ", "the", " ", 
+       "number", " ", "without", " ", "using", " ", "the", " ", "shitty", " ",
+        "mma", " ", "round", " ", "fxn"}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"centroidUltimate", "  ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Ceiling", "[", " ", 
+         RowBox[{"(", 
+          RowBox[{"#", "-", "0.5"}], ")"}], " ", "]"}], "&"}], "/@", 
+       "centroidRaw"}]}], "  ", ";", "\[IndentingNewLine]", 
+     RowBox[{"centroid", " ", "=", " ", 
+      RowBox[{"centroidUltimate", " ", "-", " ", 
+       RowBox[{"{", 
+        RowBox[{"myPadSize", " ", ",", " ", "myPadSize"}], "}"}]}]}], "   ", 
+     ";", " ", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "Use", " ", "THIS", " ", "is", " ", "as", " ", "the", " ", "centroid", 
+        " ", "because", " ", "you", " ", "recenter", " ", "to", " ", "0.", 
+        " ", "Not", " ", "subtracting", " ", "the", " ", "pad", " ", "size", 
+        " ", "will", " ", "leave", " ", "the", " ", "centroid", " ", "half", 
+        " ", "a", " ", "Pad", " ", "away", " ", "from", " ", "center"}], 
+       "..."}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "That", " ", "is", " ", "the", " ", "intesntiy", " ", "centroid", " ", 
+        "in", " ", "X"}], ",", "Y"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "I", " ", "will", " ", "always", " ", "find", " ", "the", " ", 
+        "cetroid", " ", "in", " ", "teh", " ", "RED", " ", "channel"}], ",", 
+       " ", 
+       RowBox[{
+        RowBox[{"since", " ", 
+         RowBox[{"I", "'"}], "m", " ", "always", " ", "looking", " ", "at", 
+         " ", "red", " ", 
+         RowBox[{"spots", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", " ", 
+        RowBox[{"I", " ", "will", " ", "assume", " ", 
+         RowBox[{"I", "'"}], "m", " ", "lookig", " ", "at", " ", "a", " ", 
+         "row", " ", "of", " ", "crops"}]}], ",", " ", 
+       RowBox[{
         RowBox[{
-         RowBox[{"myPadSize", "+", "2"}], ",", "myDonutRadius", ",", 
-         "myDiskRadius", " ", ",", " ", "myDiskWidth"}], "]"}]}], " ", ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"centeredmasks", " ", "=", " ", 
-       RowBox[{"MyDiskDonutCentered", "[", 
-        RowBox[{"centroid", ",", " ", "masks"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"blank", "=", " ", 
-       RowBox[{"Image", "[", 
-        RowBox[{"Table", "[", 
+        "with", " ", "the", " ", "first", " ", "one", " ", "being", " ", 
+         RowBox[{"red", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", " ", 
+        RowBox[{
+        "This", " ", "can", " ", "be", " ", "changed", " ", "in", " ", "the", 
+         " ", "future", " ", "if", " ", "the", " ", "input", " ", "will", " ",
+          "be", " ", "just", " ", "ONE", " ", "crop", " ", "or", " ", "if", 
+         " ", "I", " ", "want", " ", "to", " ", "have", " ", "the", " ", 
+         "intensity", " ", "centroid", " ", "change", " ", "PER", " ", "crop",
+          " ", 
          RowBox[{
-          RowBox[{"Table", "[", 
-           RowBox[{"1", ",", 
-            RowBox[{"(", 
-             RowBox[{
-              RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
-          ",", 
           RowBox[{"(", 
            RowBox[{
-            RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
-        "]"}]}], "   ", ";", " ", "\[IndentingNewLine]", 
-      RowBox[{"centeredMasks", " ", "=", " ", 
+            RowBox[{"i", ".", "e", ".", " ", "a"}], " ", "new", " ", 
+            "intensity", " ", "centroid", " ", "centered", " ", "around", " ",
+             "blue", " ", "or", " ", "purple", " ", "or", " ", "whatever"}], 
+           ")"}], "."}]}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"masks", " ", "=", " ", 
+      RowBox[{"MyDiskDonutMask", "[", 
        RowBox[{
-        RowBox[{
-         RowBox[{"ImageMultiply", "[", 
-          RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
-        RowBox[{"MyDiskDonutCentered", "[", 
-         RowBox[{"centroid", ",", "masks"}], "]"}]}]}], ";", " ", 
-      "\[IndentingNewLine]", 
-      RowBox[{"masksizes", " ", "=", "  ", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"Count", "[", 
-          RowBox[{
-           RowBox[{"Flatten", "@", 
-            RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], "&"}],
-         "/@", "centeredMasks"}]}], "  ", ";", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-        "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", "masks"}], 
-        ",", " ", 
-        RowBox[{
-        "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", " ",
-          "of", " ", "masks"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"mymaskedcrops", " ", "=", " ", 
-       RowBox[{"Table", " ", "[", " ", 
-        RowBox[{
-         RowBox[{
-          RowBox[{
-           RowBox[{"ImageMultiply", "[", 
-            RowBox[{
-             RowBox[{"mycrops", "[", 
-              RowBox[{"[", "color", "]"}], "]"}], ",", "#"}], "]"}], "&"}], "/@",
-           "centeredMasks"}], " ", ",", " ", 
-         RowBox[{"{", 
-          RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], " ", ";",
-       "\[IndentingNewLine]", 
-      RowBox[{"meanIntensities", "=", "   ", 
-       RowBox[{"Table", "[", "    ", 
+        RowBox[{"myPadSize", "+", "2"}], ",", "myDonutRadius", ",", 
+        "myDiskRadius", " ", ",", " ", "myDiskWidth"}], "]"}]}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"centeredmasks", " ", "=", " ", 
+      RowBox[{"MyDiskDonutCentered", "[", 
+       RowBox[{"centroid", ",", " ", "masks"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"blank", "=", " ", 
+      RowBox[{"Image", "[", 
+       RowBox[{"Table", "[", 
         RowBox[{
          RowBox[{"Table", "[", 
+          RowBox[{"1", ",", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], ",", 
+         RowBox[{"(", 
           RowBox[{
-           RowBox[{
-            RowBox[{"Total", "[", 
-             RowBox[{"Flatten", "@", 
-              RowBox[{"ImageData", "[", 
-               RowBox[{"mymaskedcrops", "[", 
-                RowBox[{"[", 
-                 RowBox[{"color", ",", " ", "i"}], "]"}], "]"}], "]"}]}], 
-             "]"}], "/", 
-            RowBox[{"masksizes", "[", 
-             RowBox[{"[", "i", "]"}], "]"}]}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "1", ",", 
-             RowBox[{"Length", "@", 
-              RowBox[{"mymaskedcrops", "[", 
-               RowBox[{"[", "color", "]"}], "]"}]}], ",", "1"}], "}"}]}], 
-          "]"}], ",", "\[IndentingNewLine]", " ", 
-         RowBox[{"{", 
-          RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"meanBGintensity", " ", "=", "   ", 
-       RowBox[{"Table", "[", "  ", 
+           RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
+       "]"}]}], "   ", ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"centeredMasks", " ", "=", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ImageMultiply", "[", 
+         RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
+       RowBox[{"MyDiskDonutCentered", "[", 
+        RowBox[{"centroid", ",", "masks"}], "]"}]}]}], ";", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"masksizes", " ", "=", "  ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Count", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "@", 
+           RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], "&"}], 
+       "/@", "centeredMasks"}]}], "  ", ";", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+       "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", "masks"}], 
+       ",", " ", 
+       RowBox[{
+       "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", " ", 
+        "of", " ", "masks"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"mymaskedcrops", " ", "=", " ", 
+      RowBox[{"Table", " ", "[", " ", 
+       RowBox[{
         RowBox[{
          RowBox[{
-          RowBox[{"meanIntensities", "\[LeftDoubleBracket]", 
-           RowBox[{"color", ",", " ", "1"}], "\[RightDoubleBracket]"}], "-", 
-          " ", 
-          RowBox[{"meanIntensities", "\[LeftDoubleBracket]", 
-           RowBox[{"color", ",", " ", "2"}], "\[RightDoubleBracket]"}]}], " ",
-          ",", " ", "\[IndentingNewLine]", " ", 
-         RowBox[{"{", 
-          RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], " ", ";",
-       "\[IndentingNewLine]", 
-      RowBox[{"Table", "[", " ", 
+          RowBox[{"ImageMultiply", "[", 
+           RowBox[{
+            RowBox[{"mycrops", "[", 
+             RowBox[{"[", "color", "]"}], "]"}], ",", "#"}], "]"}], "&"}], "/@",
+          "centeredMasks"}], " ", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"meanIntensities", "=", "   ", 
+      RowBox[{"Table", "[", "    ", 
        RowBox[{
-        RowBox[{"{", 
+        RowBox[{"Table", "[", 
          RowBox[{
-          RowBox[{"meanIntensities", "[", 
-           RowBox[{"[", "color", "]"}], "]"}], ",", 
-          RowBox[{"meanBGintensity", " ", "[", 
-           RowBox[{"[", "color", "]"}], "]"}]}], "}"}], ",", " ", 
-        "\[IndentingNewLine]", " ", 
+          RowBox[{
+           RowBox[{"Total", "[", 
+            RowBox[{"Flatten", "@", 
+             RowBox[{"ImageData", "[", 
+              RowBox[{"mymaskedcrops", "[", 
+               RowBox[{"[", 
+                RowBox[{"color", ",", " ", "i"}], "]"}], "]"}], "]"}]}], 
+            "]"}], "/", 
+           RowBox[{"masksizes", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "@", 
+             RowBox[{"mymaskedcrops", "[", 
+              RowBox[{"[", "color", "]"}], "]"}]}], ",", "1"}], "}"}]}], 
+         "]"}], ",", "\[IndentingNewLine]", " ", 
         RowBox[{"{", 
-         RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", 
+         RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"meanBGintensity", " ", "=", "   ", 
+      RowBox[{"Table", "[", "  ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"meanIntensities", "\[LeftDoubleBracket]", 
+          RowBox[{"color", ",", " ", "1"}], "\[RightDoubleBracket]"}], "-", 
+         " ", 
+         RowBox[{"meanIntensities", "\[LeftDoubleBracket]", 
+          RowBox[{"color", ",", " ", "2"}], "\[RightDoubleBracket]"}]}], " ", 
+        ",", " ", "\[IndentingNewLine]", " ", 
+        RowBox[{"{", 
+         RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], " ", ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", " ", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"meanIntensities", "[", 
+          RowBox[{"[", "color", "]"}], "]"}], ",", 
+         RowBox[{"meanBGintensity", " ", "[", 
+          RowBox[{"[", "color", "]"}], "]"}]}], "}"}], ",", " ", 
+       "\[IndentingNewLine]", " ", 
+       RowBox[{"{", 
+        RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
      RowBox[{
       RowBox[{
        RowBox[{
         RowBox[{
          RowBox[{
           RowBox[{
-           RowBox[{
-            RowBox[{"RESULTS", ":", " ", "\[IndentingNewLine]", 
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"mean", " ", "intensity", " ", "disk", " ", 
-                 RowBox[{"(", "Disk", ")"}]}], ",", " ", 
-                RowBox[{"mean", " ", "intenstiy", " ", "donut", " ", 
-                 RowBox[{"(", "donut", ")"}]}], ",", " ", 
-                RowBox[{
-                 RowBox[{"mean", " ", "disk"}], "-", 
-                 RowBox[{"donut", " ", "intensity", " ", 
-                  RowBox[{"(", 
-                   RowBox[{"Di", "-", "Do"}], ")"}]}]}]}], "}"}], 
-              "\[IndentingNewLine]", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"{", 
-                 RowBox[{
-                  RowBox[{"RED", " ", "Disk"}], ",", " ", 
-                  RowBox[{"RED", " ", "Donut"}]}], "}"}], ",", " ", 
-                RowBox[{
-                 RowBox[{"RED", " ", "Di"}], "-", "Do"}]}], "}"}]}]}], " ", 
-            ",", " ", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"GRN", " ", "Disk"}], ",", " ", 
-              RowBox[{"GRN", " ", "Donut"}]}], "}"}], ",", " ", 
+           RowBox[{"RESULTS", ":", " ", "\[IndentingNewLine]", 
             RowBox[{
-             RowBox[{"GRN", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", ",", " ", 
-          RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"mean", " ", "intensity", " ", "disk", " ", 
+                RowBox[{"(", "Disk", ")"}]}], ",", " ", 
+               RowBox[{"mean", " ", "intenstiy", " ", "donut", " ", 
+                RowBox[{"(", "donut", ")"}]}], ",", " ", 
+               RowBox[{
+                RowBox[{"mean", " ", "disk"}], "-", 
+                RowBox[{"donut", " ", "intensity", " ", 
+                 RowBox[{"(", 
+                  RowBox[{"Di", "-", "Do"}], ")"}]}]}]}], "}"}], 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"RED", " ", "Disk"}], ",", " ", 
+                 RowBox[{"RED", " ", "Donut"}]}], "}"}], ",", " ", 
+               RowBox[{
+                RowBox[{"RED", " ", "Di"}], "-", "Do"}]}], "}"}]}]}], " ", 
+           ",", " ", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"GRN", " ", "Disk"}], ",", " ", 
+             RowBox[{"GRN", " ", "Donut"}]}], "}"}], ",", " ", 
            RowBox[{
-            RowBox[{"BLU", " ", "Disk"}], ",", " ", 
-            RowBox[{"BLU", " ", "Donut"}]}], "}"}], ",", " ", 
+            RowBox[{"GRN", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", ",", " ", 
+         
+         RowBox[{"{", 
           RowBox[{
-           RowBox[{"BLU", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", ",", " ", 
-        RowBox[{"{", 
+           RowBox[{"BLU", " ", "Disk"}], ",", " ", 
+           RowBox[{"BLU", " ", "Donut"}]}], "}"}], ",", " ", 
          RowBox[{
-          RowBox[{"PURP", " ", "Disk"}], ",", " ", 
-          RowBox[{"PURP", " ", "Donut"}]}], "}"}], ",", " ", 
+          RowBox[{"BLU", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", ",", " ", 
+       RowBox[{"{", 
         RowBox[{
-         RowBox[{"PURP", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", "}"}], 
-     "   ", "*)"}], "\[IndentingNewLine]", "]"}]}], 
-  "\[IndentingNewLine]"}]], "Input",
+         RowBox[{"PURP", " ", "Disk"}], ",", " ", 
+         RowBox[{"PURP", " ", "Donut"}]}], "}"}], ",", " ", 
+       RowBox[{
+        RowBox[{"PURP", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", "}"}], "   ",
+     "*)"}], "\[IndentingNewLine]", "]"}]}]], "Input",
  CellChangeTimes->{{3.796398294061943*^9, 3.796398462270859*^9}, {
    3.7963985186506233`*^9, 3.796398526997797*^9}, {3.796398558484681*^9, 
    3.796398666266556*^9}, {3.796398697125163*^9, 3.7963986976179943`*^9}, {
@@ -887,314 +882,9 @@ Cell[BoxData[
    3.796398929775834*^9}, {3.7963989996812077`*^9, 3.796399033645464*^9}, {
    3.796399152593471*^9, 3.7963991532281637`*^9}, 3.7963991936419077`*^9, {
    3.796400292331275*^9, 3.796400356857592*^9}, {3.796400389832747*^9, 
-   3.796400523629655*^9}, {3.796400567233632*^9, 3.796400621112296*^9}},
- CellLabel->"In[55]:=",ExpressionUUID->"ba116d1d-fa9b-47f0-8ccc-002529becb88"],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{
-  3.796398260494762*^9},ExpressionUUID->"1150732d-c016-4741-b9a7-\
-a7911601826c"],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{
-  3.796398239839179*^9},ExpressionUUID->"3e1c74d4-3412-4720-bb1a-\
-eee0bb87a6da"],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{
-  3.7963982380535994`*^9},ExpressionUUID->"b76e1b0f-b4ce-4b47-99a0-\
-45f305648589"],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{
-  3.7963982369026203`*^9},ExpressionUUID->"cf84038e-547f-46c4-9b6a-\
-1424c9b01478"],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{
-  3.796398217295422*^9},ExpressionUUID->"4e1c730b-d726-4c6c-b108-\
-5342f46c95f7"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["\<\
-
-
-
-OLD CODE \
-\>", "Subsubsection",
- CellChangeTimes->{{3.7963910872729073`*^9, 3.7963911107102737`*^9}, {
-  3.796398229660677*^9, 
-  3.7963982352516937`*^9}},ExpressionUUID->"8347f56f-16b8-49f4-baa3-\
-d22fe80b8d7b"],
-
-Cell[BoxData[
- RowBox[{"MyDiskandDonutIntensity", "[", 
-  RowBox[{"myPadSize", ",", "2", " ", ",", "dataframePFtest"}], 
-  "]"}]], "Input",
- CellChangeTimes->{{3.750954824245982*^9, 3.750954888919532*^9}, {
-   3.7512478092836514`*^9, 3.7512478358589277`*^9}, {3.751294581236629*^9, 
-   3.7512946012242413`*^9}, {3.75362522467388*^9, 3.753625247382222*^9}, {
-   3.753626158957591*^9, 3.753626165175538*^9}, {3.75362630913408*^9, 
-   3.7536263466502333`*^9}, {3.753628867864832*^9, 3.753628903317369*^9}, {
-   3.753628973422422*^9, 3.753629024514011*^9}, {3.753630164212129*^9, 
-   3.7536301865508204`*^9}, {3.75363149992697*^9, 3.753631588763279*^9}, {
-   3.753631632742237*^9, 3.753631633904407*^9}, 3.79639019523351*^9, {
-   3.796390366108633*^9, 3.796390378270643*^9}},
- EmphasizeSyntaxErrors->
-  True,ExpressionUUID->"15da88ee-9268-4948-8f41-105f330cab3a"],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{
-    "NOTE", " ", "This", " ", "only", " ", "works", " ", "when", " ", "the", 
-     " ", "dataframerow", " ", "inputs", " ", "have", " ", "specific", " ", 
-     "data", " ", "at", " ", "specific", " ", 
-     RowBox[{"locations", ".", " ", "If"}], " ", "this", " ", "fxn", " ", 
-     "fails"}], ",", " ", 
-    RowBox[{
-     RowBox[{
-      RowBox[{
-      "first", " ", "check", " ", "each", " ", "of", " ", "these", " ", 
-       RowBox[{"inputs", "!"}], "\[IndentingNewLine]", "ALSO", " ", 
-       RowBox[{"NOTE", ":", " ", 
-        RowBox[{"This", " ", "calculates", " ", "D"}]}]}], "&"}], "D", " ", 
-     "intensities", " ", "for", " ", "spots", " ", "not", " ", "called", " ", 
-     "by", " ", "the", " ", "particle", " ", "finder"}]}], "*)"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
-  RowBox[{
-   RowBox[{"MyDiskandDonutIntensity", "[", 
-    RowBox[{"myPadSize_", ",", "myDonutRadius_", ",", "mydataframerow_"}], 
-    "]"}], ":=", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-      "rgb", ",", "masks", ",", "blank", ",", " ", "centeredMasks", ",", 
-       "masksizes", ",", "mymaskedcrops", ",", "meanIntensities", ",", 
-       "meanBGintensity", ",", "myCentroid", ",", "mymasks", ",", "myCrop", 
-       ",", "myout"}], "}"}], ",", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"rgb", "=", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"3", ",", "7", ",", "8"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"4", ",", "12", ",", "13"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"5", ",", "17", ",", "18"}], "}"}]}], "}"}]}], ";", " ", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-         RowBox[{
-         "These", " ", "are", " ", "the", " ", "locaions", " ", "of", " ", 
-          "crop", " ", "and", " ", "centroidX"}], "&"}], " ", "Y", " ", "in", 
-        " ", "the", " ", "dataframePF"}], "*)"}], "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"Table", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"myCrop", " ", "=", " ", 
-           RowBox[{"mydataframerow", "\[LeftDoubleBracket]", 
-            RowBox[{"rgb", "[", 
-             RowBox[{"[", 
-              RowBox[{"i", ",", "1"}], "]"}], "]"}], 
-            "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"myCentroid", " ", "=", " ", 
-           RowBox[{"If", "[", "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"mydataframerow", "\[LeftDoubleBracket]", 
-               RowBox[{"rgb", "[", 
-                RowBox[{"[", 
-                 RowBox[{"i", ",", "2"}], "]"}], "]"}], 
-               "\[RightDoubleBracket]"}], "\[Equal]", "\"\<NaN\>\""}], ",", 
-             RowBox[{"{", 
-              RowBox[{
-               RowBox[{"myPadSize", "+", ".5"}], ",", " ", 
-               RowBox[{"myPadSize", "+", ".5"}]}], "}"}], ",", 
-             "\[IndentingNewLine]", 
-             RowBox[{"{", 
-              RowBox[{
-               RowBox[{"mydataframerow", "\[LeftDoubleBracket]", 
-                RowBox[{"rgb", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"i", ",", "2"}], "]"}], "]"}], 
-                "\[RightDoubleBracket]"}], ",", 
-               RowBox[{"mydataframerow", "\[LeftDoubleBracket]", 
-                RowBox[{"rgb", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"i", ",", "3"}], "]"}], "]"}], 
-                "\[RightDoubleBracket]"}]}], "}"}]}], "   ", "]"}]}], ";", 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", 
-          RowBox[{"masks", " ", "=", " ", 
-           RowBox[{"MyDiskDonutMask", "[", 
-            RowBox[{"myPadSize", ",", "myDonutRadius"}], "]"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"blank", "=", " ", 
-           RowBox[{"Image", "[", 
-            RowBox[{"Table", "[", 
-             RowBox[{
-              RowBox[{"Table", "[", 
-               RowBox[{"1", ",", 
-                RowBox[{"(", 
-                 RowBox[{
-                  RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}],
-               ",", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
-            "]"}]}], ";", " ", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{
-            "creates", " ", "a", " ", "maks", " ", "image", " ", "the", " ", 
-             "size", " ", "of", " ", "myCrop", " ", 
-             RowBox[{"that", "'"}], "s", " ", "just", " ", "1.", "s"}], ",", 
-            " ", 
-            RowBox[{
-            "to", " ", "adjust", " ", "the", " ", "size", " ", "of", " ", 
-             "the", " ", "masks", " ", "so", " ", "we", " ", "can", " ", 
-             "get", " ", "an", " ", "accurate", " ", "white", " ", "pixel", 
-             " ", "count"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-          "\[IndentingNewLine]", 
-          RowBox[{"centeredMasks", " ", "=", " ", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"ImageMultiply", "[", 
-              RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
-            RowBox[{"MyDiskDonutCentered", "[", 
-             RowBox[{"myPadSize", ",", "myCentroid", ",", "masks"}], 
-             "]"}]}]}], ";", " ", 
-          RowBox[{"(*", 
-           RowBox[{
-           "these", " ", "centered", " ", "masks", " ", "now", " ", "look", 
-            " ", "like", " ", 
-            RowBox[{"this", ":", " ", 
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                GraphicsBox[
-                 TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIbikfBSAIf7LHT
-1DaPUvOHmrmEzKc9AACYriDw
-                   "], {{0, 11}, {11, 0}}, {0., 1.},
-                   ColorFunction->GrayLevel],
-                  BoxForm`ImageTag[
-                  "Real", ColorSpace -> Automatic, Interleaving -> None],
-                  Selectable->False],
-                 DefaultBaseStyle->"ImageGraphics",
-                 ImageSizeRaw->{11, 11},
-                 PlotRange->{{0, 11}, {0, 11}}], ",", 
-                GraphicsBox[
-                 TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOmUkqSJIbioc3+GBPHE1t
-84g1n1L1lJqHSz+p9pILhrq51Apfcs1HqAMAOlMysQ==
-                   "], {{0, 
-                   11}, {11, 0}}, {0., 1.},
-                   ColorFunction->GrayLevel],
-                  BoxForm`ImageTag[
-                  "Real", ColorSpace -> Automatic, Interleaving -> None],
-                  Selectable->False],
-                 DefaultBaseStyle->"ImageGraphics",
-                 ImageSizeRaw->{11, 11},
-                 PlotRange->{{0, 11}, {0, 11}}]}], "}"}], " ", "with", " ", 
-              "image", " ", "dimensions", " ", "of", " ", "myCrop"}]}]}], 
-           "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"masksizes", " ", "=", "  ", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"Count", "[", 
-              RowBox[{
-               RowBox[{"Flatten", "@", 
-                RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], 
-             "&"}], "/@", "centeredMasks"}]}], " ", ";", " ", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{
-            "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", 
-             "masks"}], ",", " ", 
-            RowBox[{
-            "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", 
-             " ", "of", " ", "masks"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-          "\[IndentingNewLine]", 
-          RowBox[{"mymaskedcrops", " ", "=", " ", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"ImageMultiply", "[", 
-              RowBox[{"myCrop", ",", "#"}], "]"}], "&"}], "/@", 
-            "centeredMasks"}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"meanIntensities", " ", "=", " ", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Total", "[", 
-               RowBox[{"Flatten", "@", 
-                RowBox[{"ImageData", "[", 
-                 RowBox[{"mymaskedcrops", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "]"}], "/", 
-              RowBox[{"masksizes", "[", 
-               RowBox[{"[", "i", "]"}], "]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "1", ",", 
-               RowBox[{"Length", "@", "mymaskedcrops"}], ",", "1"}], "}"}]}], 
-            "]"}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"meanBGintensity", " ", "=", "  ", 
-           RowBox[{
-            RowBox[{
-            "meanIntensities", "\[LeftDoubleBracket]", "1", 
-             "\[RightDoubleBracket]"}], "-", 
-            RowBox[{
-            "meanIntensities", "\[LeftDoubleBracket]", "2", 
-             "\[RightDoubleBracket]"}]}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"{", 
-           RowBox[{"meanBGintensity", ",", 
-            RowBox[{
-            "meanIntensities", "\[LeftDoubleBracket]", "2", 
-             "\[RightDoubleBracket]"}], ",", "masksizes", ",", 
-            "\"\<stdevdisk\>\"", ",", "\"\<stdevdonut\>\""}], "}"}]}], " ", 
-         "\[IndentingNewLine]", ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "1", ",", 
-           RowBox[{"Length", "@", "rgb"}]}], "}"}]}], "]"}], "//", 
-       "Flatten"}]}]}], "\[IndentingNewLine]", "]"}]}]}]], "Input",
- CellChangeTimes->{{3.753066083014526*^9, 3.7530660907506104`*^9}, {
-   3.753066197920163*^9, 3.7530662073301697`*^9}, {3.7530663075365133`*^9, 
-   3.753066352896709*^9}, {3.753066401201453*^9, 3.753066484026576*^9}, {
-   3.7530666249247828`*^9, 3.753066739225605*^9}, {3.753066810868051*^9, 
-   3.753066862793532*^9}, {3.7530670389140244`*^9, 3.753067069776636*^9}, {
-   3.7530678170330677`*^9, 3.753067823573358*^9}, {3.7530680610729017`*^9, 
-   3.753068076686418*^9}, {3.753068123511294*^9, 3.753068189892816*^9}, {
-   3.7530682374484463`*^9, 3.753068241389401*^9}, {3.753068274564357*^9, 
-   3.753068289991432*^9}, {3.7530683899102697`*^9, 3.753068399860889*^9}, {
-   3.753068462295621*^9, 3.7530685791884737`*^9}, {3.753068672459477*^9, 
-   3.753068682146001*^9}, {3.753068748535006*^9, 3.753068780396558*^9}, {
-   3.753068820795024*^9, 3.753068889328974*^9}, 3.75306899027757*^9, {
-   3.753069022374606*^9, 3.7530691588762207`*^9}, {3.753625053373267*^9, 
-   3.7536250581086693`*^9}, {3.7536253686590242`*^9, 3.753625378977726*^9}, {
-   3.753625448061311*^9, 3.7536255295181513`*^9}, {3.753625562205452*^9, 
-   3.7536256075739326`*^9}, {3.753625687076261*^9, 3.7536256950436697`*^9}, {
-   3.7536257303881283`*^9, 3.753625801792777*^9}, {3.7536260489684143`*^9, 
-   3.753626241122346*^9}, {3.7536262778157797`*^9, 3.753626281554212*^9}, {
-   3.7536264678649817`*^9, 3.753626521728628*^9}, {3.753629045418798*^9, 
-   3.753629170673437*^9}, {3.7536296844195423`*^9, 3.753629758115044*^9}, {
-   3.7536301065131474`*^9, 3.753630139280521*^9}, {3.7536302054378033`*^9, 
-   3.753630257909391*^9}, {3.753630303140984*^9, 3.753630372866376*^9}, {
-   3.753630455093006*^9, 3.7536305233810253`*^9}, {3.753630577851733*^9, 
-   3.75363065997299*^9}, {3.753630774613985*^9, 3.753630830270247*^9}, {
-   3.753630898514162*^9, 3.753630919364992*^9}, {3.7536309498301563`*^9, 
-   3.7536309838244143`*^9}, {3.7536311390149937`*^9, 
-   3.7536311413158007`*^9}, {3.753631198635249*^9, 3.7536311989372797`*^9}, {
-   3.753631232625659*^9, 3.753631237529194*^9}, {3.753631481921712*^9, 
-   3.753631505626359*^9}, {3.753631594239382*^9, 3.753631614453855*^9}, {
-   3.796390430010973*^9, 3.796390438294487*^9}, {3.7963917714564962`*^9, 
-   3.796391772220509*^9}},ExpressionUUID->"6aba6127-3794-4981-8db0-\
-5612e1f80580"]
+   3.796400523629655*^9}, {3.796400567233632*^9, 3.796400621112296*^9}, 
+   3.796400832466913*^9},ExpressionUUID->"ba116d1d-fa9b-47f0-8ccc-\
+002529becb88"]
 }, Open  ]]
 },
 WindowSize->{1243, 804},
@@ -1214,34 +904,24 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 524, 7, 45, "Subsubsection",ExpressionUUID->"06ef67d0-8399-4056-8186-b94c6196eb57"],
-Cell[1107, 31, 3764, 80, 334, "Input",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4908, 116, 371, 6, 45, "Subsubsection",ExpressionUUID->"0a78fb85-1fbf-4654-9fe1-104f22d6e001"],
-Cell[5282, 124, 167, 3, 35, "Text",ExpressionUUID->"3375c5a6-0e99-4278-b426-91975e2fd805"],
-Cell[5452, 129, 1342, 36, 39, "Input",ExpressionUUID->"fb23f662-0308-49d8-b520-4bd294e71915"],
-Cell[6797, 167, 6473, 139, 448, "Input",ExpressionUUID->"9c38180d-6b03-444d-817b-11b14a91a9be"]
+Cell[580, 22, 546, 8, 45, "Subsubsection",ExpressionUUID->"06ef67d0-8399-4056-8186-b94c6196eb57"],
+Cell[1129, 32, 3794, 81, 334, "Input",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[13307, 311, 1024, 17, 75, "Subsubsection",ExpressionUUID->"d9002f4d-dbe1-49f1-8a32-102b729fe2c1"],
-Cell[14334, 330, 167, 3, 35, "Text",ExpressionUUID->"56cc26d8-7d85-43ce-b96e-591cd9cb9069"],
+Cell[4960, 118, 393, 6, 37, "Subsubsection",ExpressionUUID->"0a78fb85-1fbf-4654-9fe1-104f22d6e001"],
+Cell[5356, 126, 167, 3, 35, "Text",ExpressionUUID->"3375c5a6-0e99-4278-b426-91975e2fd805"],
+Cell[5526, 131, 1342, 36, 39, "Input",ExpressionUUID->"fb23f662-0308-49d8-b520-4bd294e71915"],
+Cell[6871, 169, 6473, 139, 448, "Input",ExpressionUUID->"9c38180d-6b03-444d-817b-11b14a91a9be"]
+}, Closed]],
 Cell[CellGroupData[{
-Cell[14526, 337, 7918, 144, 39, "Input",ExpressionUUID->"719fbeac-471a-4852-9f97-7a5a9e2a95bf"],
-Cell[22447, 483, 871, 24, 34, "Output",ExpressionUUID->"e2300243-8eed-4489-8d6f-b3ea79ff5da6"]
-}, Open  ]],
-Cell[23333, 510, 7276, 104, 248, "Input",ExpressionUUID->"9d3e777a-6599-417e-941b-8de7c21c2f3a"],
-Cell[30612, 616, 11738, 274, 800, "Input",ExpressionUUID->"ba116d1d-fa9b-47f0-8ccc-002529becb88"],
-Cell[42353, 892, 147, 3, 52, "Input",ExpressionUUID->"1150732d-c016-4741-b9a7-a7911601826c"],
-Cell[42503, 897, 147, 3, 52, "Input",ExpressionUUID->"3e1c74d4-3412-4720-bb1a-eee0bb87a6da"],
-Cell[42653, 902, 149, 3, 52, "Input",ExpressionUUID->"b76e1b0f-b4ce-4b47-99a0-45f305648589"],
-Cell[42805, 907, 149, 3, 52, "Input",ExpressionUUID->"cf84038e-547f-46c4-9b6a-1424c9b01478"],
-Cell[42957, 912, 147, 3, 52, "Input",ExpressionUUID->"4e1c730b-d726-4c6c-b108-5342f46c95f7"]
-}, Open  ]],
+Cell[13381, 313, 1024, 17, 75, "Subsubsection",ExpressionUUID->"d9002f4d-dbe1-49f1-8a32-102b729fe2c1"],
+Cell[14408, 332, 167, 3, 35, "Text",ExpressionUUID->"56cc26d8-7d85-43ce-b96e-591cd9cb9069"],
 Cell[CellGroupData[{
-Cell[43141, 920, 226, 9, 123, "Subsubsection",ExpressionUUID->"8347f56f-16b8-49f4-baa3-d22fe80b8d7b"],
-Cell[43370, 931, 859, 14, 30, "Input",ExpressionUUID->"15da88ee-9268-4948-8f41-105f330cab3a"],
-Cell[44232, 947, 11794, 249, 675, "Input",ExpressionUUID->"6aba6127-3794-4981-8db0-5612e1f80580"]
+Cell[14600, 339, 7918, 144, 39, "Input",ExpressionUUID->"719fbeac-471a-4852-9f97-7a5a9e2a95bf"],
+Cell[22521, 485, 871, 24, 34, "Output",ExpressionUUID->"e2300243-8eed-4489-8d6f-b3ea79ff5da6"]
+}, Open  ]],
+Cell[23407, 512, 7263, 104, 227, "Input",ExpressionUUID->"9d3e777a-6599-417e-941b-8de7c21c2f3a"],
+Cell[30673, 618, 11404, 268, 745, "Input",ExpressionUUID->"ba116d1d-fa9b-47f0-8ccc-002529becb88"]
 }, Open  ]]
 }
 ]
