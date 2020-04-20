@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     84158,       1926]
-NotebookOptionsPosition[     78354,       1831]
-NotebookOutlinePosition[     78690,       1846]
-CellTagsIndexPosition[     78647,       1843]
+NotebookDataLength[     58335,       1241]
+NotebookOptionsPosition[     56042,       1199]
+NotebookOutlinePosition[     56378,       1214]
+CellTagsIndexPosition[     56335,       1211]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -109,9 +109,8 @@ Lim Spot, use myPadSize unless you want a bigger/smaller disk\n\>\""}], ";"}],
   3.750949249498136*^9, 3.75094935832798*^9}, {3.7509495261099157`*^9, 
   3.7509497203736343`*^9}, {3.750949984139188*^9, 3.75095000820501*^9}, {
   3.75095052843073*^9, 3.7509509891151323`*^9}},
- CellLabel->
-  "In[243]:=",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
-}, Closed]],
+ CellLabel->"In[1]:=",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -164,8 +163,7 @@ Ta559FJHqj5SzSNW/1A1d7jEM6Xpl3IAAIu1LfY=
        PlotRange->{{0, 11}, {0, 12}}]}], "}"}]}], "]"}], "  ", 
   "*)"}]], "Input",
  CellChangeTimes->{{3.750955060199387*^9, 3.7509551190982122`*^9}},
- CellLabel->
-  "In[448]:=",ExpressionUUID->"fb23f662-0308-49d8-b520-4bd294e71915"],
+ CellLabel->"In[3]:=",ExpressionUUID->"fb23f662-0308-49d8-b520-4bd294e71915"],
 
 Cell[BoxData[{
  RowBox[{
@@ -306,9 +304,8 @@ None],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",ImageSizeRaw->{\
    3.750949249498136*^9, 3.75094935832798*^9}, {3.7509495261099157`*^9, 
    3.7509497203736343`*^9}, {3.750950083209612*^9, 3.750950101374525*^9}, {
    3.751244825867087*^9, 3.7512448342795677`*^9}, 3.7963918987548523`*^9},
- CellLabel->
-  "In[260]:=",ExpressionUUID->"9c38180d-6b03-444d-817b-11b14a91a9be"]
-}, Open  ]],
+ CellLabel->"In[4]:=",ExpressionUUID->"9c38180d-6b03-444d-817b-11b14a91a9be"]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -336,10 +333,11 @@ Cell["Module Unit Test input : ", "Text",
   3.750954876337336*^9}},ExpressionUUID->"56cc26d8-7d85-43ce-b96e-\
 591cd9cb9069"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{
-  RowBox[{"mycrops", " ", 
-   RowBox[{"(*", "dataframePFtest", "*)"}], " ", "=", " ", 
+ RowBox[{"MyDiskDonutIntensity", "[", " ", 
+  RowBox[{
    RowBox[{"{", 
     RowBox[{
      GraphicsBox[
@@ -474,1091 +472,461 @@ min=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1,
        Selectable->False],
       DefaultBaseStyle->"ImageGraphics",
       ImageSizeRaw->{11, 11},
-      PlotRange->{{0, 11}, {0, 11}}]}], "}"}]}], ";"}]], "Input",
+      PlotRange->{{0, 11}, {0, 11}}]}], "}"}], ",", " ", "1.5", ",", " ", "7",
+    ",", " ", "5"}], "]"}]], "Input",
  CellChangeTimes->{{3.796390207820122*^9, 3.796390242120866*^9}, {
    3.796390343639681*^9, 3.796390369224848*^9}, {3.796391476542094*^9, 
    3.796391486924451*^9}, 3.796392113519389*^9, {3.796392450752205*^9, 
-   3.796392451176455*^9}, {3.796392830096846*^9, 
-   3.796392840022279*^9}},ExpressionUUID->"719fbeac-471a-4852-9f97-\
-7a5a9e2a95bf"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"myPadSize", " ", "=", " ", 
-  RowBox[{
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"ImageDimensions", "[", " ", 
-       RowBox[{"mycrops", "[", 
-        RowBox[{"[", "1", "]"}], "]"}], " ", "]"}], "  ", "[", 
-      RowBox[{"[", "1", "]"}], "]"}], " ", "-", " ", "1"}], " ", ")"}], "/", 
-   "2"}]}]], "Input",
- CellChangeTimes->{{3.796392061578393*^9, 3.796392063947847*^9}, {
-  3.796392770350494*^9, 3.796392836982458*^9}},
- CellLabel->
-  "In[361]:=",ExpressionUUID->"1f544cc5-c913-40f7-b8ed-10d7a3780cae"],
-
-Cell[BoxData["5"], "Output",
- CellChangeTimes->{
-  3.796392064302372*^9, 3.796392115565881*^9, 3.796392452895741*^9, {
-   3.796392781751034*^9, 3.796392850988715*^9}},
- CellLabel->
-  "Out[361]=",ExpressionUUID->"e2431d8a-5a95-4f09-9fce-52b4bc3068cb"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{"cropR", " ", "=", 
-  RowBox[{"ImageAdjust", "@", " ", 
-   RowBox[{"mycrops", "[", 
-    RowBox[{"[", "1", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"centroidRaw", " ", "=", " ", 
-   RowBox[{"ImageMeasurements", "[", 
-    RowBox[{"img", ",", " ", "\"\<IntensityCentroid\>\""}], "]"}]}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", 
-   RowBox[{
-   "This", " ", "little", " ", "trick", " ", "rounds", " ", "the", " ", 
-    "number", " ", "without", " ", "using", " ", "the", " ", "shitty", " ", 
-    "mma", " ", "round", " ", "fxn"}], " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"centroidUltimate", "  ", "=", " ", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"Ceiling", "[", " ", 
-      RowBox[{"(", 
-       RowBox[{"#", "-", "0.5"}], ")"}], " ", "]"}], "&"}], "/@", 
-    "centroidRaw"}]}], " "}], "\[IndentingNewLine]", 
- RowBox[{"centroid", " ", "=", " ", 
-  RowBox[{"centroidUltimate", " ", "-", " ", 
-   RowBox[{"{", 
-    RowBox[{"myPadSize", " ", ",", " ", "myPadSize"}], "}"}], "  ", 
-   RowBox[{"(*", 
-    RowBox[{
-     RowBox[{
-     "Use", " ", "THIS", " ", "is", " ", "as", " ", "the", " ", "centroid", 
-      " ", "because", " ", "you", " ", "recenter", " ", "to", " ", "0.", " ", 
-      "Not", " ", "subtracting", " ", "the", " ", "pad", " ", "size", " ", 
-      "will", " ", "leave", " ", "the", " ", "centroid", " ", "half", " ", 
-      "a", " ", "Pad", " ", "away", " ", "from", " ", "center"}], "..."}], 
-    "*)"}]}]}]}], "Input",
- CellChangeTimes->{{3.796390626823941*^9, 3.796390638947949*^9}, {
-  3.796391038943783*^9, 3.796391069686964*^9}, {3.796391193913361*^9, 
-  3.796391196684334*^9}, {3.796391498534391*^9, 3.796391510052926*^9}, {
-  3.79639192957631*^9, 3.796391944936275*^9}, {3.796392655658375*^9, 
-  3.7963926614652433`*^9}, {3.796392906205345*^9, 3.79639296643614*^9}},
- CellLabel->
-  "In[379]:=",ExpressionUUID->"f2130507-81a2-4e04-b8aa-8cc5f21b6579"],
-
-Cell[BoxData[
- GraphicsBox[
-  TagBox[RasterBox[
-    RawArray["UnsignedInteger16",{{3411, 6474, 6329, 9144, 5777, 9638, 3643, 
-     3614, 4645, 0, 3440}, {3034, 2613, 6749, 7374, 10102, 4950, 5820, 4543, 
-     4296, 6038, 1379}, {3846, 11728, 13484, 18913, 16242, 16823, 18390, 8128,
-      8491, 4950, 4224}, {12236, 10320, 19929, 32310, 44532, 40772, 35562, 
-     28885, 16663, 10291, 7069}, {7170, 16939, 28623, 44445, 56739, 60498, 
-     61660, 46491, 29552, 16605, 8201}, {8477, 12265, 29799, 39234, 50657, 
-     65535, 61674, 56260, 43501, 23209, 15662}, {11568, 15618, 22745, 27346, 
-     43196, 51412, 47957, 46477, 30801, 26606, 11525}, {10770, 13412, 19131, 
-     20335, 23108, 23500, 26635, 20553, 14080, 11931, 9290}, {8854, 13542, 
-     12933, 14762, 16286, 14065, 11728, 10741, 4485, 5385, 3556}, {2395, 8448,
-      7112, 6358, 6372, 7461, 6270, 4964, 4674, 4267, 3585}, {3469, 1872, 
-     5545, 6227, 3295, 3426, 5167, 6212, 3701, 4021, 1698}}], {{0, 11}, {11, 
-    0}}, {0, 65535},
-    ColorFunction->GrayLevel],
-   BoxForm`ImageTag[
-   "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, MetaInformation -> 
-    Association[
-     "Exif" -> Association[
-       "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-        "ImageLength" -> 944, "BitsPerSample" -> 16, 
-        "PhotometricInterpretation" -> "Black Is Zero", "ImageDescription" -> 
-        "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\n\
-min=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-        "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-   Selectable->False],
-  DefaultBaseStyle->"ImageGraphics",
-  ImageSize->{22., Automatic},
-  ImageSizeRaw->{11, 11},
-  PlotRange->{{0, 11}, {0, 11}}]], "Output",
- CellChangeTimes->{{3.796390624006283*^9, 3.796390628388319*^9}, {
-   3.7963910415871277`*^9, 3.7963910701738243`*^9}, {3.7963911827265787`*^9, 
-   3.796391196936015*^9}, {3.796391507549367*^9, 3.796391510316484*^9}, {
-   3.796391932224115*^9, 3.796391947429367*^9}, 3.796392116877983*^9, 
-   3.79639245419186*^9, 3.796392664382184*^9, 3.796392852720536*^9, 
-   3.7963929069666348`*^9, 3.796392967026767*^9},
- CellLabel->
-  "Out[379]=",ExpressionUUID->"5d4621ba-b844-4fe6-867e-1f5778ecd4ee"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"5.489587216112906`", ",", "5.61686819780104`"}], "}"}]], "Output",
- CellChangeTimes->{{3.796390624006283*^9, 3.796390628388319*^9}, {
-   3.7963910415871277`*^9, 3.7963910701738243`*^9}, {3.7963911827265787`*^9, 
-   3.796391196936015*^9}, {3.796391507549367*^9, 3.796391510316484*^9}, {
-   3.796391932224115*^9, 3.796391947429367*^9}, 3.796392116877983*^9, 
-   3.79639245419186*^9, 3.796392664382184*^9, 3.796392852720536*^9, 
-   3.7963929069666348`*^9, 3.796392967029147*^9},
- CellLabel->
-  "Out[380]=",ExpressionUUID->"47be555f-b851-41b6-ad52-92eee89dbab9"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"5", ",", "6"}], "}"}]], "Output",
- CellChangeTimes->{{3.796390624006283*^9, 3.796390628388319*^9}, {
-   3.7963910415871277`*^9, 3.7963910701738243`*^9}, {3.7963911827265787`*^9, 
-   3.796391196936015*^9}, {3.796391507549367*^9, 3.796391510316484*^9}, {
-   3.796391932224115*^9, 3.796391947429367*^9}, 3.796392116877983*^9, 
-   3.79639245419186*^9, 3.796392664382184*^9, 3.796392852720536*^9, 
-   3.7963929069666348`*^9, 3.7963929670318727`*^9},
- CellLabel->
-  "Out[381]=",ExpressionUUID->"e3330042-eb15-4707-a16f-5662afc46765"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"0", ",", "1"}], "}"}]], "Output",
- CellChangeTimes->{{3.796390624006283*^9, 3.796390628388319*^9}, {
-   3.7963910415871277`*^9, 3.7963910701738243`*^9}, {3.7963911827265787`*^9, 
-   3.796391196936015*^9}, {3.796391507549367*^9, 3.796391510316484*^9}, {
-   3.796391932224115*^9, 3.796391947429367*^9}, 3.796392116877983*^9, 
-   3.79639245419186*^9, 3.796392664382184*^9, 3.796392852720536*^9, 
-   3.7963929069666348`*^9, 3.7963929670357313`*^9},
- CellLabel->
-  "Out[382]=",ExpressionUUID->"9f132d7e-9c70-4594-81a8-8a9758aaf376"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{
-   "That", " ", "is", " ", "the", " ", "intesntiy", " ", "centroid", " ", 
-    "in", " ", "X"}], ",", "Y"}], "*)"}]], "Input",
- CellChangeTimes->{{3.796391205553206*^9, 
-  3.7963912129891043`*^9}},ExpressionUUID->"09bec52d-40c6-4eb4-8dd9-\
-8eae19ee4a9c"],
-
-Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{
-   RowBox[{
-   "I", " ", "will", " ", "always", " ", "find", " ", "the", " ", "cetroid", 
-    " ", "in", " ", "teh", " ", "RED", " ", "channel"}], ",", " ", 
-   RowBox[{
-    RowBox[{"since", " ", 
-     RowBox[{"I", "'"}], "m", " ", "always", " ", "looking", " ", "at", " ", 
-     "red", " ", 
-     RowBox[{"spots", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", " ", 
-    RowBox[{"I", " ", "will", " ", "assume", " ", 
-     RowBox[{"I", "'"}], "m", " ", "lookig", " ", "at", " ", "a", " ", "row", 
-     " ", "of", " ", "crops"}]}], ",", " ", 
-   RowBox[{
-    RowBox[{"with", " ", "the", " ", "first", " ", "one", " ", "being", " ", 
-     RowBox[{"red", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", " ", 
-    RowBox[{
-    "This", " ", "can", " ", "be", " ", "changed", " ", "in", " ", "the", " ",
-      "future", " ", "if", " ", "the", " ", "input", " ", "will", " ", "be", 
-     " ", "just", " ", "ONE", " ", "crop", " ", "or", " ", "if", " ", "I", 
-     " ", "want", " ", "to", " ", "have", " ", "the", " ", "intensity", " ", 
-     "centroid", " ", "change", " ", "PER", " ", "crop", " ", 
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"i", ".", "e", ".", " ", "a"}], " ", "new", " ", "intensity", 
-        " ", "centroid", " ", "centered", " ", "around", " ", "blue", " ", 
-        "or", " ", "purple", " ", "or", " ", "whatever"}], ")"}], ".", 
-      " "}]}]}]}]}]], "Input",
- CellChangeTimes->{{3.796391261410894*^9, 
-  3.796391378109626*^9}},ExpressionUUID->"605ecad7-684e-465e-98ef-\
-8c337b91e1e8"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{"masks", " ", "=", " ", 
-  RowBox[{"MyDiskDonutMask", "[", 
-   RowBox[{
-    RowBox[{"myPadSize", "+", "2"}], ",", "1.5", 
-    RowBox[{"(*", "donutRadius", "*)"}], ",", "7", 
-    RowBox[{"(*", "diskRadius", "*)"}], " ", ",", " ", "5"}], 
-   RowBox[{"(*", "diskWidth", "*)"}], "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"ImageDimensions", "[", 
-  RowBox[{"masks", "[", 
-   RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "Input",
- CellChangeTimes->{
-  3.796391218750058*^9, {3.796391596967412*^9, 3.79639175767524*^9}, {
-   3.7963919681255198`*^9, 3.796391992387206*^9}, {3.796392075726138*^9, 
-   3.796392085643136*^9}, {3.796392143670946*^9, 3.796392154479301*^9}, {
-   3.796392478656056*^9, 3.796392491956205*^9}},
- CellLabel->
-  "In[371]:=",ExpressionUUID->"63fb2cbb-ae41-4000-8067-868f172cfecb"],
+   3.796392451176455*^9}, {3.796392830096846*^9, 3.796392840022279*^9}, {
+   3.796400767060446*^9, 3.796400804847747*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"719fbeac-471a-4852-9f97-7a5a9e2a95bf"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
-   GraphicsBox[
-    TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIfikcBtUCDPfn6
-YJhcfZTqJweQq28UoAMAfEkR0g==
-      "], {{0, 15}, {15, 0}}, {0., 1.},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag["Real32", ColorSpace -> Automatic, Interleaving -> None],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSizeRaw->{15, 15},
-    PlotRange->{{0, 15}, {0, 15}}], ",", 
-   GraphicsBox[
-    TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIfirGDBntMTAhg
-00OMGeTKE+s2bOqI9RO6WlL0YbN/JOlFZ5OiD90NxLqVGHFy5ElJz4TMwAQA
-T65Dzw==
-      "], {{0, 15}, {15, 0}}, {0., 1.},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag["Real32", ColorSpace -> Automatic, Interleaving -> None],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSizeRaw->{15, 15},
-    PlotRange->{{0, 15}, {0, 15}}]}], "}"}]], "Output",
- CellChangeTimes->{{3.796391661344161*^9, 3.7963917580577374`*^9}, {
-   3.7963919682903547`*^9, 3.796391992579265*^9}, 3.796392086240996*^9, {
-   3.796392118335641*^9, 3.796392154658122*^9}, {3.7963924556865673`*^9, 
-   3.7963924921565037`*^9}, 3.796392667899127*^9, 3.796392914855234*^9},
- CellLabel->
-  "Out[371]=",ExpressionUUID->"a82742c3-e6df-48e5-aa66-2192e6c23eaa"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"15", ",", "15"}], "}"}]], "Output",
- CellChangeTimes->{{3.796391661344161*^9, 3.7963917580577374`*^9}, {
-   3.7963919682903547`*^9, 3.796391992579265*^9}, 3.796392086240996*^9, {
-   3.796392118335641*^9, 3.796392154658122*^9}, {3.7963924556865673`*^9, 
-   3.7963924921565037`*^9}, 3.796392667899127*^9, 3.796392914858165*^9},
- CellLabel->
-  "Out[372]=",ExpressionUUID->"fec3a42c-d65a-4f17-9cfa-1d7988a8207c"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"centeredmasks", " ", "=", " ", 
-  RowBox[{"MyDiskDonutCentered", "[", 
-   RowBox[{"centroid", ",", " ", "masks"}], "]"}]}]], "Input",
- CellChangeTimes->{{3.7963919343879147`*^9, 3.7963919517220573`*^9}, {
-  3.796392010087154*^9, 3.796392012001698*^9}},
- CellLabel->
-  "In[373]:=",ExpressionUUID->"eba2a6ef-3517-4b55-9e2c-c1ba92aaab78"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   GraphicsBox[
-    TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSFIAiPkZRsHgAA32
-5OuDYXL1UaqfHECuvlGADgBncxHT
-      "], {{0, 16}, {15, 0}}, {0., 1.},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag["Real32", ColorSpace -> Automatic, Interleaving -> None],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSizeRaw->{15, 16},
-    PlotRange->{{0, 15}, {0, 16}}], ",", 
-   GraphicsBox[
-    TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSFIAiPkZaAEa7DEx
-OXqIMYNceWLdhk0dsX5CV0uKPmz2jyS96GxS9KG7gVi3EiNOjjwp6ZmQGZgA
-ADrYQ9A=
-      "], {{0, 16}, {15, 0}}, {0., 1.},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag["Real32", ColorSpace -> Automatic, Interleaving -> None],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSizeRaw->{15, 16},
-    PlotRange->{{0, 15}, {0, 16}}]}], "}"}]], "Output",
- CellChangeTimes->{{3.796391952409935*^9, 3.7963920122479773`*^9}, {
-   3.796392098623255*^9, 3.796392156364101*^9}, {3.796392458713418*^9, 
-   3.7963924949262247`*^9}, 3.796392669719733*^9, 3.796392916752359*^9},
- CellLabel->
-  "Out[373]=",ExpressionUUID->"fb80fbb9-f876-43c9-8d70-bd299c0bf6ee"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"centeredmasks", "[", 
-   RowBox[{"[", "1", "]"}], "]"}], " ", "//", " ", 
-  "ImageDimensions"}]], "Input",
- CellChangeTimes->{{3.796392016641789*^9, 3.7963920481692677`*^9}, {
-  3.796392511685392*^9, 3.796392513948452*^9}},
- CellLabel->
-  "In[374]:=",ExpressionUUID->"f829f41f-f108-4e72-aaf9-82b474cc4746"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"15", ",", "16"}], "}"}]], "Output",
- CellChangeTimes->{3.7963925141788607`*^9, 3.7963926709957933`*^9, 
-  3.7963929187017717`*^9},
- CellLabel->
-  "Out[374]=",ExpressionUUID->"b845b518-36f5-42d6-9ed9-f9ed3d13087f"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{
-   RowBox[{"blank", "=", " ", 
-    RowBox[{"Image", "[", 
-     RowBox[{"Table", "[", 
-      RowBox[{
-       RowBox[{"Table", "[", 
-        RowBox[{"1", ",", 
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], ",", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], "]"}]}],
-    ";"}], " "}], "\[IndentingNewLine]", 
- RowBox[{"ImageDimensions", "[", " ", "blank", "]"}]}], "Input",
- CellChangeTimes->{{3.796392423919676*^9, 3.796392440842805*^9}},
- CellLabel->
-  "In[375]:=",ExpressionUUID->"6b0b36e9-098f-4dd7-8a62-c3ecf7936acc"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"11", ",", "11"}], "}"}]], "Output",
- CellChangeTimes->{{3.796392436463407*^9, 3.796392484699767*^9}, 
-   3.7963925156369867`*^9, 3.7963926725246983`*^9, 3.796392919871173*^9},
- CellLabel->
-  "Out[376]=",ExpressionUUID->"c4e2546d-dc19-4d21-833b-d9e1154e6ffc"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{"centeredMasks", " ", "=", " ", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"ImageMultiply", "[", 
-     RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
-   RowBox[{"MyDiskDonutCentered", "[", 
-    RowBox[{"centroid", ",", "masks"}], "]"}]}]}], "\[IndentingNewLine]", 
- RowBox[{"ImageDimensions", "[", " ", 
-  RowBox[{"centeredMasks", "[", 
-   RowBox[{"[", "1", "]"}], "]"}], " ", "]"}]}], "Input",
- CellChangeTimes->{{3.7963923302796783`*^9, 3.796392330891531*^9}, {
-  3.7963923963022413`*^9, 3.796392414289165*^9}},
- CellLabel->
-  "In[377]:=",ExpressionUUID->"111bb7a5-c168-4bdc-8594-dc21c4498ad5"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   GraphicsBox[
-    TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcvaLAnXh0M
-E6uOVPXUdC/9AQBX7hHK
-      "], {{0, 11}, {11, 0}}, {0., 1.},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag["Real32", ColorSpace -> Automatic, Interleaving -> None],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSizeRaw->{11, 11},
-    PlotRange->{{0, 11}, {0, 11}}], ",", 
-   GraphicsBox[
-    TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbihkYGuwRGBtA
-lsenDpt6YgCx6oYqICUcSA1f4uINABfLGf8=
-      "], {{0, 11}, {11, 0}}, {0., 1.},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag["Real32", ColorSpace -> Automatic, Interleaving -> None],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSizeRaw->{11, 11},
-    PlotRange->{{0, 11}, {0, 11}}]}], "}"}]], "Output",
- CellChangeTimes->{{3.7963924001142073`*^9, 3.796392414681364*^9}, {
-   3.796392467152837*^9, 3.796392470655425*^9}, 3.7963925171656437`*^9, 
-   3.796392674007777*^9, 3.796392921083622*^9},
- CellLabel->
-  "Out[377]=",ExpressionUUID->"3c315e09-72dc-4d74-8c3b-b3c5d2d86043"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"11", ",", "11"}], "}"}]], "Output",
- CellChangeTimes->{{3.7963924001142073`*^9, 3.796392414681364*^9}, {
-   3.796392467152837*^9, 3.796392470655425*^9}, 3.7963925171656437`*^9, 
-   3.796392674007777*^9, 3.7963929210865498`*^9},
- CellLabel->
-  "Out[378]=",ExpressionUUID->"a308cfa6-73d9-4135-b390-07271cdcd3e7"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"masksizes", " ", "=", "  ", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"Count", "[", 
-       RowBox[{
-        RowBox[{"Flatten", "@", 
-         RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], "&"}], "/@",
-      "centeredMasks"}]}], "  ", ";"}], 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{
-    "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", "masks"}], ",", 
-    " ", 
-    RowBox[{
-    "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", " ", 
-     "of", " ", "masks"}]}], " ", "*)"}]}]], "Input",
- CellChangeTimes->{{3.7963929910162153`*^9, 
-  3.796393020453993*^9}},ExpressionUUID->"1e55fa97-d56a-46d9-b297-\
-7a973140d447"],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{
-  3.7963937952348757`*^9},ExpressionUUID->"73c8731f-b19e-43df-bf60-\
-7863625eca8f"],
-
-Cell[BoxData[
- RowBox[{"mymaskedcrops", " ", "=", " ", 
-  RowBox[{"Table", " ", "[", " ", 
-   RowBox[{
-    RowBox[{
-     RowBox[{
-      RowBox[{"ImageMultiply", "[", 
-       RowBox[{
-        RowBox[{"mycrops", "[", 
-         RowBox[{"[", "color", "]"}], "]"}], ",", "#"}], "]"}], "&"}], "/@", 
-     "centeredMasks"}], " ", ",", " ", 
-    RowBox[{"{", 
-     RowBox[{"color", ",", "1", ",", "4"}], "}"}]}], "]"}]}]], "Input",
- CellChangeTimes->{{3.796393080271133*^9, 3.796393104135858*^9}, 
-   3.796393136817334*^9},
- CellLabel->
-  "In[442]:=",ExpressionUUID->"f0415e06-6b16-469f-aaac-84824e77c7b1"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ImageDimensions", "/@", 
-  RowBox[{"Flatten", "[", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcrmPJisi0x
-6rZ5bLPdl7DP9uCDA3jVT5wxwXalwUrbkxYnbQ++OGC71WErXvUzFWbarr6w
-ynZxwmKi3HG3IJYodQMBAASlIw8=
-          "], {{0, 11}, {11, 0}}, {0., 1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          Magnification -> Automatic, MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSize->{22., Automatic},
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}], ",", 
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbits/sNlOURCx
-ndIgbMuABfQ48Nh+bPhg0y7AbtsawGrb0sCMVR0MTHIQsv2T8Mem8wIHXnUw
-0FXARZS6oQrmJcgR5b+OCey2zROYbOcukMGrvnsBl23HBnbbdgN224YABtsJ
-CgJY1XcYcNh2TeC0/a/w3wYAMm4p/Q==
-          "], {{0, 11}, {11, 0}}, {0., 1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          Magnification -> Automatic, MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSize->{22., Automatic},
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}]}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcraOdotyVG
-3RyPObaLIxbbdiR04FX/NaDUdpbELNuJJybYTkmYYvvBoACv+i8GJbadKzps
-+z36iXLH84R0otQNBAAA7nYfQA==
-          "], {{0, 11}, {11, 0}}, {0., 1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}], ",", 
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbiu823LH50fDd
-5rPCZxsGLODtgTc2DQIMtm8fvLF51fDSpsOAwxabOhh40/Da5qPCR5vGCQx4
-1cHAa4bXWO0dLuDNAuL890jhkc3nhk82DxMe4lX/1+GvzUeGjzZvFN7YPFV4
-avP0wBOs6r8u+GLz5MFjmzcJb2wA9QI/bg==
-          "], {{0, 11}, {11, 0}}, {0., 
-          1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}]}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcr+J5ebk+c
-ygZ7BMYN/mystkdRu7Ier/q/62qIMhcG7vfGEele+gMAZl4YYA==
-          "], {{0, 11}, {
-          11, 0}}, {0., 1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}], ",", 
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbind8MLdtiWix
-XXJjsS0DFjD1whTbawdCbWcKSNruE7CzXVKxBKs6GNigscH2WkCY7Q+BCrzq
-YGDZh6VEqRuq4H5CPFH+O5xx2Pa0g7dt740evOoPHTho+/JAhu26B7q2ZzZ4
-2/4PqMeqfsKFftsHG+Jtdy6wsAUAEfU3RA==
-          "], {{0, 11}, {11, 0}}, {0., 
-          1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}]}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcraGdktydG
-3aQwIfsZ2hL207eI4VU/JU3EfuJ9AfsJ+QL2U9eJ2E9iEcKrfpKBkH3/Fz77
-Cf38RLmjZx83UeoGAgAAdewZkw==
-          "], {{0, 11}, {11, 0}}, {0., 1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}], ",", 
-       GraphicsBox[
-        TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbihd+WGC7K2KX
-7eWMy7YMWMAKhxW20yqm2U5ImGC76sRK21cXXmJVBwM7BHbYTp4wyfZBxQO8
-6mDgiMQRotQNVfDF4wtR/ptvIG+378Re22klYnb41J1k8bT7/uOb7cQHE2wf
-3nhg2/6DDav6nSmWdq1PWOwOvjhgCwBNpDom
-          "], {{0, 11}, {11, 0}}, {0., 
-          1.},
-          ColorFunction->GrayLevel],
-         BoxForm`ImageTag[
-         "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-          MetaInformation -> 
-          Association[
-           "Exif" -> Association[
-             "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-              "ImageLength" -> 944, "BitsPerSample" -> 16, 
-              "PhotometricInterpretation" -> "Black Is Zero", 
-              "ImageDescription" -> 
-              "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\
-\nmin=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-              "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-         Selectable->False],
-        DefaultBaseStyle->"ImageGraphics",
-        ImageSizeRaw->{11, 11},
-        PlotRange->{{0, 11}, {0, 11}}]}], "}"}]}], "}"}], "]"}]}]], "Input",
- CellChangeTimes->{{3.79639757290422*^9, 3.796397583782587*^9}},
- CellLabel->
-  "In[444]:=",ExpressionUUID->"2d51839f-f033-4928-935f-0138e311ad35"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
+      RowBox[{"0.08265694717948253`", ",", "0.03360036636392275`"}], "}"}], 
+     ",", "0.04905658081555978`"}], "}"}], ",", 
    RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"11", ",", "11"}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.796397584007387*^9},
- CellLabel->
-  "Out[444]=",ExpressionUUID->"b722db92-423b-44f6-9254-ec1297a5961e"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"(*", "  ", 
-  RowBox[{"{", 
-   RowBox[{"meanBGintensity", ",", 
     RowBox[{
-    "meanIntensities", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
-     ",", "masksizes", ",", "\"\<stdevdisk\>\"", ",", "\"\<stdevdonut\>\""}], 
-   "}"}], " "}]], "Input",
- CellChangeTimes->{{3.796394008933639*^9, 3.796394041274817*^9}, {
-  3.796397553372628*^9, 
-  3.796397553795047*^9}},ExpressionUUID->"56e91672-ec80-4892-94d1-\
-63b9fd0bd35f"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"meanIntensities", "=", "   ", 
-  RowBox[{"Table", "[", "    ", 
-   RowBox[{
-    RowBox[{"Table", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"Total", "[", 
-        RowBox[{"Flatten", "@", 
-         RowBox[{"ImageData", "[", 
-          RowBox[{"mymaskedcrops", "[", 
-           RowBox[{"[", 
-            RowBox[{"color", ",", " ", "i"}], "]"}], "]"}], "]"}]}], "]"}], 
-       "/", 
-       RowBox[{"masksizes", "[", 
-        RowBox[{"[", "i", "]"}], "]"}]}], ",", 
-      RowBox[{"{", 
-       RowBox[{"i", ",", "1", ",", 
-        RowBox[{"Length", "@", 
-         RowBox[{"mymaskedcrops", "[", 
-          RowBox[{"[", "color", "]"}], "]"}]}], ",", "1"}], "}"}]}], "]"}], 
-    ",", "\[IndentingNewLine]", " ", 
-    RowBox[{"{", 
-     RowBox[{"color", ",", "1", ",", "4"}], "}"}]}], "]"}]}]], "Input",
- CellChangeTimes->{3.796397693207674*^9},
- CellLabel->
-  "In[446]:=",ExpressionUUID->"14d50f7d-f7bf-492d-b0c5-c36638e6cf58"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.0675622528562179`", ",", "0.029207039702062804`"}], "}"}], 
+     ",", "0.038355213154155104`"}], "}"}], ",", 
    RowBox[{"{", 
-    RowBox[{"0.08265694717948253`", ",", "0.03360036636392275`"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.9849757368748006`", ",", "0.06260776674995819`"}], "}"}], 
+     ",", "0.9223679701248424`"}], "}"}], ",", 
    RowBox[{"{", 
-    RowBox[{"0.0675622528562179`", ",", "0.029207039702062804`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"0.9849757368748006`", ",", "0.06260776674995819`"}], "}"}], ",", 
-   
-   RowBox[{"{", 
-    RowBox[{"0.5676320928793688`", ",", "0.10880763363093138`"}], "}"}]}], 
-  "}"}]], "Output",
- CellChangeTimes->{3.7963976935224323`*^9},
- CellLabel->
-  "Out[446]=",ExpressionUUID->"3cf1c2f3-7e9b-4916-959b-228ef3146cfe"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"meanBGintensity", " ", "=", "   ", 
-     RowBox[{"Table", "[", "  ", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"meanIntensity", "\[LeftDoubleBracket]", 
-         RowBox[{"color", ",", " ", "1"}], "\[RightDoubleBracket]"}], "-", 
-        " ", 
-        RowBox[{"meanIntensity", "\[LeftDoubleBracket]", 
-         RowBox[{"color", ",", " ", "2"}], "\[RightDoubleBracket]"}]}], " ", 
-       ",", " ", "\[IndentingNewLine]", " ", 
-       RowBox[{"{", 
-        RowBox[{"color", ",", "1", ",", "4"}], "}"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"Table", "[", " ", 
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"meanIntensity", "[", 
-         RowBox[{"[", "color", "]"}], "]"}], ",", 
-        RowBox[{"meanBGintensity", " ", "[", 
-         RowBox[{"[", "color", "]"}], "]"}]}], "}"}], ",", " ", 
-      "\[IndentingNewLine]", " ", 
-      RowBox[{"{", 
-       RowBox[{"color", ",", "1", ",", "4"}], "}"}]}], "]"}], 
-    ";"}]}]}]], "Input",
- CellChangeTimes->{{3.7963939569858093`*^9, 3.79639397693225*^9}, 
-   3.796394034227023*^9, {3.796394106324401*^9, 3.79639418510946*^9}, {
-   3.79639421561768*^9, 3.796394276328874*^9}, {3.796397611822616*^9, 
-   3.796397690510806*^9}},
- EmphasizeSyntaxErrors->
-  True,ExpressionUUID->"a090fcec-151c-45d7-8996-18ba815c16d5"],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.7963933412950077`*^9, 3.7963933414911537`*^9}, 
-   3.7963939472464733`*^9, {3.796394220160821*^9, 
-   3.7963942209301453`*^9}},ExpressionUUID->"a02539f7-2633-425f-babb-\
-deab6017407d"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", 
-  RowBox[{"{", 
-   RowBox[{"meanIntensity", ",", "meanBGintensity"}], " ", "}"}]}]], "Input",
- CellChangeTimes->{3.7963912168031397`*^9, 3.7963943248499403`*^9},
- CellLabel->
-  "In[404]:=",ExpressionUUID->"fc62118f-56b5-44ac-aa6f-b0d1c3275d9f"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{"0.5676320928793688`", ",", "0.10880763363093138`"}], "}"}], ",", 
-   "0.4588244592484374`"}], "}"}]], "Output",
- CellChangeTimes->{3.796394325277554*^9},
- CellLabel->
-  "Out[404]=",ExpressionUUID->"8e350900-521b-4bde-982a-e493b7d6e60f"]
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0.5676320928793688`", ",", "0.10880763363093138`"}], "}"}], 
+     ",", "0.4588244592484374`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.796400805375102*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"e2300243-8eed-4489-8d6f-b3ea79ff5da6"]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   GraphicsBox[
-    TagBox[
-     RasterBox[
-      RawArray["UnsignedInteger16",{{2159, 2370, 2360, 2554, 2322, 2588, 2175,
-        2173, 2244, 1924, 2161}, {2133, 2104, 2389, 2432, 2620, 2265, 2325, 
-       2237, 2220, 2340, 2019}, {2189, 2732, 2853, 3227, 3043, 3083, 3191, 
-       2484, 2509, 2265, 2215}, {2767, 2635, 3297, 4150, 4992, 4733, 4374, 
-       3914, 3072, 2633, 2411}, {2418, 3091, 3896, 4986, 5833, 6092, 6172, 
-       5127, 3960, 3068, 2489}, {2508, 2769, 3977, 4627, 5414, 6439, 6173, 
-       5800, 4921, 3523, 3003}, {2721, 3000, 3491, 3808, 4900, 5466, 5228, 
-       5126, 4046, 3757, 2718}, {2666, 2848, 3242, 3325, 3516, 3543, 3759, 
-       3340, 2894, 2746, 2564}, {2534, 2857, 2815, 2941, 3046, 2893, 2732, 
-       2664, 2233, 2295, 2169}, {2089, 2506, 2414, 2362, 2363, 2438, 2356, 
-       2266, 2246, 2218, 2171}, {2163, 2053, 2306, 2353, 2151, 2160, 2280, 
-       2352, 2179, 2201, 2041}}], {{0, 11}, {11, 0}}, {0, 65535},
-      ColorFunction->GrayLevel],
-     BoxForm`ImageTag[
-     "Bit16", ColorSpace -> "Grayscale", Interleaving -> None, 
-      MetaInformation -> 
-      Association[
-       "Exif" -> Association[
-         "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-          "ImageLength" -> 944, "BitsPerSample" -> 16, 
-          "PhotometricInterpretation" -> "Black Is Zero", "ImageDescription" -> 
-          "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\n\
-min=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-          "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-     Selectable->False],
-    DefaultBaseStyle->"ImageGraphics",
-    ImageSize->{22., Automatic},
-    ImageSizeRaw->{11, 11},
-    PlotRange->{{0, 11}, {0, 11}}], "*", " ", 
-   RowBox[{"{", 
-    RowBox[{
-     GraphicsBox[
-      TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcvaLAnXh0M
-E6uOVPXUdC/9AQBX7hHK
-        "], {{0, 11}, {11, 0}}, {0., 1.},
-        ColorFunction->GrayLevel],
-       BoxForm`ImageTag[
-       "Real32", ColorSpace -> Automatic, Interleaving -> None],
-       Selectable->False],
-      DefaultBaseStyle->"ImageGraphics",
-      ImageSizeRaw->{11, 11},
-      PlotRange->{{0, 11}, {0, 11}}], ",", 
-     GraphicsBox[
-      TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbihkYGuwRGBtA
-lsenDpt6YgCx6oYqICUcSA1f4uINABfLGf8=
-        "], {{0, 11}, {11, 0}}, {0., 1.},
-        
-        ColorFunction->GrayLevel],
-       BoxForm`ImageTag[
-       "Real32", ColorSpace -> Automatic, Interleaving -> None],
-       Selectable->False],
-      DefaultBaseStyle->"ImageGraphics",
-      ImageSizeRaw->{11, 11},
-      PlotRange->{{0, 11}, {0, 11}}]}], "}"}]}], 
+   RowBox[{
+    RowBox[{"MyDiskDonutIntensity", "::", "usage"}], "=", 
+    "\[IndentingNewLine]", 
+    "\"\<Gives the Disk&Donut calculated intensity of a set of crops (in \
+different channels, presumably). Output:  {{RED Disk Ints, RED Donut Ints}, \
+RED Di-Do Ints}, ...} for each channel. \n\nInputs\n1. mycrops: list of crops \
+for 1 spot, eg  \
+{\!\(\*GraphicsBox[TagBox[RasterBox[RawArray[\"UnsignedInteger16\",{{2159, \
+2370, 2360, 2554, 2322, 2588, 2175, 2173, 2244, 1924, 2161}, {2133, 2104, \
+2389, 2432, 2620, 2265, 2325, 2237, 2220, 2340, 2019}, {2189, 2732, 2853, \
+3227, 3043, 3083, 3191, 2484, 2509, 2265, 2215}, {2767, 2635, 3297, 4150, \
+4992, 4733, 4374, 3914, 3072, 2633, 2411}, {2418, 3091, 3896, 4986, 5833, \
+6092, 6172, 5127, 3960, 3068, 2489}, {2508, 2769, 3977, 4627, 5414, 6439, \
+6173, 5800, 4921, 3523, 3003}, {2721, 3000, 3491, 3808, 4900, 5466, 5228, \
+5126, 4046, 3757, 2718}, {2666, 2848, 3242, 3325, 3516, 3543, 3759, 3340, \
+2894, 2746, 2564}, {2534, 2857, 2815, 2941, 3046, 2893, 2732, 2664, 2233, \
+2295, 2169}, {2089, 2506, 2414, 2362, 2363, 2438, 2356, 2266, 2246, 2218, \
+2171}, {2163, 2053, 2306, 2353, 2151, 2160, 2280, 2352, 2179, 2201, 2041}}], \
+{{0, 11}, {11, 0}}, {0, \
+65535},ColorFunction->GrayLevel],BoxForm`ImageTag[\"Bit16\", ColorSpace -> \
+\"Grayscale\", Interleaving -> None, MetaInformation -> Association[\"Exif\" \
+-> Association[\"NewSubfileType\" -> \"Primary image\", \"ImageWidth\" -> \
+624, \"ImageLength\" -> 944, \"BitsPerSample\" -> 16, \
+\"PhotometricInterpretation\" -> \"Black Is Zero\", \"ImageDescription\" -> \
+\"ImageJ=1.52p\\\nimages=4\\\nchannels=4\\\nmode=composite\\\nloop=false\\\n\
+min=5746.0\\\nmax=20647.0\", \"StripOffsets\" -> 325, \"SamplesPerPixel\" -> \
+1, \"RowsPerStrip\" -> 944, \"StripByteCounts\" -> \
+1178112]]],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",ImageSize->{\
+22., Automatic},ImageSizeRaw->{11, 11},PlotRange->{{0, 11}, {0, \
+11}}]\),\!\(\*GraphicsBox[TagBox[RasterBox[RawArray[\"UnsignedInteger16\",{{\
+1764, 1980, 1945, 2383, 2529, 2210, 1911, 2069, 1894, 2049, 1895}, {1868, \
+2179, 2317, 2636, 2401, 2305, 2070, 2050, 1818, 1884, 1929}, {2057, 2512, \
+2482, 3053, 3192, 2988, 2456, 2431, 2026, 1795, 1880}, {2154, 2786, 3396, \
+4819, 4182, 4321, 3294, 2956, 2240, 1856, 1785}, {2160, 2741, 3793, 4944, \
+5001, 5227, 4364, 3283, 2723, 2093, 1952}, {2032, 2279, 3636, 3925, 4931, \
+4633, 4748, 3843, 3275, 2439, 2074}, {1836, 2363, 3108, 3777, 3907, 4373, \
+4585, 3626, 4010, 2955, 2208}, {1807, 2010, 2305, 2789, 3377, 3702, 3354, \
+3339, 3422, 2559, 2185}, {1885, 2003, 2423, 2549, 2672, 2584, 2761, 2743, \
+2578, 1925, 1809}, {1940, 1803, 1965, 2196, 1959, 2191, 2264, 2238, 2168, \
+2026, 1928}, {1889, 1833, 1830, 1835, 2019, 1982, 2217, 2137, 1957, 1823, \
+1891}}], {{0, 11}, {11, 0}}, {0, \
+65535},ColorFunction->GrayLevel],BoxForm`ImageTag[\"Bit16\", ColorSpace -> \
+\"Grayscale\", Interleaving -> None, MetaInformation -> Association[\"Exif\" \
+-> Association[\"NewSubfileType\" -> \"Primary image\", \"ImageWidth\" -> \
+624, \"ImageLength\" -> 944, \"BitsPerSample\" -> 16, \
+\"PhotometricInterpretation\" -> \"Black Is Zero\", \"ImageDescription\" -> \
+\"ImageJ=1.52p\\\nimages=4\\\nchannels=4\\\nmode=composite\\\nloop=false\\\n\
+min=5746.0\\\nmax=20647.0\", \"StripOffsets\" -> 325, \"SamplesPerPixel\" -> \
+1, \"RowsPerStrip\" -> 944, \"StripByteCounts\" -> \
+1178112]]],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",\
+ImageSizeRaw->{11, 11},PlotRange->{{0, 11}, {0, \
+11}}]\),\!\(\*GraphicsBox[TagBox[RasterBox[RawArray[\"UnsignedInteger16\",{{\
+2943, 4235, 5243, 6780, 8268, 8982, 8260, 6558, 4762, 3420, 2449}, {3041, \
+5263, 8420, 14354, 17454, 17868, 15862, 11482, 8472, 5637, 3429}, {3969, \
+7430, 16818, 30307, 38771, 38420, 32602, 26430, 17859, 9851, 5310}, {5401, \
+12507, 29976, 52003, 62748, 63335, 55556, 44013, 31186, 17640, 8483}, {5886, \
+17940, 40824, 64622, 65535, 65535, 65535, 60552, 44452, 27383, 13718}, {6461, \
+17744, 40308, 64433, 65535, 65535, 65535, 65448, 52562, 35027, 19021}, {5829, \
+14376, 32406, 54117, 64686, 65535, 65535, 63635, 51551, 35612, 16696}, {4288, \
+9896, 21208, 38710, 49381, 56973, 58486, 52055, 41587, 25957, 12490}, {3574, \
+6272, 11039, 18593, 26831, 32534, 35069, 31299, 23984, 14517, 6253}, {3252, \
+4507, 6304, 9277, 12033, 14311, 15045, 14373, 11463, 6200, 3724}, {2782, \
+3259, 4085, 5124, 5645, 6518, 6293, 5872, 4602, 3579, 2954}}], {{0, 11}, {11, \
+0}}, {0, 65535},ColorFunction->GrayLevel],BoxForm`ImageTag[\"Bit16\", \
+ColorSpace -> \"Grayscale\", Interleaving -> None, MetaInformation -> \
+Association[\"Exif\" -> Association[\"NewSubfileType\" -> \"Primary image\", \
+\"ImageWidth\" -> 624, \"ImageLength\" -> 944, \"BitsPerSample\" -> 16, \
+\"PhotometricInterpretation\" -> \"Black Is Zero\", \"ImageDescription\" -> \
+\"ImageJ=1.52p\\\nimages=4\\\nchannels=4\\\nmode=composite\\\nloop=false\\\n\
+min=5746.0\\\nmax=20647.0\", \"StripOffsets\" -> 325, \"SamplesPerPixel\" -> \
+1, \"RowsPerStrip\" -> 944, \"StripByteCounts\" -> \
+1178112]]],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",\
+ImageSizeRaw->{11, 11},PlotRange->{{0, 11}, {0, \
+11}}]\),\!\(\*GraphicsBox[TagBox[RasterBox[RawArray[\"UnsignedInteger16\",{{\
+5150, 5963, 6765, 8000, 9771, 8973, 8009, 6610, 5384, 4815, 4620}, {5433, \
+7482, 10027, 12677, 14604, 14519, 12740, 10394, 8353, 5890, 4690}, {7183, \
+11620, 17186, 22448, 25222, 25119, 22214, 17810, 13778, 9029, 6275}, {9605, \
+15315, 23637, 31886, 34643, 34561, 33062, 28926, 22283, 14582, 9189}, {11854, \
+20191, 31058, 35733, 37462, 38955, 38580, 35879, 28740, 21067, 11137}, \
+{13251, 23909, 35455, 37990, 37087, 36975, 38062, 37380, 34193, 25772, \
+15250}, {12424, 25174, 36418, 39841, 37424, 36596, 36751, 36397, 34275, \
+26175, 16384}, {10920, 22580, 31590, 35924, 37431, 35774, 35954, 34170, \
+29990, 22187, 12592}, {7817, 15325, 23815, 30535, 34107, 34021, 32267, 30586, \
+25831, 17886, 10188}, {6073, 9629, 14688, 21373, 24350, 24326, 25306, 23376, \
+18981, 12865, 7903}, {4636, 7195, 8638, 10681, 13150, 14213, 15151, 16013, \
+11865, 8505, 6173}}], {{0, 11}, {11, 0}}, {0, \
+65535},ColorFunction->GrayLevel],BoxForm`ImageTag[\"Bit16\", ColorSpace -> \
+\"Grayscale\", Interleaving -> None, MetaInformation -> Association[\"Exif\" \
+-> Association[\"NewSubfileType\" -> \"Primary image\", \"ImageWidth\" -> \
+624, \"ImageLength\" -> 944, \"BitsPerSample\" -> 16, \
+\"PhotometricInterpretation\" -> \"Black Is Zero\", \"ImageDescription\" -> \
+\"ImageJ=1.52p\\\nimages=4\\\nchannels=4\\\nmode=composite\\\nloop=false\\\n\
+min=5746.0\\\nmax=20647.0\", \"StripOffsets\" -> 325, \"SamplesPerPixel\" -> \
+1, \"RowsPerStrip\" -> 944, \"StripByteCounts\" -> \
+1178112]]],Selectable->False],DefaultBaseStyle->\"ImageGraphics\",\
+ImageSizeRaw->{11, 11},PlotRange->{{0, 11}, {0, 11}}]\)}\n2. myDonutRadius: \
+Diff Lim Spot, use 2 or 3\n3. myDiskRadius: use the donutRadius, unless you \
+want a pixel gap between your disk and donut\n4. myDiskWidth: Diff Lim Spot, \
+use myPadSize unless you want a bigger/smaller disk\n\>\""}], ";"}], 
   "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{
-  3.796391214685089*^9, {3.7963943696776037`*^9, 3.7963943771098337`*^9}},
- CellLabel->
-  "In[405]:=",ExpressionUUID->"48f829c0-211f-4bf6-bb6e-f8ab16c1ee37"],
-
-Cell[CellGroupData[{
+ CellChangeTimes->{{3.796400639660453*^9, 3.796400747018486*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"9d3e777a-6599-417e-941b-8de7c21c2f3a"],
 
 Cell[BoxData[
- RowBox[{"Select", " ", 
-  RowBox[{"a", "[", 
-   RowBox[{"[", "1", "]"}], "]"}], " "}]], "Input",
- CellChangeTimes->{{3.796397728540811*^9, 
-  3.796397740816883*^9}},ExpressionUUID->"05989c0d-ebb5-42e9-b00e-\
-a0a4a0b084d8"],
-
-Cell[BoxData[
- RowBox[{"{", 
+ RowBox[{
   RowBox[{
-   RowBox[{"{", 
+   RowBox[{"MyDiskDonutIntensity", "[", 
     RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
+    "mycrops_", ",", "  ", "myDonutRadius_", ",", "  ", "myDiskRadius_", ",", 
+     "  ", "myDiskWidth_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
     RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.5273670554161072`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", 
-     ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.5716334581375122`", 
-     ",", "0.5944151878356934`", ",", "0.5886930823326111`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.5796902179718018`", ",", 
-     "0.5659113526344299`", ",", "0.5642023086547852`", ",", 
-     "0.5807889103889465`", ",", "0.5703822374343872`", ",", "0.`", ",", 
-     "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.5710536241531372`", 
-     ",", "0.5584191679954529`", ",", "0.5607843399047852`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.5458762645721436`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", 
-     ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
-     "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`"}], "}"}]}], 
-  "}"}]], "Output",
- CellChangeTimes->{3.7963977221273603`*^9},
- CellLabel->
-  "Out[447]=",ExpressionUUID->"d73e3ea4-369d-44c9-8be7-386651aadd7f"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"a", " ", "=", " ", 
-   RowBox[{
-    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{
+      "myPadSize", ",", " ", "len", ",", " ", "centroidRaw", ",", 
+       "centroidUltimate", ",", "centroid", " ", ",", " ", "masks", ",", "  ",
+        "blank", ",", "centeredmasks", ",", " ", "centeredMasks", ",", 
+       "masksizes", ",", "mymaskedcrops", ",", "meanIntensities", ",", 
+       "meanBGintensity"}], "   ", "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      GraphicsBox[
-       TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbigcraGdktydG
-3aQwIfsZ2hL207eI4VU/JU3EfuJ9AfsJ+QL2U9eJ2E9iEcKrfpKBkH3/Fz77
-Cf38RLmjZx83UeoGAgAAdewZkw==
-         "], {{0, 11}, {11, 0}}, {0., 1.},
-         ColorFunction->GrayLevel],
-        BoxForm`ImageTag[
-        "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-         MetaInformation -> 
-         Association[
-          "Exif" -> Association[
-            "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-             "ImageLength" -> 944, "BitsPerSample" -> 16, 
-             "PhotometricInterpretation" -> "Black Is Zero", 
-             "ImageDescription" -> 
-             "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\n\
-min=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-             "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-        Selectable->False],
-       DefaultBaseStyle->"ImageGraphics",
-       ImageSizeRaw->{11, 11},
-       PlotRange->{{0, 11}, {0, 11}}], ",", 
-      GraphicsBox[
-       TagBox[RasterBox[CompressedData["
-1:eJxTTMoPSmNiYGAo5gASQYnljkVFiZXBbCBOamKOsVEOSJIbihd+WGC7K2KX
-7eWMy7YMWMAKhxW20yqm2U5ImGC76sRK21cXXmJVBwM7BHbYTp4wyfZBxQO8
-6mDgiMQRotQNVfDF4wtR/ptvIG+378Re22klYnb41J1k8bT7/uOb7cQHE2wf
-3nhg2/6DDav6nSmWdq1PWOwOvjhgCwBNpDom
-         "], {{0, 11}, {11, 0}}, {0., 1.},
-         ColorFunction->GrayLevel],
-        BoxForm`ImageTag[
-        "Real32", ColorSpace -> "Grayscale", Interleaving -> None, 
-         MetaInformation -> 
-         Association[
-          "Exif" -> Association[
-            "NewSubfileType" -> "Primary image", "ImageWidth" -> 624, 
-             "ImageLength" -> 944, "BitsPerSample" -> 16, 
-             "PhotometricInterpretation" -> "Black Is Zero", 
-             "ImageDescription" -> 
-             "ImageJ=1.52p\nimages=4\nchannels=4\nmode=composite\nloop=false\n\
-min=5746.0\nmax=20647.0", "StripOffsets" -> 325, "SamplesPerPixel" -> 1, 
-             "RowsPerStrip" -> 944, "StripByteCounts" -> 1178112]]],
-        Selectable->False],
-       DefaultBaseStyle->"ImageGraphics",
-       ImageSizeRaw->{11, 11},
-       PlotRange->{{0, 11}, {0, 11}}]}], "}"}], "//", 
-    RowBox[{
-     RowBox[{"ImageData", "/@", "#"}], "&"}]}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Total", "@", 
-   RowBox[{"Flatten", "@", 
-    RowBox[{"a", "[", 
-     RowBox[{"[", "1", "]"}], "]"}]}]}], " "}], "\[IndentingNewLine]", 
- RowBox[{" ", 
-  RowBox[{"Total", "@", 
-   RowBox[{"Flatten", "@", 
-    RowBox[{"a", "[", 
-     RowBox[{"[", "2", "]"}], "]"}]}]}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Total", "@", 
-   RowBox[{"Flatten", "@", 
-    RowBox[{"a", "[", 
-     RowBox[{"[", "1", "]"}], "]"}]}]}], " ", "-", " ", 
-  RowBox[{"Total", "@", 
-   RowBox[{"Flatten", "@", 
-    RowBox[{"a", "[", 
-     RowBox[{"[", "2", "]"}], "]"}]}]}]}]}], "Input",
- CellChangeTimes->{{3.796394381956321*^9, 3.796394439394719*^9}, {
-  3.796397320259967*^9, 3.7963973636372833`*^9}, {3.79639740738795*^9, 
-  3.796397411373322*^9}, {3.796397463970726*^9, 3.796397470011705*^9}},
- CellLabel->
-  "In[438]:=",ExpressionUUID->"b67238d5-2876-4bd6-9b2b-7414f00dd04f"],
-
-Cell[BoxData["7.379217207431793`"], "Output",
- CellChangeTimes->{{3.796394384778221*^9, 3.796394439611972*^9}, {
-   3.796397324938236*^9, 3.796397364485869*^9}, {3.796397411810595*^9, 
-   3.796397415383294*^9}, 3.796397470371237*^9},
- CellLabel->
-  "Out[439]=",ExpressionUUID->"9fa6de2e-3070-4a8a-ba6c-f185a2d65381"],
-
-Cell[BoxData["2.611383207142353`"], "Output",
- CellChangeTimes->{{3.796394384778221*^9, 3.796394439611972*^9}, {
-   3.796397324938236*^9, 3.796397364485869*^9}, {3.796397411810595*^9, 
-   3.796397415383294*^9}, 3.796397470373654*^9},
- CellLabel->
-  "Out[440]=",ExpressionUUID->"9305b31a-3feb-4f1d-95d1-5d6d806b8b61"],
-
-Cell[BoxData["4.76783400028944`"], "Output",
- CellChangeTimes->{{3.796394384778221*^9, 3.796394439611972*^9}, {
-   3.796397324938236*^9, 3.796397364485869*^9}, {3.796397411810595*^9, 
-   3.796397415383294*^9}, 3.7963974703759413`*^9},
- CellLabel->
-  "Out[441]=",ExpressionUUID->"615ae791-14f3-46db-b168-4c6f3755dc4f"]
-}, Open  ]],
+      RowBox[{"myPadSize", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ImageDimensions", "[", " ", 
+            RowBox[{"mycrops", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], " ", "]"}], "  ", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], " ", "-", " ", "1"}], " ", ")"}], 
+        "/", "2"}]}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"len", " ", "=", " ", 
+       RowBox[{"Length", "@", "mycrops"}]}], ";", " ", "\[IndentingNewLine]", 
+      
+      RowBox[{"centroidRaw", " ", "=", " ", 
+       RowBox[{"ImageMeasurements", "[", 
+        RowBox[{
+         RowBox[{"ImageAdjust", "[", " ", 
+          RowBox[{"mycrops", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", " ", 
+         "\"\<IntensityCentroid\>\""}], "]"}]}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "This", " ", "little", " ", "trick", " ", "rounds", " ", "the", " ", 
+        "number", " ", "without", " ", "using", " ", "the", " ", "shitty", 
+        " ", "mma", " ", "round", " ", "fxn"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"centroidUltimate", "  ", "=", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Ceiling", "[", " ", 
+          RowBox[{"(", 
+           RowBox[{"#", "-", "0.5"}], ")"}], " ", "]"}], "&"}], "/@", 
+        "centroidRaw"}]}], "  ", ";", "\[IndentingNewLine]", 
+      RowBox[{"centroid", " ", "=", " ", 
+       RowBox[{"centroidUltimate", " ", "-", " ", 
+        RowBox[{"{", 
+         RowBox[{"myPadSize", " ", ",", " ", "myPadSize"}], "}"}]}]}], "   ", 
+      ";", " ", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+        "Use", " ", "THIS", " ", "is", " ", "as", " ", "the", " ", "centroid",
+          " ", "because", " ", "you", " ", "recenter", " ", "to", " ", "0.", 
+         " ", "Not", " ", "subtracting", " ", "the", " ", "pad", " ", "size", 
+         " ", "will", " ", "leave", " ", "the", " ", "centroid", " ", "half", 
+         " ", "a", " ", "Pad", " ", "away", " ", "from", " ", "center"}], 
+        "..."}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+        "That", " ", "is", " ", "the", " ", "intesntiy", " ", "centroid", " ",
+          "in", " ", "X"}], ",", "Y"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+        "I", " ", "will", " ", "always", " ", "find", " ", "the", " ", 
+         "cetroid", " ", "in", " ", "teh", " ", "RED", " ", "channel"}], ",", 
+        " ", 
+        RowBox[{
+         RowBox[{"since", " ", 
+          RowBox[{"I", "'"}], "m", " ", "always", " ", "looking", " ", "at", 
+          " ", "red", " ", 
+          RowBox[{"spots", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", 
+         " ", 
+         RowBox[{"I", " ", "will", " ", "assume", " ", 
+          RowBox[{"I", "'"}], "m", " ", "lookig", " ", "at", " ", "a", " ", 
+          "row", " ", "of", " ", "crops"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{
+         "with", " ", "the", " ", "first", " ", "one", " ", "being", " ", 
+          RowBox[{"red", "."}]}], " ", "\[IndentingNewLine]", "\[Rule]", " ", 
+         
+         RowBox[{
+         "This", " ", "can", " ", "be", " ", "changed", " ", "in", " ", "the",
+           " ", "future", " ", "if", " ", "the", " ", "input", " ", "will", 
+          " ", "be", " ", "just", " ", "ONE", " ", "crop", " ", "or", " ", 
+          "if", " ", "I", " ", "want", " ", "to", " ", "have", " ", "the", 
+          " ", "intensity", " ", "centroid", " ", "change", " ", "PER", " ", 
+          "crop", " ", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"i", ".", "e", ".", " ", "a"}], " ", "new", " ", 
+             "intensity", " ", "centroid", " ", "centered", " ", "around", 
+             " ", "blue", " ", "or", " ", "purple", " ", "or", " ", 
+             "whatever"}], ")"}], "."}]}]}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"masks", " ", "=", " ", 
+       RowBox[{"MyDiskDonutMask", "[", 
+        RowBox[{
+         RowBox[{"myPadSize", "+", "2"}], ",", "myDonutRadius", ",", 
+         "myDiskRadius", " ", ",", " ", "myDiskWidth"}], "]"}]}], " ", ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"centeredmasks", " ", "=", " ", 
+       RowBox[{"MyDiskDonutCentered", "[", 
+        RowBox[{"centroid", ",", " ", "masks"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"blank", "=", " ", 
+       RowBox[{"Image", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"1", ",", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
+          ",", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"myPadSize", "*", "2"}], "+", "1"}], ")"}]}], "]"}], 
+        "]"}]}], "   ", ";", " ", "\[IndentingNewLine]", 
+      RowBox[{"centeredMasks", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ImageMultiply", "[", 
+          RowBox[{"blank", ",", "#"}], "]"}], "&"}], "/@", 
+        RowBox[{"MyDiskDonutCentered", "[", 
+         RowBox[{"centroid", ",", "masks"}], "]"}]}]}], ";", " ", 
+      "\[IndentingNewLine]", 
+      RowBox[{"masksizes", " ", "=", "  ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Count", "[", 
+          RowBox[{
+           RowBox[{"Flatten", "@", 
+            RowBox[{"ImageData", "[", "#", "]"}]}], ",", "1."}], "]"}], "&"}],
+         "/@", "centeredMasks"}]}], "  ", ";", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+        "counts", " ", "nonzero", " ", "pixels", " ", "in", " ", "masks"}], 
+        ",", " ", 
+        RowBox[{
+        "which", " ", "correspond", " ", "to", " ", "pixel", " ", "size", " ",
+          "of", " ", "masks"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"mymaskedcrops", " ", "=", " ", 
+       RowBox[{"Table", " ", "[", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"ImageMultiply", "[", 
+            RowBox[{
+             RowBox[{"mycrops", "[", 
+              RowBox[{"[", "color", "]"}], "]"}], ",", "#"}], "]"}], "&"}], "/@",
+           "centeredMasks"}], " ", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], " ", ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"meanIntensities", "=", "   ", 
+       RowBox[{"Table", "[", "    ", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Total", "[", 
+             RowBox[{"Flatten", "@", 
+              RowBox[{"ImageData", "[", 
+               RowBox[{"mymaskedcrops", "[", 
+                RowBox[{"[", 
+                 RowBox[{"color", ",", " ", "i"}], "]"}], "]"}], "]"}]}], 
+             "]"}], "/", 
+            RowBox[{"masksizes", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "@", 
+              RowBox[{"mymaskedcrops", "[", 
+               RowBox[{"[", "color", "]"}], "]"}]}], ",", "1"}], "}"}]}], 
+          "]"}], ",", "\[IndentingNewLine]", " ", 
+         RowBox[{"{", 
+          RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"meanBGintensity", " ", "=", "   ", 
+       RowBox[{"Table", "[", "  ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"meanIntensities", "\[LeftDoubleBracket]", 
+           RowBox[{"color", ",", " ", "1"}], "\[RightDoubleBracket]"}], "-", 
+          " ", 
+          RowBox[{"meanIntensities", "\[LeftDoubleBracket]", 
+           RowBox[{"color", ",", " ", "2"}], "\[RightDoubleBracket]"}]}], " ",
+          ",", " ", "\[IndentingNewLine]", " ", 
+         RowBox[{"{", 
+          RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}], " ", ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", " ", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"meanIntensities", "[", 
+           RowBox[{"[", "color", "]"}], "]"}], ",", 
+          RowBox[{"meanBGintensity", " ", "[", 
+           RowBox[{"[", "color", "]"}], "]"}]}], "}"}], ",", " ", 
+        "\[IndentingNewLine]", " ", 
+        RowBox[{"{", 
+         RowBox[{"color", ",", "1", ",", "len"}], "}"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"RESULTS", ":", " ", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"mean", " ", "intensity", " ", "disk", " ", 
+                 RowBox[{"(", "Disk", ")"}]}], ",", " ", 
+                RowBox[{"mean", " ", "intenstiy", " ", "donut", " ", 
+                 RowBox[{"(", "donut", ")"}]}], ",", " ", 
+                RowBox[{
+                 RowBox[{"mean", " ", "disk"}], "-", 
+                 RowBox[{"donut", " ", "intensity", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"Di", "-", "Do"}], ")"}]}]}]}], "}"}], 
+              "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"RED", " ", "Disk"}], ",", " ", 
+                  RowBox[{"RED", " ", "Donut"}]}], "}"}], ",", " ", 
+                RowBox[{
+                 RowBox[{"RED", " ", "Di"}], "-", "Do"}]}], "}"}]}]}], " ", 
+            ",", " ", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"GRN", " ", "Disk"}], ",", " ", 
+              RowBox[{"GRN", " ", "Donut"}]}], "}"}], ",", " ", 
+            RowBox[{
+             RowBox[{"GRN", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"BLU", " ", "Disk"}], ",", " ", 
+            RowBox[{"BLU", " ", "Donut"}]}], "}"}], ",", " ", 
+          RowBox[{
+           RowBox[{"BLU", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"PURP", " ", "Disk"}], ",", " ", 
+          RowBox[{"PURP", " ", "Donut"}]}], "}"}], ",", " ", 
+        RowBox[{
+         RowBox[{"PURP", " ", "Di"}], "-", "Do"}]}], "}"}], "  ", "}"}], 
+     "   ", "*)"}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.796398294061943*^9, 3.796398462270859*^9}, {
+   3.7963985186506233`*^9, 3.796398526997797*^9}, {3.796398558484681*^9, 
+   3.796398666266556*^9}, {3.796398697125163*^9, 3.7963986976179943`*^9}, {
+   3.7963987776441*^9, 3.79639885291603*^9}, {3.796398901251598*^9, 
+   3.796398929775834*^9}, {3.7963989996812077`*^9, 3.796399033645464*^9}, {
+   3.796399152593471*^9, 3.7963991532281637`*^9}, 3.7963991936419077`*^9, {
+   3.796400292331275*^9, 3.796400356857592*^9}, {3.796400389832747*^9, 
+   3.796400523629655*^9}, {3.796400567233632*^9, 3.796400621112296*^9}},
+ CellLabel->"In[55]:=",ExpressionUUID->"ba116d1d-fa9b-47f0-8ccc-002529becb88"],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
  CellChangeTimes->{
-  3.796391121067831*^9},ExpressionUUID->"32862c56-e111-4358-bd91-\
-7c7e8a98d370"],
+  3.796398260494762*^9},ExpressionUUID->"1150732d-c016-4741-b9a7-\
+a7911601826c"],
 
-Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{"start", " ", "over"}], "..."}], "*)"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.7963910872729073`*^9, 
-  3.7963911107102737`*^9}},ExpressionUUID->"8347f56f-16b8-49f4-baa3-\
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.796398239839179*^9},ExpressionUUID->"3e1c74d4-3412-4720-bb1a-\
+eee0bb87a6da"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7963982380535994`*^9},ExpressionUUID->"b76e1b0f-b4ce-4b47-99a0-\
+45f305648589"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7963982369026203`*^9},ExpressionUUID->"cf84038e-547f-46c4-9b6a-\
+1424c9b01478"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.796398217295422*^9},ExpressionUUID->"4e1c730b-d726-4c6c-b108-\
+5342f46c95f7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+
+
+OLD CODE \
+\>", "Subsubsection",
+ CellChangeTimes->{{3.7963910872729073`*^9, 3.7963911107102737`*^9}, {
+  3.796398229660677*^9, 
+  3.7963982352516937`*^9}},ExpressionUUID->"8347f56f-16b8-49f4-baa3-\
 d22fe80b8d7b"],
 
 Cell[BoxData[
@@ -1847,86 +1215,33 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 524, 7, 45, "Subsubsection",ExpressionUUID->"06ef67d0-8399-4056-8186-b94c6196eb57"],
-Cell[1107, 31, 3769, 81, 355, "Input",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
+Cell[1107, 31, 3764, 80, 334, "Input",ExpressionUUID->"71807987-e891-4d2a-a837-91498f2756df"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4908, 116, 371, 6, 45, "Subsubsection",ExpressionUUID->"0a78fb85-1fbf-4654-9fe1-104f22d6e001"],
+Cell[5282, 124, 167, 3, 35, "Text",ExpressionUUID->"3375c5a6-0e99-4278-b426-91975e2fd805"],
+Cell[5452, 129, 1342, 36, 39, "Input",ExpressionUUID->"fb23f662-0308-49d8-b520-4bd294e71915"],
+Cell[6797, 167, 6473, 139, 448, "Input",ExpressionUUID->"9c38180d-6b03-444d-817b-11b14a91a9be"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4913, 117, 371, 6, 37, "Subsubsection",ExpressionUUID->"0a78fb85-1fbf-4654-9fe1-104f22d6e001"],
-Cell[5287, 125, 167, 3, 35, "Text",ExpressionUUID->"3375c5a6-0e99-4278-b426-91975e2fd805"],
-Cell[5457, 130, 1347, 37, 39, "Input",ExpressionUUID->"fb23f662-0308-49d8-b520-4bd294e71915"],
-Cell[6807, 169, 6478, 140, 448, "Input",ExpressionUUID->"9c38180d-6b03-444d-817b-11b14a91a9be"]
+Cell[13307, 311, 1024, 17, 75, "Subsubsection",ExpressionUUID->"d9002f4d-dbe1-49f1-8a32-102b729fe2c1"],
+Cell[14334, 330, 167, 3, 35, "Text",ExpressionUUID->"56cc26d8-7d85-43ce-b96e-591cd9cb9069"],
+Cell[CellGroupData[{
+Cell[14526, 337, 7918, 144, 39, "Input",ExpressionUUID->"719fbeac-471a-4852-9f97-7a5a9e2a95bf"],
+Cell[22447, 483, 871, 24, 34, "Output",ExpressionUUID->"e2300243-8eed-4489-8d6f-b3ea79ff5da6"]
+}, Open  ]],
+Cell[23333, 510, 7276, 104, 248, "Input",ExpressionUUID->"9d3e777a-6599-417e-941b-8de7c21c2f3a"],
+Cell[30612, 616, 11738, 274, 800, "Input",ExpressionUUID->"ba116d1d-fa9b-47f0-8ccc-002529becb88"],
+Cell[42353, 892, 147, 3, 52, "Input",ExpressionUUID->"1150732d-c016-4741-b9a7-a7911601826c"],
+Cell[42503, 897, 147, 3, 52, "Input",ExpressionUUID->"3e1c74d4-3412-4720-bb1a-eee0bb87a6da"],
+Cell[42653, 902, 149, 3, 52, "Input",ExpressionUUID->"b76e1b0f-b4ce-4b47-99a0-45f305648589"],
+Cell[42805, 907, 149, 3, 52, "Input",ExpressionUUID->"cf84038e-547f-46c4-9b6a-1424c9b01478"],
+Cell[42957, 912, 147, 3, 52, "Input",ExpressionUUID->"4e1c730b-d726-4c6c-b108-5342f46c95f7"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13322, 314, 1024, 17, 83, "Subsubsection",ExpressionUUID->"d9002f4d-dbe1-49f1-8a32-102b729fe2c1"],
-Cell[14349, 333, 167, 3, 35, "Text",ExpressionUUID->"56cc26d8-7d85-43ce-b96e-591cd9cb9069"],
-Cell[14519, 338, 7841, 144, 39, "Input",ExpressionUUID->"719fbeac-471a-4852-9f97-7a5a9e2a95bf"],
-Cell[CellGroupData[{
-Cell[22385, 486, 544, 14, 30, "Input",ExpressionUUID->"1f544cc5-c913-40f7-b8ed-10d7a3780cae"],
-Cell[22932, 502, 250, 5, 34, "Output",ExpressionUUID->"e2431d8a-5a95-4f09-9fce-52b4bc3068cb"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[23219, 512, 1933, 42, 157, "Input",ExpressionUUID->"f2130507-81a2-4e04-b8aa-8cc5f21b6579"],
-Cell[25155, 556, 2239, 39, 39, "Output",ExpressionUUID->"5d4621ba-b844-4fe6-867e-1f5778ecd4ee"],
-Cell[27397, 597, 598, 10, 34, "Output",ExpressionUUID->"47be555f-b851-41b6-ad52-92eee89dbab9"],
-Cell[27998, 609, 567, 10, 34, "Output",ExpressionUUID->"e3330042-eb15-4707-a16f-5662afc46765"],
-Cell[28568, 621, 567, 10, 34, "Output",ExpressionUUID->"9f132d7e-9c70-4594-81a8-8a9758aaf376"]
-}, Open  ]],
-Cell[29150, 634, 307, 8, 30, "Input",ExpressionUUID->"09bec52d-40c6-4eb4-8dd9-8eae19ee4a9c"],
-Cell[29460, 644, 1569, 32, 94, "Input",ExpressionUUID->"605ecad7-684e-465e-98ef-8c337b91e1e8"],
-Cell[CellGroupData[{
-Cell[31054, 680, 814, 17, 52, "Input",ExpressionUUID->"63fb2cbb-ae41-4000-8067-868f172cfecb"],
-Cell[31871, 699, 1333, 31, 49, "Output",ExpressionUUID->"a82742c3-e6df-48e5-aa66-2192e6c23eaa"],
-Cell[33207, 732, 448, 8, 34, "Output",ExpressionUUID->"fec3a42c-d65a-4f17-9cfa-1d7988a8207c"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[33692, 745, 359, 7, 30, "Input",ExpressionUUID->"eba2a6ef-3517-4b55-9e2c-c1ba92aaab78"],
-Cell[34054, 754, 1257, 30, 38, "Output",ExpressionUUID->"fb80fbb9-f876-43c9-8d70-bd299c0bf6ee"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[35348, 789, 341, 8, 30, "Input",ExpressionUUID->"f829f41f-f108-4e72-aaf9-82b474cc4746"],
-Cell[35692, 799, 253, 6, 34, "Output",ExpressionUUID->"b845b518-36f5-42d6-9ed9-f9ed3d13087f"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[35982, 810, 686, 19, 52, "Input",ExpressionUUID->"6b0b36e9-098f-4dd7-8a62-c3ecf7936acc"],
-Cell[36671, 831, 298, 6, 34, "Output",ExpressionUUID->"c4e2546d-dc19-4d21-833b-d9e1154e6ffc"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[37006, 842, 616, 14, 52, "Input",ExpressionUUID->"111bb7a5-c168-4bdc-8594-dc21c4498ad5"],
-Cell[37625, 858, 1192, 29, 52, "Output",ExpressionUUID->"3c315e09-72dc-4d74-8c3b-b3c5d2d86043"],
-Cell[38820, 889, 350, 7, 34, "Output",ExpressionUUID->"a308cfa6-73d9-4135-b390-07271cdcd3e7"]
-}, Open  ]],
-Cell[39185, 899, 704, 21, 52, "Input",ExpressionUUID->"1e55fa97-d56a-46d9-b297-7a973140d447"],
-Cell[39892, 922, 149, 3, 52, "Input",ExpressionUUID->"73c8731f-b19e-43df-bf60-7863625eca8f"],
-Cell[40044, 927, 598, 16, 30, "Input",ExpressionUUID->"f0415e06-6b16-469f-aaac-84824e77c7b1"],
-Cell[CellGroupData[{
-Cell[40667, 947, 9544, 208, 39, InheritFromParent,ExpressionUUID->"2d51839f-f033-4928-935f-0138e311ad35"],
-Cell[50214, 1157, 666, 21, 34, "Output",ExpressionUUID->"b722db92-423b-44f6-9254-ec1297a5961e"]
-}, Open  ]],
-Cell[50895, 1181, 460, 11, 30, "Input",ExpressionUUID->"56e91672-ec80-4892-94d1-63b9fd0bd35f"],
-Cell[CellGroupData[{
-Cell[51380, 1196, 950, 26, 52, "Input",ExpressionUUID->"14d50f7d-f7bf-492d-b0c5-c36638e6cf58"],
-Cell[52333, 1224, 573, 15, 34, "Output",ExpressionUUID->"3cf1c2f3-7e9b-4916-959b-228ef3146cfe"]
-}, Open  ]],
-Cell[52921, 1242, 1420, 35, 136, "Input",ExpressionUUID->"a090fcec-151c-45d7-8996-18ba815c16d5"],
-Cell[54344, 1279, 233, 4, 30, "Input",ExpressionUUID->"a02539f7-2633-425f-babb-deab6017407d"],
-Cell[CellGroupData[{
-Cell[54602, 1287, 291, 6, 52, "Input",ExpressionUUID->"fc62118f-56b5-44ac-aa6f-b0d1c3275d9f"],
-Cell[54896, 1295, 306, 8, 34, "Output",ExpressionUUID->"8e350900-521b-4bde-982a-e493b7d6e60f"]
-}, Open  ]],
-Cell[55217, 1306, 2951, 66, 60, "Input",ExpressionUUID->"48f829c0-211f-4bf6-bb6e-f8ab16c1ee37"],
-Cell[CellGroupData[{
-Cell[58193, 1376, 237, 6, 30, "Input",ExpressionUUID->"05989c0d-ebb5-42e9-b00e-a0a4a0b084d8"],
-Cell[58433, 1384, 2429, 56, 119, "Output",ExpressionUUID->"d73e3ea4-369d-44c9-8be7-386651aadd7f"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[60899, 1445, 3292, 79, 102, InheritFromParent,ExpressionUUID->"b67238d5-2876-4bd6-9b2b-7414f00dd04f"],
-Cell[64194, 1526, 316, 5, 34, "Output",ExpressionUUID->"9fa6de2e-3070-4a8a-ba6c-f185a2d65381"],
-Cell[64513, 1533, 316, 5, 34, "Output",ExpressionUUID->"9305b31a-3feb-4f1d-95d1-5d6d806b8b61"],
-Cell[64832, 1540, 317, 5, 34, "Output",ExpressionUUID->"615ae791-14f3-46db-b168-4c6f3755dc4f"]
-}, Open  ]],
-Cell[65164, 1548, 147, 3, 52, "Input",ExpressionUUID->"32862c56-e111-4358-bd91-7c7e8a98d370"],
-Cell[65314, 1553, 365, 8, 136, "Input",ExpressionUUID->"8347f56f-16b8-49f4-baa3-d22fe80b8d7b"],
-Cell[65682, 1563, 859, 14, 30, "Input",ExpressionUUID->"15da88ee-9268-4948-8f41-105f330cab3a"],
-Cell[66544, 1579, 11794, 249, 675, "Input",ExpressionUUID->"6aba6127-3794-4981-8db0-5612e1f80580"]
+Cell[43141, 920, 226, 9, 123, "Subsubsection",ExpressionUUID->"8347f56f-16b8-49f4-baa3-d22fe80b8d7b"],
+Cell[43370, 931, 859, 14, 30, "Input",ExpressionUUID->"15da88ee-9268-4948-8f41-105f330cab3a"],
+Cell[44232, 947, 11794, 249, 675, "Input",ExpressionUUID->"6aba6127-3794-4981-8db0-5612e1f80580"]
 }, Open  ]]
 }
 ]
