@@ -10,26 +10,34 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    165867,       3828]
-NotebookOptionsPosition[    165009,       3805]
-NotebookOutlinePosition[    165362,       3821]
-CellTagsIndexPosition[    165319,       3818]
+NotebookDataLength[    166203,       3839]
+NotebookOptionsPosition[    165230,       3814]
+NotebookOutlinePosition[    165566,       3829]
+CellTagsIndexPosition[    165523,       3826]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell["Box Whisker Plots ", "Subsubsection",
+ CellChangeTimes->{{3.79829073587722*^9, 
+  3.798290739056264*^9}},ExpressionUUID->"3148ae37-8cdc-4035-a6bf-\
+1b629c05c934"],
+
 Cell[BoxData[{
  RowBox[{
   RowBox[{"mypointsize", " ", "=", " ", ".02"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"l", "=", ".4"}], ";", " ", 
-  RowBox[{"m", "=", ".1"}], ";", " ", 
+  RowBox[{
+   RowBox[{"l", "=", ".4"}], ";", " ", 
+   RowBox[{"m", "=", ".1"}], ";"}], " ", 
   RowBox[{"(*", 
    RowBox[{
    "how", " ", "wide", " ", "your", " ", "data", " ", "is", " ", "on", " ", 
     "your", " ", 
-    RowBox[{"box", "/", "whisker"}], " ", "plot"}], "*)"}], 
-  "\[IndentingNewLine]"}]}], "Input",
+    RowBox[{"box", "/", "whisker"}], " ", "plot"}], 
+   "*)"}]}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.777829824827559*^9, 3.777829832937831*^9}},
  CellLabel->"In[15]:=",ExpressionUUID->"752ec92f-2c76-4458-9c42-664d1943c31c"],
 
@@ -3802,11 +3810,11 @@ OJd9WOjWRD65mI3O9bYd6eGgfcmVCiN/tGUn/a5DIFr1UM0OCkL/AnHvIwg=
  CellLabel->
   "Out[834]=",ExpressionUUID->"9b20d663-92e1-49ff-840a-765d6cfa2a6e"]
 }, Open  ]]
+}, Open  ]]
 },
 WindowSize->{1004, 612},
 WindowMargins->{{4, Automatic}, {Automatic, 4}},
-FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
-2018)",
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -3820,19 +3828,20 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 560, 13, 73, "Input",ExpressionUUID->"752ec92f-2c76-4458-9c42-664d1943c31c"],
-Cell[1121, 35, 668, 20, 30, "Input",ExpressionUUID->"3ed09533-408c-4fc0-ae47-1dfae56ea48e"],
 Cell[CellGroupData[{
-Cell[1814, 59, 1921, 53, 52, "Input",ExpressionUUID->"c42e9548-29c5-48b1-a0c9-ddd8d0bb7d68"],
-Cell[3738, 114, 58590, 1340, 244, "Output",ExpressionUUID->"8d1998b0-ee11-4d96-af1a-91a8f5ef2a38"]
+Cell[580, 22, 168, 3, 45, "Subsubsection",ExpressionUUID->"3148ae37-8cdc-4035-a6bf-1b629c05c934"],
+Cell[751, 27, 576, 14, 73, "Input",ExpressionUUID->"752ec92f-2c76-4458-9c42-664d1943c31c"],
+Cell[1330, 43, 668, 20, 30, "Input",ExpressionUUID->"3ed09533-408c-4fc0-ae47-1dfae56ea48e"],
+Cell[CellGroupData[{
+Cell[2023, 67, 1921, 53, 52, "Input",ExpressionUUID->"c42e9548-29c5-48b1-a0c9-ddd8d0bb7d68"],
+Cell[3947, 122, 58590, 1340, 244, "Output",ExpressionUUID->"8d1998b0-ee11-4d96-af1a-91a8f5ef2a38"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[62365, 1459, 5218, 134, 241, "Input",ExpressionUUID->"2b9958bc-eee8-4419-bf85-270f4f886fbd"],
-Cell[67586, 1595, 97407, 2207, 572, "Output",ExpressionUUID->"9b20d663-92e1-49ff-840a-765d6cfa2a6e"]
+Cell[62574, 1467, 5218, 134, 241, "Input",ExpressionUUID->"2b9958bc-eee8-4419-bf85-270f4f886fbd"],
+Cell[67795, 1603, 97407, 2207, 572, "Output",ExpressionUUID->"9b20d663-92e1-49ff-840a-765d6cfa2a6e"]
+}, Open  ]]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
