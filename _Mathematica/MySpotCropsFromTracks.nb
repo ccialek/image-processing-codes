@@ -1,0 +1,712 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27700,        704]
+NotebookOptionsPosition[     25457,        656]
+NotebookOutlinePosition[     25795,        671]
+CellTagsIndexPosition[     25752,        668]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Making a fxn for generating crops", "Subsubsection",
+ CellChangeTimes->{{3.7458391089766283`*^9, 
+  3.745839114715554*^9}},ExpressionUUID->"57827d7b-af3e-49ef-a05d-\
+9472d2bc6bdc"],
+
+Cell["\<\
+variables: 
+the color movie (max projection, 3 channels)
+The TRACKS file (redtracksHC in this case) 
+the transformation function for that file
+The analysis folder name (can get this from the movie) 
+The size of the pad you\[CloseCurlyQuote]ll generate wtih your crops (NOTE: \
+right now I have it fixed at 7, but can be an input as well)
+
+Results: a .m file containing all the spot trims (3 colors) for all \
+red-containing spots in a cell 
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.745839121341835*^9, 3.745839145377307*^9}, {
+  3.745839539300611*^9, 3.745839690105453*^9}, {3.802191849989272*^9, 
+  3.802191875913782*^9}},ExpressionUUID->"548dba2d-05e6-4f7e-843a-\
+a3e6b8a05fb6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Files you\[CloseCurlyQuote]ll need:", "Subsubsection",
+ CellChangeTimes->{{3.7458391089766283`*^9, 3.745839114715554*^9}, {
+  3.7458392413870773`*^9, 
+  3.745839246562523*^9}},ExpressionUUID->"01d63776-b3cd-481e-ab20-\
+709321f26dfc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"FileNameSetter", "[", 
+    RowBox[{"Dynamic", "[", "mymovie", "]"}], "]"}], ",", 
+   RowBox[{"Dynamic", "[", "mymovie", "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.651503548625061*^9, 3.651503549729124*^9}, {
+  3.6515036971455555`*^9, 3.6515037273852854`*^9}, {3.6515038052497387`*^9, 
+  3.651503807864888*^9}, {3.6515048066830177`*^9, 3.6515048169146028`*^9}, {
+  3.6515052946509275`*^9, 3.651505295114954*^9}, {3.6515053260127215`*^9, 
+  3.651505326890772*^9}, {3.651521020023368*^9, 3.651521093823589*^9}},
+ CellLabel->
+  "In[5986]:=",ExpressionUUID->"3e88dfe5-f6f2-42f6-98de-15bfd584c0ea"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{Dynamic[$CellContext`mymovie],"Open",All},
+    "FileNameSetterBoxes"], ",", 
+   DynamicBox[ToBoxes[$CellContext`mymovie, StandardForm],
+    ImageSizeCache->{533., {45.54893493652344, 12.791915893554688`}}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.7168401340378675`*^9, 3.728670410064242*^9, 3.733157829682938*^9, 
+   3.7332447675616136`*^9, 3.7332448161653633`*^9, {3.7332448822839527`*^9, 
+   3.7332449058804235`*^9}, 3.7332450548785143`*^9, 3.745261464736001*^9, 
+   3.7452633905442743`*^9, 3.745280425176317*^9, 3.745508178253203*^9, {
+   3.745831199828411*^9, 3.745831207357861*^9}, 3.7458374096021347`*^9, 
+   3.745839311098887*^9, 3.802191593611617*^9, 3.80219165875119*^9, 
+   3.802193818687993*^9, {3.802193894575646*^9, 3.8021939579286833`*^9}, {
+   3.802193994178864*^9, 3.802194019019271*^9}, 3.802194739366288*^9, 
+   3.802194781485345*^9},
+ CellLabel->
+  "Out[5986]=",ExpressionUUID->"81e30884-4c89-4010-a7e6-1a928c528c9d"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mymovie", "=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringTake", "[", 
+       RowBox[{
+        RowBox[{"FileBaseName", "[", "mymovie", "]"}], ",", "4"}], "]"}], 
+      "\[Equal]", "\"\<AVG_\>\""}], ",", 
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"mymovie", ",", 
+       RowBox[{"\"\<AVG_\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], ",", 
+     "mymovie"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"myColMovie", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Import", "[", "mymovie", "]"}], "//", 
+     RowBox[{
+      RowBox[{"Partition", "[", 
+       RowBox[{"#", ",", "3"}], "]"}], "&"}]}], "//", "Transpose"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"analysisFolder", "=", 
+   RowBox[{
+    RowBox[{"DirectoryName", "[", "mymovie", "]"}], "<>", "\"\<Analysis/\>\"",
+     "<>", 
+    RowBox[{"StringDrop", "[", 
+     RowBox[{
+      RowBox[{"StringDelete", "[", 
+       RowBox[{"mymovie", ",", 
+        RowBox[{"DirectoryName", "[", "mymovie", "]"}]}], "]"}], ",", 
+      RowBox[{"-", "4"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"redtracks", "=", 
+    RowBox[{"<<", 
+     RowBox[{"(", 
+      RowBox[{"analysisFolder", "<>", "\"\<_RedTracksColorLinked.dat\>\""}], 
+      ")"}]}]}], ";"}], "  ", "\[IndentingNewLine]", 
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"redRunAvp", "=", 
+     RowBox[{"<<", 
+      RowBox[{"(", 
+       RowBox[{"analysisFolder", "<>", "\"\<_redspots.dat\>\""}], ")"}]}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"greenRunAvp", "=", 
+     RowBox[{"<<", 
+      RowBox[{"(", 
+       RowBox[{"analysisFolder", "<>", "\"\<_greenspots.dat\>\""}], ")"}]}]}],
+     ";", "\[IndentingNewLine]", 
+    RowBox[{"blueRunAvp", "=", 
+     RowBox[{"<<", 
+      RowBox[{"(", 
+       RowBox[{"analysisFolder", "<>", "\"\<_bluespots.dat\>\""}], ")"}]}]}], 
+    ";"}], "\[IndentingNewLine]", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myTfFunc", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"DirectoryName", "[", "mymovie", "]"}], "<>", 
+     "\"\<TransformationFunction.m\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"myTfFuncInv", "=", 
+   RowBox[{"InverseFunction", "@", "myTfFunc"}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.716830924066163*^9, 3.7168411629195714`*^9, 3.716841294606011*^9, {
+   3.717163920975565*^9, 3.71716392958878*^9}, {3.717171170308474*^9, 
+   3.7171711858517036`*^9}, {3.7210688397530875`*^9, 3.721068840938155*^9}, {
+   3.7452614944522743`*^9, 3.745261538023471*^9}, {3.802191883325098*^9, 
+   3.802191898620542*^9}, {3.8021920058515787`*^9, 3.802192035241076*^9}, {
+   3.8021920830781193`*^9, 3.802192095806479*^9}, {3.802192150333014*^9, 
+   3.8021921723721046`*^9}, {3.80219233811922*^9, 3.8021923517886972`*^9}, {
+   3.80219378925883*^9, 3.802193792702873*^9}, 3.802195099067545*^9},
+ CellLabel->
+  "In[6314]:=",ExpressionUUID->"e4b9cf67-9fd1-4a28-a55f-cc9ad444c9f4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Functions: ", "Section",
+ CellChangeTimes->{{3.802193765830844*^9, 
+  3.802193768627194*^9}},ExpressionUUID->"3af1e6c3-dbca-4cea-b04e-\
+7b5fe1de9583"],
+
+Cell[CellGroupData[{
+
+Cell["FXN1: ", "Subsubsection",
+ CellChangeTimes->{{3.7458391089766283`*^9, 3.745839114715554*^9}, {
+  3.745839238881065*^9, 3.7458392512675*^9}, {3.7458398698837976`*^9, 
+  3.745839871621298*^9}},ExpressionUUID->"7d7be172-b249-4b30-a4df-\
+cc7bfe92352d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCrops", "[", 
+   RowBox[{
+   "mySpots_", ",", "myColMovie_", ",", "myTfFunc_", ",", "analysisFolder_"}],
+    "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "mySpotTrims", ",", " ", "tempRed", ",", " ", "tempBlue", ",", " ", 
+      "tempGreen", ",", " ", "tempCenter", ",", "pad2"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pad2", "=", "7"}], ";", "\n", 
+     RowBox[{"mySpotTrims", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", 
+               RowBox[{"frame", ",", "track"}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "pad2"}], ",", 
+                  RowBox[{"tempCenter", "+", "pad2", "-", "0.1"}]}], "}"}]}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", "frame", "]"}], "]"}], "]"}], ",", "1"}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Length", "/@", "mySpots"}], "]"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ",", 
+       "mySpotTrims"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 3.745839193400769*^9}},
+ CellLabel->
+  "In[5706]:=",ExpressionUUID->"fa4c32ce-2692-42be-8312-823e2ac1a54a"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+FXN2: myPad is a variable and user determined in the function\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.745839814881456*^9, 
+  3.7458398312984333`*^9}},ExpressionUUID->"765f3e3b-a9cc-457c-84c9-\
+8dcdd0093533"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCrops2", "[", 
+   RowBox[{
+   "mySpots_", ",", "myColMovie_", ",", "myTfFunc_", ",", "analysisFolder_", 
+    ",", " ", "myPad_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "mySpotTrims", ",", " ", "tempRed", ",", " ", "tempBlue", ",", " ", 
+      "tempGreen", ",", " ", "tempCenter"}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"mySpotTrims", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", 
+               RowBox[{"frame", ",", "track"}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "myPad"}], ",", 
+                  RowBox[{"tempCenter", "+", "myPad", "-", "0.1"}]}], "}"}]}],
+                "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "myPad"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "myPad"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "myPad"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "myPad"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", "frame", "]"}], "]"}], "]"}], ",", "1"}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Length", "/@", "mySpots"}], "]"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ",", 
+       "mySpotTrims"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 3.745839193400769*^9}, {
+  3.745839727479514*^9, 3.745839766142755*^9}},
+ CellLabel->
+  "In[5636]:=",ExpressionUUID->"e2bd20df-52dd-472f-8237-b8bf7c121b46"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FXN3: Output is RGB ColorCombine ", "Subsubsection",
+ CellChangeTimes->{{3.745839814881456*^9, 3.745839863741898*^9}, {
+  3.745840023765987*^9, 3.745840027218051*^9}, {3.745840190964395*^9, 
+  3.74584019127743*^9}},ExpressionUUID->"6e5ba2d5-ac99-4ba9-832a-\
+fb860cca09ae"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCrops", "[", 
+   RowBox[{
+   "mySpots_", ",", "myColMovie_", ",", "myTfFunc_", ",", "analysisFolder_"}],
+    "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "mySpotTrims", ",", " ", "tempRed", ",", " ", "tempBlue", ",", " ", 
+      "tempGreen", ",", " ", "tempCenter", ",", "pad2", ",", "myRGBTrims"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pad2", "=", "7"}], ";", "\n", 
+     RowBox[{"mySpotTrims", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", 
+               RowBox[{"frame", ",", "track"}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "pad2"}], ",", 
+                  RowBox[{"tempCenter", "+", "pad2", "-", "0.1"}]}], "}"}]}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"mySpots", "[", 
+              RowBox[{"[", "frame", "]"}], "]"}], "]"}], ",", "1"}], "}"}]}], 
+         "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Length", "/@", "mySpots"}], "]"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"myRGBTrims", "=", 
+      RowBox[{"Table", "[", " ", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"ColorCombine", "[", 
+           RowBox[{"mySpotTrims", "[", 
+            RowBox[{"[", 
+             RowBox[{"frame", ",", "track"}], "]"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "@", 
+             RowBox[{
+             "mySpotTrims", "\[LeftDoubleBracket]", "frame", 
+              "\[RightDoubleBracket]"}]}], ",", "1"}], "}"}]}], "]"}], 
+        "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"frame", ",", "1", ",", 
+          RowBox[{"Length", "@", "mySpotTrims"}], ",", "1"}], "}"}]}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myTrims.m\>\""}], ",", 
+       "myRGBTrims"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 3.745839193400769*^9}, {
+  3.745840081522534*^9, 3.745840150931361*^9}},
+ CellLabel->
+  "In[5637]:=",ExpressionUUID->"fd5efabe-16b4-4ef7-b378-eaa44cc58673"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["FXN3: Output is RGB ColorCombine ", "Subsubsection",
+ CellChangeTimes->{{3.745839814881456*^9, 3.745839863741898*^9}, {
+  3.745840023765987*^9, 3.745840027218051*^9}, {3.745840190964395*^9, 
+  3.74584019127743*^9}},ExpressionUUID->"593fdbed-d786-4ff6-8918-\
+fbb1a37d3b7e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MySpotCropsfromTracks", "[", 
+   RowBox[{
+   "RedTracksColorLinked_", ",", "myColMovie_", ",", "myTfFunc_", ",", 
+    "analysisFolder_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+     "tempRed", ",", " ", "tempBlue", ",", " ", "tempGreen", ",", " ", 
+      "tempCenter", ",", "pad2", ",", "myRGBTrims"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"pad2", "=", "7"}], ";", "\n", 
+     RowBox[{"tracks", " ", "=", " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"tempCenter", "=", 
+            RowBox[{"Ceiling", "@", 
+             RowBox[{"RedTracksColorLinked", "[", 
+              RowBox[{"[", 
+               RowBox[{"track", ",", "frame", ",", " ", "2", ",", 
+                RowBox[{"2", ";;", "3"}]}], "]"}], "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+            "=", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"1", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"tempCenter", "-", "pad2"}], ",", 
+                  RowBox[{"tempCenter", "+", "pad2", "-", "0.1"}]}], "}"}]}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"2", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"ImageTrim", "[", 
+               RowBox[{
+                RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                 RowBox[{"3", ",", "frame"}], "\[RightDoubleBracket]"}], ",", 
+                
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "-", "pad2"}], 
+                  ",", 
+                  RowBox[{
+                   RowBox[{"myTfFunc", "@", "tempCenter"}], "+", "pad2"}]}], 
+                 "}"}]}], "]"}]}], "}"}]}]}], " ", ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"frame", ",", "1", ",", 
+            RowBox[{"Length", "@", 
+             RowBox[{"RedTracksColorLinked", "[", 
+              RowBox[{"[", "track", " ", "]"}], "]"}]}], " ", ",", "1"}], 
+           "}"}]}], "]"}], " ", ",", " ", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"track", ",", "1", ",", 
+          RowBox[{"Length", "[", "RedTracksColorLinked", " ", "]"}], ",", 
+          "1"}], "}"}]}], "]"}]}], " ", ";", "\[IndentingNewLine]", 
+     RowBox[{"meanCrops", " ", "=", " ", 
+      RowBox[{"Table", "[", " ", 
+       RowBox[{
+        RowBox[{"Table", "[", " ", 
+         RowBox[{
+          RowBox[{"Mean", "[", " ", 
+           RowBox[{"tracks", "[", 
+            RowBox[{"[", 
+             RowBox[{"track", ",", "All", ",", "col"}], " ", "]"}], "]"}], 
+           "  ", "]"}], " ", ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"col", ",", "1", ",", "3"}], "}"}]}], "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"track", ",", "1", ",", 
+          RowBox[{"Length", "@", "tracks"}]}], "}"}]}], "]"}]}], " ", ";", 
+     " ", "\n", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myCropss.m\>\""}], ",", 
+       "tracks"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Export", "[", 
+      RowBox[{
+       RowBox[{"analysisFolder", "<>", "\"\<_myMeanCrops.m\>\""}], ",", 
+       "meanCrops"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.745838258707994*^9, 3.745838347880377*^9}, {
+  3.745838839119821*^9, 3.745838910174942*^9}, {3.745838940823897*^9, 
+  3.7458390268823633`*^9}, {3.74583916345627*^9, 3.745839193400769*^9}, {
+  3.745840081522534*^9, 3.745840150931361*^9}, {3.802192509937545*^9, 
+  3.8021925868893023`*^9}, {3.80219289745376*^9, 3.802192920305757*^9}, {
+  3.80219348934865*^9, 3.802193535591881*^9}},
+ CellLabel->
+  "In[5795]:=",ExpressionUUID->"646efc4e-550a-4abe-b5f5-fa98bfa8302e"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Run the code: ", "Section",
+ CellChangeTimes->{{3.8021935626202183`*^9, 3.802193565142639*^9}, {
+  3.802193774221766*^9, 
+  3.802193774284856*^9}},ExpressionUUID->"08292608-10a7-4b98-a9d7-\
+8f52aecdbc41"],
+
+Cell[BoxData[
+ RowBox[{"MySpotCropsfromTracks", "[", 
+  RowBox[{
+  "redtracks", ",", "myColMovie", ",", "myTfFunc", ",", "analysisFolder"}], 
+  "]"}]], "Input",
+ CellLabel->
+  "In[6320]:=",ExpressionUUID->"dcc4f1a2-688a-49c0-b5cb-cc5715154612"],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ImageAdjust", "/@", "#"}], "&"}], "/@", "meanCrops"}]}]], "Input",\
+
+ CellChangeTimes->{{3.802193580494823*^9, 3.8021935834165583`*^9}, {
+  3.8021936557743473`*^9, 3.8021936758413477`*^9}, {3.802193739350844*^9, 
+  3.8021937394072733`*^9}},
+ EmphasizeSyntaxErrors->True,
+ CellLabel->
+  "In[5823]:=",ExpressionUUID->"4cdd0a6d-ccf6-4859-b32e-4391c3672a1c"]
+}, Open  ]]
+},
+WindowSize->{808, 705},
+WindowMargins->{{Automatic, 314}, {Automatic, 24}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 186, 3, 45, "Subsubsection",ExpressionUUID->"57827d7b-af3e-49ef-a05d-9472d2bc6bdc"],
+Cell[769, 27, 687, 17, 265, "Text",ExpressionUUID->"548dba2d-05e6-4f7e-843a-a3e6b8a05fb6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1493, 49, 239, 4, 45, "Subsubsection",ExpressionUUID->"01d63776-b3cd-481e-ab20-709321f26dfc"],
+Cell[CellGroupData[{
+Cell[1757, 57, 649, 12, 30, "Input",ExpressionUUID->"3e88dfe5-f6f2-42f6-98de-15bfd584c0ea"],
+Cell[2409, 71, 999, 19, 83, "Output",ExpressionUUID->"81e30884-4c89-4010-a7e6-1a928c528c9d"]
+}, Open  ]],
+Cell[3423, 93, 3009, 78, 283, "Input",ExpressionUUID->"e4b9cf67-9fd1-4a28-a55f-cc9ad444c9f4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6469, 176, 156, 3, 67, "Section",ExpressionUUID->"3af1e6c3-dbca-4cea-b04e-7b5fe1de9583"],
+Cell[CellGroupData[{
+Cell[6650, 183, 254, 4, 45, "Subsubsection",ExpressionUUID->"7d7be172-b249-4b30-a4df-cc7bfe92352d"],
+Cell[6907, 189, 3677, 89, 304, "Input",ExpressionUUID->"fa4c32ce-2692-42be-8312-823e2ac1a54a"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10621, 283, 222, 5, 37, "Subsubsection",ExpressionUUID->"765f3e3b-a9cc-457c-84c9-8dcdd0093533"],
+Cell[10846, 290, 3674, 88, 283, "Input",ExpressionUUID->"e2bd20df-52dd-472f-8237-b8bf7c121b46"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14557, 383, 278, 4, 37, "Subsubsection",ExpressionUUID->"6e5ba2d5-ac99-4ba9-832a-fb860cca09ae"],
+Cell[14838, 389, 4534, 110, 367, "Input",ExpressionUUID->"fd5efabe-16b4-4ef7-b378-eaa44cc58673"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[19409, 504, 278, 4, 37, "Subsubsection",ExpressionUUID->"593fdbed-d786-4ff6-8918-fbb1a37d3b7e"],
+Cell[19690, 510, 4822, 112, 388, "Input",ExpressionUUID->"646efc4e-550a-4abe-b5f5-fa98bfa8302e"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[24561, 628, 210, 4, 53, "Section",ExpressionUUID->"08292608-10a7-4b98-a9d7-8f52aecdbc41"],
+Cell[24774, 634, 244, 6, 30, "Input",ExpressionUUID->"dcc4f1a2-688a-49c0-b5cb-cc5715154612"],
+Cell[25021, 642, 420, 11, 30, "Input",ExpressionUUID->"4cdd0a6d-ccf6-4859-b32e-4391c3672a1c"]
+}, Open  ]]
+}
+]
+*)
+
