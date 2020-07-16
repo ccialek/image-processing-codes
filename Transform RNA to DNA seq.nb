@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12999,        234]
-NotebookOptionsPosition[     11952,        208]
-NotebookOutlinePosition[     12287,        223]
-CellTagsIndexPosition[     12244,        220]
+NotebookDataLength[     38147,        611]
+NotebookOptionsPosition[     36534,        576]
+NotebookOutlinePosition[     36869,        591]
+CellTagsIndexPosition[     36826,        588]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27,6 +27,13 @@ Transform sequence RNA to DNA
  CellChangeTimes->{{3.803814891832464*^9, 
   3.803814917702455*^9}},ExpressionUUID->"45a5972f-4690-4d2b-a2a3-\
 df312b614878"],
+
+Cell[CellGroupData[{
+
+Cell["sequences:", "Subsubsection",
+ CellChangeTimes->{{3.8038394884702168`*^9, 
+  3.8038394900996037`*^9}},ExpressionUUID->"20de1f4c-5ca8-4836-834d-\
+263fee5df1ce"],
 
 Cell[BoxData[
  RowBox[{
@@ -119,94 +126,455 @@ AA---AACCUCUG-UAGUAAAAAUUACUAUUUA----U\>\""}], ";"}]], "Input",
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{
+  "myseq", " ", "=", " ", 
+   "\"\< GGGGCGCCAACGUUCGAUUUCUACCUCAG-CAGCAGUUGGAUCUUUU----------------------\
+----------------GAAGGGAGAAGACACUGCAGUGACCACUUA-----UUC----UGU-A--UUGCCAUGGUC-\
+UUUCCACUUUCA-UCU---------GGGGUGGG---GUGGGGU-GGGGUGGG-GGAGGG-GG------GGGU---\
+GGG--------------GUGGGGAGAAAUCACAUAACC---UUAAA-------------AAGGA--C---------\
+UAUAUUAAUCACCUUC-UUUGUAA-UCCCUUCACAGUCCCAGGUUU---------AGUG-------------------\
+------AAAAACUGCUGUAA-ACACA-GGGG-AC--ACAG-CUUAACAAUGCAAC-UUUUAAUUACUGUUUUC-----\
+--------------U--UU----------UUU---CUUAACCUACUAAUAG-UUUG--\
+UUGAUCUGAUAAGCAAGAGU----GG--GCGGGUG-AG-AA---A-AA--C-----------------------\
+CGAAU---UGGG-UUUA-GUCAAUCA---------CUGCACUGCAUGCAAACAAGAAACG--U--GUCACA-------\
+CU----U------GUGACG--------UCGGGCAUUC----AU-AU----------AGGAA--------------\
+GAAC-G--CGGUG-----UG-U-AACA-C----UGU-GUA----------CACCU-CAAAUACCA---CCCCAACCC-\
+--ACUCCC---UGUAGUG-AA-UCCUCUG-UUUAGAACACCAAAGAUAAGGAC-UAG--AU-A--CUA----------\
+--------C----------------UUUC-----U---------CU-UU----UUC------------G-UA-UAA-\
+UCUUGUAGACA--CUUACUUGA---UGA---------UUUUU------------------------------------\
+----------------------AA-C-------UUU----U----------------U-AUUUCUAAAUG----\
+AGAC------GAAAUGCUGAUG----UAU-----C-CUUU-CAUUCA-GC-UAAC----A--AA-CUAG---------\
+--------AA-A-A-GGU-UAUGUUCA-------UUUU-------------------U--------------------\
+-----C---------------------------AAAAAGG-GAAGUAAGCAAA---CAAAUA--------U-------\
+--------UGCCAACUCU--------UC------UAU-UUAU--GGA------UAU----------------------\
+----------------CACA-CA--UAU-CAGCAG-G---AGUAAUAAAUU-UACUC-A-C-A--------GCAC---\
+---------U-----------UG----------------------------------------------UUUUCAGG-\
+-------------------A-CAACA-CUUCAUUUUCA-----------GGAAAUCUACUUCCUACAGAGCCAAAA-\
+UGCCAUUU--A--GC----AA-----------------UAAAUAACACUU-----G-UCAGCCUCAGAGC--A--U-\
+UUAAGG---AAACUAGACA------------AGUAAAA-UUAUCCUCU----------UU-GUAA---------UUU-\
+--AAUGAA---AAGGU--ACAACAGAA-UAAUGC---A-UGAUGAACUC-ACCUAAU---UA----------UG---\
+AGGU-G--GGAGG-----A----GCG----AAAUCU-AA-A------------UUUC-UUU-------UGCUAUA--\
+GU-----U-A--UACA--------------------------------------------------------------\
+---------UCAA--------UUU-AAAAAGC---------------AAAAAAAAAA---AA---G------------\
+----------------------------G-G--GGGGGCA------A--U--------------CUCUC---------\
+-UC-UG------UGUCUU------------UCUCUCUCUCUC----------------------------\
+UUCCUCUCC-----CUCU----------------------------C----UC----------UUUUCAUUG------\
+----UG-UAUC--------------AG-UUUCCAU-GAAAGACCUGA-AUACCA--CUUACCUCAAAUUAA--\
+GCAUAUGUGUUAC-UUCAAGUAAUACG---UU-U-----UGACAUAAGAUGGUUGACCAA----------\
+GGUGCUUU-UC----U-UCGGCUUGAGUUCA-----------CC----------AUC-U-CUUCAUUC-AAA-\
+CUGCAC-UUUUAGCCAGAGAUGC---AAU--AU-A-UCCCCACUACUC-AAUACUACCUCUGA--AUGUU--------\
+-----ACAACGAAU-U-UA-CAGUCUAGUACUUAUU-ACAUGCUGC--UAUACACAAGCAAUGC----AA-------\
+G----A-AAA--AAA-----------------------------CUUACUGG-G--U-AGGUGA-U-UCU---\
+AAUCAUCUGCAGUU-C--------UUUUUGU-------------A-CACUU-AAUUA-CAGUU-A---\
+AAGAAGCAAUCUC----CUUAC--UGUGU-UUCAGCAUGACUAUGU-AUUUUUCUAUG---------------UUU--\
+U---U-----UU---A---------------------------------------AUUAAAAAUUUUU--A---\
+AAAUACUUG-UUUCAGCUUCUCUGCUAGA-UU-UCUACAU-----------UAACUUGAA------AA--------\
+UU-----------------------UUUU----------------A----ACC---AAGUCGCUCC--U-AGGUUCU-\
+UAAGGAUAA--UUUUCCUCA-AU-CACAC---UACA---CA----------------------UC--------A----\
+-CACAA------------------------------------------------------------------------\
+--------GA-----------UUUGACUGU-AA-UAUUUAAAUAUU-ACCCU-CCAAGUCUGUACCUC-\
+AAAUGAAUUCUUU------AAGGAGAUGGACUAAUUGACUUGCAAAGACCUACCUCCAGAC-\
+UUCAAAAGGAAUGAAC-UUGUU-AC-UUGC-AGCA--UUCA-----UUUGUU-----------U-U-UU-----\
+CAAUG--------UUUGAA---AUA--GUUCAAACUGC----------AG-----C-UA--ACCCUAG--UCAAAAC-\
+-UA---------------UUUUUGU-----------AA-A-AGAC--AUUU---GAU-AG-AAAGGAACAC-G-U-\
+UUU-U-ACAUA-C--UUUU-----GC----A---------A-------------------------------------\
+------A-AUAAGUAAAUAA--------U-----AAAU----A---AAAUAAAAGCCAA-\
+CCUUCAAAGAAACUUGAAGCUUUGUAGGUGA-GAUGCA-ACAAGCCC-UG-C-UUUUGCAUAAUGCAAUC-AA-A---\
+----AAUA----UG------U---G-----------------------------UUU-U-------------------\
+---UAAG-AUUAGUUGAAUAUAAGAAA-AU-----GCUUGACAAAUA--UUUUC--AUGUAUUUUACAC--\
+AAAUGUGA------UU--UU----UGU---AA-U---------AUGUCUC-AACCAGAUUUA-UUUU--\
+AAACGCUUCUUAU---GUAGA---------------GU----------------------------------------\
+-UU--UU-AUG---CCU--------U-UCUC-----------------------------------------------\
+----------U-------------------------------------------------------------------\
+------------------------------------------------------------------------------\
+------------------------------------------------------------------------------\
+-------------------------------------------------------------------------\
+CCUAGU-GAG------UGUGCUGA---CUUUUU------------------AACAUGGUAUUAUCAACUGGGC--\
+CAGGAGGUAGUUUCUCAUGACGGCUU---------UUGU---CAGUAUGGCU---UUU-AGUACUGAAGCC-------\
+-----AAAUG---------A-AAC------UCAAAACCA-----UCUCUC-UUC--CAGCUG-CUUC-AGGGAGGUA-\
+-G---------UUUCAAAGGCCA-CAU-ACCUCUCU-GAGA-CU-GGCAGAUCGCUCA--------------\
+CUGUUGUG-AA-UC--------------AC-----------C--AAAGGAGCUAUGGA----GAGAAUUA-AAAC-\
+UC-AAC-A--UUACU--------GUUAACUGUGCGUUAAAUAA--GC--AAAUAAACAGUGGCUC-------------\
+-------------A-UAAAAA-UA-----AA-AGUCG---CAUUC-CAUAUC---------UUU---GGAUGGGC--\
+CUUU--UA-GA--AA-CCUCA--UU----------------------------------------------GGC--\
+CAGCU------CAU-AAAA-UG--GAAGC-AA-UUG---CU-C--AUGUUGGCCAAAC-AUGGUGCAC-------\
+CGAGUGAUUUCCAUC-UCUGGU-A---AAGUUACAC--UUUU-AUUUC-CUGUAUGUUGU---ACAAUCAAA------\
+--ACACACUACUACCUCUUAAGUCCCAGUA-UACCUCA-UU--UUUCAUACUGAA--------AA-------AA----\
+-------AAA--G-------------------------CUUGUGGCCAA-UGGAACAGUAAGAACAUCAUAAAA--\
+UUUU-UAUAUAUAUAGUUUA-UUUUUGUGGGAGAUAAAUUUUAUAGGACUGUUCUUU-GC---UG-UUGUUGGUCGC-\
+AGCUACA-UAAGACUGGACA----------UUU-AACUUUUCUACCAUUUCUGCAAG-UUAGGUAUGUUUGCAGG---\
+----A--GAAAA----G-UAU-CAAGACG-UUUAACUGCAGUUGACUUUCU------------CCCUG-UU-------\
+-CCUUUGAGUGUCUUCUAAC----UUU--AUU----CUUUGUU-\
+CUUUAUGUAGAAUUGCUGUCUAUGAUUGUACUUUGAAUCGCUUGCUUG-UUGAAAAUA-----UUUCUCUAGUGUA-\
+UUAUCACUGUC-UGUUCUGCACAAU-AAACAUAACAGCCUCUGUGA-UCC--CCAUG----------UGUUUUGA-\
+UUCCUGCUC--UUUGUU--ACAGUUCCAUUAAAUGAGUAAUAAAGUUUGGUCAAAACAGAUCAA\>\""}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.803834229583396*^9, 3.80383423722476*^9}},
+ CellLabel->
+  "In[351]:=",ExpressionUUID->"9b2c8617-93cb-4eab-b7fa-017cd43b48fd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "myseq", " ", "=", " ", 
+   "\"\< UAACUUCUU------------UA------------GAAAAAAA--------------------------\
+AAA--------UGUAAUGAAUGUU--GG------C------ACACACACA--UA---AAACCUGCUACAU-AGGG-\
+AAUAGAGCCCC--UUU-C-CAGUAGAGUUU-AAAUUGC-AAA-GGGUA-CUGGGG-A---------------A-\
+GAUGACGAU-UAA--GUUG-CAUCUUUA--GAGUCAGG-G-UAG-AUUUGGAGGA-AAAG------------------\
+-----UGCAUCAAAUGA--GAGCUUCUGAUUUGAAA--G-CCCCAGAUGACA--------GAAA-G-CAUA-----\
+UGUGGAUGCUC----AGUU-CUGUUCAAGCU-AGACAACACUCACCAAG---GAGCAAGGUGC-AAGUGUGUUGA-\
+UUUCAGAAGGACAUGAACCUCGUGUGUUGAUUCCAUUCUGCUGUUCUCGAGAUUUAGUUGCUGUCAAGUGCCUGGAGU\
+GGUGCUUUAU-UUU---------UU---------------------\
+GUUUGCCUCACAAUUACAUUGGUGGCAUGUGCUAAUAUAAAGAGCUUUAACUUCAAA-CAUUAU--U-\
+GGACUAAAGAGAUGAACAGUU-GU-GUUAU--GA--CAGAAAA-CCAG----------------------------\
+AUUUUU---GCCAUUUUAAGAGCAACAGUAUUCCUCAAUCCUGUCUGUUCUGCAGUAUUAAGCUAAGAACAGGUAAAA\
+CAGGGUAACGGUAAUCUGGACCUUAAUUUCUGCAGUUCAUUUCUUUUAAUGUUCUUGUCUGCAAAAA-----------\
+-----------------\
+CUCAGGAAAGUGAUUGUGAUUUGUACAGUACCUCAAAGGAAUGUGUUGAAAGCACUAUGUACUGCUGAGAGUAA-\
+UAGGAUAGGCUUCAAUGUUACUUUAUAUUAAA-A-UGUAUGUUUACCUCAACAAUUGG-----AAAA--UAGCAAGG-\
+AAAAU-UACUUUGAAUGUAUCCAGAAAA----------A--UACU-GAAGUGUGAUACAACUGAA--\
+UAUUUACAGUUUAAA-GUAGAAA-UGG-----------AAGG-----AUU----UUU-----U-U-------------\
+----------------A-------A----------G---U--UCUUUUAC-UAAUUAUGGGGAAUU---\
+AACCAGAGCAGAAUAAUUCU--UU-AU-GUCAAUA-ACUGCAAGAGUUCUUA---GUACAUUGCUC--CUUG------\
+--AU-AAUUAAGUGAAAAUGUUCUUAAAA-GGUA-CACUGGUUA--A-U---------UGAAA-GCU-ACUUA-U-\
+UCAGUUU-GUGU--UAGUGUC------UAGAC-CUGUCAGCCA-----------------------------------\
+------------CAAGA-CCUGUUU-AGGACCCUGA-----A-A--GUCACAGUACCUAAAAA--CU---AU--\
+GACUGC---CUUUUUAUU-GCAUAGG---UGGUAGUGGUGG------------------UGA----------------\
+--------------------------U---------------GGUGGUGG----UAGU--------------------\
+-------------------UUGCAAGUUAUCUCU-UA-----------------------------------------\
+--------AAACUGCUGGGAAUGG----UGUCAUUCUA-UUC-ACUA--A-UCUA----GCU-\
+UAUAGACUUGCCGUGCUGUUUGAUAGAAU------GCAGAGGAUA-GCAA-CC-AAAACA--A--AUA----------\
+-------CACAAAUAA--------A----UAAA----AAC----AA-----A------A-ACCAACCAACAA------\
+---------------------------AC-------CAACUUACAUACA-----------------------------\
+---------------------------------C----AUA-----------------------------------\
+UAU--------------AU---------------A----U-------------------------------------\
+C------CA----------------CAAAG--AA------------------CCU--CU---CCAUC----UCCUC--\
+------C---C------C--UUCUU--------UUU---GACU-------------CCAC-UCUU--\
+GUCAGUGCAAU-----U-UUGCUUC----UCAUUUUGAAAUCUGGGCUGUAGUGCUCCU---G-C--UUU--\
+AUUUCUACCUCAGUUUU-GUUA-----CAUUUCUCUUGGA---------AAGUAAA---GUAGAAAA--UUG-GA-\
+AGUGG----------AC---------------A--C-ACA--------C-AC--------------------------\
+---------------------------------------------------------------U-GC-----------\
+--AA----------------------------U-G-------UAGCUU-GCCAAACAU---------G----------\
+----------------UUAC------UU--UG------------------UUUUCU----UC----CAUCU-------\
+-UUC-AC------------------------CGUAAAU----------------------------------------\
+-----------CUAG--------UUUCC-AAAGA-CA-UCA-GCAUUU-GUGCUU-------------------\
+ACUUC-CACCUCAGUCU-AC-----CAGC------CCC----ACCCCUAC---------------C--CAU--GG-\
+CAU-------AAGUG----------------GCAUUUUUCUUAA--UUUCCUAU---UUU---UCUCC-U-----\
+GCU---CUC------U-GUCAAGUUGUUCUUUGUAUCCUUUAA-UGCUUUA-UGUGCAAC------C-\
+UUUCAUUGAUAGUGGG-CUGAUGUUU--G----GCAAUGCUUCUG---AACUGUCA--CAGAGCAGGCUGUAGCU-\
+UU-CC-ACAGCCACUGCCCA-UGCAUAA-GCAGAACAGCCUGGC-CUUUU--GAAUGUAUUUU---------------\
+CC--------------------------------------------UGG--------GUUUUUU------------\
+CCCC-------------UUUUC----UUUUUUU-----A-------------------G-U------UU---------\
+---------------------------AG-AGAUGCAGUAACAAAACUGUUGCAAAGCACUGGCAUUUU--\
+AUGUAUUCAAUAAAUAAGUGAUGUACA--UUUU------------------U----A---AAAA-AAU--\
+UUAAAUAAAU--------GCAAUGA-GAA------GC---CCCAA-GAA---AGG-------------\
+CCUUUCUGUUU-------------------------------U----------U-UU-----UU--UC----------\
+--------------U---UACA------AA-------A------------------AUU-UUUAC-----\
+CGAUCUUAU-CCACA-AUAUCCAAU--UCUCUG--AAA-CACUUAACAUAGAGAAAGCUCAUGAG--G----GAUUU-\
+CUU---A---UCUC------UGAAAUU--UU-AUGAUGCUUGAUC-UU--UA----CUCC-------CCUUUU---\
+UUU-A--------U-U---UUUUA-UGUUGC-U---AAAAA-CUGAGCAAUUGAACCAGAAUUUA-AUUU-ACUG---\
+-UGACAUUCU-GUCAA-------------UUAA--------AGCUGU--GCUUAAAUAU-AAA----UAUU-------\
+--CC--AUA-UUA-----AA-AA-GCAGUGCCUUUC-AU----------UAAGGAUACAA-AAA------AU-\
+AAUACUUAAAUACGCCCUC---UGCUUU-UC--G-CAA----GUGAAUAAAUGCUACAAUCG----UGUUC-\
+UGGGUCUACCCUG---UGCA----UCCCUUGU---A---AGGA---AAUUCUAAU-AUCCAC-\
+AUUAACUUGUAGGUUCAUA-----------------------------------------------------------\
+------------------UUGAUC-UCACUGAC----AAGUUU-ACUUU--U-\
+GCACAGUGCUGACCUAUUUUCUGACUUU---U--AG-ACA-UUAUAUUU-CA-UUUCCGCCAAC-AUGCUGUGU----\
+-UCACUUGAAA----------------GCGUCUGGCAAGUUUUGACAAACCCAGUCUUAU---UUAGACAACUUUG-\
+GAAAAUCC---AAU-AUUGAC-C-------------------------------------------CACAUUU-----\
+----U-UU--------U-------------------------------------------GUGG--CU---AGU----\
+AA-GAUUUAAUGCC-AAAUAUAUGACUGCACU-----AUUGU--GUUUU-ACA---C----------UCAU-----\
+UUA-------------------U--------------AAAA--CUGAAAAUA--AAUUGA-----A-GUCAUA-----\
+-----CAU-CUUGGCUUUU-AGCUUUAAGUGA---------CU---UAAAAA---\
+UUAGAACUCUGAGUGACUUAAAAAUU-AA-U-UUGAGAUGCAAGUGGUC----AAA--A-------A---------\
+UCCAUG-----UA---UUUAGA------CAGAAGCU-GAAG-UCGUAUGUGAUUU-----U-CAUUUAG-CCUCA---\
+------------------------------------------------------------------------------\
+----------CAAAAUCCA----AGAUU------UGAUCUCUUAGGAA------------------------------\
+AUUGGGCAU-GUUGAA-GAAA-------UGAAGA----UCU-GUU-------------------------------\
+GGAGGA------GAUAUGGCUGACCUUUGAGUA-GA---UA-------------G---U-----GCUCUCC-------\
+----U-----------GUGAUUCUUU-GA-UUCUGCAUGGC---A--GC---AUU-AUGA-------GCUCUU-\
+CUAUAAACU-------------------------------------AGCUU---AAUAAUGAGCUCUAU---------\
+--------------UCUGACCAUCU----AUUCUGG----AACUU-G-------------------------------\
+------GAGUG--GGGGUGG-----------------G--------------GUACCACAUCCUCAG----\
+AAGUGAA------UG-------------------------UGUAC-----------------------AGUCGGU---\
+-----------GAU---AGUAC-----AAC--UG----A----GUAAU-GGGGCUUCAU-ACCCUUG----GCCUC-\
+U----------------UU------UUGACUGCUAAGAAUU---UG-----G----AGAAGGCUAUUA---AU-\
+GAAGGUAAGG---UAAUGAGCCAG-UCC-----AAAU----------CCCUC-A-CUGU--CUGGCUAAGAGAU----\
+U--GAGCCAUU-CCA--------CUUUACA--G-CCCCU---AA--UUCCCUUCUUCCC---AACUGCAGC-A-\
+ACAUUUCCAAC-------AGGGAC--AAAAA--------------------G---GAAGUGAA---G---GAA-A---\
+-CCACUUC----AGUAU------UGGGAUCAAUAGAAAUUCAAGAGG-UA----GUUCAUAAUGACCUU-AUA--\
+UGUGACACAAAUGGAAA-UACUCU-ACAC-UUCUGGCAUGCUUCUC--\
+UCCCAAAUAUUUAGAACAUUAGUGACAAUAUGAAAAA-CUUUGCUGACUGAGCUGAUCAAUGGAAUGUGAAGG-\
+CAGUAUACUUU-AAGGCUAUUUACUUUCACACAGAAUGUUUAUCUAUU-\
+AGUCAGUUUGUAUUCUACUCAAAUGCAGAUAGACGGG--UAUAAU-G--UUUUCUUGUGCAUUUGA---\
+AACCUAUCAAGGAGAAAAUAAACCAUUCCACUAAAAUACAUAGGCC-AAACA-CCAUCUGG-------GAAAG-----\
+---UGAUAAA----AGCUAUCCAGAGGCUAUGCUAUGUAAAAUAG--C-A--AGGUCAA-UUUACAUGGGUU-G----\
+-CAUAGUACUUGG--CUAUGCAGUUUUCAA-AAG-AACA-----CAUCC------------------AAAAA------\
+AA---AAAAAAA----------------UCCAAAUUAGUUC----------C--------------\
+UAUAAUAGGUCUUUGUAAAUU----------UAAAUAUAUUUGUGGGU-UGGAAAAUACGUU-UUU--AGA-\
+GACAUUUAGAA-UUUCU-UUCUCU------AAAAAUGUAU-CCAAC----UCC--AAGCAGAAAGA-GACUUC--\
+UGUA--CUC-ACAUUCU--CAU---------G--------------U-----UU-CUU----AGAAUU----G-\
+GGUAGC--AU---GAU---CAUUGAAUCUGU-AUUU----------------------UGCAAAGUGAAAGGGA-\
+CGC------AGCUUGUUGAACUAUUGAGGCCACUAA-----AGU----AAAGU-------------UCUA--------\
+---------------------------AUAUAUAUA--UA---------UA----------------------AAU-\
+AUA----A----------------A--------------------------A------UUAG----\
+UGUGUGUGUUUGUAUGUG-UGU----------AU--------------------GU-----GU--GUGUG--------\
+---U--U--CU---UU-CAUC--------------ACCACCUAGUUGAACUUU-AAAACAGA-CGUCU------ACU-\
+---UUUCAUUAUUCAGAAG-CAACUUGU---UACU----------UC-CUUU------------C----UUCA-\
+UAUGUGCA--------G-------------------AGAUA----C-------ACA---UGAUCAUGU-----\
+UACAAU--------------UUG-AAGUGUUUUAAUGUGU----UU---------------U---U--\
+UUUUCUUUUGAAAC---------------GU------------------------AAA-G-C-----\
+CUUCAGUUGUUGAAUCAUCUGCCGAUUUU-UA-U----AUG--AAGCAC---AUUA-GCAAACC-UGGAGCUAUUA--\
+----------------GUAUUUCAGAAUUCACAA--------------------------------------------\
+---------CCAGCUGUACUUGUGACUAACCAACAC-AUGAACU----GAA-GCUCACACUUUGCU-\
+AAGACCUUUGGUUGACAUUCGAUUUUGAACCUGCCAGAUGCAUUUGUGUGAACCAGGGAUACUGC---\
+AUCUUUAAUGAACAAGUCUCUCCUCUUUCCC-----------------------------CUGUUUUU-\
+AAAUACAACACAAGCAGUGUAGCACUAGGCACUGCAAUUGUCAAAGACAAUUAGACUGGAAGCAGGAAAAUUUCACCU\
+CCC-UGUCUCAGUGAUAUGUAGAAUGUCGGCAGCAUGGGUCAGCCUUGCCACA-\
+GAGUUGUGUGAGAAUAUAUGAAUCAGUCCUAUAGAAUGUUAAAUAUUUAUAAAA-\
+UGGUUCUGUAGUACACCAAGGUUGGGAGCA-CAUUCAUUCCUUCUUGUU-GUCUUAU----GAUA-----------C-\
+AAAAAA----AA---A--------------------AAAAAAAAAA---------G---------------CAAAA--\
+---GUUUAUUU-CUGGGCUUAAAA----------------------------------CUCUCC----\
+CUCUAAUAUCUCU-C--UC------------------------------UCUUUUACCCCCAUUC--\
+CCCAACCAUUCUUCUCUCCAUCCCUCUCCUCUCCUCU-UCCUCU----------CUCUUCUCU--CUC-----U----\
+-CUC-----U--------C----UCUCUCUCUGUCUCUA--------------------------------\
+ACUCUCGCUCUCUCUUGU----------------------A--------UGUGG-GU------GUGUGU--G-\
+UGUAUG----------------------------------------------------AGUUU---------------\
+------------------------C---CACUGUGGAUUAUAUACACUUGCUAGAGAAUA-UU--CAUUU-CU-----\
+--UUUUUUU-------CUUUUUU--------CAUCUGAUGUAUAUUCA---AACAUU-\
+GUUCUUUAUAACCAUUUCUACCUCAUU--GCUACAUAUUGUACAUGUAGUAUUU-\
+AUUUGUUGUCUUUUUUUGAAUGUCAUGCAUUUCGUAAGAAAAA-\
+GACUUGUCCUUGAACUUGAACAGUCUACCUCAGAAAGACUGUCUUUACACUGAACAGUAUUAGCAA-\
+CCUAAAUGAUAA-GACG----\
+CAUUAGUGAAGUGUGGCAGGGUAGAUAAUGCACGAGUACUUGGGAUACUGAUGGACUUUU-AAUUGUAUU--C--\
+AUAACACAAGACUGCUU-AAA-AGAACUU-AAAAGAAAUU-AUGCACUGUGUAGGUCUUCAUCGAGGUCCCAUU-\
+UGG-GAC-AUUAUAUAC---AG-------------AA----UAG---AGCUUUAUUCCUA-UGUGCCCA--UC--\
+UCUGAGAAAU-----G-UGUU-AGCAUUCCCAAGUAUU---U---UACACUGGCAAUCUGGCUACUUA-\
+AGACAAACAA--------------AU-----UC-AA------ACA-------ACA--------------U--------\
+-------UUU----------------U----AU-A----------UUUUGA---------------------\
+CUGACAC-------CC---UC-AGCUCCUAAA-UUUAAGA-----GA----AAUAAU-GGUACUUA---ACUAU----\
+----UUUC-AACUAUAGUCUUCAGUGA-------UUG-A--A-AA---UG---CCUUC---------\
+AUUUUAAUUCUGUGACUCCUGAUAUAAAU-----------U------AAGA----------A----------AAA---\
+-------------------------C------A-A---UGCAGUUGCAAGGGCCUGCACAA--CACUGA-AA----\
+AUAAACCA--------------AAA------------------A---------------------------U--UA--\
+--AAAA-----------U--GGC-ACUUCCCAAAGGA--AUUAA------------------------------\
+CAAAC---------------------------------------------------------GUGGAGUCA----U-\
+GGUGCUUGCAAGUUCC----AUAACUGAAAGCAUUUU----------GUUUCUGAUUUCCCUUUAU------AA-\
+CAUGUAUUU-GUUUAU-U--GAAGCAAUUGUACAACUAAUGGCACAUU-GAAU-\
+UACUUUGUAUGAAGUGUUUUAUAUUAUACUAUUUAUUUU-AGCAUU--------------------------------\
+---------C-------------------------GUUC--UUU----------------------UU--C-------\
+---------UUCACCAGCU---------CUAUAU--U-ACAG-UAGCAAAA--GAACA--------------------\
+----------------CUUAGUU-UUAAAA--A-------A----------------UGCUG----AAAGGGGU--\
+UC-ACCACCC----------A--CC-CAAUCGAUGAAUGGACUUUUGAAGUU-GC-\
+UUGUCAGCAAAUUGUGGAUAUUUU-\
+ACAAAAGCAAAUGAACUGUGACAAUCCACAACUCCCACAGAUGUGAAUUCAGAAAUGCAUCUGAAA--CUCC-\
+GGUAUGCCUGACAAUCUAUUCUUU-AAGUUUCAUUAACAAA-----\
+GUGGCAUCCAAUCCUUUCACUUACAAUUCCUU---GCAGGAAUGU-AUUGUCUAGAGGCUGUCUAGU--\
+AGUGAUUAAGAGA--GGG-----------U--UUUU------------GUUUUGUUUU-AUUU-----GUUU-----\
+ACUGUAUUA-GGUGAGGAAUGCCAUAUUUCUUGUCAGCCAACAGUACUUGUCUGAG-ACAGAA------\
+AUUUAAAAAA------------A-------GAAA-AAG-------------------A--------------------\
+----------------AA--------C-C-------------------------UAACUAA-\
+UUAAAAUUUCUGUGCACUUUGCUUCCCUGACCAUAUUGAUU-UUAUUUGC-----------------\
+UUAAAUUGAAACAAUACGCUGGAU-UUGACCAGAUUUUGACCCCUUGAAAG---AAGA-\
+AAAGCCCUAUAUAGUACAUGUUUC-UUUGGGUUAUUCUAGUACU--GUUUC-CU----------\
+UAUUUGUUCUGCAAAUUUCAAAUC-AUUUUUUU-\
+GUGUGCAUUAUUUUACAUCUGCUGAAACUAAAUGUGUUAUUAUUGCACUCAUUAAAAA---\
+UGAAACAAUCCAUUUCUCUUG-GAAAAAAA--UG----\
+ACAAGCUUUAGAUGAUGAAAGCUUAAAUUAUCCAUCACUUGCAAAAUGAAUUCAUAUAAUUUGUGAACAUUAUUAAUG\
+UAAAUGAGACAUUUCUGCUUAGAUUUUUUUU----A-\
+UUUUGAUGGGAUCAUUAUAUGGUUGAUCAUAUGUGUGUAGGAAGCUGCUGUACAAUUAACUUGGAG--------\
+AUCUGAAAA-UGCUUUUU-\
+GUCCUCAUUGUUGCAGUUUCAAUUGUAAUCCAUUGCAUCUCAUUUUCUUGGGUGUUGGCACUGUAAUAUAUUAAAA--\
+---AAAAA------------------------------------------------------------U---------\
+--------U--CAGUGCUCAGUAUUGUAAC--\
+AACUGUCCCUACUGAAUAUUCCUUUUCAUAAAUACUUGCUACCACAGGGAAAU-------\
+UAAGUUUUCAUAUAGAAUAACUAGUUUCAGUAGUAACCAUUGA--AGAAUU-----AAAA--------------A---\
+-------------------UGUGGUUCAAGGCAGAUAUUUUUAUGAAAAGUUUUCUCUAUUGUAAAAUUUGU------\
+-----UGUAUAUGGCUAUGCUACUAU-CAUGGAAU-AAGAAAA-GAA--CAAGCAUACCUCAAAUAAAAAAAA----\
+A---UUCUGAGUUAAA------AAA-A\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.803836540311417*^9, 3.803836546472234*^9}},
+ CellLabel->
+  "In[356]:=",ExpressionUUID->"4f8e4652-e1a5-42c9-a9b8-3943cfa729fe"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["code: ", "Subsubsection",
+ CellChangeTimes->{{3.803839500909872*^9, 
+  3.803839501569334*^9}},ExpressionUUID->"56154c1f-3059-4b8a-b8c5-\
+b31368cd8e93"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "myseq", " ", "=", " ", 
+   "\"\< CUGGAACUACAGGCACa---uauu----------------------------------cagacugaca-\
+----augauuugacaaaggaaauguaugaaggaaaagag--------aauguaucauuugaacuucaaagagac--\
+uuuucccaggaaacagacuuuucagaagcc--------uc-ucuucuagagaaacaacaggaaguccacuca------\
+------gcaggaaauauaaagaaggagaa-------------------------------------------------\
+-----gagc---------aa---cac----cauugauggaacagugaaagaug-agacaagccccgug-\
+gaggagugu-uuu----uuua--------------------------------------------\
+gucaaaguucaaacucauauc-agugucauaccauc------------acugg------agagcag--------\
+cccucugggugu------------------------------------------------------------------\
+---------acaggauuggggaaauccaucagcuuugauacaaaacucgugaagcaugaaauaauuaauucugaggaa\
+agaccuuucaaaugugaagaauuaguagagcccuuu-----agg-ugugac---\
+ucucaacuuauucaacaucaagagaacaacacugaggaaaagcc---\
+uuaucaguguucggaguguggcaaagcuuuca-gcauuaaugagaaauuaauuug----gcaucagagacuu---\
+cacaguggggagaaacccuucaaauguguggagugugggaaaagcuucagc-uacagu-----\
+ucccauuauaucacacaucagacaauccacaguggggagaagcccuaucaguguaagaugugugggaaggccuucagu\
+guu--------------------------aauggaagccuaaguaggcaucagagaauc-\
+cauacgggagagaagcccuaucagug----------------------------------------------------\
+--------------------------------caaggaau---------guggaaau--\
+ggcuucagcuguaguucugcauauauuacacaucagagaguccacacuggagagaaaccuuacgaguguaaugacugu\
+gggaaa-gcguucaauguuaaugcaaaauuaauuca---\
+acaucagagaauccauacuggagagaaaccuuaugaauguaaugaauguggaaaaggcuu---\
+caggugcagcucccagcuuaggcagcaucagagcauccacacaggagaaaagcccuaucaguguaaagaguguggaaa\
+aggcuucaauaauaauac-\
+aaaacucauucagcaucagagaauccacacaggugagaaacccuaugaaugcacugaauguggaaaagccuucagugu\
+caaaggg-----------------------------------------------------------------------\
+-------------aaguuaauccaa--caccagagaauucacacaggcgag---------------------------\
+------aaacccuaugaguguaaugaaugc------------------------------------------------\
+------------------------------------gggaaag--ccuucaga------------uguaac-------\
+--ucccaa----------------------------------------------------------------------\
+uuucggcagcaucugagaauucacacuggggagaagcccuaugaguguaaugaguguggaaaggccuucagcguuaau\
+gggaaacuaaugcg------------gcaucagagaauucac--------acugg--\
+ggagaaaccuuuugaauguaaugagugugggag-augcuuuac--uu-------------------cua---------\
+--------------------------------------------------------\
+aaagaaaccuacuugaucaucaccgaauccauacuggaga---------------------------------\
+aaagcccuaucaauguaaggaaugugggaaagccuuca-gu--------------------------\
+aucaaugccaaac--------------uaa--------------------------------------------\
+cuaggcaucagaggauacauacuggggagaaaccuuucaaauguauggaaugugagaaagcauucagcugu-------\
+-----------------------------------------------------------aguucuaacua--\
+uauugugcac------------cagagaauccauacaggagagaaacccuuucagug--u------------------\
+------------------------------------------------------aaggaguguggaaaagccuuc---\
+-----------cau--guuaaugcccauuuaauu---cggcaucagaga------------------agccaca----\
+cuggggagaaacccuucagaugugu--ggaauguggcaaaggcuucagcuuuaguucugacuaca-------------\
+--------uuauacaucagacagu---ccacacuuggaagaaacccuaua---uguguagugug---\
+ugugggaaagca----uu------cagguuuagcuuccagc----ucagucagcaucagagu-guccauagugaa---\
+--------ggaaaauccuaaU-AAUGAGAAAG----------------\
+AUAUAGAAAACUCUUAAGGUUAAUGCCAAAAUGGAUCAAGUAUCA---UCAGAUUCAUC-C-AUUGAAAA-\
+ACCUCCAA-GA-GGG-CAUGAAUAUG--GCA--GAGUCUUCAUA--UGGA-----AACA-GUUUUUAUUCUAUU----\
+-CA------------GUUUA-AAUCAGGA-AA--GGAUGACCA-GUUAAA-------GAGA-AA--CAUCCA-AA-\
+AAU---------------------------------------------------------------------AG----\
+C--UUUGUUUUGUACCAA-CAGGAA--UUAGAAAAU-AUAAUGAA----\
+AAGAUUUCGUUCCCAGCAGCAUCAAGAAA----------AG-U-------------AGAU------------------\
+UUUCUAGA----AA-------------------UAAACAG-----U---U-A--UGGAGGACUUGUAUGGAGAAAUU-\
+-------------------UA---A-G--UCU--------UCAC--UGAGGG-----------------------\
+CCAC--UUUACAA--------AGGAAAUU--------UGAAUAA----AUGGAGAGA--G--A----------G---\
+AG-----A---------------------------------------------------------------\
+AGCCUUGUUGUU------------------------------------------------------------------\
+------------------------------------------------------------------------------\
+----------------------------------------GGAUAG----GAAAACCCGUACUAAA------------\
+------GAUA-CUC-------------------UA---------------------C-----\
+CUACAUUAAUUUAUUU--GUUUAA----UUUUU--GACAACAAGCAUGUAUUAC---UUUUGAAA-------------\
+--AGAUGAA---AAAU-AA----AGAUUUAUUU------AAAAAAGGAA----A---AA\>\""}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.803839263041235*^9, 3.803839270210334*^9}, {
+   3.803839321069879*^9, 3.803839323074456*^9}, 3.8038394258559237`*^9, {
+   3.8038396325845613`*^9, 3.80383963513258*^9}},
+ CellLabel->
+  "In[375]:=",ExpressionUUID->"61d04350-def7-4298-8a2d-4d19853c7802"],
+
+Cell[BoxData[
+ RowBox[{
   RowBox[{"myseqRNA", " ", "=", " ", 
    RowBox[{"StringDelete", "[", 
     RowBox[{"myseq", ",", " ", "\"\<-\>\""}], "]"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.803815084784585*^9, 3.8038151039182253`*^9}},
+ CellChangeTimes->{{3.803815084784585*^9, 3.8038151039182253`*^9}, {
+  3.803839464561782*^9, 3.8038394708749313`*^9}},
  CellLabel->
-  "In[340]:=",ExpressionUUID->"ee2bc7bf-182f-4d2f-bc5c-4c94407c2bf5"],
+  "In[376]:=",ExpressionUUID->"ee2bc7bf-182f-4d2f-bc5c-4c94407c2bf5"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"myseqDNA", " ", "=", " ", 
-  RowBox[{"StringReplace", "[", 
-   RowBox[{"myseqRNA", ",", " ", 
-    RowBox[{"\"\<U\>\"", "\[Rule]", " ", "\"\<T\>\""}]}], "]"}]}]], "Input",
+  RowBox[{
+   RowBox[{"StringReplace", "[", 
+    RowBox[{"myseqRNA", ",", " ", 
+     RowBox[{"\"\<U\>\"", "\[Rule]", " ", "\"\<T\>\""}]}], " ", "]"}], " ", "//",
+    " ", 
+   RowBox[{
+    RowBox[{"StringReplace", "[", 
+     RowBox[{"#", ",", " ", 
+      RowBox[{"\"\<u\>\"", "\[Rule]", " ", "\"\<t\>\""}]}], " ", "]"}], 
+    "&"}]}]}]], "Input",
  CellChangeTimes->{{3.8038150005971518`*^9, 3.8038150827326097`*^9}, {
-  3.803815125789897*^9, 3.803815126077257*^9}},
+  3.803815125789897*^9, 3.803815126077257*^9}, {3.803839376387191*^9, 
+  3.8038393834338093`*^9}, {3.803839644315111*^9, 3.8038396673172083`*^9}},
  CellLabel->
-  "In[341]:=",ExpressionUUID->"76a98fa3-8661-4cef-a76f-345c846cc9bf"],
+  "In[379]:=",ExpressionUUID->"76a98fa3-8661-4cef-a76f-345c846cc9bf"],
 
 Cell[BoxData["\<\" \
-GCATGAAATTTTTCAAAAAATATTTTTATGATGCAGCTTCTGAACATTTGGACAGACTTGATTTGTATTTTATTTCTG\
-ATAAGGAATAAGTACTTGTTTCTGTTGTTTTGGACAAATAGTTGTTACCAAAATATTCAAAACCACTTTGAGTTTACA\
-TACTAGTTACCTTAAAAATTATTCCCTGACACTCTGACATTCCTTCTAAACACCTCTGCCATCTCTCTTATGTACTCT\
-CATGGGTTTTTTTGTATGATTTGAATATGAATGTGCCTAAAGAATTTTTGCTCTCTTAATCTATGTATACATACTTGA\
-ACAAATCATTCTTGCTTAACTGCTGATCTTTTGTAAAACTATTGCTAGTCATAATGGATTTCTATAACCTGAAAGTTG\
-ATATAATACAGCACGTGGAGCACTTTAAAAACAAAGAAACTTGAAAATAATTTTATTTTTTACCTTTACATGGTGTGT\
-TCTAGACTACTGCATTATGACTACATAAACCTACCTGAGCTCTTACAAGTACAGAATTGTGAGACAGAGGTTTTGTGA\
-TGGAAAACATACACATAGGGAAAAATACCAAACTGAGCAATATAAATTTCACAGCTCACATCTTAGCCAGTACAAAGA\
-AACTTTCACATGGGGTGAATATTATAATACTTGAATTTGAGACTTAATACTGTATATGAATTAATCATCCCACTGTAA\
-TAACTGACATCTTCAAATAGTTGGGCTTATGAAAAATTTGACTAAGACATTTTATTTTATACTTTATGTAAATGTGAA\
-ATAAGTTCTGGTCATATAAATATGTAGAATGCATGTGTGTGAACTCTATGAAGTGAAGTGTGGTGGCCTTTTATGTTT\
-CAGAGTACTCAAGTGTACAATTGATTTATATAAAAATGCAAAATGAACTCAGGTCATTTTGAAATTAATATTAATATT\
-TTTGTTGTTTAACTTTAAAGCTAGCTCCCCTAACTTTATATATTTTTTGGGAAAAAATACCTAAAAACCTCAGCCTAC\
-AAAGACTCTCAGAAATGCCAAAGATTTTCAAGGAAATTCATATTATATATTTCAAAAATGATTTATCAATGTTATCTA\
-CCAAAAGAAATAATTTTATTTTTCCCCTTTGGGGAGATATTATCCTCTAATATGAGAATCAGATCCCTAGATTCTATT\
-TCTACCTATACTATTAAACTCAACCTTGAACCTGAGCTTGGTTGTTTCTGTGCCTTAGTTTCTCCACTCGTAAACAAT\
-TTCCTATAAAAATTGTTTAAACACCAACCAAAATTTACCATATGTATTCATTCTCTTGCCTTAAAGATCACTTCTTAA\
-CTTACATTTGGCTCTCACCCTCTAAAAATTTGTAGTTTGGAGAGTAACTGAAAGCACAATTTTAAGAAACATGTTTTC\
-CTCACAAAATATATTGTAATCTGATTTTCCTATCTTGTATTCATGCAGAAAATTGGAGAAAATGTGTATTGTCTTGTG\
-CCATTCTGCAATATGAATTTCTCAGGAAAAAGATGTTTCAATGGCAATACTTTCTTAAATAATTCAAGATGGGTGTGA\
-GGACCTATCTTATTAGTTTAGTGCTGTGTTAACCATTTGTGAATTACTTCTTGTTTAAAGGAAGTTGTCAAAAAATTT\
-TAAGATTCTAAATGGAATACACGAATAAAGTAAGCCTTAGAATAGAAACCTCACAAAAAGTTGTCATTTGCGGTTGAT\
-AATTAACATAGGTGTTTTATTCTCTCAACTCCTTAGTACCAGAGCCAAATACAATTTAGTTTTCAGAAATCTTATCAA\
-TATTGTTCTATTTACCTACTTATAAATCTGCAGATAACCACTTGAACCAGGCAAATACACTGAAGATAAAGGTTATTT\
-CTTTTTTTAGCTTTGAATTTGTCATGACCATTTTAGTCTTGCAGATAGCAGGGCAGCCCCTTGGGGCAAGGATTTACT\
-CTGGGAGGTACCGTTAAGAGCCTTCTTTCCCCCTTTGAAAGATCCTTTTACAATGTTAAAGTATACTAGTTGCAAGAA\
-CAAGCAGGATTTGCAGGTTGCTTTACCAGCATGAGTCTCATTTTTCTGGCTTAAAATCTGGGACTGTGAAATTATTCC\
-ATAGGAAAGTGAATGTTATTTTGCAGAATTAGCCTCTTACATAAAAGTATTTGTTGAAGTGTCTTTAAAATTGCTATC\
-ATGAGCAAAACTGGTTGCTGTAATGCTTGTTTTTCTGTATTTATTTACACATTAAATTCTTACAAAACAAAATGTGTT\
-CGTTTGTTTTATAGTAAGATGTTTTATTTTGAACTTATTTAAATGTTTATTTGTTAGAGAAAACTAATTTGTTAATAT\
-AGATCTTAACTAGTAACTATTAAGCAGGGATGTTTGTTCCAAATATTCTTGAATAAACAATCACCACAAACAACAAAA\
-CTCTGGTTAATGATTATTCAAAAAAGTTGTTGTGAGATGGGCATGCTGGTCTGTGCCTATAGTCCCAGCTACTCGGGA\
-GGCTGAGGTTGGAGAATTATTTGAGCTCAGGAGGTCAAGGCTTCAATGGGCCAAGAGGAGGCTGAGGTGGGAGGACTG\
-CTTGAGCCCAGGAGGTCGAGGCTTCAGTGAGCCAAGATGGCAACACACACACACACACACACACGAGTTATGATAACT\
-TAAGAGATTTGGCAGACAATATAATTTAGTGTGATCATTCATGCTTGGGCTGACTTATAGTGGATACCAGAGAATGTT\
-AAGACATTCAGAAGATTCTTTTTAAACTTTTCACTTCACTACCTTCAAATGTACAGTGTCGATGGCTTTGCCTTTACA\
-TGGTTAAAATCTCAAGCCCGTGTGGTGGCATGTGCCTGTAGTCCCGGCTACTTGGGAGGCTCACATGGGAGGATCAGT\
-TGGCCCCAGGAGTTCGAGGCTGCAGTGAACCATCATGCTATTGCACTCCAGCCTGGGCAACAGAGCAAGAGCCTGTCT\
-CCAAAAAAAAATTTAAAAAAACCTCTGTAGTAAAAATTACTATTTAT\"\>"], "Output",
+CTGGAACTACAGGCACatattcagactgacaatgatttgacaaaggaaatgtatgaaggaaaagagaatgtatcattt\
+gaacttcaaagagacttttcccaggaaacagacttttcagaagcctctcttctagagaaacaacaggaagtccactca\
+gcaggaaatataaagaaggagaagagcaacaccattgatggaacagtgaaagatgagacaagccccgtggaggagtgt\
+ttttttagtcaaagttcaaactcatatcagtgtcataccatcactggagagcagccctctgggtgtacaggattgggg\
+aaatccatcagctttgatacaaaactcgtgaagcatgaaataattaattctgaggaaagacctttcaaatgtgaagaa\
+ttagtagagccctttaggtgtgactctcaacttattcaacatcaagagaacaacactgaggaaaagccttatcagtgt\
+tcggagtgtggcaaagctttcagcattaatgagaaattaatttggcatcagagacttcacagtggggagaaacccttc\
+aaatgtgtggagtgtgggaaaagcttcagctacagttcccattatatcacacatcagacaatccacagtggggagaag\
+ccctatcagtgtaagatgtgtgggaaggccttcagtgttaatggaagcctaagtaggcatcagagaatccatacggga\
+gagaagccctatcagtgcaaggaatgtggaaatggcttcagctgtagttctgcatatattacacatcagagagtccac\
+actggagagaaaccttacgagtgtaatgactgtgggaaagcgttcaatgttaatgcaaaattaattcaacatcagaga\
+atccatactggagagaaaccttatgaatgtaatgaatgtggaaaaggcttcaggtgcagctcccagcttaggcagcat\
+cagagcatccacacaggagaaaagccctatcagtgtaaagagtgtggaaaaggcttcaataataatacaaaactcatt\
+cagcatcagagaatccacacaggtgagaaaccctatgaatgcactgaatgtggaaaagccttcagtgtcaaagggaag\
+ttaatccaacaccagagaattcacacaggcgagaaaccctatgagtgtaatgaatgcgggaaagccttcagatgtaac\
+tcccaatttcggcagcatctgagaattcacactggggagaagccctatgagtgtaatgagtgtggaaaggccttcagc\
+gttaatgggaaactaatgcggcatcagagaattcacactggggagaaaccttttgaatgtaatgagtgtgggagatgc\
+tttacttctaaaagaaacctacttgatcatcaccgaatccatactggagaaaagccctatcaatgtaaggaatgtggg\
+aaagccttcagtatcaatgccaaactaactaggcatcagaggatacatactggggagaaacctttcaaatgtatggaa\
+tgtgagaaagcattcagctgtagttctaactatattgtgcaccagagaatccatacaggagagaaaccctttcagtgt\
+aaggagtgtggaaaagccttccatgttaatgcccatttaattcggcatcagagaagccacactggggagaaacccttc\
+agatgtgtggaatgtggcaaaggcttcagctttagttctgactacattatacatcagacagtccacacttggaagaaa\
+ccctatatgtgtagtgtgtgtgggaaagcattcaggtttagcttccagctcagtcagcatcagagtgtccatagtgaa\
+ggaaaatcctaaTAATGAGAAAGATATAGAAAACTCTTAAGGTTAATGCCAAAATGGATCAAGTATCATCAGATTCAT\
+CCATTGAAAAACCTCCAAGAGGGCATGAATATGGCAGAGTCTTCATATGGAAACAGTTTTTATTCTATTCAGTTTAAA\
+TCAGGAAAGGATGACCAGTTAAAGAGAAACATCCAAAAATAGCTTTGTTTTGTACCAACAGGAATTAGAAAATATAAT\
+GAAAAGATTTCGTTCCCAGCAGCATCAAGAAAAGTAGATTTTCTAGAAATAAACAGTTATGGAGGACTTGTATGGAGA\
+AATTTAAGTCTTCACTGAGGGCCACTTTACAAAGGAAATTTGAATAAATGGAGAGAGAGAGAAGCCTTGTTGTTGGAT\
+AGGAAAACCCGTACTAAAGATACTCTACCTACATTAATTTATTTGTTTAATTTTTGACAACAAGCATGTATTACTTTT\
+GAAAAGATGAAAAATAAAGATTTATTTAAAAAAGGAAAAA\"\>"], "Output",
  CellChangeTimes->{
-  3.803815005988906*^9, 3.803815057062623*^9, {3.803815105868284*^9, 
-   3.803815129133244*^9}},
+  3.803834241372417*^9, 3.803836563342781*^9, 3.8038392734604807`*^9, 
+   3.803839326603921*^9, 3.803839383788541*^9, {3.803839473684671*^9, 
+   3.8038394775150957`*^9}, {3.803839638765419*^9, 3.803839667577145*^9}},
  CellLabel->
-  "Out[341]=",ExpressionUUID->"c332a14b-ac27-42bb-9295-2d7930a0a7da"]
+  "Out[379]=",ExpressionUUID->"14351f79-1ce6-41fe-9421-28cf8402283a"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[{
- RowBox[{"StringLength", "[", "myseqRNA", "]"}], "\[IndentingNewLine]", 
- RowBox[{"StringLength", "[", "myseqDNA", "]"}]}], "Input",
- CellChangeTimes->{{3.8038151094197493`*^9, 3.8038151358499613`*^9}},
+ RowBox[{
+  RowBox[{"StringLength", "[", "myseqRNA", "]"}], " ", "-", 
+  "1"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringLength", "[", "myseqDNA", "]"}], " ", "-", "1"}]}], "Input",
+ CellChangeTimes->{{3.8038151094197493`*^9, 3.8038151358499613`*^9}, {
+  3.803815218382505*^9, 3.80381522666075*^9}},
  CellLabel->
-  "In[342]:=",ExpressionUUID->"c4a77494-7536-49f2-b729-a32ea5e3a532"],
+  "In[380]:=",ExpressionUUID->"c4a77494-7536-49f2-b729-a32ea5e3a532"],
 
-Cell[BoxData["3012"], "Output",
- CellChangeTimes->{{3.8038151180697813`*^9, 3.803815136226708*^9}},
+Cell[BoxData["2302"], "Output",
+ CellChangeTimes->{{3.8038151180697813`*^9, 3.803815136226708*^9}, {
+   3.8038152205924664`*^9, 3.803815226985347*^9}, 3.8038342488191843`*^9, 
+   3.803836548921825*^9, 3.803839351693962*^9, 3.8038397134396687`*^9},
  CellLabel->
-  "Out[342]=",ExpressionUUID->"00bf5590-efa8-4c64-9e01-e2b087296432"],
+  "Out[380]=",ExpressionUUID->"8ed480be-559e-425b-80e7-8c51bd794d32"],
 
-Cell[BoxData["3012"], "Output",
- CellChangeTimes->{{3.8038151180697813`*^9, 3.8038151362289743`*^9}},
+Cell[BoxData["2302"], "Output",
+ CellChangeTimes->{{3.8038151180697813`*^9, 3.803815136226708*^9}, {
+   3.8038152205924664`*^9, 3.803815226985347*^9}, 3.8038342488191843`*^9, 
+   3.803836548921825*^9, 3.803839351693962*^9, 3.803839713446595*^9},
  CellLabel->
-  "Out[343]=",ExpressionUUID->"00860466-cf68-4b89-a1ea-45d851c98ce5"]
+  "Out[381]=",ExpressionUUID->"a02ccd72-d1ef-4ef2-902a-dcebd3791dc9"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{808, 714},
+WindowSize->{854, 714},
 WindowMargins->{{4, Automatic}, {Automatic, 4}},
 FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
@@ -224,16 +592,25 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 206, 6, 160, "Title",ExpressionUUID->"45a5972f-4690-4d2b-a2a3-df312b614878"],
-Cell[789, 30, 6357, 87, 1627, "Input",ExpressionUUID->"308d3d84-d4f8-4b6e-bec1-39b7ccc8a8ed"],
-Cell[7149, 119, 317, 7, 30, "Input",ExpressionUUID->"ee2bc7bf-182f-4d2f-bc5c-4c94407c2bf5"],
 Cell[CellGroupData[{
-Cell[7491, 130, 396, 8, 30, "Input",ExpressionUUID->"76a98fa3-8661-4cef-a76f-345c846cc9bf"],
-Cell[7890, 140, 3325, 44, 791, "Output",ExpressionUUID->"c332a14b-ac27-42bb-9295-2d7930a0a7da"]
+Cell[811, 32, 165, 3, 45, "Subsubsection",ExpressionUUID->"20de1f4c-5ca8-4836-834d-263fee5df1ce"],
+Cell[979, 37, 6357, 87, 1627, "Input",ExpressionUUID->"308d3d84-d4f8-4b6e-bec1-39b7ccc8a8ed"],
+Cell[7339, 126, 6406, 87, 1669, "Input",ExpressionUUID->"9b2c8617-93cb-4eab-b7fa-017cd43b48fd"],
+Cell[13748, 215, 12910, 181, 3454, "Input",ExpressionUUID->"4f8e4652-e1a5-42c9-a9b8-3943cfa729fe"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[26695, 401, 157, 3, 37, "Subsubsection",ExpressionUUID->"56154c1f-3059-4b8a-b8c5-b31368cd8e93"],
+Cell[26855, 406, 4717, 69, 1144, "Input",ExpressionUUID->"61d04350-def7-4298-8a2d-4d19853c7802"],
+Cell[31575, 477, 368, 8, 30, "Input",ExpressionUUID->"ee2bc7bf-182f-4d2f-bc5c-4c94407c2bf5"],
+Cell[CellGroupData[{
+Cell[31968, 489, 697, 16, 30, "Input",ExpressionUUID->"76a98fa3-8661-4cef-a76f-345c846cc9bf"],
+Cell[32668, 507, 2718, 36, 581, "Output",ExpressionUUID->"14351f79-1ce6-41fe-9421-28cf8402283a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11252, 189, 300, 5, 52, "Input",ExpressionUUID->"c4a77494-7536-49f2-b729-a32ea5e3a532"],
-Cell[11555, 196, 182, 3, 34, "Output",ExpressionUUID->"00bf5590-efa8-4c64-9e01-e2b087296432"],
-Cell[11740, 201, 184, 3, 34, "Output",ExpressionUUID->"00860466-cf68-4b89-a1ea-45d851c98ce5"]
+Cell[35423, 548, 407, 9, 52, "Input",ExpressionUUID->"c4a77494-7536-49f2-b729-a32ea5e3a532"],
+Cell[35833, 559, 330, 5, 34, "Output",ExpressionUUID->"8ed480be-559e-425b-80e7-8c51bd794d32"],
+Cell[36166, 566, 328, 5, 34, "Output",ExpressionUUID->"a02ccd72-d1ef-4ef2-902a-dcebd3791dc9"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
