@@ -8,31 +8,24 @@
 
 macro "confocal" {
 	z=15;
-	run("Stack to Hyperstack...", "order=xyczt(default) channels=4 slices=13 frames=1 display=Composite");
 	newImg=getTitle;
-	
-	run("Make Substack...", "channels=1 slices=1-" + z);
-	run("Enhance Contrast", "saturated=0.01");
-	//setMinAndMax(1300, 55000);
+	run("Make Substack...", "  slices=1-75-3");
+	run("Enhance Contrast", "saturated=0.35");
 	Wred=getTitle;
-
+	
 	selectWindow(newImg);
-	run("Make Substack...", "channels=2 slices=1-" + z);
-	run("Enhance Contrast", "saturated=0.01");
+	run("Make Substack...", "  slices=2-75-3");
+	run("Enhance Contrast", "saturated=0.35");
 	Wgreen=getTitle;
-
+	
 	selectWindow(newImg);
-	run("Make Substack...", "channels=3 slices=1-" + z);
-	run("Enhance Contrast", "saturated=0.01");
+	run("Make Substack...", "  slices=3-75-3");
+	run("Enhance Contrast", "saturated=0.35");
 	Wblue=getTitle;
+	
+	run("Merge Channels...", "c1=[" + Wred + "] c2=[" + Wgreen + "] c3=[" + Wblue + "] create");
+	//run("Brightness/Contrast...");
 
-	//selectWindow(newImg);
-	//run("Make Substack...", "channels=4 slices=1-" + z);
-	//run("Enhance Contrast", "saturated=0.0001");
-	//Wpurp=getTitle;
-
-	run("Merge Channels...", "red=[" + Wred + "] green=[" + Wgreen + "] blue=[" + Wblue + "] gray=[" + Wpurp + "]");
-
-	newImg=getTitle;
-	close();
+	myImg=getTitle;
+	//close();
 }
