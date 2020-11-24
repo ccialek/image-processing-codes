@@ -7,21 +7,28 @@
 
 
 macro "confocal" {
-	z=16;
+	y=93;
+	z=93/3;
 	newImg=getTitle;
 	
 	selectWindow(newImg);
-	run("Make Substack...", "  slices=1-32-2");
+	run("Make Substack...", "  slices=1-"+y+"-3");
 	run("Enhance Contrast", "saturated=0.35");
-	Wgreen=getTitle;
+	Wred=getTitle;
 	
 	selectWindow(newImg);
-	run("Make Substack...", "  slices=2-32-2");
+	run("Make Substack...", "  slices=2-"+y+"-3");
+	//run("Enhance Contrast", "saturated=0.35");
+	Wgreen=getTitle;
+
+	selectWindow(newImg);
+	run("Make Substack...", "  slices=3-"+y+"-3");
 	//run("Enhance Contrast", "saturated=0.35");
 	Wblue=getTitle;
 	
-	run("Merge Channels...", "c1=[*None*] c2=[" + Wgreen + "] c3=[" + Wblue + "] create");
+	run("Merge Channels...", "c1=[" + Wred + "] c2=[" + Wgreen + "] c3=[" + Wblue + "] create");
 	run("Brightness/Contrast...");
+	run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] frames=[Slices (z)]");
 
 	myImg=getTitle;
 	//close();
