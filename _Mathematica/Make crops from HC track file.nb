@@ -1,0 +1,718 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27185,        710]
+NotebookOptionsPosition[     24051,        649]
+NotebookOutlinePosition[     24386,        664]
+CellTagsIndexPosition[     24343,        661]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Make crops from xyt coordinates", "Title",
+ CellChangeTimes->{{3.815227077066934*^9, 
+  3.815227088495327*^9}},ExpressionUUID->"58d5d15d-187a-43f0-800d-\
+fbfafa2c2348"],
+
+Cell[CellGroupData[{
+
+Cell["Import muRNAtracksHC.m and movie ", "Subsection",
+ CellChangeTimes->{{3.81522709535542*^9, 
+  3.81522710826523*^9}},ExpressionUUID->"56cb361f-f3ac-4c10-8038-\
+9c457d68061b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "folder", " ", "=", " ", 
+   "\"\</Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201112_smFLAG or HA polr3g UTR expt1_2/Analysis/\>\""}], " ", 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.8152380091694613`*^9, 3.8152380387470503`*^9}, {
+  3.815238078557671*^9, 3.8152380798785543`*^9}, {3.8152423748855743`*^9, 
+  3.815242377372057*^9}},
+ CellLabel->
+  "In[6118]:=",ExpressionUUID->"6fb2a80c-93aa-4681-af60-b714f102eae8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"trackfiles", " ", "=", " ", 
+    RowBox[{"FileNames", "[", " ", 
+     RowBox[{"\"\<*myRNAtracksHC.m\>\"", ",", "folder"}], "]"}]}], " ", ";"}],
+   "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.8152380041093283`*^9, 3.815238005824284*^9}, {
+  3.815238050938334*^9, 3.8152380893262033`*^9}},
+ CellLabel->
+  "In[6062]:=",ExpressionUUID->"504c0ef0-c256-478f-b54c-1d9d78865741"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "trackfile", " ", "=", " ", 
+   "\"\</Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201112_smFLAG or HA polr3g UTR \
+expt1_2/Analysis/MAX_HApolUTR_04_myRNAtracksHC.m\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"imgfile", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"StringTake", "[", " ", 
+    RowBox[{"trackfile", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "41"}]}], "}"}]}], "]"}], "  ", "<>", "  ", 
+   RowBox[{"StringTake", "[", " ", 
+    RowBox[{"trackfile", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "31"}], " ", ",", " ", 
+       RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", "\"\<.tif\>\"", 
+   "  "}]}]}], "Input",
+ CellChangeTimes->{{3.815227118128788*^9, 3.815227302661677*^9}, {
+  3.815234397843603*^9, 3.815234399474251*^9}, {3.815234435326007*^9, 
+  3.815234436198469*^9}, {3.815234472227034*^9, 3.81523449774546*^9}, {
+  3.815242387208334*^9, 3.8152423875469303`*^9}},
+ CellLabel->
+  "In[6065]:=",ExpressionUUID->"a4e5b8ae-08ec-4811-b53a-f650fbf872a5"],
+
+Cell[BoxData["\<\"/Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201112_smFLAG or HA polr3g UTR \
+expt1_2/MAX_HApolUTR_04.tif\"\>"], "Output",
+ CellChangeTimes->{3.815242387859632*^9},
+ CellLabel->
+  "Out[6066]=",ExpressionUUID->"7bd97009-1042-4a26-89bc-6251c461f23c"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tracks", " ", "=", " ", 
+   RowBox[{"Get", "@", "trackfile"}]}], "  ", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"movie", "  ", "=", " ", 
+   RowBox[{"Import", "@", "imgfile"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.815234408092411*^9, 3.815234446377428*^9}, {
+  3.815234495004311*^9, 3.8152345175354023`*^9}},
+ CellLabel->
+  "In[5919]:=",ExpressionUUID->"d16e6c16-edf0-4235-a0a9-52964bfd159d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"myColMovie", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Import", "[", "mymovie", "]"}], "//", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{"#", ",", "3"}], "]"}], "&"}]}], "//", "Transpose"}]}], ";"}],
+   "\[IndentingNewLine]", " "}], "\[IndentingNewLine]", 
+ RowBox[{"analysisFolder", "=", 
+  RowBox[{
+   RowBox[{"DirectoryName", "[", "mymovie", "]"}], "<>", "\"\<Analysis/\>\"", 
+   "<>", 
+   RowBox[{"StringDrop", "[", 
+    RowBox[{
+     RowBox[{"StringDelete", "[", 
+      RowBox[{"mymovie", ",", 
+       RowBox[{"DirectoryName", "[", "mymovie", "]"}]}], "]"}], ",", 
+     RowBox[{"-", "4"}]}], "]"}]}]}]}], "Input",
+ CellChangeTimes->{3.815235752872073*^9},
+ CellLabel->
+  "In[5953]:=",ExpressionUUID->"500d0073-8512-4b0f-8310-62655ed35778"],
+
+Cell[BoxData["\<\"/Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/20201121_pol/Analysis/MAX_1_08\"\>"], "Output",
+ CellChangeTimes->{3.8152357562645884`*^9, 3.8152358910376577`*^9},
+ CellLabel->
+  "Out[5954]=",ExpressionUUID->"41794d0d-8acb-46bc-b492-79642aa49e36"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Function: ", "Subsection",
+ CellChangeTimes->{{3.8152379779489613`*^9, 
+  3.815237979342132*^9}},ExpressionUUID->"65c4fc89-eeac-4f0b-9799-\
+43b31f27efe2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyCropMaker4types", "[", 
+   RowBox[{
+   "myColMovie_", ",", "myRNAtracks_", ",", "pad_", ",", "analysisFolder_"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "myTfFunc", ",", "avgFrameN", ",", "myCrops", ",", "tempTime", ",", 
+      "tempCenter", ",", "tempCenterColReg", ",", "tempRed", ",", "tempGreen",
+       ",", "tempBlue", ",", "myCropsAvg"}], " ", "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"myTfFunc", "=", 
+      RowBox[{"<<", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<TransformationFunction.m\>\"", ",", 
+           RowBox[{"ParentDirectory", "@", 
+            RowBox[{"DirectoryName", "@", "analysisFolder"}]}]}], "]"}], 
+         "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ")"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"avgFrameN", "=", 
+      RowBox[{"<<", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"FileNames", "[", 
+          RowBox[{"\"\<*avgFrameN*\>\"", ",", 
+           RowBox[{"DirectoryName", "@", "analysisFolder"}]}], "]"}], 
+         "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ")"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"myCrops", "=", "\[IndentingNewLine]", "\t", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", " ", 
+       RowBox[{
+        RowBox[{"Table", "[", "\[IndentingNewLine]", "\t\t", 
+         RowBox[{
+          RowBox[{"Table", "[", "\[IndentingNewLine]", "\t\t", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"tempTime", "=", 
+              RowBox[{"myRNAtracks", "\[LeftDoubleBracket]", 
+               RowBox[{"type", ",", "track", ",", "frame", ",", "2"}], 
+               "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+             "\t\t", 
+             RowBox[{"tempCenter", "=", 
+              RowBox[{"Ceiling", "[", 
+               RowBox[{"myRNAtracks", "\[LeftDoubleBracket]", 
+                RowBox[{
+                "type", ",", "track", ",", "frame", ",", "3", ",", "1"}], 
+                "\[RightDoubleBracket]"}], "]"}]}], ";", 
+             "\[IndentingNewLine]", "\t\t", 
+             RowBox[{"tempCenterColReg", "=", 
+              RowBox[{"Ceiling", "[", 
+               RowBox[{"myTfFunc", "@", 
+                RowBox[{"myRNAtracks", "\[LeftDoubleBracket]", 
+                 RowBox[{
+                 "type", ",", "track", ",", "frame", ",", "3", ",", "1"}], 
+                 "\[RightDoubleBracket]"}]}], "]"}]}], ";", 
+             "\[IndentingNewLine]", "\t\t", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}], 
+              "=", 
+              RowBox[{"{", "\[IndentingNewLine]", "\t\t", 
+               RowBox[{
+                RowBox[{"ImageTrim", "[", 
+                 RowBox[{
+                  RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                   RowBox[{"1", ",", 
+                    RowBox[{"tempTime", "+", 
+                    RowBox[{"Ceiling", "[", 
+                    RowBox[{"avgFrameN", "/", "2"}], "]"}], "-", "1"}]}], 
+                   "\[RightDoubleBracket]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"tempCenter", "-", "pad"}], ",", 
+                    RowBox[{"tempCenter", "+", "pad", "-", "0.1"}]}], "}"}]}],
+                  "]"}], ",", "\[IndentingNewLine]", "\t\t", 
+                RowBox[{"ImageTrim", "[", 
+                 RowBox[{
+                  RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                   RowBox[{"2", ",", 
+                    RowBox[{"tempTime", "+", 
+                    RowBox[{"Ceiling", "[", 
+                    RowBox[{"avgFrameN", "/", "2"}], "]"}], "-", "1"}]}], 
+                   "\[RightDoubleBracket]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"tempCenterColReg", "-", "pad"}], ",", 
+                    RowBox[{"tempCenterColReg", "+", "pad", "-", "0.1"}]}], 
+                   "}"}]}], "]"}], ",", "\[IndentingNewLine]", "\t\t", 
+                RowBox[{"ImageTrim", "[", 
+                 RowBox[{
+                  RowBox[{"myColMovie", "\[LeftDoubleBracket]", 
+                   RowBox[{"3", ",", 
+                    RowBox[{"tempTime", "+", 
+                    RowBox[{"Ceiling", "[", 
+                    RowBox[{"avgFrameN", "/", "2"}], "]"}], "-", "1"}]}], 
+                   "\[RightDoubleBracket]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"tempCenterColReg", "-", "pad"}], ",", 
+                    RowBox[{"tempCenterColReg", "+", "pad", "-", "0.1"}]}], 
+                   "}"}]}], "]"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+             "\t\t", 
+             RowBox[{"{", 
+              RowBox[{"tempRed", ",", "tempGreen", ",", "tempBlue"}], "}"}]}],
+             ",", "\[IndentingNewLine]", "\t\t", 
+            RowBox[{"{", 
+             RowBox[{"frame", ",", "1", ",", 
+              RowBox[{"Length", "@", 
+               RowBox[{"myRNAtracks", "\[LeftDoubleBracket]", 
+                RowBox[{"type", ",", "track"}], "\[RightDoubleBracket]"}]}], 
+              ",", "1"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", "\t", 
+          RowBox[{"{", 
+           RowBox[{"track", ",", "1", ",", 
+            RowBox[{"Length", "@", 
+             RowBox[{
+             "myRNAtracks", "\[LeftDoubleBracket]", "type", 
+              "\[RightDoubleBracket]"}]}], ",", "1"}], "}"}]}], "]"}], " ", 
+        ",", "\[IndentingNewLine]", " ", 
+        RowBox[{"{", 
+         RowBox[{"type", ",", "1", ",", "4"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myCrops", ">>", 
+      RowBox[{"analysisFolder", "<>", "\"\<_Crops_HC_RYPW.m\>\""}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myCropsAvg", "=", 
+      RowBox[{"Table", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Mean", "/@", "#"}], "&"}], "/@", 
+         RowBox[{"Transpose", "/@", 
+          RowBox[{
+          "myCrops", "\[LeftDoubleBracket]", "type", 
+           "\[RightDoubleBracket]"}]}]}], " ", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"type", ",", "1", ",", "4"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"myCropsAvg", ">>", 
+      RowBox[{"analysisFolder", "<>", "\"\<_Crops_AVG_HC_RYPW.m\>\""}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"myCrops", ",", "myCropsAvg"}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.815235870230062*^9, 3.815235877626068*^9}, {
+  3.815236512163672*^9, 3.815236514567683*^9}, {3.8152369604368477`*^9, 
+  3.815237016594124*^9}, {3.815237323552589*^9, 3.8152373417834387`*^9}, {
+  3.815237874877595*^9, 3.8152378846808968`*^9}, {3.815237918696767*^9, 
+  3.8152379412045097`*^9}},
+ CellLabel->
+  "In[5977]:=",ExpressionUUID->"4f764519-b8dc-4e4f-bcca-625d506b546d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cut out crops based on tracks and locs ", "Subsection",
+ CellChangeTimes->{{3.815227300170678*^9, 3.815227300934473*^9}, {
+  3.815234695396624*^9, 
+  3.815234710840705*^9}},ExpressionUUID->"0f0b2359-7524-4074-8f77-\
+116a85d82d5c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyCropMaker4types", "[", 
+   RowBox[{
+   "myColMovie", ",", " ", "tracks", ",", " ", "11", ",", " ", 
+    "analysisFolder"}], "]"}], " ", ";"}]], "Input",
+ CellChangeTimes->{{3.815235654097391*^9, 3.81523566766234*^9}, 
+   3.8152358966997557`*^9, {3.815236444046938*^9, 3.815236490541814*^9}, {
+   3.815237023883801*^9, 3.815237024488058*^9}, 3.815237296932292*^9, {
+   3.8152379253393*^9, 3.815237925725037*^9}},
+ CellLabel->
+  "In[5973]:=",ExpressionUUID->"b6220337-8dd0-499b-bc32-47a1f82fed30"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Batch: ", "Subsection",
+ CellChangeTimes->{{3.815237984601885*^9, 
+  3.815237985477079*^9}},ExpressionUUID->"2c400e5a-bf4a-46dd-9281-\
+2eea99e5b50c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "for", " ", 
+     "\"\</Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201111_smFLAG or HA polr3g UTR expt1_1/\>\""}], " ", ":"}], 
+   " ", "*)"}], " ", 
+  RowBox[{
+   RowBox[{"imgfile", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"StringTake", "[", " ", 
+      RowBox[{
+       RowBox[{"trackfiles", "[", 
+        RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", " ", 
+         RowBox[{"-", "35"}]}], "}"}]}], "]"}], "  ", "<>", "  ", 
+     RowBox[{"StringTake", "[", " ", 
+      RowBox[{
+       RowBox[{"trackfiles", "[", 
+        RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "25"}], " ", ",", " ", 
+         RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+     "\"\<.tif\>\""}]}], "  ", ";"}], " "}]], "Input",
+ CellChangeTimes->{{3.815238126690029*^9, 3.8152381325334*^9}, 
+   3.815238746616556*^9, {3.815242219984892*^9, 3.815242240046425*^9}, 
+   3.8152430129712973`*^9},ExpressionUUID->"7660de67-dca2-4e8a-9372-\
+35cec27dfd8c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "for", " ", 
+     "\"\</Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201112_smFLAG or HA polr3g UTR expt1_2/\>\""}], " ", ":"}], 
+   "*)"}], 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"StringTake", "[", " ", 
+     RowBox[{
+      RowBox[{"trackfiles", "[", 
+       RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", 
+        RowBox[{"-", "41"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+    RowBox[{"StringTake", "[", " ", 
+     RowBox[{
+      RowBox[{"trackfiles", "[", 
+       RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "32"}], " ", ",", " ", 
+        RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+    "\"\<.tif\>\""}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.8152425828192377`*^9, 
+  3.815242594136097*^9}},ExpressionUUID->"d47de342-2a17-4464-945b-\
+2d7229822de8"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.815242596069193*^9},ExpressionUUID->"2c1d15d3-45ca-43c4-a8ac-\
+0d88e8055bba"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileExistsQ", "@", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"StringTake", "[", " ", 
+     RowBox[{
+      RowBox[{"trackfiles", "[", 
+       RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", 
+        RowBox[{"-", "41"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+    RowBox[{"StringTake", "[", " ", 
+     RowBox[{
+      RowBox[{"trackfiles", "[", 
+       RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "32"}], " ", ",", " ", 
+        RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+    "\"\<.tif\>\""}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.8152386278810596`*^9, 3.8152388045165243`*^9}, {
+  3.8152424695521097`*^9, 3.8152424952983303`*^9}},
+ CellLabel->
+  "In[6090]:=",ExpressionUUID->"0a8a285f-7148-4f7d-873a-4c9abc1faad1"],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.815238218912785*^9, {3.81523863115911*^9, 3.815238686491643*^9}, {
+   3.815238718928795*^9, 3.815238804881748*^9}, 3.815242399056917*^9, {
+   3.815242470728959*^9, 3.815242495543145*^9}},
+ CellLabel->
+  "Out[6090]=",ExpressionUUID->"937e3c2a-568f-4d60-b7fa-22b8fd63ae49"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Batch: ", "Subsubsection",
+ CellChangeTimes->{{3.815242268225581*^9, 
+  3.8152422691283903`*^9}},ExpressionUUID->"d3d5ded8-a970-47d0-8365-\
+37f2cc0f8a68"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trackfiles", " ", "=", " ", 
+   RowBox[{"FileNames", "[", " ", 
+    RowBox[{"\"\<*myRNAtracksHC.m\>\"", ",", "folder"}], "]"}]}], " ", 
+  ";"}]], "Input",ExpressionUUID->"6e54f97b-9814-4b11-95bd-150a9c034183"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "folder", " ", "=", " ", 
+   "\"\</Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201112_smFLAG or HA polr3g UTR expt1_2/Analysis/\>\""}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Table", "[", " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"imgfile", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"StringTake", "[", " ", 
+        RowBox[{
+         RowBox[{"trackfiles", "[", 
+          RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", " ", 
+           RowBox[{"-", "41"}]}], "}"}]}], "]"}], "  ", "<>", "  ", 
+       RowBox[{"StringTake", "[", " ", 
+        RowBox[{
+         RowBox[{"trackfiles", "[", 
+          RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "32"}], " ", ",", " ", 
+           RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+       "\"\<.tif\>\""}]}], "  ", ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"tracks", " ", "=", " ", 
+      RowBox[{"Get", "@", 
+       RowBox[{"trackfiles", "[", 
+        RowBox[{"[", "n", "]"}], "]"}]}]}], "  ", ";", "\[IndentingNewLine]", 
+     
+     RowBox[{"myColMovie", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Import", "[", "imgfile", "]"}], "//", 
+        RowBox[{
+         RowBox[{"Partition", "[", 
+          RowBox[{"#", ",", "3"}], "]"}], "&"}]}], "//", "Transpose"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"analysisFolder", "=", 
+      RowBox[{
+       RowBox[{"DirectoryName", "[", "imgfile", "]"}], "<>", 
+       "\"\<Analysis/\>\"", "<>", 
+       RowBox[{"StringDrop", "[", 
+        RowBox[{
+         RowBox[{"StringDelete", "[", 
+          RowBox[{"imgfile", ",", 
+           RowBox[{"DirectoryName", "[", "imgfile", "]"}]}], "]"}], ",", 
+         RowBox[{"-", "4"}]}], "]"}]}]}], " ", ";", "\[IndentingNewLine]", 
+     RowBox[{"MyCropMaker4types", "[", 
+      RowBox[{
+      "myColMovie", ",", " ", "tracks", ",", " ", "9", ",", " ", 
+       "analysisFolder"}], "]"}], " ", ";", "\[IndentingNewLine]", 
+     RowBox[{"Length", "@", "movie"}]}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "1", ",", 
+      RowBox[{"Length", "@", "trackfiles"}]}], "}"}]}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.8152380091694613`*^9, 3.8152380387470503`*^9}, {
+  3.815238078557671*^9, 3.8152380798785543`*^9}, {3.8152423748855743`*^9, 
+  3.815242377372057*^9}, {3.8152429369653378`*^9, 
+  3.8152429372093897`*^9}},ExpressionUUID->"a805a8e5-9115-4f9e-b3d8-\
+d27fe5673b82"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.8152380041093283`*^9, 3.815238005824284*^9}, {
+   3.815238050938334*^9, 3.8152380893262033`*^9}, 
+   3.815242942223866*^9},ExpressionUUID->"abbbe6fc-4c5f-43e4-ade3-\
+060235713058"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "folder", " ", "=", " ", 
+   "\"\</Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201111_smFLAG or HA polr3g UTR expt1_1/Analysis/\>\""}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trackfiles", " ", "=", " ", 
+   RowBox[{"FileNames", "[", " ", 
+    RowBox[{"\"\<*myRNAtracksHC.m\>\"", ",", "folder"}], "]"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"imgfile", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"StringTake", "[", " ", 
+    RowBox[{
+     RowBox[{"trackfiles", "[", 
+      RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "35"}]}], "}"}]}], "]"}], "  ", "<>", "  ", 
+   RowBox[{"StringTake", "[", " ", 
+    RowBox[{
+     RowBox[{"trackfiles", "[", 
+      RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "25"}], " ", ",", " ", 
+       RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", "\"\<.tif\>\"", 
+   "  "}]}]}], "Input",
+ CellChangeTimes->{{3.815242850486227*^9, 3.8152428615893087`*^9}, {
+  3.8152429590825787`*^9, 3.8152429929074593`*^9}, {3.815243047657806*^9, 
+  3.815243083798315*^9}},
+ CellLabel->
+  "In[6125]:=",ExpressionUUID->"831fcb0c-b22d-4a31-893d-4209ef0193da"],
+
+Cell[BoxData["\<\"/Users/ccialek/OneDrive - Colostate/_Analysis UTR \
+translation/_20201111_smFLAG or HA polr3g UTR expt1_1/MAX_pol02.tif\"\>"], \
+"Output",
+ CellChangeTimes->{3.8152429931611967`*^9, 3.81524304265949*^9, 
+  3.815243084892633*^9},
+ CellLabel->
+  "Out[6127]=",ExpressionUUID->"10141b70-340c-4932-bfb2-8bbf0b33fe14"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Table", "[", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"imgfile", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"StringTake", "[", " ", 
+         RowBox[{
+          RowBox[{"trackfiles", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", " ", 
+            RowBox[{"-", "35"}]}], "}"}]}], "]"}], "  ", "<>", "  ", 
+        RowBox[{"StringTake", "[", " ", 
+         RowBox[{
+          RowBox[{"trackfiles", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "25"}], " ", ",", " ", 
+            RowBox[{"-", "17"}]}], "}"}]}], "]"}], " ", "<>", " ", 
+        "\"\<.tif\>\""}]}], "  ", ";", " ", "\[IndentingNewLine]", 
+      RowBox[{"tracks", " ", "=", " ", 
+       RowBox[{"Get", "@", 
+        RowBox[{"trackfiles", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}]}], "  ", ";", "\[IndentingNewLine]", 
+      RowBox[{"myColMovie", "=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Import", "[", "imgfile", "]"}], "//", 
+         RowBox[{
+          RowBox[{"Partition", "[", 
+           RowBox[{"#", ",", "3"}], "]"}], "&"}]}], "//", "Transpose"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"analysisFolder", "=", 
+       RowBox[{
+        RowBox[{"DirectoryName", "[", "imgfile", "]"}], "<>", 
+        "\"\<Analysis/\>\"", "<>", 
+        RowBox[{"StringDrop", "[", 
+         RowBox[{
+          RowBox[{"StringDelete", "[", 
+           RowBox[{"imgfile", ",", 
+            RowBox[{"DirectoryName", "[", "imgfile", "]"}]}], "]"}], ",", 
+          RowBox[{"-", "4"}]}], "]"}]}]}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"MyCropMaker4types", "[", 
+       RowBox[{
+       "myColMovie", ",", " ", "tracks", ",", " ", "9", ",", " ", 
+        "analysisFolder"}], "]"}], " ", ";", "\[IndentingNewLine]", 
+      RowBox[{"Length", "@", "movie"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "@", "trackfiles"}]}], "}"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{
+  3.81524281843939*^9, {3.815242867761256*^9, 3.815242884495996*^9}, {
+   3.815243097616091*^9, 3.815243099356491*^9}},
+ CellLabel->
+  "In[6129]:=",ExpressionUUID->"d98d8689-5c6b-4604-9e37-de19ca26d204"],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.815243124305594*^9},
+ CellLabel->
+  "Out[6129]=",ExpressionUUID->"553901ac-fb62-4ff3-9bfa-cf28d5207311"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 805},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 174, 3, 98, "Title",ExpressionUUID->"58d5d15d-187a-43f0-800d-fbfafa2c2348"],
+Cell[CellGroupData[{
+Cell[779, 29, 179, 3, 54, "Subsection",ExpressionUUID->"56cb361f-f3ac-4c10-8038-9c457d68061b"],
+Cell[961, 34, 475, 11, 73, "Input",ExpressionUUID->"6fb2a80c-93aa-4681-af60-b714f102eae8"],
+Cell[1439, 47, 431, 10, 52, "Input",ExpressionUUID->"504c0ef0-c256-478f-b54c-1d9d78865741"],
+Cell[CellGroupData[{
+Cell[1895, 61, 1095, 27, 115, "Input",ExpressionUUID->"a4e5b8ae-08ec-4811-b53a-f650fbf872a5"],
+Cell[2993, 90, 288, 5, 56, "Output",ExpressionUUID->"7bd97009-1042-4a26-89bc-6251c461f23c"]
+}, Open  ]],
+Cell[3296, 98, 443, 10, 52, "Input",ExpressionUUID->"d16e6c16-edf0-4235-a0a9-52964bfd159d"],
+Cell[CellGroupData[{
+Cell[3764, 112, 820, 23, 94, "Input",ExpressionUUID->"500d0073-8512-4b0f-8310-62655ed35778"],
+Cell[4587, 137, 281, 4, 56, "Output",ExpressionUUID->"41794d0d-8acb-46bc-b492-79642aa49e36"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4917, 147, 160, 3, 54, "Subsection",ExpressionUUID->"65c4fc89-eeac-4f0b-9799-43b31f27efe2"],
+Cell[5080, 152, 6987, 154, 661, "Input",ExpressionUUID->"4f764519-b8dc-4e4f-bcca-625d506b546d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12104, 311, 236, 4, 54, "Subsection",ExpressionUUID->"0f0b2359-7524-4074-8f77-116a85d82d5c"],
+Cell[12343, 317, 532, 11, 30, "Input",ExpressionUUID->"b6220337-8dd0-499b-bc32-47a1f82fed30"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12912, 333, 155, 3, 54, "Subsection",ExpressionUUID->"2c400e5a-bf4a-46dd-9281-2eea99e5b50c"],
+Cell[13070, 338, 1127, 31, 115, "Input",ExpressionUUID->"7660de67-dca2-4e8a-9372-35cec27dfd8c"],
+Cell[14200, 371, 959, 29, 115, "Input",ExpressionUUID->"d47de342-2a17-4464-945b-2d7229822de8"],
+Cell[15162, 402, 147, 3, 52, "Input",ExpressionUUID->"2c1d15d3-45ca-43c4-a8ac-0d88e8055bba"],
+Cell[CellGroupData[{
+Cell[15334, 409, 849, 23, 73, "Input",ExpressionUUID->"0a8a285f-7148-4f7d-873a-4c9abc1faad1"],
+Cell[16186, 434, 327, 6, 34, "Output",ExpressionUUID->"937e3c2a-568f-4d60-b7fa-22b8fd63ae49"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16550, 445, 160, 3, 45, "Subsubsection",ExpressionUUID->"d3d5ded8-a970-47d0-8365-37f2cc0f8a68"],
+Cell[16713, 450, 244, 5, 30, "Input",ExpressionUUID->"6e54f97b-9814-4b11-95bd-150a9c034183"],
+Cell[16960, 457, 2573, 65, 262, "Input",ExpressionUUID->"a805a8e5-9115-4f9e-b3d8-d27fe5673b82"],
+Cell[19536, 524, 248, 4, 52, "Input",ExpressionUUID->"abbbe6fc-4c5f-43e4-ade3-060235713058"],
+Cell[CellGroupData[{
+Cell[19809, 532, 1282, 34, 157, "Input",ExpressionUUID->"831fcb0c-b22d-4a31-893d-4209ef0193da"],
+Cell[21094, 568, 330, 6, 56, "Output",ExpressionUUID->"10141b70-340c-4932-bfb2-8bbf0b33fe14"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21461, 579, 2374, 59, 220, "Input",ExpressionUUID->"d98d8689-5c6b-4604-9e37-de19ca26d204"],
+Cell[23838, 640, 161, 3, 34, "Output",ExpressionUUID->"553901ac-fb62-4ff3-9bfa-cf28d5207311"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
