@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    720551,      15764]
-NotebookOptionsPosition[    693445,      15340]
-NotebookOutlinePosition[    693812,      15356]
-CellTagsIndexPosition[    693769,      15353]
+NotebookDataLength[    721716,      15790]
+NotebookOptionsPosition[    694512,      15365]
+NotebookOutlinePosition[    694879,      15381]
+CellTagsIndexPosition[    694836,      15378]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -15297,14 +15297,22 @@ Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"Export", "[", " ", 
   RowBox[{
-   RowBox[{"analysisFolder", " ", "<>", " ", "\"\<_tracked_video.tiff\>\""}], 
+   RowBox[{"analysisFolder", " ", "<>", " ", "\"\<_tracked_video1.mov\>\""}], 
    ",", " ", "mytempspotvideotracked"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{"Export", "[", " ", 
   RowBox[{
    RowBox[{
-   "analysisFolder", " ", "<>", " ", "\"\<_tracked_video_wholecell.avi\>\""}],
-    ",", " ", "mytempspotvideotracked", ",", " ", 
-   RowBox[{"\"\<FrameRate\>\"", " ", "\[Rule]", " ", "4"}]}], "]"}]}], "Input",
+   "analysisFolder", " ", "<>", " ", 
+    "\"\<_tracked_video_wholecell1.avi\>\""}], ",", " ", 
+   "mytempspotvideotracked", ",", " ", 
+   RowBox[{"\"\<FrameRate\>\"", " ", "\[Rule]", " ", "4"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", " ", 
+  RowBox[{
+   RowBox[{
+   "analysisFolder", " ", "<>", " ", 
+    "\"\<_tracked_video_wholecell1.tiff\>\""}], ",", " ", 
+   "mytempspotvideotracked"}], "]"}]}], "Input",
  CellChangeTimes->{
   3.767014284661562*^9, {3.7670147866613703`*^9, 3.7670147929977913`*^9}, {
    3.7670148315357227`*^9, 3.767014883793788*^9}, {3.767015478821271*^9, 
@@ -15315,25 +15323,42 @@ Cell[BoxData[{
    3.7774011271244173`*^9}, {3.7774013133029213`*^9, 
    3.7774013216005096`*^9}, {3.777401351768853*^9, 3.7774013571641197`*^9}, {
    3.780076794255938*^9, 3.780076794314558*^9}, {3.780078071019781*^9, 
-   3.780078084943119*^9}},
+   3.780078084943119*^9}, {3.824134880146805*^9, 3.824134900018538*^9}, {
+   3.8241349344019833`*^9, 3.824134935803585*^9}},
  CellLabel->
-  "In[8641]:=",ExpressionUUID->"3d058498-e339-4c89-8b8b-87971105cba2"],
+  "In[170]:=",ExpressionUUID->"3d058498-e339-4c89-8b8b-87971105cba2"],
 
-Cell[BoxData["\<\"/Volumes/BITTY/ExampleTACell_Fig1/Analysis/TA10b_tracked_\
-video.tiff\"\>"], "Output",
+Cell[BoxData["\<\"/Users/ccialek/OneDrive - Colostate/_Argonaute \
+paper/Figures/Figure 1 and S1/Data and \
+code/ExampleTACell_Fig1/Analysis/TA10b_tracked_video1.mov\"\>"], "Output",
  CellChangeTimes->{
   3.7800781206249104`*^9, {3.7800782347605743`*^9, 3.780078257778035*^9}, 
-   3.780078305399076*^9, 3.7800784078622026`*^9, 3.780079275203248*^9},
+   3.780078305399076*^9, 3.7800784078622026`*^9, 3.780079275203248*^9, 
+   3.824134905344825*^9, 3.824134942650537*^9},
  CellLabel->
-  "Out[8641]=",ExpressionUUID->"2cd05bdb-67e2-420c-b8d6-cbd6ca87f8b6"],
+  "Out[170]=",ExpressionUUID->"a1b8e9e5-0ad1-4ca1-9495-def645cfe800"],
 
-Cell[BoxData["\<\"/Volumes/BITTY/ExampleTACell_Fig1/Analysis/TA10b_tracked_\
-video_wholecell.avi\"\>"], "Output",
+Cell[BoxData["\<\"/Users/ccialek/OneDrive - Colostate/_Argonaute \
+paper/Figures/Figure 1 and S1/Data and \
+code/ExampleTACell_Fig1/Analysis/TA10b_tracked_video_wholecell1.avi\"\>"], \
+"Output",
  CellChangeTimes->{
   3.7800781206249104`*^9, {3.7800782347605743`*^9, 3.780078257778035*^9}, 
-   3.780078305399076*^9, 3.7800784078622026`*^9, 3.7800792890916967`*^9},
+   3.780078305399076*^9, 3.7800784078622026`*^9, 3.780079275203248*^9, 
+   3.824134905344825*^9, 3.8241349473403387`*^9},
  CellLabel->
-  "Out[8642]=",ExpressionUUID->"b28e8f81-a9aa-410f-a066-2bbd0c475756"]
+  "Out[171]=",ExpressionUUID->"a5658985-9a83-43f8-a509-7af824743b7e"],
+
+Cell[BoxData["\<\"/Users/ccialek/OneDrive - Colostate/_Argonaute \
+paper/Figures/Figure 1 and S1/Data and \
+code/ExampleTACell_Fig1/Analysis/TA10b_tracked_video_wholecell1.tiff\"\>"], \
+"Output",
+ CellChangeTimes->{
+  3.7800781206249104`*^9, {3.7800782347605743`*^9, 3.780078257778035*^9}, 
+   3.780078305399076*^9, 3.7800784078622026`*^9, 3.780079275203248*^9, 
+   3.824134905344825*^9, 3.824134951323062*^9},
+ CellLabel->
+  "Out[172]=",ExpressionUUID->"de377a52-16e5-4334-bdbd-7d83117308e2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -15760,9 +15785,10 @@ Cell[678834, 14993, 4527, 108, 121, "Input",ExpressionUUID->"98c6e468-b4ef-4d30-
 Cell[683364, 15103, 2463, 59, 137, "Input",ExpressionUUID->"8659eb7d-5180-47e7-b97f-a6f32cef6e77"],
 Cell[685830, 15164, 5571, 128, 201, "Input",ExpressionUUID->"6f5f92b7-4d5f-4277-a3f7-b4953df0b718"],
 Cell[CellGroupData[{
-Cell[691426, 15296, 1252, 23, 41, "Input",ExpressionUUID->"3d058498-e339-4c89-8b8b-87971105cba2"],
-Cell[692681, 15321, 355, 6, 28, "Output",ExpressionUUID->"2cd05bdb-67e2-420c-b8d6-cbd6ca87f8b6"],
-Cell[693039, 15329, 366, 6, 28, "Output",ExpressionUUID->"b28e8f81-a9aa-410f-a066-2bbd0c475756"]
+Cell[691426, 15296, 1570, 32, 57, "Input",ExpressionUUID->"3d058498-e339-4c89-8b8b-87971105cba2"],
+Cell[692999, 15330, 480, 8, 28, "Output",ExpressionUUID->"a1b8e9e5-0ad1-4ca1-9495-def645cfe800"],
+Cell[693482, 15340, 494, 9, 28, "Output",ExpressionUUID->"a5658985-9a83-43f8-a509-7af824743b7e"],
+Cell[693979, 15351, 493, 9, 28, "Output",ExpressionUUID->"de377a52-16e5-4334-bdbd-7d83117308e2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
